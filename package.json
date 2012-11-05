@@ -1,0 +1,15 @@
+{
+  "name": "Noodle Dashboard",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "3.0.1",
+    "ejs": "*",
+    "less-middleware": "*",
+    "googleanalytics": "0.3.0",
+    "pivotal":"0.1.3"
+  }
+}
