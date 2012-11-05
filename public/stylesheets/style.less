@@ -1,0 +1,151 @@
+/*
+ * Solarized Dark Kod Style by Ritwik Roy
+ * This is the dark version of the solarized style for the Kod text editor
+ * It is based of the default style, with colors changed.
+ * It should be saved in ~/.kod/solarizedkoddark.css
+ * To use it, run the following command
+ *  
+ *   $ defaults write se.hunch.kod style/url ~/.kod/solarizedkoddark.css
+ *
+ * Kod needs to be restarted after this for the change to take effect.
+ * Hopefully future versions of Kod will incorporate a simpler way to add user styles
+ * and this style will be updated for that.
+ * 
+ * The Solarized style project can be found at: http://ethanschoonover.com/solarized
+ * The Kod text editor can be found at: https://github.com/rsms/kod
+ * This project can be found at: https://github.com/ritwik/kod-colors-solarized
+ *
+ */
+
+@base03:    #002b36;
+@base02:    #073642;
+@base01:    #586e75;
+@base00:    #657b83;
+@base0:     #839496;
+@base1:     #93a1a1;
+@base2:     #eee8d5;
+@base3:     #fdf6e3;
+@yellow:    #b58900;
+@orange:    #cb4b16;
+@red:       #dc322f;
+@magenta:   #d33682;
+@violet:    #6c71c4;
+@blue:      #268bd2;
+@cyan:      #2aa198;
+@green:     #859900;
+
+body {
+  font-family: "M+ 1m", monospace;
+  font-size: 11px;
+  background-color:@base03;
+  color: @base0;
+}
+
+/* color of the caret and selection range */
+caret { color: @base0; }
+selection { background-color: @base02; }
+column-guide { color: @base1; /*width:4px; background: @base02;*/ }
+
+/* the color for context lines (when specified with line ranges) */
+metaruler {
+  color: @base1;
+  background: @base02;
+  border-right: 2px solid @base02;
+  font-size: 11px;
+}
+
+keyword { color: @green; }
+type { color: @yellow; }
+usertype { color: @base1; }
+classname { color: @yellow; }
+string { color:@cyan; background-color: @base03; }
+specialchar { color: @green; background-color: @base03; }
+regexp { color: @green; background-color: @base03; }
+comment { color: @base01; font-style: italic; }
+number { color: @cyan; }
+preproc { color: @orange; }
+symbol { color: @base0; }
+function { color: @blue; background-color: @base03; }
+cbracket { color: @base0; }
+todo { color: @magenta; font-weight: bold; }
+
+/* Internet related */
+url {
+  color: @blue; text-decoration: underline;
+  cursor: pointer;
+}
+
+/* other elements for ChangeLog and Log files */
+date { color: @green; font-weight: bold; }
+time, file { color: @yellow; font-weight: bold; }
+ip, name { color: @orange; }
+
+/* for Prolog, Perl, lang */
+variable { color: @cyan; }
+italics { text-decoration: underline; font-style: italic; }
+bold { color: @base1; font-weight: bold; }
+
+/* for LaTeX, markdown, etc */
+underline { color: @blue; text-decoration: underline; }
+fixed { color: @base1; background-color: @base02; }
+argument, optionalargument { color: @red; }
+math { color: @orange; }
+bibtex { color: @green; }
+h1,h2,h3,h4,h5,h6 { color: @violet; }
+ul, ol { color: @yellow; }
+
+/* for diffs */
+oldfile { color: @green; background-color:@base03; }
+newfile { color: @red; background-color:@base03; }
+difflines { color: @base1; background-color:@base03; }
+
+/* for css */
+selector { color: @orange; }
+property { color: @cyan; }
+value { color: @green; }
+
+/* for Oz, Erlang, etc */
+atom { color: @orange; }
+meta { font-style: italic; }
+
+/* CSS v2 tests */
+value > string { color: @cyan; }
+object.json > pair > value > string { color: @yellow; }
+array.json value > string { color: @green; }
+
+
+body {
+  padding:0px;
+  margin:0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background:@base03 url('/images/loading.gif') no-repeat fixed center;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#toolbar {
+	width:100%;
+	height:40px;
+	padding:4px
+}
+
+#main-links {
+	margin:4px;
+}
+
+#main-links li {
+	float:left;
+	margin:0 1em 0 0;
+	list-style:none;
+} 
+
+#container {
+	height:100%;
+}
+
+#container iframe {
+	width:100%;
+	height:100%;
+}

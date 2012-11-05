@@ -1,0 +1,222 @@
+/*
+ * Solarized Dark Kod Style by Ritwik Roy
+ * This is the dark version of the solarized style for the Kod text editor
+ * It is based of the default style, with colors changed.
+ * It should be saved in ~/.kod/solarizedkoddark.css
+ * To use it, run the following command
+ *  
+ *   $ defaults write se.hunch.kod style/url ~/.kod/solarizedkoddark.css
+ *
+ * Kod needs to be restarted after this for the change to take effect.
+ * Hopefully future versions of Kod will incorporate a simpler way to add user styles
+ * and this style will be updated for that.
+ * 
+ * The Solarized style project can be found at: http://ethanschoonover.com/solarized
+ * The Kod text editor can be found at: https://github.com/rsms/kod
+ * This project can be found at: https://github.com/ritwik/kod-colors-solarized
+ *
+ */
+body {
+  font-family: "M+ 1m", monospace;
+  font-size: 11px;
+  background-color: #002b36;
+  color: #839496;
+}
+/* color of the caret and selection range */
+caret {
+  color: #839496;
+}
+selection {
+  background-color: #073642;
+}
+column-guide {
+  color: #93a1a1;
+  /*width:4px; background: @base02;*/
+}
+/* the color for context lines (when specified with line ranges) */
+metaruler {
+  color: #93a1a1;
+  background: #073642;
+  border-right: 2px solid #073642;
+  font-size: 11px;
+}
+keyword {
+  color: #859900;
+}
+type {
+  color: #b58900;
+}
+usertype {
+  color: #93a1a1;
+}
+classname {
+  color: #b58900;
+}
+string {
+  color: #2aa198;
+  background-color: #002b36;
+}
+specialchar {
+  color: #859900;
+  background-color: #002b36;
+}
+regexp {
+  color: #859900;
+  background-color: #002b36;
+}
+comment {
+  color: #586e75;
+  font-style: italic;
+}
+number {
+  color: #2aa198;
+}
+preproc {
+  color: #cb4b16;
+}
+symbol {
+  color: #839496;
+}
+function {
+  color: #268bd2;
+  background-color: #002b36;
+}
+cbracket {
+  color: #839496;
+}
+todo {
+  color: #d33682;
+  font-weight: bold;
+}
+/* Internet related */
+url {
+  color: #268bd2;
+  text-decoration: underline;
+  cursor: pointer;
+}
+/* other elements for ChangeLog and Log files */
+date {
+  color: #859900;
+  font-weight: bold;
+}
+time,
+file {
+  color: #b58900;
+  font-weight: bold;
+}
+ip,
+name {
+  color: #cb4b16;
+}
+/* for Prolog, Perl, lang */
+variable {
+  color: #2aa198;
+}
+italics {
+  text-decoration: underline;
+  font-style: italic;
+}
+bold {
+  color: #93a1a1;
+  font-weight: bold;
+}
+/* for LaTeX, markdown, etc */
+underline {
+  color: #268bd2;
+  text-decoration: underline;
+}
+fixed {
+  color: #93a1a1;
+  background-color: #073642;
+}
+argument,
+optionalargument {
+  color: #dc322f;
+}
+math {
+  color: #cb4b16;
+}
+bibtex {
+  color: #859900;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #6c71c4;
+}
+ul,
+ol {
+  color: #b58900;
+}
+/* for diffs */
+oldfile {
+  color: #859900;
+  background-color: #002b36;
+}
+newfile {
+  color: #dc322f;
+  background-color: #002b36;
+}
+difflines {
+  color: #93a1a1;
+  background-color: #002b36;
+}
+/* for css */
+selector {
+  color: #cb4b16;
+}
+property {
+  color: #2aa198;
+}
+value {
+  color: #859900;
+}
+/* for Oz, Erlang, etc */
+atom {
+  color: #cb4b16;
+}
+meta {
+  font-style: italic;
+}
+/* CSS v2 tests */
+value > string {
+  color: #2aa198;
+}
+object.json > pair > value > string {
+  color: #b58900;
+}
+array.json value > string {
+  color: #859900;
+}
+body {
+  padding: 0px;
+  margin: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #002b36 url('/images/loading.gif') no-repeat fixed center;
+}
+a {
+  color: #00B7FF;
+}
+#toolbar {
+  width: 100%;
+  height: 40px;
+  padding: 4px;
+}
+#main-links {
+  margin: 4px;
+}
+#main-links li {
+  float: left;
+  margin: 0 1em 0 0;
+  list-style: none;
+}
+#container {
+  height: 100%;
+}
+#container iframe {
+  width: 100%;
+  height: 100%;
+}
