@@ -36,9 +36,9 @@ visitorsLast30Days = 0;
 visitorsSparkline = '';
 
 var today = new Date();
-var todayString = '';
-today.toJSON;
-todayString += today.toJSON().substr(0,10);
+var yesterdayString = '';
+yesterday.setDate(today.getDate() - 1);
+yesterdayString += yesterday.toJSON().substr(0,10);
 
 var monthAgo = new Date();
 var monthAgoString = '';
@@ -54,7 +54,7 @@ GA.login(function(err, token) {
   var options = {
   'ids': 'ga:'+profile,
   'start-date': monthAgoString,
-  'end-date': todayString,
+  'end-date': yesterdayString,
   'dimensions':'ga:date',
   'metrics': 'ga:visitors'
   };
