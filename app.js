@@ -35,14 +35,14 @@ var password='noodlex2';
 visitorsLast30Days = 0;
 visitorsSparkline = '';
 
-var today = new Date();
+var yesterday = new Date();
 var yesterdayString = '';
-yesterday.setDate(today.getDate() - 1);
+yesterday.setDate(yesterday.getDate() - 1);
 yesterdayString += yesterday.toJSON().substr(0,10);
 
 var monthAgo = new Date();
 var monthAgoString = '';
-monthAgo.setDate(today.getDate() - 30);
+monthAgo.setDate(yesterday.getDate() - 30);
 monthAgoString += monthAgo.toJSON().substr(0,10);
 console.log(monthAgoString);
 
