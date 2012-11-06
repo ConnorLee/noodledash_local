@@ -59,6 +59,7 @@
             <p class="navbar-text pull-right">
               <%= visitorsLast30Days %> visitors in the last 30 days
             </p>
+            <p class="visitors-sparkline pull-right"></p>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -76,6 +77,9 @@
 
 
     <script src="/javascripts/bootstrap.min.js"></script>
-
+    <script src="/javascripts/sparklines.min.js"></script>
+    <script>
+    $('.visitors-sparkline').sparkline([<%= visitorsSparkline %>],{composite: false, height: '1.3em', fillColor:false, lineColor:'#268bd2', tooltipPrefix: 'Daily Uniques: '}); 
+    </script>
   </body>
 </html>

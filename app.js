@@ -14,16 +14,17 @@ var express = require('express')
 var pivotalUsername = 'kylejaster';
 var pivotalPassword = 'pivotaltrackerx2';
 
-pivotal.getToken(username, password, function(err, token){
+pivotal.getToken(pivotalUsername, pivotalPassword, function(err, token){
 
     if(err){
         console.error("Could not retrieve token");
     }
 
-    console.log("Token: " + token);
+    pivotal.useToken(token);
+
 });
 
-//console.log(pivotal.getIterations('187421'));
+//console.log(pivotal.getCurrentIteration('187421'));
 
 var ga = require('googleanalytics');
 
@@ -32,6 +33,18 @@ var username='kyle@noodle.org';
 var password='noodlex2';
 
 visitorsLast30Days = 0;
+visitorsSparkline = '';
+
+var today = new Date();
+var todayString = '';
+today.toJSON;
+todayString += today.toJSON().substr(0,10);
+
+var monthAgo = new Date();
+var monthAgoString = '';
+monthAgo.setDate(today.getDate() - 30);
+monthAgoString += monthAgo.toJSON().substr(0,10);
+console.log(monthAgoString);
 
 var GA = new ga.GA({
   user: username,
@@ -40,8 +53,8 @@ var GA = new ga.GA({
 GA.login(function(err, token) {
   var options = {
   'ids': 'ga:'+profile,
-  'start-date': '2012-10-04',
-  'end-date': '2012-11-04',
+  'start-date': monthAgoString,
+  'end-date': todayString,
   'dimensions':'ga:date',
   'metrics': 'ga:visitors'
   };
@@ -50,6 +63,7 @@ GA.login(function(err, token) {
     {
       var dailyVisitors = entries[i].metrics[0]['ga:visitors'];
       visitorsLast30Days += dailyVisitors;
+      visitorsSparkline += dailyVisitors+',';
     }
   });
 });
