@@ -3,13 +3,13 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path')
-  , pivotal = require('pivotal')
-  , ga = require('googleanalytics');
+var express = require('express');
+var routes = require('./routes');
+var user = require('./routes/user');
+var http = require('http');
+var path = require('path');
+var pivotal = require('pivotal');
+var ga = require('googleanalytics');
 
 var pivotalUsername = 'kylejaster';
 var pivotalPassword = 'pivotaltrackerx2';
@@ -19,12 +19,25 @@ pivotal.getToken(pivotalUsername, pivotalPassword, function(err, token){
     if(err){
         console.error("Could not retrieve token");
     }
-
-    pivotal.useToken(token);
+    console.log(token.guid);
+    pivotal.useToken(token.guid);
 
 });
+pivotal.getIterations('679513', { limit:5 }, function (err, ret) {
 
-//console.log(pivotal.getCurrentIteration('187421'));
+                var i;
+
+                if (err) {
+                    console.log("Error", JSON.stringify(err));
+                }
+
+                if (pivotal.debug) {
+                    for (i in ret.iteration) {
+                        console.log("Got project iteration:", JSON.stringify(ret.iteration[i]));
+                    }
+                }
+
+            });
 
 var ga = require('googleanalytics');
 
