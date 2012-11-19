@@ -16,8 +16,14 @@ exports.index = function(req, res){
 		referenceurl = 'http://www.trackerstorymaps.com/projects/187421/releases';
 	}
 
+	if (releasename == 'jedis') {
+		referenceurl = 'http://www.trackerstorymaps.com/projects/305603/releases';
+	}
+
 	res.render('layout', {
 	title: 'Noodle',
 	referencesite: referenceurl
 	});
 };
+
+
