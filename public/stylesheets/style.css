@@ -191,7 +191,7 @@ body {
   background: #002b36 url('/images/loading.gif') no-repeat fixed center;
 }
 
-  body.home {
+.home {
     background: #FFF;
     background-image:none;
   }
@@ -232,5 +232,5 @@ a {
 }
 
 .thumbnail .description {
-  height:100px;
+  height:10px;
 }
