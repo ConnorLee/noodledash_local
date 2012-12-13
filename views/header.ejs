@@ -9,7 +9,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -32,7 +32,7 @@
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
 
-  <body>
+  <body class="<%= pagename %>">
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#"><%= title %></a>
+          <a class="brand" href="/">Noodle Dashboard</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="dropdown">
@@ -52,19 +52,15 @@
                   <li><a href="/releases/pnp">Providers & People</a></li>
                   <li><a href="/releases/jedis">The Jedis</a></li>
                   <li><a href="/releases/backlog">Backlog</a></li>
-                  <li class="divider"></li>
-                  <li><a href="http://www.pivotaltracker.com" target="_new">Pivotal Tracker</a></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="https://noodleeducation.campfirenow.com">Campfire</a></li>
-                  <li><a href="http://noodle.basecamp.com">Basecamp</a></li>
-                  <li><a href="/releases/jedis">The Jedis</a></li>
-                  <li><a href="/releases/backlog">Backlog</a></li>
-                  <li class="divider"></li>
+                  <li><a href="https://noodleeducation.campfirenow.com" target="_new">Campfire</a></li>
+                  <li><a href="http://noodle.basecamp.com" target="_new">Basecamp</a></li>
                   <li><a href="http://www.pivotaltracker.com" target="_new">Pivotal Tracker</a></li>
+                  <li><a href="http://thevault.noodle.org" target="_new">The Vault</a></li>
                 </ul>
               </li>
             </ul>

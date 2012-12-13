@@ -3,11 +3,24 @@
  * GET home page.
  */
 
+exports.main = function(req, res){
+
+	res.render('main', {
+	title: 'Noodle',
+	pagename: 'home'
+	});
+};
+
 exports.index = function(req, res){
-	referenceurl = 'http://www.trackerstorymaps.com/projects/679513/releases';
+
+	referenceurl = '';
 
 	releasename = req.params.release;
 
+	if (releasename == 'backlog') {
+		referenceurl = 'http://www.trackerstorymaps.com/projects/679513/releases';
+	}
+	
 	if (releasename == 'pnp') {
 		referenceurl = 'http://www.trackerstorymaps.com/projects/187445/releases';
 	}
@@ -22,8 +35,11 @@ exports.index = function(req, res){
 
 	res.render('iframe', {
 	title: 'Noodle',
-	referencesite: referenceurl
+	referencesite: referenceurl,
+	pagename: 'iframe'
 	});
 };
+
+
 
 
