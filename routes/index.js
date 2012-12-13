@@ -20,7 +20,7 @@ exports.index = function(req, res){
 		referenceurl = 'http://www.trackerstorymaps.com/projects/305603/releases';
 	}
 
-	res.render('layout', {
+	res.render('iframe', {
 	title: 'Noodle',
 	referencesite: referenceurl
 	});
