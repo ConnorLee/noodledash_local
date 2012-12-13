@@ -139,7 +139,14 @@ math {
 bibtex {
   color: #859900;
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #6c71c4;
+}
 ul,
 ol {
   color: #b58900;
@@ -190,12 +197,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: #002b36 url('/images/loading.gif') no-repeat fixed center;
 }
-
 .home {
-    background: #FFF;
-    background-image:none;
-  }
-
+  background: #FFF;
+  background-image: none;
+}
 a {
   color: #00B7FF;
 }
@@ -226,11 +231,9 @@ a {
 .thumbnail {
   text-align: center;
 }
-
 .service-logo {
   max-height: 180px;
 }
-
 .thumbnail .description {
-  height:10px;
+  height: 100px;
 }
