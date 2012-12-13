@@ -1,11 +1,24 @@
 <% include header.ejs %>
 
-    <div class="container">
 
- <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>
-<script language="JavaScript">
+    <div class="container">
+      <div class="row">
+        <div class="span3 sidebar-nav bs-docs-sidebar">
+            <ul class="nav nav-list well bs-docs-sidenav affix">
+              <li class="active"><a href="#tools">Tools</a></li>
+              <li><a href="#executive-summary">Executive Summary</a></li>
+              <li><a href="#marketing">Marketing</a></li>
+              <li><a href="#product">Product</a></li>
+              <li><a href="#tech">Tech</a></li>
+              <li><a href="#pros">Pros</a></li>
+              <li><a href="#labs">Labs</a></li>
+            </ul>
+        </div><!--/span-->
+        <div class="span9">
+        <div class="alert alert-block">
+          <a class="close" data-dismiss="alert">×</a>
+          <h4 class="alert-heading">
+          <script language="JavaScript">
 var Quotation=new Array() // do not change this!
 
 Quotation[0] = "Boy, you're something!";
@@ -23,11 +36,10 @@ var whichQuotation=Math.round(Math.random()*(Q-1));
 function showQuotation(){document.write(Quotation[whichQuotation]);}
 showQuotation();
 </script>
-        </h1>
-      </div>
-
-      <!-- Example row of columns -->
-    <div class="row">
+          </h4>
+        </div>
+<section id="tools">
+          <div class="row-fluid">
     	<div class="span3">
     	    <div class="thumbnail">
    			    <a href="https://noodleeducation.campfirenow.com" target="_new">
@@ -76,12 +88,116 @@ showQuotation();
                   </div>
                 </div>            
     	</div>
-      </div>
+          </div><!--/row-->
+	</section>
+	<section id="executive-summary">
+		<div class="row-fluid">
+			<div class="span10">
+				Will contain:
+				<ul>
+				<li>Uniques</li>
+				<li>Page Views</li>
+				<li>Average Time on Site</li>
+				</ul>
+
+			</div>
+		</div>
+	</section>         
+    <hr>
+	<section id="marketing">
+		<div class="row-fluid">
+			<div class="span10">
+				Will contain:
+				Acquisition
+
+Sources	Leads	Users	$/User
+SEO	100	10	$0
+SEM	1000	20	$32
+
+By Vertical and Key Word
+Create an SEO Score
+
+			</div>
+		</div>
+	</section>         
+    <hr>
+	<section id="product">
+		<div class="row-fluid">
+			<div class="span10">
+				Will contain:
+				•	Uniques
+•	Page Views
+•	Average Time on Site
+-	Per user (per month), not per visit
+•	% of first time visits who register (
+•	# of registered users (Active users per 6 months) 
+(We can determine new users from this)
+•	Virality/Sharing
+•	Feedback
+•	What % of Users went to each section?
+-	K-12
+-	Higher Education
+-	Supplemental Learning
+-	Learning Content
+•	Uptime (from AWS monitoring)
+•	Page Load for Key Pages
+•	Customer Satisfaction – Internal Users
+•	Customer Satisfaction – by Customer Survey
+•	Number of Verticals Launched (MVP)
+
+			</div>
+		</div>
+	</section>         
+    <hr>
+	<section id="tech">
+		<div class="row-fluid">
+			<div class="span10">
+				Will contain:
+				<ul>
+				<li>Uniques</li>
+				</ul>
+			</div>
+		</div>
+	</section>         
+    <hr>
+    <section id="pros">
+		<div class="row-fluid">
+			<div class="span10">
+				Will contain:
+				Data v Last Year
+-	Total Tutors
+-	Active Tutors
+-	# Students
+-	New Students
+-	# Hours
+-	Gross Revenue
+-	Noodle Gross Revenue
+-	Cities Served
+-	Customer Satisfaction
+
+			</div>
+		</div>
+	</section>         
+    <hr>
+    	<section id="labs">
+		<div class="row-fluid">
+			<div class="span10">
+				Will contain:
+				P&L + Balance Sheet
+			</div>
+		</div>
+	</section>         
+    <hr>
+      <footer>
+        <p>&copy; Noodle Education 2012</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
 
 
 
 
-    </div> <!-- /container -->
+
 
 <% include scripts.ejs %>
 <% include end.ejs %>

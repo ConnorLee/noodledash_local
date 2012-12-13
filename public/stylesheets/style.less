@@ -1,129 +1,336 @@
-/*
- * Solarized Dark Kod Style by Ritwik Roy
- * This is the dark version of the solarized style for the Kod text editor
- * It is based of the default style, with colors changed.
- * It should be saved in ~/.kod/solarizedkoddark.css
- * To use it, run the following command
- *  
- *   $ defaults write se.hunch.kod style/url ~/.kod/solarizedkoddark.css
- *
- * Kod needs to be restarted after this for the change to take effect.
- * Hopefully future versions of Kod will incorporate a simpler way to add user styles
- * and this style will be updated for that.
- * 
- * The Solarized style project can be found at: http://ethanschoonover.com/solarized
- * The Kod text editor can be found at: https://github.com/rsms/kod
- * This project can be found at: https://github.com/ritwik/kod-colors-solarized
- *
- */
+/* Sections
+-------------------------------------------------- */
 
-@base03:    #002b36;
-@base02:    #073642;
-@base01:    #586e75;
-@base00:    #657b83;
-@base0:     #839496;
-@base1:     #93a1a1;
-@base2:     #eee8d5;
-@base3:     #fdf6e3;
-@yellow:    #b58900;
-@orange:    #cb4b16;
-@red:       #dc322f;
-@magenta:   #d33682;
-@violet:    #6c71c4;
-@blue:      #268bd2;
-@cyan:      #2aa198;
-@green:     #859900;
-
-body {
-  font-family: "M+ 1m", monospace;
-  font-size: 11px;
-  background-color:@base03;
-  color: @base0;
+/* padding for in-page bookmarks and fixed navbar */
+section {
+  padding-bottom: 30px;
+}
+section > .page-header,
+section > .lead {
+  color: #5a5a5a;
+}
+section > ul li {
+  margin-bottom: 5px;
 }
 
-/* color of the caret and selection range */
-caret { color: @base0; }
-selection { background-color: @base02; }
-column-guide { color: @base1; /*width:4px; background: @base02;*/ }
-
-/* the color for context lines (when specified with line ranges) */
-metaruler {
-  color: @base1;
-  background: @base02;
-  border-right: 2px solid @base02;
-  font-size: 11px;
+/* Separators (hr) */
+.bs-docs-separator {
+  margin: 40px 0 39px;
 }
 
-keyword { color: @green; }
-type { color: @yellow; }
-usertype { color: @base1; }
-classname { color: @yellow; }
-string { color:@cyan; background-color: @base03; }
-specialchar { color: @green; background-color: @base03; }
-regexp { color: @green; background-color: @base03; }
-comment { color: @base01; font-style: italic; }
-number { color: @cyan; }
-preproc { color: @orange; }
-symbol { color: @base0; }
-function { color: @blue; background-color: @base03; }
-cbracket { color: @base0; }
-todo { color: @magenta; font-weight: bold; }
-
-/* Internet related */
-url {
-  color: @blue; text-decoration: underline;
-  cursor: pointer;
+/* Faded out hr */
+hr.soften {
+  height: 1px;
+  margin: 70px 0;
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  border: 0;
 }
 
-/* other elements for ChangeLog and Log files */
-date { color: @green; font-weight: bold; }
-time, file { color: @yellow; font-weight: bold; }
-ip, name { color: @orange; }
 
-/* for Prolog, Perl, lang */
-variable { color: @cyan; }
-italics { text-decoration: underline; font-style: italic; }
-bold { color: @base1; font-weight: bold; }
+/* Sidenav for Docs
+-------------------------------------------------- */
 
-/* for LaTeX, markdown, etc */
-underline { color: @blue; text-decoration: underline; }
-fixed { color: @base1; background-color: @base02; }
-argument, optionalargument { color: @red; }
-math { color: @orange; }
-bibtex { color: @green; }
-ul, ol { color: @yellow; }
+.bs-docs-sidenav {
+  width: 228px;
+  margin: 60px 0 0;
+  padding: 0;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+          box-shadow: 0 1px 4px rgba(0,0,0,.065);
+}
+.bs-docs-sidenav > li > a {
+  display: block;
+  width: 190px \9;
+  margin: 0 0 -1px;
+  padding: 8px 14px;
+  border: 1px solid #555;
+}
+.bs-docs-sidenav > li:first-child > a {
+  -webkit-border-radius: 6px 6px 0 0;
+     -moz-border-radius: 6px 6px 0 0;
+          border-radius: 6px 6px 0 0;
+}
+.bs-docs-sidenav > li:last-child > a {
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
+}
+.bs-docs-sidenav > .active > a {
+  position: relative;
+  z-index: 2;
+  padding: 9px 15px;
+  border: 0;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+          box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+}
+/* Chevrons */
+.bs-docs-sidenav .icon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+.bs-docs-sidenav > li > a:hover {
+  background-color: #555;
+}
+.bs-docs-sidenav a:hover .icon-chevron-right {
+  opacity: .5;
+}
+.bs-docs-sidenav .active .icon-chevron-right,
+.bs-docs-sidenav .active a:hover .icon-chevron-right {
+  background-image: url(../img/glyphicons-halflings-white.png);
+  opacity: 1;
+}
+.bs-docs-sidenav.affix {
+  top: 40px;
+}
+.bs-docs-sidenav.affix-bottom {
+  position: absolute;
+  top: auto;
+  bottom: 270px;
+}
 
-/* for diffs */
-oldfile { color: @green; background-color:@base03; }
-newfile { color: @red; background-color:@base03; }
-difflines { color: @base1; background-color:@base03; }
 
-/* for css */
-selector { color: @orange; }
-property { color: @cyan; }
-value { color: @green; }
 
-/* for Oz, Erlang, etc */
-atom { color: @orange; }
-meta { font-style: italic; }
 
-/* CSS v2 tests */
-value > string { color: @cyan; }
-object.json > pair > value > string { color: @yellow; }
-array.json value > string { color: @green; }
+/* Responsive
+-------------------------------------------------- */
+
+/* Desktop large
+------------------------- */
+@media (min-width: 1200px) {
+  .bs-docs-container {
+    max-width: 970px;
+  }
+  .bs-docs-sidenav {
+    width: 258px;
+  }
+  .bs-docs-sidenav > li > a {
+    width: 230px \9; /* Override the previous IE8-9 hack */
+  }
+}
+
+/* Desktop
+------------------------- */
+@media (max-width: 980px) {
+  /* Unfloat brand */
+  body > .navbar-fixed-top .brand {
+    float: left;
+    margin-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* Inline-block quick links for more spacing */
+  .quick-links li {
+    display: inline-block;
+    margin: 5px;
+  }
+
+  /* When affixed, space properly */
+  .bs-docs-sidenav {
+    top: 0;
+    width: 218px;
+    margin-top: 30px;
+    margin-right: 0;
+  }
+}
+
+/* Tablet to desktop
+------------------------- */
+@media (min-width: 768px) and (max-width: 979px) {
+  /* Remove any padding from the body */
+  body {
+    padding-top: 0;
+  }
+  /* Widen masthead and social buttons to fill body padding */
+  .jumbotron {
+    margin-top: -20px; /* Offset bottom margin on .navbar */
+  }
+  /* Adjust sidenav width */
+  .bs-docs-sidenav {
+    width: 166px;
+    margin-top: 20px;
+  }
+  .bs-docs-sidenav.affix {
+    top: 0;
+  }
+}
+
+/* Tablet
+------------------------- */
+@media (max-width: 767px) {
+  /* Remove any padding from the body */
+  body {
+    padding-top: 0;
+  }
+
+  /* Widen masthead and social buttons to fill body padding */
+  .jumbotron {
+    padding: 40px 20px;
+    margin-top:   -20px; /* Offset bottom margin on .navbar */
+    margin-right: -20px;
+    margin-left:  -20px;
+  }
+  .masthead h1 {
+    font-size: 90px;
+  }
+  .masthead p,
+  .masthead .btn {
+    font-size: 24px;
+  }
+  .marketing .span4 {
+    margin-bottom: 40px;
+  }
+  .bs-docs-social {
+    margin: 0 -20px;
+  }
+
+  /* Space out the show-grid examples */
+  .show-grid [class*="span"] {
+    margin-bottom: 5px;
+  }
+
+  /* Sidenav */
+  .bs-docs-sidenav {
+    width: auto;
+    margin-bottom: 20px;
+  }
+  .bs-docs-sidenav.affix {
+    position: static;
+    width: auto;
+    top: 0;
+  }
+
+  /* Unfloat the back to top link in footer */
+  .footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .footer p {
+    margin-bottom: 9px;
+  }
+}
+
+/* Landscape phones
+------------------------- */
+@media (max-width: 480px) {
+  /* Remove padding above jumbotron */
+  body {
+    padding-top: 0;
+  }
+
+  /* Change up some type stuff */
+  h2 small {
+    display: block;
+  }
+
+  /* Downsize the jumbotrons */
+  .jumbotron h1 {
+    font-size: 45px;
+  }
+  .jumbotron p,
+  .jumbotron .btn {
+    font-size: 18px;
+  }
+  .jumbotron .btn {
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* center align subhead text like the masthead */
+  .subhead h1,
+  .subhead p {
+    text-align: center;
+  }
+
+  /* Marketing on home */
+  .marketing h1 {
+    font-size: 30px;
+  }
+  .marketing-byline {
+    font-size: 18px;
+  }
+
+  /* center example sites */
+  .example-sites {
+    margin-left: 0;
+  }
+  .example-sites > li {
+    float: none;
+    display: block;
+    max-width: 280px;
+    margin: 0 auto 18px;
+    text-align: center;
+  }
+  .example-sites .thumbnail > img {
+    max-width: 270px;
+  }
+
+  /* Do our best to make tables work in narrow viewports */
+  table code {
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+  /* Examples: dropdowns */
+  .bs-docs-example-submenus > .pull-left {
+    float: none;
+    clear: both;
+  }
+  .bs-docs-example-submenus > .pull-left,
+  .bs-docs-example-submenus > .pull-left + .pull-left {
+    margin-left: 0;
+  }
+  .bs-docs-example-submenus p {
+    margin-bottom: 0;
+  }
+  .bs-docs-example-submenus .dropup > .dropdown-menu,
+  .bs-docs-example-submenus .dropdown > .dropdown-menu {
+    margin-bottom: 10px;
+    float: none;
+    max-width: 180px;
+  }
+
+  /* Examples: modal */
+  .modal-example .modal {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+  }
+
+  /* Tighten up footer */
+  .footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
 
 
 body {
   padding:0px;
-  margin:0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background:@base03 url('/images/loading.gif') no-repeat fixed center;
+  margin:34px 0 0 0;
+  background:#2A333C url('/images/loading.gif') no-repeat fixed center;
 }
 
 .home {
-    background: #FFF;
     background-image:none;
+    margin-top:100px;
   }
+
 
 a {
   color: #00B7FF;
@@ -142,7 +349,7 @@ a {
   list-style: none;
 }
 .visitors-sparkline {
-  margin-top: 12px;
+  margin-top: 2em;
   margin-right: 1em;
 }
 #container {
@@ -156,10 +363,15 @@ a {
   text-align: center;
 }
 
+.thumbnail .caption {
+  text-align: left;
+}
+
 .service-logo {
   max-height: 180px;
 }
 
 .thumbnail .description {
   height:100px;
+  overflow:hidden;
 }
