@@ -1,0 +1,9 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
+
+
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/sparklines.min.js"></script>
+    <script>
+    $('.visitors-sparkline').sparkline([<%= visitorsSparkline %>],{composite: false, height: '1.3em', fillColor:false, lineColor:'#268bd2', tooltipPrefix: 'Daily Uniques: ', minSpotColor:'#b58900', maxSpotColor: '#b58900', spotColor:'#b58900'}); 
+    </script>

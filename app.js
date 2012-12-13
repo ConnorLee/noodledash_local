@@ -82,6 +82,40 @@ GA.login(function(err, token) {
 });
 
 
+var optionsget = {
+  host : 'www.noodle.org', // here only the domain name
+  // (no http/https !)
+  path : '/services/general_monitoring.php?token=DK2KKGuvUQSsylvZiNLLMLnrng6hQYAWj4gvBUhXk', // the rest of the url with parameters if needed
+  method : 'GET' // do GET
+};
+
+console.info('Options prepared:');
+console.info(optionsget);
+console.info('Do the GET call');
+
+// do the GET request
+var reqGet = http.request(optionsget, function(res) {
+  console.log("statusCode: ", res.statusCode);
+  // uncomment it for header details
+//  console.log("headers: ", res.headers);
+
+
+  res.on('data', function(d) {
+    var siteStatusJSON = JSON.parse(d+'');
+    if (siteStatusJSON.emails.emailsJobStatus == 'EmailsAreBeingSent') {
+      emailJobsWorking = true;
+    }
+    else {
+      emailJobsWorking = false;
+    }
+  });
+
+});
+
+reqGet.end();
+reqGet.on('error', function(e) {
+  console.error(e);
+});
 
 var app = express();
 
