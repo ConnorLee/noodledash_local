@@ -38,13 +38,12 @@ GA.login(function(err, token) {
   'start-date': monthAgoString,
   'end-date': yesterdayString,
   'dimensions':'ga:date',
-  'metrics': 'ga:visitors',
-  'metrics': 'ga:pageviews',
-  'metrics': 'ga:avgTimeonSite'
+  'metrics': 'ga:visitors'
   };
   GA.get(options, function(err, entries) {
     for (var i=0;i<entries.length;i++)
     {
+      console.log(entries[i])
       var dailyVisitors = entries[i].metrics[0]['ga:visitors'];
       visitorsLast30Days += dailyVisitors;
       visitorsSparkline += dailyVisitors+',';
