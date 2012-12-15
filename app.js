@@ -16,6 +16,14 @@ var password='p@rkavenue';
 
 visitorsLast30Days = 0;
 visitorsSparkline = '';
+timeOnSiteLast30Days = 0;
+timeOnSiteSparkline = '';
+pageViewsLast30Days = 0;
+pageViewsSparkline = '';
+
+dailyTimeOnSite = '';
+dailyVisitors = '';
+dailyPageViews = '';
 
 var yesterday = new Date();
 var yesterdayString = '';
@@ -32,24 +40,65 @@ var GA = new ga.GA({
   user: username,
   password: password
 });
+
+
 GA.login(function(err, token) {
-  var options = {
+
+  var uniqueVisitorsQuery = {
   'ids': 'ga:'+profile,
   'start-date': monthAgoString,
   'end-date': yesterdayString,
   'dimensions':'ga:date',
   'metrics': 'ga:visitors'
   };
-  GA.get(options, function(err, entries) {
-    for (var i=0;i<entries.length;i++)
-    {
-      console.log(entries[i])
-      var dailyVisitors = entries[i].metrics[0]['ga:visitors'];
-      visitorsLast30Days += dailyVisitors;
-      visitorsSparkline += dailyVisitors+',';
-    }
+  GA.get(uniqueVisitorsQuery, function(err, entries) {
+    dailyVisitors = gaGetDailies(entries, 'ga:visitors');
+    visitorsLast30Days = gaGetTotals(entries, 'ga:visitors');
+  });
+
+  var timeOnSiteQuery = {
+  'ids': 'ga:'+profile,
+  'start-date': monthAgoString,
+  'end-date': yesterdayString,
+  'dimensions':'ga:date',
+  'metrics': 'ga:avgTimeOnSite'
+  };
+  GA.get(timeOnSiteQuery, function(err, entries) {
+    dailyTimeOnSite = gaGetDailies(entries, 'ga:avgTimeOnSite');
+  });
+  
+  var pageViewsQuery = {
+  'ids': 'ga:'+profile,
+  'start-date': monthAgoString,
+  'end-date': yesterdayString,
+  'dimensions':'ga:date',
+  'metrics': 'ga:pageviews'
+  };
+  GA.get(pageViewsQuery, function(err, entries) {
+    dailyPageViews += ''+gaGetDailies(entries, 'ga:pageviews');
+    console.log("+"+dailyPageViews);
   });
 });
+
+function gaGetDailies(entries,metric) {
+  var daily = '';
+  for (var i=0;i<entries.length;i++)
+    {
+      var count = (entries[i].metrics[0][metric]);
+      daily += (count+',');
+    }
+    return daily;
+}
+
+function gaGetTotals(entries,metric) {
+  var total = 0;
+  for (var i=0;i<entries.length;i++)
+    {
+      var count = (entries[i].metrics[0][metric]);
+      total += count;
+    }
+    return total;
+}  
 
 
 var optionsget = {
