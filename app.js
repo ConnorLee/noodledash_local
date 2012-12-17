@@ -24,6 +24,8 @@ pageViewsSparkline = '';
 dailyTimeOnSite = '';
 dailyVisitors = '';
 dailyPageViews = '';
+dailyVisitorsReturning = '';
+dailyVisitorsNew = '';
 
 var yesterday = new Date();
 var yesterdayString = '';
@@ -76,8 +78,32 @@ GA.login(function(err, token) {
   };
   GA.get(pageViewsQuery, function(err, entries) {
     dailyPageViews += ''+gaGetDailies(entries, 'ga:pageviews');
-    console.log("+"+dailyPageViews);
   });
+
+  var returningVisitsQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:visits',
+    'filters': "ga:visitorType=='Returning Visitor'"
+  };
+  GA.get(returningVisitsQuery, function(err, entries) {
+    dailyVisitorsReturning += ''+gaGetDailies(entries, 'ga:visits');
+  });
+  
+  var newVisitsQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:visits',
+    'filters': "ga:visitorType=='New Visitor'"
+  };
+  GA.get(returningVisitsQuery, function(err, entries) {
+    dailyVisitorsReturning += ''+gaGetDailies(entries, 'ga:visits');
+  });
+  
 });
 
 function gaGetDailies(entries,metric) {
@@ -87,7 +113,7 @@ function gaGetDailies(entries,metric) {
       var count = (entries[i].metrics[0][metric]);
       daily += (count+',');
     }
-    return daily;
+    return daily; 
 }
 
 function gaGetTotals(entries,metric) {
