@@ -10,7 +10,7 @@ var http = require('http');
 var path = require('path');
 var ga = require('googleanalytics');
 
-var profile='36017589';cd
+var profile='36017589';
 var username='info1@noodle.org';
 var password='p@rkavenue';
 
@@ -26,6 +26,7 @@ dailyVisitors = '';
 dailyPageViews = '';
 dailyVisitorsReturning = '';
 dailyVisitorsNew = '';
+dailyVisitorsPaid = '';
 
 var yesterday = new Date();
 var yesterdayString = '';
@@ -92,7 +93,7 @@ GA.login(function(err, token) {
     dailyVisitorsReturning += ''+gaGetDailies(entries, 'ga:visits');
   });
     
-  var newVisitsQuery = {
+  var newVisitorsQuery = {
     'ids': 'ga:'+profile,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
@@ -100,10 +101,21 @@ GA.login(function(err, token) {
     'metrics': 'ga:visits',
     'filters': "ga:visitorType=='New Visitor'"
   };
-  GA.get(returningVisitsQuery, function(err, entries) {
-    dailyVisitorsReturning += ''+gaGetDailies(entries, 'ga:visits');
+  GA.get(newVisitorsQuery, function(err, entries) {
+    dailyVisitorsNew += ''+gaGetDailies(entries, 'ga:visits');
   });
-  
+ 
+  var visitsPaidQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:visits',
+    'filters': 'ga:medium==cpa,ga:medium==cpc,ga:medium==cpm,ga:medium==cpp,ga:medium==cpv,ga:medium==organic,ga:medium==ppc'
+  };
+  GA.get(visitsPaidQuery, function(err, entries) {
+    dailyVisitorsPaid += ''+gaGetDailies(entries, 'ga:visits');
+  });
 });
 
 function gaGetDailies(entries,metric) {
