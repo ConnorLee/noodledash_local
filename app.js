@@ -10,7 +10,7 @@ var http = require('http');
 var path = require('path');
 var ga = require('googleanalytics');
 
-var profile='36017589';
+var profile='36017589';cd
 var username='info1@noodle.org';
 var password='p@rkavenue';
 
@@ -91,7 +91,7 @@ GA.login(function(err, token) {
   GA.get(returningVisitsQuery, function(err, entries) {
     dailyVisitorsReturning += ''+gaGetDailies(entries, 'ga:visits');
   });
-  
+    
   var newVisitsQuery = {
     'ids': 'ga:'+profile,
     'start-date': monthAgoString,
