@@ -13,7 +13,7 @@ function weekendAreas(axes) {
     do {
         // when we don't set yaxis, the rectangle automatically
         // extends to infinity upwards and downwards
-        markings.push({ xaxis: { from: i, to: i + 2 * 24 * 60 * 60 * 1000 } });
+        markings.push({ xaxis: { from: i, to: i + 2 * 24 * 60 * 60 * 1000 }, color: '#45515F' });
         i += 7 * 24 * 60 * 60 * 1000;
     } while (i < axes.xaxis.max);
 
@@ -22,12 +22,14 @@ function weekendAreas(axes) {
 
 // plot daily data given chartDiv, selectorDiv and some formatted data
 function plotDailies(chartDivID, selectorDivID, data) {
+    
     var options = {
         xaxis: { mode: "time", tickLength: 5 },
         selection: { mode: "x" },
         grid: { markings: weekendAreas }
     };
     
+
     var plot = $.plot($("#"+chartDivID), [data], options);
     
     var overview = $.plot($("#"+selectorDivID), [data], {
@@ -35,7 +37,7 @@ function plotDailies(chartDivID, selectorDivID, data) {
             lines: { show: true, lineWidth: 1 },
             shadowSize: 0
         },
-        xaxis: { ticks: [], mode: "time" },
+        xaxis: { ticks: [], mode: "time", font: { family:"Helvetica",color:"#FFF"} },
         yaxis: { ticks: [], min: 0, autoscaleMargin: 0.1 },
         selection: { mode: "x" }
     });
@@ -56,6 +58,20 @@ function plotDailies(chartDivID, selectorDivID, data) {
     $("#"+selectorDivID).bind("plotselected", function (event, ranges) {
         plot.setSelection(ranges);
     });
+};
+
+// plot daily data given chartDiv, selectorDiv and some formatted data
+function plot2Dailies(chartDivID, selectorDivID, data1, data2) {
+    var options = {
+        xaxis: { mode: "time", tickLength: 5 },
+        selection: { mode: "x" },
+        grid: { markings: weekendAreas }
+    };
+    
+    var plot = $.plot($("#"+chartDivID), [data1], options);
+    var plot = $.plot($("#"+chartDivID), [data2], options);
+    
+    
 };
 
 

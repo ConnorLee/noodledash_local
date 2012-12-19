@@ -32,6 +32,7 @@ dailyK12Visitors = '';
 dailyHigherEducationVisitors = '';
 dailySupplementalLearningVisitors = '';
 dailyLearningMaterialVisitors = '';
+dailyRegistrationPercentage = '';
 
 var yesterday = new Date();
 var yesterdayString = '';
@@ -119,6 +120,8 @@ GA.login(function(err, token) {
   };
   GA.get(registrationsQuery, function(err, entries) {
     dailyRegistrationEvents += ''+gaGetDailies(entries, 'ga:uniqueEvents');
+    dailyRegistrationPercentage = gaDivideDailies(dailyRegistrationEvents, dailyVisitorsNew);
+
   });
 
   var k12VisitorsQuery = {
@@ -169,6 +172,7 @@ GA.login(function(err, token) {
     dailyLearningMaterialVisitors += ''+gaGetDailies(entries, 'ga:visitors');
   });
 
+
 });
 
 function gaGetDailies(entries,metric) {
@@ -193,6 +197,47 @@ function gaGetTotals(entries,metric) {
     }
     return total;
 }  
+
+function gaDivideDailies(dailiesNumerator, dailiesDenominator) {
+
+  numerator = dailiesToArray(dailiesNumerator);
+  denominator = dailiesToArray(dailiesDenominator);
+
+  if (numerator.length == denominator.length) {
+    result = '';
+    for (var i=0;i<numerator.length;i++){
+      resultValue = (dailyGetValue(numerator[i])/dailyGetValue(denominator[i]))*100;
+      resultDate = dailyGetDate(numerator[i]);
+      result += '['+resultDate+', '+resultValue+'], ';
+
+    }
+    result = '['+result.slice(0,result.length-2)+']';
+    return result
+
+  } else {
+    console.log("Error! Numerator/Denominator mismatch");
+  }
+}
+
+function dailyGetValue(daily){
+  valuesArray = daily.split(","); 
+  value = valuesArray[1];
+  return value;
+}
+
+function dailyGetDate(daily){
+  valuesArray = daily.split(","); 
+  value = valuesArray[0];
+  return value;
+}
+
+function dailiesToArray(dailies) {
+  // remove first two brackets
+  dailies = dailies.substr(2,dailies.length);
+  // remove last two brackets
+  dailies = dailies.substr(0, dailies.length-2);
+  return dailies.split("], [");
+}
 
 function convertGADateToUTC(gaDate) {
   var year = gaDate.substr(0,4);
