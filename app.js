@@ -172,13 +172,16 @@ GA.login(function(err, token) {
 });
 
 function gaGetDailies(entries,metric) {
-  var daily = '';
+  var dailies = '';
   for (var i=0;i<entries.length;i++)
     {
-      var count = (entries[i].metrics[0][metric]);
-      daily += (count+',');
+      var metricValue = (entries[i].metrics[0][metric]);
+      var entryDate = convertGADateToUTC(entries[i].dimensions[0]['ga:date']);
+      dailies += '['+entryDate+','+metricValue+'], ';
     }
-    return daily; 
+    var dailiesLength = dailies.length;
+    dailies = '['+dailies.slice(0,dailiesLength-2)+']';
+    return dailies; 
 }
 
 function gaGetTotals(entries,metric) {
@@ -190,6 +193,14 @@ function gaGetTotals(entries,metric) {
     }
     return total;
 }  
+
+function convertGADateToUTC(gaDate) {
+  var year = gaDate.substr(0,4);
+  var month = gaDate.substr(4,2);
+  var day = gaDate.substr(6,2);
+  var utc = Date.parse(year+'-'+month+'-'+day); 
+  return utc;
+}
 
 
 var optionsget = {
