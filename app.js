@@ -27,6 +27,10 @@ dailyPageViews = '';
 dailyVisitorsReturning = '';
 dailyVisitorsNew = '';
 dailyVisitorsPaid = '';
+dailyRegistrationEvents = '';
+dailyK12Visitors = '';
+dailyHigherEducationVisitors = '';
+dailySupplementalLearningVisitors = '';
 
 var yesterday = new Date();
 var yesterdayString = '';
@@ -116,6 +120,55 @@ GA.login(function(err, token) {
   GA.get(visitsPaidQuery, function(err, entries) {
     dailyVisitorsPaid += ''+gaGetDailies(entries, 'ga:visits');
   });
+
+  var registrationsQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date,ga:eventCategory',
+    'metrics': 'ga:uniqueEvents',
+    'filters': 'ga:eventCategory==Registration'
+  };
+  GA.get(registrationsQuery, function(err, entries) {
+    dailyRegistrationEvents += ''+gaGetDailies(entries, 'ga:uniqueEvents');
+  });
+
+  var k12VisitorsQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:visitors',
+    'filters': 'ga:pagePath=~k-12'
+  };
+  GA.get(k12VisitorsQuery, function(err, entries) {
+    dailyK12Visitors += ''+gaGetDailies(entries, 'ga:visitors');
+  });
+
+  var higherEducationVisitorsQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:visitors',
+    'filters': 'ga:pagePath=~graduate,ga:pagePath=~law,ga:pagePath=~mba,ga:pagePath=~medical,ga:pagePath=~college'   
+  };
+  GA.get(higherEducationVisitorsQuery, function(err, entries) {
+    dailyHigherEducationVisitors += ''+gaGetDailies(entries, 'ga:visitors');
+  }); 
+
+  var supplementalLearningVisitorsQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:visitors', 
+    'filters': 'ga:pagePath=~tutoring,ga:pagePath=~test-prep,ga:pagePath=~study-abroad,ga:pagePath=~guidance-counseling'
+  };
+  GA.get(supplementalLearningVisitorsQuery, function(err, entries) {
+    dailySupplementalLearningVisitors += ''+gaGetDailies(entries, 'ga:visitors');
+  });
+  
 });
 
 function gaGetDailies(entries,metric) {
