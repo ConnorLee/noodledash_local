@@ -31,6 +31,7 @@ dailyRegistrationEvents = '';
 dailyK12Visitors = '';
 dailyHigherEducationVisitors = '';
 dailySupplementalLearningVisitors = '';
+dailyLearningMaterialVisitors = '';
 
 var yesterday = new Date();
 var yesterdayString = '';
@@ -84,29 +85,16 @@ GA.login(function(err, token) {
   GA.get(pageViewsQuery, function(err, entries) {
     dailyPageViews += ''+gaGetDailies(entries, 'ga:pageviews');
   });
-
-  var returningVisitsQuery = {
-    'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
-    'end-date': yesterdayString,
-    'dimensions': 'ga:date',
-    'metrics': 'ga:visits',
-    'filters': "ga:visitorType=='Returning Visitor'"
-  };
-  GA.get(returningVisitsQuery, function(err, entries) {
-    dailyVisitorsReturning += ''+gaGetDailies(entries, 'ga:visits');
-  });
     
   var newVisitorsQuery = {
     'ids': 'ga:'+profile,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
-    'metrics': 'ga:visits',
-    'filters': "ga:visitorType=='New Visitor'"
+    'metrics': 'ga:newVisits'
   };
   GA.get(newVisitorsQuery, function(err, entries) {
-    dailyVisitorsNew += ''+gaGetDailies(entries, 'ga:visits');
+    dailyVisitorsNew += ''+gaGetDailies(entries, 'ga:newVisits');
   });
  
   var visitsPaidQuery = {
@@ -169,6 +157,18 @@ GA.login(function(err, token) {
     dailySupplementalLearningVisitors += ''+gaGetDailies(entries, 'ga:visitors');
   });
   
+  var learningMaterialVisitorsQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:visitors', 
+    'filters': 'ga:pagePath=~learn'    
+  };
+  GA.get(learningMaterialVisitorsQuery, function(err, entries) {
+    dailyLearningMaterialVisitors += ''+gaGetDailies(entries, 'ga:visitors');
+  });
+
 });
 
 function gaGetDailies(entries,metric) {
