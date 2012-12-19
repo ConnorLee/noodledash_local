@@ -97,30 +97,45 @@ showQuotation();
 	<hr>
 		<div class="row-fluid">
 			<div class="span4">
-          <h3>Uniques</h3><div id='visitorsSparkline'></div>
+        <div class="executiveSummaryHeader">
+        <h3>Uniques</h3>
+        </div>
+        <div id="dailyVisitors" style="height:150px;"></div>
+        <div id="dailyVisitorsSelector" style="height:30px;"></div>
 			</div>
-      <div class="span4"> <h3>Page Views</h3><div id='pageViewsSparkline'></div>
+      <div class="span4"> 
+        <div class="executiveSummaryHeader"> 
+          <h3>Page Views</h3>
+        </div>
+          <div id="dailyPageViews" style="height:150px;"></div>
+          <div id="dailyPageViewsSelector" style="height:30px;"></div>
+      </div>
+    <div class="span4">  
+      <div class="executiveSummaryHeader"> 
+        <h3>Average Time on Site</h3>       
+      </div>
+        <div id="dailyTimeOnSite" style="height:150px;"></div>
+        <div id="dailyTimeOnSiteSelector" style="height:30px;"></div>
     </div>
-    <div class="span4">   <h3>Average Time on Site</h3><div id='timeOnSiteSparkline'></div>
-  </div>
-		</div>
+	</div>
 	</section>         
 	<section id="marketing">
     <hr>
     <h2>Marketing</h2>
 		<div class="row-fluid">
 			<div class="span3">
-        <h4>Organic New Visitors: </h4>
-        <h4>Paid New Visitors: </h4>
-        <div id="dailyVisitors" style="height:150px;"></div>
-        <div id="dailyVisitorsSelector" style="height:30px;"></div>
+        <h4>New Visitors</h4>
+        <div id="dailyVisitorsNew" style="height:150px;"></div>
+        <div id="dailyVisitorsNewSelector" style="height:30px;"></div>
       </div>
       <div class="span3">
         <h4>PR Impressions: {today or week}</h4>
         <h4>PR Impressions: {trailing 8 weeks}</h4>
       </div>
       <div class="span3">
-        <h4>% of Visitors that Register</h4>
+        <h4>Visitors that Register</h4>
+        <div id="dailyRegistrationEvents" style="height:150px;"></div>
+        <div id="dailyRegistrationEventsSelector" style="height:30px;"></div>
       </div>
       <div class="span3">
         <h4>Net Promoter Score</h4>
@@ -131,11 +146,6 @@ showQuotation();
     <hr>
     <h2>Product</h2>
 		<div class="row-fluid">
-      <div class="span4">
-        <h4>Time on Site</h4>
-        <div id="dailyTimeOnSite" style="height:150px;"></div>
-        <div id="dailyTimeOnSiteSelector" style="height:30px;"></div>
-      </div>
 			<div class="span12">
 				Will contain:
 				•	Uniques

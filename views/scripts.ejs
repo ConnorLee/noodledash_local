@@ -9,15 +9,15 @@
     <script src="/javascripts/flot.helpers.js"></script>
     <script src="/javascripts/sparklines.min.js"></script>
     <script>
-    $('.visitors-sparkline').sparkline([<%= dailyVisitors %>],{composite: false, height: '1.3em', fillColor:false, lineColor:'#ECE9D7', tooltipPrefix: 'Daily Uniques: ', minSpotColor:'#E36B23', maxSpotColor: '#E36B23', spotColor:'#E36B23'}); 
-    $('#pageViewsSparkline').sparkline([<%= dailyPageViews %>],{composite: false, height: '1.3em', fillColor:false, lineColor:'#ECE9D7', tooltipPrefix: 'Pageviews: ', minSpotColor:'#E36B23', maxSpotColor: '#E36B23', spotColor:'#E36B23'}); 
-    $('#timeOnSiteSparkline').sparkline([<%= dailyTimeOnSite %>],{composite: false, height: '1.3em', fillColor:false, lineColor:'#ECE9D7', tooltipPrefix: 'Time On Site: ', minSpotColor:'#E36B23', maxSpotColor: '#E36B23', spotColor:'#E36B23'}); 
-    $('#visitorsSparkline').sparkline([<%= dailyVisitors %>],{composite: false, height: '1.3em', fillColor:false, lineColor:'#ECE9D7', tooltipPrefix: 'Daily Uniques: ', minSpotColor:'#E36B23', maxSpotColor: '#E36B23', spotColor:'#E36B23'}); 
+
     </script>
     <script>
     $(document).ready(function(){
     	plotDailies('dailyVisitors', 'dailyVisitorsSelector', <%= dailyVisitors %>);
-    	plotDailies('dailyTimeOnSite', 'dailyTimeOnSiteSelector', <%= dailyTimeOnSite %>);
+        plotDailies('dailyPageViews', 'dailyPageViewsSelector', <%= dailyPageViews %>);
+        plotDailies('dailyVisitorsNew', 'dailyVisitorsNewSelector', <%= dailyVisitorsNew %>);
+        plotDailies('dailyRegistrationEvents', 'dailyRegistrationEventsSelector', <%= dailyRegistrationEvents %>);
+        plotDailies('dailyTimeOnSite', 'dailyTimeOnSiteSelector', <%= dailyTimeOnSite %>);
     });
 	</script>
 

@@ -131,7 +131,6 @@ GA.login(function(err, token) {
   };
   GA.get(registrationsQuery, function(err, entries) {
     dailyRegistrationEvents += ''+gaGetDailies(entries, 'ga:uniqueEvents');
-    console.log(dailyRegistrationEvents);
   });
 
   var k12VisitorsQuery = {
