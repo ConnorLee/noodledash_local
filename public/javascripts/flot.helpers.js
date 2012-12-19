@@ -56,4 +56,6 @@ function plotDailies(chartDivID, selectorDivID, data) {
     $("#"+selectorDivID).bind("plotselected", function (event, ranges) {
         plot.setSelection(ranges);
     });
-}
+};
+
+
