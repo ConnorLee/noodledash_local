@@ -125,12 +125,13 @@ GA.login(function(err, token) {
     'ids': 'ga:'+profile,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
-    'dimensions': 'ga:date,ga:eventCategory',
+    'dimensions': 'ga:date',
     'metrics': 'ga:uniqueEvents',
     'filters': 'ga:eventCategory==Registration'
   };
   GA.get(registrationsQuery, function(err, entries) {
     dailyRegistrationEvents += ''+gaGetDailies(entries, 'ga:uniqueEvents');
+    console.log(dailyRegistrationEvents);
   });
 
   var k12VisitorsQuery = {
