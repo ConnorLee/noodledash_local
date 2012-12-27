@@ -3,6 +3,14 @@
  * GET home page.
  */
 
+exports.manual = function(req, res){
+
+	res.render('employee-manual', {
+	title: 'Noodle Employee Manual',
+	pagename: 'manual'
+	});
+};
+
 exports.main = function(req, res){
 
 	res.render('main', {
@@ -10,6 +18,8 @@ exports.main = function(req, res){
 	pagename: 'home'
 	});
 };
+
+
 
 exports.index = function(req, res){
 

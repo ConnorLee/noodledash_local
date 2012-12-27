@@ -22,7 +22,6 @@ function weekendAreas(axes) {
 
 // plot daily data given chartDiv, selectorDiv and some formatted data
 function plotDailies(chartDivID, selectorDivID, data) {
-    
     var options = {
         xaxis: { mode: "time", tickLength: 5 },
         selection: { mode: "x" },

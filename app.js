@@ -142,18 +142,18 @@ GA.login(function(err, token) {
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:visitors',
-    'filters': 'ga:pagePath=~graduate,ga:pagePath=~law,ga:pagePath=~mba,ga:pagePath=~medical,ga:pagePath=~college'   
+    'filters': 'ga:pagePath=~graduate,ga:pagePath=~law,ga:pagePath=~mba,ga:pagePath=~medical,ga:pagePath=~college'
   };
   GA.get(higherEducationVisitorsQuery, function(err, entries) {
     dailyHigherEducationVisitors += ''+gaGetDailies(entries, 'ga:visitors');
-  }); 
+  });
 
   var supplementalLearningVisitorsQuery = {
     'ids': 'ga:'+profile,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
-    'metrics': 'ga:visitors', 
+    'metrics': 'ga:visitors',
     'filters': 'ga:pagePath=~tutoring,ga:pagePath=~test-prep,ga:pagePath=~study-abroad,ga:pagePath=~guidance-counseling'
   };
   GA.get(supplementalLearningVisitorsQuery, function(err, entries) {
@@ -165,8 +165,8 @@ GA.login(function(err, token) {
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
-    'metrics': 'ga:visitors', 
-    'filters': 'ga:pagePath=~learn'    
+    'metrics': 'ga:visitors',
+    'filters': 'ga:pagePath=~learn'
   };
   GA.get(learningMaterialVisitorsQuery, function(err, entries) {
     dailyLearningMaterialVisitors += ''+gaGetDailies(entries, 'ga:visitors');
@@ -185,7 +185,7 @@ function gaGetDailies(entries,metric) {
     }
     var dailiesLength = dailies.length;
     dailies = '['+dailies.slice(0,dailiesLength-2)+']';
-    return dailies; 
+    return dailies;
 }
 
 function gaGetTotals(entries,metric) {
@@ -196,7 +196,7 @@ function gaGetTotals(entries,metric) {
       total += count;
     }
     return total;
-}  
+}
 
 function gaDivideDailies(dailiesNumerator, dailiesDenominator) {
 
@@ -212,7 +212,7 @@ function gaDivideDailies(dailiesNumerator, dailiesDenominator) {
 
     }
     result = '['+result.slice(0,result.length-2)+']';
-    return result
+    return result;
 
   } else {
     console.log("Error! Numerator/Denominator mismatch");
@@ -220,13 +220,13 @@ function gaDivideDailies(dailiesNumerator, dailiesDenominator) {
 }
 
 function dailyGetValue(daily){
-  valuesArray = daily.split(","); 
+  valuesArray = daily.split(",");
   value = valuesArray[1];
   return value;
 }
 
 function dailyGetDate(daily){
-  valuesArray = daily.split(","); 
+  valuesArray = daily.split(",");
   value = valuesArray[0];
   return value;
 }
@@ -243,7 +243,7 @@ function convertGADateToUTC(gaDate) {
   var year = gaDate.substr(0,4);
   var month = gaDate.substr(4,2);
   var day = gaDate.substr(6,2);
-  var utc = Date.parse(year+'-'+month+'-'+day); 
+  var utc = Date.parse(year+'-'+month+'-'+day);
   return utc;
 }
 
@@ -301,10 +301,11 @@ app.configure(function(){
 });
 
 app.configure('development', function(){
-  app.use(express.errorHandler());''
+  app.use(express.errorHandler());
 });
 
 app.get('/', routes.main);
+app.get('/manual', routes.manual);
 app.get('/releases/:release?', routes.index);
 app.get('/users', user.list);
 
