@@ -19,8 +19,8 @@ var THIRTY7SIGNALS_CLIENT_SECRET = process.env.THIRTY7SIGNALS_CLIENT_SECRET;
 var THIRTY7SIGNALS_CALLBACK_URL = process.env.THIRTY7SIGNALS_CALLBACK_URL;
 
 var profile='36017589';
-var username='info1@noodle.org';
-var password='p@rkavenue';
+var username=process.env.GA_USERNAME;
+var password=process.env.GA_PASSWORD;
 
 visitorsLast30Days = 0;
 visitorsSparkline = '';
