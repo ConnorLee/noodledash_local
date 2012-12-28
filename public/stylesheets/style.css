@@ -294,15 +294,19 @@ hr.soften {
     padding-bottom: 20px;
   }
 }
+/* Customizations
+-------------------------------------------------- */
 body {
   padding: 0px;
+  margin-top: 100px;
+  background: #2A333C;
+}
+.iframe {
   margin: 34px 0 0 0;
   background: #2a333c url('/images/loading.gif') no-repeat fixed center;
 }
-.home,
-.manual {
-  background-image: none;
-  margin-top: 100px;
+.display-name {
+  text-transform: capitalize;
 }
 a {
   color: #00B7FF;

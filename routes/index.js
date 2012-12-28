@@ -7,7 +7,8 @@ exports.manual = function(req, res){
 
 	res.render('employee-manual', {
 	title: 'Noodle Employee Manual',
-	pagename: 'manual'
+	pagename: 'manual',
+	user: req.user
 	});
 };
 
@@ -15,7 +16,8 @@ exports.main = function(req, res){
 
 	res.render('main', {
 	title: 'Noodle',
-	pagename: 'home'
+	pagename: 'home',
+	user: req.user
 	});
 };
 
@@ -46,6 +48,7 @@ exports.index = function(req, res){
 	res.render('iframe', {
 	title: 'Noodle',
 	referencesite: referenceurl,
+	user: req.user,
 	pagename: 'iframe'
 	});
 };

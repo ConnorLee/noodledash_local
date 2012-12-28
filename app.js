@@ -5,10 +5,18 @@
 
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var ga = require('googleanalytics');
+
+var passport = require('passport');
+
+
+
+var Thirty7SignalsStrategy = require('passport-37signals').Strategy;
+var THIRTY7SIGNALS_CLIENT_ID = process.env.THIRTY7SIGNALS_CLIENT_ID;
+var THIRTY7SIGNALS_CLIENT_SECRET = process.env.THIRTY7SIGNALS_CLIENT_SECRET;
+var THIRTY7SIGNALS_CALLBACK_URL = process.env.THIRTY7SIGNALS_CALLBACK_URL;
 
 var profile='36017589';
 var username='info1@noodle.org';
@@ -255,9 +263,45 @@ var optionsget = {
   method : 'GET' // do GET
 };
 
-console.info('Options prepared:');
-console.info(optionsget);
-console.info('Do the GET call');
+
+
+// Passport session setup.
+//   To support persistent login sessions, Passport needs to be able to
+//   serialize users into and deserialize users out of the session.  Typically,
+//   this will be as simple as storing the user ID when serializing, and finding
+//   the user by ID when deserializing.  However, since this example does not
+//   have a database of user records, the complete 37signals profile is
+//   serialized and deserialized.
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+// Use the Thirty7signalsStrategy within Passport.
+//   Strategies in Passport require a `verify` function, which accept
+//   credentials (in this case, an accessToken, refreshToken, and 37signals
+//   profile), and invoke a callback with a user object.
+passport.use(new Thirty7SignalsStrategy({
+    clientID: THIRTY7SIGNALS_CLIENT_ID,
+    clientSecret: THIRTY7SIGNALS_CLIENT_SECRET,
+    callbackURL: THIRTY7SIGNALS_CALLBACK_URL
+  },
+  function(accessToken, refreshToken, profile, done) {
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+      
+      // To keep the example simple, the user's 37signals profile is returned to
+      // represent the logged-in user.  In a typical application, you would want
+      // to associate the 37signals account with a user record in your database,
+      // and return that user instead.
+      return done(null, profile);
+    });
+  }
+));
+ 
 
 // do the GET request
 var reqGet = http.request(optionsget, function(res) {
@@ -294,7 +338,11 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser('your secret here'));
-  app.use(express.session());
+  app.use(express.session({ secret: 'keyboard cat' }));
+  // Initialize Passport!  Also use passport.session() middleware, to support
+  // persistent login sessions (recommended).
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use(app.router);
   app.use(require('less-middleware')({ src: __dirname + '/public' }));
   app.use(express.static(path.join(__dirname, 'public')));
@@ -307,10 +355,55 @@ app.configure('development', function(){
 app.get('/', routes.main);
 app.get('/manual', routes.manual);
 app.get('/releases/:release?', routes.index);
-app.get('/users', user.list);
+
+
+app.get('/account', ensureAuthenticated, function(req, res){
+  res.render('account', { 
+    title: 'Account Information',
+    pagename: 'account',
+    user: req.user 
+  });
+});
+
+// GET /auth/37signals
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  The first step in 37signals authentication will involve
+//   redirecting the user to 37signals.com.  After authorization, 37signals
+//   will redirect the user back to this application at /auth/37signals/callback
+app.get('/auth/37signals',
+  passport.authenticate('37signals'),
+  function(req, res){
+    // The request will be redirected to 37signals for authentication, so this
+    // function will not be called.
+  });
+
+// GET /auth/37signals/callback
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  If authentication fails, the user will be redirected back to the
+//   login page.  Otherwise, the primary route function function will be called,
+//   which, in this example, will redirect the user to the home page.
+app.get('/auth/37signals/callback', 
+  passport.authenticate('37signals', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
+// Simple route middleware to ensure user is authenticated.
+//   Use this route middleware on any resource that needs to be protected.  If
+//   the request is authenticated (typically via a persistent login session),
+//   the request will proceed.  Otherwise, the user will be redirected to the
+//   login page.
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/login')
+}
 
