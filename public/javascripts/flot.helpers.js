@@ -59,17 +59,49 @@ function plotDailies(chartDivID, selectorDivID, data) {
     });
 };
 
-// plot daily data given chartDiv, selectorDiv and some formatted data
+// plot 2 sets of dailies data given chartDiv, selectorDiv and two formatted data series 
 function plot2Dailies(chartDivID, selectorDivID, data1, data2) {
     var options = {
         xaxis: { mode: "time", tickLength: 5 },
         selection: { mode: "x" },
-        grid: { markings: weekendAreas }
+        grid: { markings: weekendAreas }, 
+        legend: {             
+            backgroundColor: "#FFFFFF", // null means auto-detect
+            backgroundOpacity: 0 // set to 0 to avoid background}
+        } 
     };
     
-    var plot = $.plot($("#"+chartDivID), [data1], options);
-    var plot = $.plot($("#"+chartDivID), [data2], options);
+    var plot = $.plot($("#"+chartDivID), [data1, data2], options);
     
+    var overview = $.plot($("#"+selectorDivID), [data1, data2], {
+        series: {
+            lines: { show: true, lineWidth: 1 },
+            shadowSize: 0
+        },
+        legend: {
+            show: false
+        },
+        xaxis: { ticks: [], mode: "time", font: { family:"Helvetica",color:"#FFF"} },
+        yaxis: { ticks: [], min: 0, autoscaleMargin: 0.1 },
+        selection: { mode: "x" }
+    });
+
+    // now connect the two
+    
+    $("#"+chartDivID).bind("plotselected", function (event, ranges) {
+        // do the zooming
+        plot = $.plot($("#"+chartDivID), [data1, data2],
+                      $.extend(true, {}, options, {
+                          xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to }
+                      }));
+
+        // don't fire event on the overview to prevent eternal loop
+        overview.setSelection(ranges, true);
+    });
+    
+    $("#"+selectorDivID).bind("plotselected", function (event, ranges) {
+        plot.setSelection(ranges);
+    });
     
 };
 
