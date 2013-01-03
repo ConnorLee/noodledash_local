@@ -354,6 +354,7 @@ app.configure('development', function(){
 
 app.get('/', routes.main);
 app.get('/manual', routes.manual);
+app.get('/resources', routes.resources);
 app.get('/releases/:release?', routes.index);
 
 
