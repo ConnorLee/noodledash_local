@@ -4,10 +4,17 @@
  */
 
 exports.manual = function(req, res){
-
 	res.render('employee-manual', {
 	title: 'Noodle Employee Manual',
 	pagename: 'manual',
+	user: req.user
+	});
+};
+
+exports.resources = function(req, res){
+	res.render('resources', {
+	title: 'Noodle Resources',
+	pagename: 'resources',
 	user: req.user
 	});
 };
