@@ -24,8 +24,26 @@ function weekendAreas(axes) {
 function plotDailies(chartDivID, selectorDivID, data) {
     var options = {
         xaxis: { mode: "time", tickLength: 5 },
+        yaxes: [ { min: 0 }],
         selection: { mode: "x" },
-        grid: { markings: weekendAreas }
+        grid: { 
+            markings: weekendAreas,
+            hoverable: true //IMPORTANT! this is needed for tooltip to work
+        },
+        series: {
+            lines: { 
+                show: true, 
+                lineWidth: 1 
+            },
+            points: { 
+                show: true,
+                radius: 1
+            }
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: "<strong>%y</strong>, %x"
+        }
     };
     
 
@@ -64,11 +82,28 @@ function plot2Dailies(chartDivID, selectorDivID, data1, data2) {
     var options = {
         xaxis: { mode: "time", tickLength: 5 },
         selection: { mode: "x" },
-        grid: { markings: weekendAreas }, 
+        grid: { 
+            markings: weekendAreas,
+            hoverable:true
+        }, 
         legend: {             
             backgroundColor: "#FFFFFF", // null means auto-detect
             backgroundOpacity: 0 // set to 0 to avoid background}
-        } 
+        },
+        series: {
+            lines: { 
+                show: true, 
+                lineWidth: 1 
+            },
+            points: { 
+                show: true,
+                radius: 1
+            }
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: "<strong>%y</strong>, %x"
+        }
     };
     
     var plot = $.plot($("#"+chartDivID), [data1, data2], options);
