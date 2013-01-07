@@ -41,6 +41,7 @@ dailyHigherEducationVisitors = '';
 dailySupplementalLearningVisitors = '';
 dailyLearningMaterialVisitors = '';
 dailyRegistrationPercentage = '';
+dailyUniqueLoginEvents = '';
 
 var yesterday = new Date();
 var yesterdayString = '';
@@ -51,7 +52,6 @@ var monthAgo = new Date();
 var monthAgoString = '';
 monthAgo.setDate(yesterday.getDate() - 30);
 monthAgoString += monthAgo.toJSON().substr(0,10);
-console.log(monthAgoString);
 
 var GA = new ga.GA({
   user: username,
@@ -129,7 +129,18 @@ GA.login(function(err, token) {
   GA.get(registrationsQuery, function(err, entries) {
     dailyRegistrationEvents += ''+gaGetDailies(entries, 'ga:uniqueEvents');
     dailyRegistrationPercentage = gaDivideDailies(dailyRegistrationEvents, dailyVisitorsNew);
+  });
 
+  var dailyUniqueLoginEventsQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:uniqueEvents',
+    'filters': 'ga:eventCategory==Login'
+  };
+  GA.get(dailyUniqueLoginEventsQuery, function(err, entries) {
+    dailyUniqueLoginEvents = gaGetDailies(entries, 'ga:uniqueEvents');
   });
 
   var k12VisitorsQuery = {
@@ -179,9 +190,8 @@ GA.login(function(err, token) {
   GA.get(learningMaterialVisitorsQuery, function(err, entries) {
     dailyLearningMaterialVisitors += ''+gaGetDailies(entries, 'ga:visitors');
   });
-
-
 });
+
 
 function gaGetDailies(entries,metric) {
   var dailies = '';
@@ -254,7 +264,6 @@ function convertGADateToUTC(gaDate) {
   var utc = Date.parse(year+'-'+month+'-'+day);
   return utc;
 }
-
 
 var optionsget = {
   host : 'www.noodle.org', // here only the domain name
