@@ -211,22 +211,26 @@ showQuotation();
           <hr>
           <h2>Marketing</h2>
           <div class="row-fluid">
-            <div class="span3">
+            <div class="span4">
               <h4>New Visitors</h4>
               <div id="dailyVisitorsNew" style="height:150px;"></div>
               <div id="dailyVisitorsNewSelector" style="height:30px;"></div>
             </div>
-            <div class="span3">
-              <h4>PR Impressions: {today or week}</h4>
-              <h4>PR Impressions: {trailing 8 weeks}</h4>
-            </div>
-            <div class="span3">
+              <div class="span4">
               <h4>Visitors that Register</h4>
               <div id="dailyRegistrationEvents" style="height:150px;"></div>
               <div id="dailyRegistrationEventsSelector" style="height:30px;"></div>
             </div>
-            <div class="span3">
+            <div class="span4">
+              <h4>PR Impressions: {today or week}</h4>
+              <h4>PR Impressions: {trailing 8 weeks}</h4>
+            </div>
+            <div class="span12" style="text-align:center;">
               <h4>Net Promoter Score</h4>
+              <div id="netPromoterScoreDataTable">
+                <iframe id="netPromoterScoreFrame" height='300px' width='397px' frameborder='0' scrolling=no src='https://docs.google.com/a/noodle.org/spreadsheet/ccc?key=0AlSYdTPOhBEadHFWRHQ3cGdiRzA0WXpsM0prblM0M3c&single=true&gid=0&output=html&widget=false&range=B1:D20'>
+                </iframe>
+              </div>
             </div>
           </div>
         </section>
