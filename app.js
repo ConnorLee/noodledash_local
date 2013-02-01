@@ -195,12 +195,14 @@ GA.login(function(err, token) {
 
 function gaGetDailies(entries,metric) {
   var dailies = '';
+  if (typeof entries != 'undefined') {
   for (var i=0;i<entries.length;i++)
     {
       var metricValue = (entries[i].metrics[0][metric]);
       var entryDate = convertGADateToUTC(entries[i].dimensions[0]['ga:date']);
       dailies += '['+entryDate+','+metricValue+'], ';
     }
+  }
     var dailiesLength = dailies.length;
     dailies = '['+dailies.slice(0,dailiesLength-2)+']';
     return dailies;
@@ -208,11 +210,13 @@ function gaGetDailies(entries,metric) {
 
 function gaGetTotals(entries,metric) {
   var total = 0;
+  if (typeof entries != 'undefined') {
   for (var i=0;i<entries.length;i++)
     {
       var count = (entries[i].metrics[0][metric]);
       total += count;
     }
+  }
     return total;
 }
 
