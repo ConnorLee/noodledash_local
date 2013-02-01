@@ -12,7 +12,7 @@
     "express": "3.0.1",
     "ejs": "*",
     "less-middleware": "*",
-    "googleanalytics": "0.3.0",
+    "googleanalytics": "0.3.2",
     "pivotal":"0.1.3"
   }
 }
