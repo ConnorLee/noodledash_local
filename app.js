@@ -44,6 +44,8 @@ dailyLearningMaterialVisitors = '';
 dailyRegistrationPercentage = '';
 dailyUniqueLoginEvents = '';
 
+//Get the necessary dates for this stuff.  
+
 var yesterday = new Date();
 var yesterdayString = '';
 yesterday.setDate(yesterday.getDate() - 1);
@@ -53,6 +55,16 @@ var monthAgo = new Date();
 var monthAgoString = '';
 monthAgo.setDate(yesterday.getDate() - 30);
 monthAgoString += monthAgo.toJSON().substr(0,10);
+
+var twoMonthAgo = new Date();
+var twoMonthAgoString = '';
+twoMonthAgo.setDate(yesterday.getDate() - 60);
+twoMonthAgoString += twoMonthAgo.toJSON().substr(0,10);
+
+var threeMonthAgo = new Date();
+var threeMonthAgoString = '';
+threeMonthAgo.setDate(yesterday.getDate() - 90);
+threeMonthAgoString += threeMonthAgo.toJSON().substr(0,10);
 
 var GA = new ga.GA({
   user: username,
@@ -270,7 +282,6 @@ function convertGADateToUTC(gaDate) {
   return utc;
 }
 
-
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session.  Typically,
@@ -325,12 +336,47 @@ request.get('https://noodleeducation.highrisehq.com/kases.xml', {
         var xml = body;
           parseString(xml,{ignoreAttrs:true}, function (err, result) {
           for(var i = 0; i < result.kases.kase.length; ++i) {
-            console.dir(result.kases.kase[i].name);
-            console.dir(result.kases.kase[i]['created-at']);
+            var kaseName = result.kases.kase[i].name;
+            var kaseCreateAt = result.kases.kase[i]['created-at'];
+            console.dir(kaseName);
+            console.dir(kaseCreateAt);
           }
         });
       }
     });
+
+
+
+            
+var request = require('request');
+var parseString = require('xml2js').parseString;
+request.get('https://noodleeducation.highrisehq.com/deals.xml', {
+  'auth': {
+    'user': HIGHRISE_TOKEN,
+    'pass': 'X',
+    'sendImmediately': false
+  }
+  },function (error, response, body) {
+      if(response.statusCode == 201){
+        console.log('returned 201');
+      } else {
+        console.log('error: '+ response.statusCode);
+        var xml = body;
+          parseString(xml,{ignoreAttrs:true}, function (err, result) {
+          for(var i = 0; i < result.deals.deal.length; ++i) {
+            var dealName = result.deals.deal[i].name;
+            var dealStatus = result.deals.deal[i]['status'];
+            var dealStatusChangedDate = result.deals.deal[i]['status-changed-on'];
+            console.dir(dealName);
+            console.dir(dealStatus);
+            console.dir(dealStatusChangedDate);
+          }
+        });
+      }
+    });
+
+// Segment Highrise Data
+
 
 
 
