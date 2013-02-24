@@ -11,8 +11,6 @@ var ga = require('googleanalytics');
 
 var passport = require('passport');
 
-
-
 var Thirty7SignalsStrategy = require('passport-37signals').Strategy;
 var THIRTY7SIGNALS_CLIENT_ID = process.env.THIRTY7SIGNALS_CLIENT_ID;
 var THIRTY7SIGNALS_CLIENT_SECRET = process.env.THIRTY7SIGNALS_CLIENT_SECRET;
@@ -310,6 +308,30 @@ passport.use(new Thirty7SignalsStrategy({
   }
 ));
  
+// get highrise info
+var request = require('request');
+var parseString = require('xml2js').parseString;
+request.get('https://noodleeducation.highrisehq.com/kases.xml', {
+  'auth': {
+    'user': HIGHRISE_TOKEN,
+    'pass': 'X',
+    'sendImmediately': false
+  }
+  },function (error, response, body) {
+      if(response.statusCode == 201){
+        console.log('returned 201');
+      } else {
+        console.log('error: '+ response.statusCode);
+        var xml = body;
+          parseString(xml,{ignoreAttrs:true}, function (err, result) {
+          for(var i = 0; i < result.kases.kase.length; ++i) {
+            console.dir(result.kases.kase[i].name);
+            console.dir(result.kases.kase[i]['created-at']);
+          }
+        });
+      }
+    });
+
 
 
 var emailsSentRequest = {
