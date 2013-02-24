@@ -269,14 +269,6 @@ function convertGADateToUTC(gaDate) {
   return utc;
 }
 
-var optionsget = {
-  host : 'www.noodle.org', // here only the domain name
-  // (no http/https !)
-  path : '/services/general_monitoring.php?token=DK2KKGuvUQSsylvZiNLLMLnrng6hQYAWj4gvBUhXk', // the rest of the url with parameters if needed
-  method : 'GET' // do GET
-};
-
-
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -316,8 +308,17 @@ passport.use(new Thirty7SignalsStrategy({
 ));
  
 
+
+var emailsSentRequest = {
+  host : 'www.noodle.org', // here only the domain name
+  // (no http/https !)
+  path : '/services/general_monitoring.php?token=DK2KKGuvUQSsylvZiNLLMLnrng6hQYAWj4gvBUhXk', // the rest of the url with parameters if needed
+  method : 'GET' // do GET
+};
+
+
 // do the GET request
-var reqGet = http.request(optionsget, function(res) {
+var reqGet = http.request(emailsSentRequest, function(res) {
   console.log("statusCode: ", res.statusCode);
   // uncomment it for header details
 //  console.log("headers: ", res.headers);
