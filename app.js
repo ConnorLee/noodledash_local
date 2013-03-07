@@ -9,6 +9,8 @@ var http = require('http');
 var path = require('path');
 var ga = require('googleanalytics');
 
+var moment = require('moment');
+
 var passport = require('passport');
 
 var Thirty7SignalsStrategy = require('passport-37signals').Strategy;
@@ -30,6 +32,8 @@ timeOnSiteSparkline = '';
 pageViewsLast30Days = 0;
 pageViewsSparkline = '';
 
+kasesClosedArray = '';
+kasesCreatedArray = '';
 dailyTimeOnSite = '';
 dailyVisitors = '';
 dailyPageViews = '';
@@ -318,36 +322,63 @@ passport.use(new Thirty7SignalsStrategy({
     });
   }
 ));
- 
+
+
 // get highrise info
-var request = require('request');
-var parseString = require('xml2js').parseString;
-request.get('https://noodleeducation.highrisehq.com/kases.xml', {
-  'auth': {
-    'user': HIGHRISE_TOKEN,
-    'pass': 'X',
-    'sendImmediately': false
-  }
+
+highriseData = '';
+
+function getHighriseData(url, field) {  
+  var highriseData = '';
+  var request = require('request');
+  var parseString = require('xml2js').parseString;
+  var highriseResponse = request.get(url, {
+    'auth': {
+      'user': HIGHRISE_TOKEN,
+      'pass': 'X',
+      'sendImmediately': false
+    }
   },function (error, response, body) {
       if(response.statusCode == 201){
         console.log('returned 201');
       } else {
         console.log('error: '+ response.statusCode);
+        var kasesList = [];
         var xml = body;
           parseString(xml,{ignoreAttrs:true}, function (err, result) {
           for(var i = 0; i < result.kases.kase.length; ++i) {
-            var kaseName = result.kases.kase[i].name;
-            var kaseCreateAt = result.kases.kase[i]['created-at'];
-            console.dir(kaseName);
-            console.dir(kaseCreateAt);
+            kasesData = result.kases.kase[i][field];
+            kasesList.push(kasesData);
           }
         });
+        highriseData += '[[1,'+kasesInDateRange(yesterday, monthAgo, kasesList)+'],';
+        highriseData += '[2,'+kasesInDateRange(monthAgo, twoMonthAgo, kasesList)+'],';
+        highriseData += '[3,'+kasesInDateRange(twoMonthAgo, threeMonthAgo, kasesList)+']]';
+        return highriseData;
       }
     });
+  return highriseResponse;
+}
 
+function kasesInDateRange(startDate, endDate, caseList) {
+     var counter = 0;
+     caseList.forEach( function(kase) {
+      var cleanStartDate = moment(startDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+      var cleanEndDate = moment(endDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+      var cleanDateKase = moment(kase+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
+//      console.log(cleanDateKase + " " + kase + " is before " + cleanStartDate + " and after " + cleanEndDate);
+      if(moment(cleanDateKase).isBefore(cleanStartDate) && moment(cleanDateKase).isAfter(cleanEndDate)) {
+        counter++;
+      }
+     });
+      return counter;
+}
 
+kasesClosedArray = getHighriseData('https://noodleeducation.highrisehq.com/kases/closed.xml', 'closed-at');
+kasesCreatedArray = getHighriseData('https://noodleeducation.highrisehq.com/kases.xml', 'created-at');
 
-            
+//get highrise deals
+
 var request = require('request');
 var parseString = require('xml2js').parseString;
 request.get('https://noodleeducation.highrisehq.com/deals.xml', {
@@ -367,16 +398,10 @@ request.get('https://noodleeducation.highrisehq.com/deals.xml', {
             var dealName = result.deals.deal[i].name;
             var dealStatus = result.deals.deal[i]['status'];
             var dealStatusChangedDate = result.deals.deal[i]['status-changed-on'];
-            console.dir(dealName);
-            console.dir(dealStatus);
-            console.dir(dealStatusChangedDate);
           }
         });
       }
     });
-
-// Segment Highrise Data
-
 
 
 
