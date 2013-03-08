@@ -32,8 +32,8 @@ timeOnSiteSparkline = '';
 pageViewsLast30Days = 0;
 pageViewsSparkline = '';
 
-kasesClosedArray = '';
-kasesCreatedArray = '';
+kasesClosed = '';
+kasesCreated = '';
 dailyTimeOnSite = '';
 dailyVisitors = '';
 dailyPageViews = '';
@@ -326,13 +326,11 @@ passport.use(new Thirty7SignalsStrategy({
 
 // get highrise info
 
-highriseData = '';
-
-function getHighriseData(url, field) {  
-  var highriseData = '';
+function getHighriseData(url, field) {
+  highriseData = '';
   var request = require('request');
   var parseString = require('xml2js').parseString;
-  var highriseResponse = request.get(url, {
+  highriseResponse = request.get(url, {
     'auth': {
       'user': HIGHRISE_TOKEN,
       'pass': 'X',
@@ -354,10 +352,11 @@ function getHighriseData(url, field) {
         highriseData += '[[1,'+kasesInDateRange(yesterday, monthAgo, kasesList)+'],';
         highriseData += '[2,'+kasesInDateRange(monthAgo, twoMonthAgo, kasesList)+'],';
         highriseData += '[3,'+kasesInDateRange(twoMonthAgo, threeMonthAgo, kasesList)+']]';
-        return highriseData;
+        //console.log(highriseData + " in");
       }
     });
-  return highriseResponse;
+  //console.log(highriseData + " out");
+  return highriseData;
 }
 
 function kasesInDateRange(startDate, endDate, caseList) {
@@ -374,8 +373,8 @@ function kasesInDateRange(startDate, endDate, caseList) {
       return counter;
 }
 
-kasesClosedArray = getHighriseData('https://noodleeducation.highrisehq.com/kases/closed.xml', 'closed-at');
-kasesCreatedArray = getHighriseData('https://noodleeducation.highrisehq.com/kases.xml', 'created-at');
+kasesCreated = getHighriseData('https://noodleeducation.highrisehq.com/kases.xml', 'created-at');
+kasesClosed = getHighriseData('https://noodleeducation.highrisehq.com/kases/closed.xml', 'closed-at');
 
 //get highrise deals
 
@@ -392,17 +391,35 @@ request.get('https://noodleeducation.highrisehq.com/deals.xml', {
         console.log('returned 201');
       } else {
         console.log('error: '+ response.statusCode);
+        var dealsList = [];
         var xml = body;
           parseString(xml,{ignoreAttrs:true}, function (err, result) {
           for(var i = 0; i < result.deals.deal.length; ++i) {
-            var dealName = result.deals.deal[i].name;
-            var dealStatus = result.deals.deal[i]['status'];
-            var dealStatusChangedDate = result.deals.deal[i]['status-changed-on'];
+            var dealsData = result.deals.deal[i]['status'];
+            var dealsDate = result.deals.deal[i]['status-changed-on'];
+            console.log(dealsData);
+            dealsList.push(dealsData);
+//            console.log(dealsList);
           }
         });
+          var pending = "[ 'pending' ],";
+          console.log(countDeals(dealsList, pending));
       }
     });
 
+function countDeals(dealsList, status) {
+     var counter = 0;
+     dealsList.forEach( function(deals) {
+//      var cleanStartDate = moment(startDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+//      var cleanEndDate = moment(endDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+//      var cleanDateDeal = moment(deals+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
+//      console.log(cleanDateKase + " " + kase + " is before " + cleanStartDate + " and after " + cleanEndDate);
+      if(deals === status) {
+        counter++;
+      }
+     });
+      return counter;
+}
 
 
 var emailsSentRequest = {
