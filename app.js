@@ -32,8 +32,8 @@ timeOnSiteSparkline = '';
 pageViewsLast30Days = 0;
 pageViewsSparkline = '';
 
-kasesClosed = '';
 kasesCreated = '';
+kasesClosed = '';
 dailyTimeOnSite = '';
 dailyVisitors = '';
 dailyPageViews = '';
@@ -326,8 +326,9 @@ passport.use(new Thirty7SignalsStrategy({
 
 // get highrise info
 
+highriseData = '';
+
 function getHighriseData(url, field) {
-  highriseData = '';
   var request = require('request');
   var parseString = require('xml2js').parseString;
   highriseResponse = request.get(url, {
@@ -397,13 +398,13 @@ request.get('https://noodleeducation.highrisehq.com/deals.xml', {
           for(var i = 0; i < result.deals.deal.length; ++i) {
             var dealsData = result.deals.deal[i]['status'];
             var dealsDate = result.deals.deal[i]['status-changed-on'];
-            console.log(dealsData);
+//            console.log(dealsData);
             dealsList.push(dealsData);
 //            console.log(dealsList);
           }
         });
           var pending = "[ 'pending' ],";
-          console.log(countDeals(dealsList, pending));
+//          console.log(countDeals(dealsList, pending));
       }
     });
 
