@@ -353,11 +353,10 @@ function getHighriseData(url, field) {
         highriseData += '[[1,'+kasesInDateRange(yesterday, monthAgo, kasesList)+'],';
         highriseData += '[2,'+kasesInDateRange(monthAgo, twoMonthAgo, kasesList)+'],';
         highriseData += '[3,'+kasesInDateRange(twoMonthAgo, threeMonthAgo, kasesList)+']]';
-        //console.log(highriseData + " in");
+//        console.log(highriseData + " in");
       }
     });
-  //console.log(highriseData + " out");
-  return highriseData;
+//  console.log(highriseData + " out");
 }
 
 function kasesInDateRange(startDate, endDate, caseList) {
@@ -396,15 +395,16 @@ request.get('https://noodleeducation.highrisehq.com/deals.xml', {
         var xml = body;
           parseString(xml,{ignoreAttrs:true}, function (err, result) {
           for(var i = 0; i < result.deals.deal.length; ++i) {
-            var dealsData = result.deals.deal[i]['status'];
-            var dealsDate = result.deals.deal[i]['status-changed-on'];
+            var dealStatus = result.deals.deal[i]['status'];
+            var dealDate = result.deals.deal[i]['status-changed-on'];
 //            console.log(dealsData);
-            dealsList.push(dealsData);
+            dealsList.push(dealStatus);
+            dealsList.push(dealDate);
 //            console.log(dealsList);
           }
         });
-          var pending = "[ 'pending' ],";
-//          console.log(countDeals(dealsList, pending));
+          var pending = [ 'pending' ];
+          console.log(countDeals(dealsList, pending));
       }
     });
 
@@ -415,10 +415,11 @@ function countDeals(dealsList, status) {
 //      var cleanEndDate = moment(endDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
 //      var cleanDateDeal = moment(deals+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
 //      console.log(cleanDateKase + " " + kase + " is before " + cleanStartDate + " and after " + cleanEndDate);
-      if(deals === status) {
+      if(dealsList == status) {
         counter++;
       }
      });
+     console.log(status);
       return counter;
 }
 
