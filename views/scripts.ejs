@@ -20,7 +20,8 @@
         plot2Dailies('dailySlLmVisitors', 'dailySlLmVisitorsSelector', {label:'Supplemental',data:<%= dailySupplementalLearningVisitors %>}, {label:'Learning Materials',data:<%= dailyLearningMaterialVisitors %>});
         plot2Dailies('dailyHeK12Visitors', 'dailyHeK12VisitorsSelector', {label:'K12',data:<%= dailyK12Visitors %>}, {label:'Higher Ed',data:<%= dailyHigherEducationVisitors %>});
         plotDailies('dailyUniqueLoginEvents', 'dailyUniqueLoginEventsSelector', <%= dailyUniqueLoginEvents %>);
-//        plot2HighriseCases('monthlyHighriseCases', {label:'Created',data:<%= kasesCreated %>}, {label:'Closed',data:<%= kasesClosed %>})
+        plot2HighriseCases('monthlyHighriseCases', {label:'Created',data:<%= kasesCreated %>}, {label:'Closed',data:<%= kasesClosed %>})
+
     });
 	</script>
 
