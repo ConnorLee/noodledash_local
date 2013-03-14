@@ -156,7 +156,8 @@ function plot2HighriseCases(chartDivID, data1, data2) {
         },
         legend: {
             backgroundColor: "#FFFFFF", // null means auto-detect
-            backgroundOpacity: 0 // set to 0 to avoid background}
+            backgroundOpacity: 0, // set to 0 to avoid background}
+            position: "se"
         },
         series: {
             lines: {
@@ -175,5 +176,41 @@ function plot2HighriseCases(chartDivID, data1, data2) {
     };
 
     var plot = $.plot($("#"+chartDivID), [data1, data2], options);
+};
+
+function plot3HighriseDeals(chartDivID, data1, data2, data3) {
+    var options = {
+        xaxis: {
+            transform: function (v) { return -v; },
+            inverseTransform: function (v) { return -v;},
+            ticks: [[3, "3 Months Ago"], [2, "Two Months Ago"], [1, "Last Month"]]
+             },
+        yaxes: [ { min: 0 }],
+        selection: { mode: "x" },
+        grid: {
+            hoverable: true //IMPORTANT! this is needed for tooltip to work
+        },
+        legend: {
+            backgroundColor: "#FFFFFF", // null means auto-detect
+            backgroundOpacity: 0, // set to 0 to avoid background}
+            position: "se"
+        },
+        series: {
+            lines: {
+                show: true,
+                lineWidth: 1
+            },
+            points: {
+                show: true,
+                radius: 1
+            }
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: "<strong>%y</strong>, %x"
+        },
+    };
+
+    var plot = $.plot($("#"+chartDivID), [data1, data2, data3], options);
 };
 

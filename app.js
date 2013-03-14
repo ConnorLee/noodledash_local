@@ -32,6 +32,9 @@ timeOnSiteSparkline = '';
 pageViewsLast30Days = 0;
 pageViewsSparkline = '';
 
+dealsPendingData = [];
+dealsWonData = [];
+dealsLostData = [];
 kasesCreated = '';
 kasesClosed = '';
 dailyTimeOnSite = '';
@@ -88,7 +91,6 @@ GA.login(function(err, token) {
   GA.get(uniqueVisitorsQuery, function(err, entries) {
     dailyVisitors = gaGetDailies(entries, 'ga:visitors');
     visitorsLast30Days = gaGetTotals(entries, 'ga:visitors');
-  console.log("1");
   });
 
   var timeOnSiteQuery = {
@@ -101,7 +103,7 @@ GA.login(function(err, token) {
   GA.get(timeOnSiteQuery, function(err, entries) {
     dailyTimeOnSite = gaGetDailies(entries, 'ga:avgTimeOnSite');
   });
-  
+
   var pageViewsQuery = {
   'ids': 'ga:'+profile,
   'start-date': monthAgoString,
@@ -111,7 +113,6 @@ GA.login(function(err, token) {
   };
   GA.get(pageViewsQuery, function(err, entries) {
     dailyPageViews += ''+gaGetDailies(entries, 'ga:pageviews');
-      console.log("2");
   });
     
   var newVisitorsQuery = {
@@ -377,48 +378,139 @@ highriseResponse = request.get('https://noodleeducation.highrisehq.com/kases/clo
       }
     });
 
-//get highrise deals
-//request.get('https://noodleeducation.highrisehq.com/deals.xml', highriseOptions ,function (error, response, body) {
-//      if(response.statusCode == 201){
-//        console.log('returned 201');
-//      } else {
-//        console.log('error: '+ response.statusCode);
-//        var dealsWon = 0;
-//        var dealsPending = 0;
-//        var dealsLost = 0;
-//        var xml = body;
-//          parseString(xml,{ignoreAttrs:true}, function (err, result) {
-//          for(var i = 0; i < result.deals.deal.length; ++i) {
-//            var dealStatus = result.deals.deal[i].status[0];
-//            var dealDate = result.deals.deal[i]['status-changed-on'];
-//            var cleanStartDate = moment(startDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
-//            var cleanEndDate = moment(endDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
-//            var cleanDateDeal = moment(dealDate+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
-//            if(moment(cleanDateDeal).isBefore(cleanStartDate) && moment(cleanDateDeal).isAfter(cleanEndDate)) {
-//              switch(dealStatus) {
-//                case "won":
-//                  dealsWon++;
-//                  break;
-//                case "pending":
-//                  dealsPending++;
-//                  break;
-//                case "lost":
-//                  dealsLost++;
-//                  break;
-//                default:
-//                  console.log(dealStatus);
-//              }
-//            }
-//          }
-//          console.log("won:"+dealsWon+" lost:"+dealsLost+" pending:"+dealsPending);
-//        });
-//      }
-//    });
+// get highrise deals
+highriseResponse = request.get('https://noodleeducation.highrisehq.com/deals.xml', highriseOptions ,
+  function (error, response, body) {
+       if(response.statusCode == 201){
+         console.log('returned 201');
+       } else {
+         console.log('error: '+ response.statusCode);
+         var dealsWon = 0;
+         var dealsPending = 0;
+         var dealsLost = 0;
+         var xml = body;
+           parseString(xml,{ignoreAttrs:true}, function (err, result) {
+           for(var i = 0; i < result.deals.deal.length; ++i) {
+            var dealStatus = result.deals.deal[i].status[0];
+            var dealDate = result.deals.deal[i]['status-changed-on'];
+            var cleanStartDate = moment(yesterday+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+            var cleanEndDate = moment(monthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+            var cleanDateDeal = moment(dealDate+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
+            if(moment(cleanDateDeal).isBefore(cleanStartDate) && moment(cleanDateDeal).isAfter(cleanEndDate)) {
+              switch(dealStatus) {
+                case "won":
+                  dealsWon++;
+                  break;
+                case "pending":
+                  dealsPending++;
+                  break;
+                case "lost":
+                  dealsLost++;
+                  break;
+                default:
+                  console.log(dealStatus);
+              }
+            }
+           }
+//           dealsPendingData += '[[1,'+dealsPending+']';
+//           dealsLostData += '[[1,'+dealsLost+']';
+//           dealsWonData += '[[1,'+dealsWon+']';
+//          Or do with .push into an array? 
+           dealsPendingData.push('[[1,'+dealsPending+'],');
+           dealsLostData.push('[[1,'+dealsLost+'],');
+           dealsWonData.push('[[1,'+dealsWon+'],');
+        });
+       }
+     });
 
+highriseResponse = request.get('https://noodleeducation.highrisehq.com/deals.xml', highriseOptions ,
+  function (error, response, body) {
+       if(response.statusCode == 201){
+         console.log('returned 201');
+       } else {
+         console.log('error: '+ response.statusCode);
+         var dealsWon = 0;
+         var dealsPending = 0;
+         var dealsLost = 0;
+         var xml = body;
+           parseString(xml,{ignoreAttrs:true}, function (err, result) {
+           for(var i = 0; i < result.deals.deal.length; ++i) {
+            var dealStatus = result.deals.deal[i].status[0];
+            var dealDate = result.deals.deal[i]['status-changed-on'];
+            var cleanStartDate = moment(monthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+            var cleanEndDate = moment(twoMonthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+            var cleanDateDeal = moment(dealDate+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
+            if(moment(cleanDateDeal).isBefore(cleanStartDate) && moment(cleanDateDeal).isAfter(cleanEndDate)) {
+              switch(dealStatus) {
+                case "won":
+                  dealsWon++;
+                  break;
+                case "pending":
+                  dealsPending++;
+                  break;
+                case "lost":
+                  dealsLost++;
+                  break;
+                default:
+                  console.log(dealStatus);
+              }
+            }
+           }
+//          dealsPendingData += '[2,'+dealsPending+']';
+//          dealsLostData += '[2,'+dealsLost+']';
+//          dealsWonData += '[2,'+dealsWon+']';
+         dealsPendingData.push('[2,'+dealsPending+']');
+         dealsLostData.push('[2,'+dealsLost+']');
+         dealsWonData.push('[2,'+dealsWon+']');
+         });
+       }
+     });
+
+highriseResponse = request.get('https://noodleeducation.highrisehq.com/deals.xml', highriseOptions ,
+  function (error, response, body) {
+       if(response.statusCode == 201){
+         console.log('returned 201');
+       } else {
+         console.log('error: '+ response.statusCode);
+         var dealsWon = 0;
+         var dealsPending = 0;
+         var dealsLost = 0;
+         var xml = body;
+           parseString(xml,{ignoreAttrs:true}, function (err, result) {
+           for(var i = 0; i < result.deals.deal.length; ++i) {
+            var dealStatus = result.deals.deal[i].status[0];
+            var dealDate = result.deals.deal[i]['status-changed-on'];
+            var cleanStartDate = moment(twoMonthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+            var cleanEndDate = moment(threeMonthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+            var cleanDateDeal = moment(dealDate+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
+            if(moment(cleanDateDeal).isBefore(cleanStartDate) && moment(cleanDateDeal).isAfter(cleanEndDate)) {
+              switch(dealStatus) {
+                case "won":
+                  dealsWon++;
+                  break;
+                case "pending":
+                  dealsPending++;
+                  break;
+                case "lost":
+                  dealsLost++;
+                  break;
+                default:
+                  console.log(dealStatus);
+              }
+            }
+           }
+//           dealsPendingData += '[3,'+dealsPending+']]';
+//           dealsLostData += '[3,'+dealsLost+']]';
+//           dealsWonData += '[3,'+dealsWon+']]';
+           dealsPendingData.push('[3,'+dealsPending+']]');
+           dealsLostData.push('[3,'+dealsLost+']]');
+           dealsWonData.push('[3,'+dealsWon+']]');
+         });
+       }
+     });
 
 function kasesInDateRange(startDate, endDate, caseList) {
      var counter = 0;
-
      caseList.forEach( function(kase) {
       var cleanStartDate = moment(startDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
       var cleanEndDate = moment(endDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
@@ -431,21 +523,30 @@ function kasesInDateRange(startDate, endDate, caseList) {
       return counter;
 }
 
-function countDeals(dealsList, status) {
-     var counter = 0;
-     dealsList.forEach( function(deals) {
-//      var cleanStartDate = moment(startDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
-//      var cleanEndDate = moment(endDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
-//      var cleanDateDeal = moment(deals+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
-//      console.log(cleanDateKase + " " + kase + " is before " + cleanStartDate + " and after " + cleanEndDate);
-      if(dealsList == status) {
-        counter++;
-      }
-     });
-     console.log(status);
-      return counter;
-}
-
+//countDeals(yesterday, monthAgo);
+//countDeals(monthAgo, twoMonthAgo);
+//countDeals(twoMonthAgo, threeMonthAgo);
+//
+//function countDeals(startDate,endDate) {
+//    var cleanStartDate = moment(startDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+//    var cleanEndDate = moment(endDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+//    var cleanDateDeal = moment(dealDate+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
+//    if(moment(cleanDateDeal).isBefore(cleanStartDate) && moment(cleanDateDeal).isAfter(cleanEndDate)) {
+//      switch(dealStatus) {
+//        case "won":
+//          dealsWon++;
+//          break;
+//        case "pending":
+//          dealsPending++;
+//          break;
+//        case "lost":
+//          dealsLost++;
+//          break;
+//        default:
+//          console.log(dealStatus);
+//      }
+//    }
+//}
 
 var emailsSentRequest = {
   host : 'www.noodle.org', // here only the domain name
