@@ -315,8 +315,7 @@ passport.use(new Thirty7SignalsStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
-    process.nextTick(function () {
-      
+    process.nextTick(function () {     
       // To keep the example simple, the user's 37signals profile is returned to
       // represent the logged-in user.  In a typical application, you would want
       // to associate the 37signals account with a user record in your database,
@@ -392,7 +391,7 @@ highriseResponse = request.get('https://noodleeducation.highrisehq.com/deals.xml
            parseString(xml,{ignoreAttrs:true}, function (err, result) {
            for(var i = 0; i < result.deals.deal.length; ++i) {
             var dealStatus = result.deals.deal[i].status[0];
-            var dealDate = result.deals.deal[i]['status-changed-on'];
+            var dealDate = result.deals.deal[i]['updated-at'];
             var cleanStartDate = moment(yesterday+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
             var cleanEndDate = moment(monthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
             var cleanDateDeal = moment(dealDate+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
@@ -416,9 +415,9 @@ highriseResponse = request.get('https://noodleeducation.highrisehq.com/deals.xml
 //           dealsLostData += '[[1,'+dealsLost+']';
 //           dealsWonData += '[[1,'+dealsWon+']';
 //          Or do with .push into an array? 
-           dealsPendingData.push('[[1,'+dealsPending+'],');
-           dealsLostData.push('[[1,'+dealsLost+'],');
-           dealsWonData.push('[[1,'+dealsWon+'],');
+           dealsPendingData.splice(0, 0, '[[1,'+dealsPending+']');
+           dealsLostData.splice(0, 0, '[[1,'+dealsLost+']');
+           dealsWonData.splice(0, 0, '[[1,'+dealsWon+']');
         });
        }
      });
@@ -436,7 +435,7 @@ highriseResponse = request.get('https://noodleeducation.highrisehq.com/deals.xml
            parseString(xml,{ignoreAttrs:true}, function (err, result) {
            for(var i = 0; i < result.deals.deal.length; ++i) {
             var dealStatus = result.deals.deal[i].status[0];
-            var dealDate = result.deals.deal[i]['status-changed-on'];
+            var dealDate = result.deals.deal[i]['updated-at'];
             var cleanStartDate = moment(monthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
             var cleanEndDate = moment(twoMonthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
             var cleanDateDeal = moment(dealDate+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
@@ -459,9 +458,9 @@ highriseResponse = request.get('https://noodleeducation.highrisehq.com/deals.xml
 //          dealsPendingData += '[2,'+dealsPending+']';
 //          dealsLostData += '[2,'+dealsLost+']';
 //          dealsWonData += '[2,'+dealsWon+']';
-         dealsPendingData.push('[2,'+dealsPending+']');
-         dealsLostData.push('[2,'+dealsLost+']');
-         dealsWonData.push('[2,'+dealsWon+']');
+         dealsPendingData.splice(1, 0, '[2,'+dealsPending+']');
+         dealsLostData.splice(1, 0, '[2,'+dealsLost+']');
+         dealsWonData.splice(1, 0, '[2,'+dealsWon+']');
          });
        }
      });
@@ -479,7 +478,7 @@ highriseResponse = request.get('https://noodleeducation.highrisehq.com/deals.xml
            parseString(xml,{ignoreAttrs:true}, function (err, result) {
            for(var i = 0; i < result.deals.deal.length; ++i) {
             var dealStatus = result.deals.deal[i].status[0];
-            var dealDate = result.deals.deal[i]['status-changed-on'];
+            var dealDate = result.deals.deal[i]['updated-at'];
             var cleanStartDate = moment(twoMonthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
             var cleanEndDate = moment(threeMonthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
             var cleanDateDeal = moment(dealDate+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
@@ -502,9 +501,9 @@ highriseResponse = request.get('https://noodleeducation.highrisehq.com/deals.xml
 //           dealsPendingData += '[3,'+dealsPending+']]';
 //           dealsLostData += '[3,'+dealsLost+']]';
 //           dealsWonData += '[3,'+dealsWon+']]';
-           dealsPendingData.push('[3,'+dealsPending+']]');
-           dealsLostData.push('[3,'+dealsLost+']]');
-           dealsWonData.push('[3,'+dealsWon+']]');
+           dealsPendingData.splice(2, 0, '[3,'+dealsPending+']]');
+           dealsLostData.splice(2, 0, '[3,'+dealsLost+']]');
+           dealsWonData.splice(2, 0, '[3,'+dealsWon+']]');
          });
        }
      });
