@@ -9,6 +9,8 @@ var http = require('http');
 var path = require('path');
 var ga = require('googleanalytics');
 
+var moment = require('moment');
+
 var passport = require('passport');
 
 var Thirty7SignalsStrategy = require('passport-37signals').Strategy;
@@ -30,6 +32,11 @@ timeOnSiteSparkline = '';
 pageViewsLast30Days = 0;
 pageViewsSparkline = '';
 
+dealsPendingData = [];
+dealsWonData = [];
+dealsLostData = [];
+kasesCreated = '';
+kasesClosed = '';
 dailyTimeOnSite = '';
 dailyVisitors = '';
 dailyPageViews = '';
@@ -96,7 +103,7 @@ GA.login(function(err, token) {
   GA.get(timeOnSiteQuery, function(err, entries) {
     dailyTimeOnSite = gaGetDailies(entries, 'ga:avgTimeOnSite');
   });
-  
+
   var pageViewsQuery = {
   'ids': 'ga:'+profile,
   'start-date': monthAgoString,
@@ -308,8 +315,7 @@ passport.use(new Thirty7SignalsStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
-    process.nextTick(function () {
-      
+    process.nextTick(function () {     
       // To keep the example simple, the user's 37signals profile is returned to
       // represent the logged-in user.  In a typical application, you would want
       // to associate the 37signals account with a user record in your database,
@@ -318,67 +324,228 @@ passport.use(new Thirty7SignalsStrategy({
     });
   }
 ));
- 
+
+
 // get highrise info
 var request = require('request');
 var parseString = require('xml2js').parseString;
-request.get('https://noodleeducation.highrisehq.com/kases.xml', {
+
+highriseOptions = {
   'auth': {
     'user': HIGHRISE_TOKEN,
     'pass': 'X',
     'sendImmediately': false
   }
-  },function (error, response, body) {
+};
+
+highriseResponse = request.get('https://noodleeducation.highrisehq.com/kases.xml', highriseOptions,function (error, response, body) {
       if(response.statusCode == 201){
         console.log('returned 201');
       } else {
         console.log('error: '+ response.statusCode);
+        var kasesList = [];
         var xml = body;
           parseString(xml,{ignoreAttrs:true}, function (err, result) {
           for(var i = 0; i < result.kases.kase.length; ++i) {
-            var kaseName = result.kases.kase[i].name;
-            var kaseCreateAt = result.kases.kase[i]['created-at'];
-            console.dir(kaseName);
-            console.dir(kaseCreateAt);
+            kasesData = result.kases.kase[i]['created-at'];
+            kasesList.push(kasesData);
           }
         });
+        kasesCreated += '[[1,'+kasesInDateRange(yesterday, monthAgo, kasesList)+'],';
+        kasesCreated += '[2,'+kasesInDateRange(monthAgo, twoMonthAgo, kasesList)+'],';
+        kasesCreated += '[3,'+kasesInDateRange(twoMonthAgo, threeMonthAgo, kasesList)+']]';
       }
     });
 
-
-
-            
-var request = require('request');
-var parseString = require('xml2js').parseString;
-request.get('https://noodleeducation.highrisehq.com/deals.xml', {
-  'auth': {
-    'user': HIGHRISE_TOKEN,
-    'pass': 'X',
-    'sendImmediately': false
-  }
-  },function (error, response, body) {
+highriseResponse = request.get('https://noodleeducation.highrisehq.com/kases/closed.xml',  highriseOptions,
+    function (error, response, body) {
       if(response.statusCode == 201){
         console.log('returned 201');
       } else {
         console.log('error: '+ response.statusCode);
+        var kasesList = [];
         var xml = body;
           parseString(xml,{ignoreAttrs:true}, function (err, result) {
-          for(var i = 0; i < result.deals.deal.length; ++i) {
-            var dealName = result.deals.deal[i].name;
-            var dealStatus = result.deals.deal[i]['status'];
-            var dealStatusChangedDate = result.deals.deal[i]['status-changed-on'];
-            console.dir(dealName);
-            console.dir(dealStatus);
-            console.dir(dealStatusChangedDate);
+          for(var i = 0; i < result.kases.kase.length; ++i) {
+            kasesData = result.kases.kase[i]['closed-at'];
+            kasesList.push(kasesData);
           }
         });
+        kasesClosed += '[[1,'+kasesInDateRange(yesterday, monthAgo, kasesList)+'],';
+        kasesClosed += '[2,'+kasesInDateRange(monthAgo, twoMonthAgo, kasesList)+'],';
+        kasesClosed += '[3,'+kasesInDateRange(twoMonthAgo, threeMonthAgo, kasesList)+']]';
       }
     });
 
-// Segment Highrise Data
+// get highrise deals
+highriseResponse = request.get('https://noodleeducation.highrisehq.com/deals.xml', highriseOptions ,
+  function (error, response, body) {
+       if(response.statusCode == 201){
+         console.log('returned 201');
+       } else {
+         console.log('error: '+ response.statusCode);
+         var dealsWon = 0;
+         var dealsPending = 0;
+         var dealsLost = 0;
+         var xml = body;
+           parseString(xml,{ignoreAttrs:true}, function (err, result) {
+           for(var i = 0; i < result.deals.deal.length; ++i) {
+            var dealStatus = result.deals.deal[i].status[0];
+            var dealDate = result.deals.deal[i]['updated-at'];
+            var cleanStartDate = moment(yesterday+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+            var cleanEndDate = moment(monthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+            var cleanDateDeal = moment(dealDate+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
+            if(moment(cleanDateDeal).isBefore(cleanStartDate) && moment(cleanDateDeal).isAfter(cleanEndDate)) {
+              switch(dealStatus) {
+                case "won":
+                  dealsWon++;
+                  break;
+                case "pending":
+                  dealsPending++;
+                  break;
+                case "lost":
+                  dealsLost++;
+                  break;
+                default:
+                  console.log(dealStatus);
+              }
+            }
+           }
+//           dealsPendingData += '[[1,'+dealsPending+']';
+//           dealsLostData += '[[1,'+dealsLost+']';
+//           dealsWonData += '[[1,'+dealsWon+']';
+//          Or do with .push into an array? 
+           dealsPendingData.splice(0, 0, '[[1,'+dealsPending+']');
+           dealsLostData.splice(0, 0, '[[1,'+dealsLost+']');
+           dealsWonData.splice(0, 0, '[[1,'+dealsWon+']');
+        });
+       }
+     });
 
+highriseResponse = request.get('https://noodleeducation.highrisehq.com/deals.xml', highriseOptions ,
+  function (error, response, body) {
+       if(response.statusCode == 201){
+         console.log('returned 201');
+       } else {
+         console.log('error: '+ response.statusCode);
+         var dealsWon = 0;
+         var dealsPending = 0;
+         var dealsLost = 0;
+         var xml = body;
+           parseString(xml,{ignoreAttrs:true}, function (err, result) {
+           for(var i = 0; i < result.deals.deal.length; ++i) {
+            var dealStatus = result.deals.deal[i].status[0];
+            var dealDate = result.deals.deal[i]['updated-at'];
+            var cleanStartDate = moment(monthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+            var cleanEndDate = moment(twoMonthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+            var cleanDateDeal = moment(dealDate+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
+            if(moment(cleanDateDeal).isBefore(cleanStartDate) && moment(cleanDateDeal).isAfter(cleanEndDate)) {
+              switch(dealStatus) {
+                case "won":
+                  dealsWon++;
+                  break;
+                case "pending":
+                  dealsPending++;
+                  break;
+                case "lost":
+                  dealsLost++;
+                  break;
+                default:
+                  console.log(dealStatus);
+              }
+            }
+           }
+//          dealsPendingData += '[2,'+dealsPending+']';
+//          dealsLostData += '[2,'+dealsLost+']';
+//          dealsWonData += '[2,'+dealsWon+']';
+         dealsPendingData.splice(1, 0, '[2,'+dealsPending+']');
+         dealsLostData.splice(1, 0, '[2,'+dealsLost+']');
+         dealsWonData.splice(1, 0, '[2,'+dealsWon+']');
+         });
+       }
+     });
 
+highriseResponse = request.get('https://noodleeducation.highrisehq.com/deals.xml', highriseOptions ,
+  function (error, response, body) {
+       if(response.statusCode == 201){
+         console.log('returned 201');
+       } else {
+         console.log('error: '+ response.statusCode);
+         var dealsWon = 0;
+         var dealsPending = 0;
+         var dealsLost = 0;
+         var xml = body;
+           parseString(xml,{ignoreAttrs:true}, function (err, result) {
+           for(var i = 0; i < result.deals.deal.length; ++i) {
+            var dealStatus = result.deals.deal[i].status[0];
+            var dealDate = result.deals.deal[i]['updated-at'];
+            var cleanStartDate = moment(twoMonthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+            var cleanEndDate = moment(threeMonthAgo+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+            var cleanDateDeal = moment(dealDate+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
+            if(moment(cleanDateDeal).isBefore(cleanStartDate) && moment(cleanDateDeal).isAfter(cleanEndDate)) {
+              switch(dealStatus) {
+                case "won":
+                  dealsWon++;
+                  break;
+                case "pending":
+                  dealsPending++;
+                  break;
+                case "lost":
+                  dealsLost++;
+                  break;
+                default:
+                  console.log(dealStatus);
+              }
+            }
+           }
+//           dealsPendingData += '[3,'+dealsPending+']]';
+//           dealsLostData += '[3,'+dealsLost+']]';
+//           dealsWonData += '[3,'+dealsWon+']]';
+           dealsPendingData.splice(2, 0, '[3,'+dealsPending+']]');
+           dealsLostData.splice(2, 0, '[3,'+dealsLost+']]');
+           dealsWonData.splice(2, 0, '[3,'+dealsWon+']]');
+         });
+       }
+     });
 
+function kasesInDateRange(startDate, endDate, caseList) {
+     var counter = 0;
+     caseList.forEach( function(kase) {
+      var cleanStartDate = moment(startDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+      var cleanEndDate = moment(endDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+      var cleanDateKase = moment(kase+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
+//      console.log(cleanDateKase + " " + kase + " is before " + cleanStartDate + " and after " + cleanEndDate);
+      if(moment(cleanDateKase).isBefore(cleanStartDate) && moment(cleanDateKase).isAfter(cleanEndDate)) {
+        counter++;
+      }
+     });
+      return counter;
+}
+
+//countDeals(yesterday, monthAgo);
+//countDeals(monthAgo, twoMonthAgo);
+//countDeals(twoMonthAgo, threeMonthAgo);
+//
+//function countDeals(startDate,endDate) {
+//    var cleanStartDate = moment(startDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+//    var cleanEndDate = moment(endDate+'', "ddd MMM DD YYYY HH:mm:ss Z").toDate();
+//    var cleanDateDeal = moment(dealDate+'', "YYYY-MM-DDTHH:mm:ssZ").toDate();
+//    if(moment(cleanDateDeal).isBefore(cleanStartDate) && moment(cleanDateDeal).isAfter(cleanEndDate)) {
+//      switch(dealStatus) {
+//        case "won":
+//          dealsWon++;
+//          break;
+//        case "pending":
+//          dealsPending++;
+//          break;
+//        case "lost":
+//          dealsLost++;
+//          break;
+//        default:
+//          console.log(dealStatus);
+//      }
+//    }
+//}
 
 var emailsSentRequest = {
   host : 'www.noodle.org', // here only the domain name
