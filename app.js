@@ -682,20 +682,21 @@ function validateUserPermission(req, res, next) {
     var hasPermission = false;
     var requestPath = req.path;
     var pathPermissions = {
-        // the property key is the requested path and its value is an array
+        // the key is the requested path and its value is an array
         // of permission allowing the user access to the requested path
-        '/releases/snt': ['permission0', 'permission1', 'permission2', 'permission3'],
-        '/releases/pnp': ['permission0', 'permission1', 'permission2', 'permission3'],
-        '/releases/jedis': ['permission0', 'permission1', 'permission2', 'permission3'],
-        '/releases/backlog': ['permission0', 'permission1', 'permission2', 'permission3'],
-        '/manual': ['permission0', 'permission1', 'permission2', 'permission3'],
-//        '/resources': ['permission0', 'permission1', 'permission2', 'permission3']
-        '/resources': ['permission1', 'permission2', 'permission3']
+        '/releases/snt': ['Board', 'Exec', 'All'],
+        '/releases/pnp': ['Board', 'Exec', 'All'],
+        '/releases/jedis': ['Board', 'Exec', 'All'],
+        '/releases/backlog': ['Board', 'Exec', 'All'],
+        '/manual': [/*'Board',*/ 'Exec', 'All'],
+        '/resources': ['Board', 'Exec', 'All']
     };
     var requiredPermissions, i, len;
 
+/*
     // mock the test here so that I have permission - remove after testing
     permission = 'permission0';
+*/
 
 //    /*
     console.log("user's id = ", id);
