@@ -12,7 +12,7 @@ var ga = require('googleanalytics');
  * connect to redis via redistogo on heroku
  */
 var rtg = require("url").parse(process.env.REDISTOGO_URL);
-var redis = require("redis").createClient(rtg.port, rtg.hostname);
+var redis = exports.redis = require("redis").createClient(rtg.port, rtg.hostname);
 redis.auth(rtg.auth.split(":")[1]);
 
 /*
