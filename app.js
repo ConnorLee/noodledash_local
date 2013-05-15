@@ -623,6 +623,18 @@ app.get('/manual', validateUserPermission, routes.manual);
 app.get('/resources', validateUserPermission, routes.resources);
 app.get('/releases/:release?', validateUserPermission, routes.index);
 
+/* 
+    Added on advice by Kyle. Routing for these do not exist yet and will be wired up at some later time.
+*/    
+/*
+app.get('/finance ', validateUserPermission, routes.finance);
+app.get('/news', validateUserPermission, routes.news);
+app.get('/metrics', validateUserPermission, routes.metrics);
+app.get('/marketing', validateUserPermission, routes.marketing);
+app.get('/resources', validateUserPermission, routes.resources);
+app.get('/tools', validateUserPermission, routes.tools);
+*/
+
 app.get('/account', ensureAuthenticated, function (req, res) {
     res.render('account', {
         title: 'Account Information',
