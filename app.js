@@ -644,16 +644,15 @@ app.get('/resources', validateUserPermission, routes.resources);
 app.get('/releases/:release?', validateUserPermission, routes.index);
 
 /* 
-    Added on advice by Kyle. Routing for these do not exist yet and will be wired up at some later time.
-*/    
-/*
-app.get('/finance ', validateUserPermission, routes.finance);
-app.get('/news', validateUserPermission, routes.news);
-app.get('/metrics', validateUserPermission, routes.metrics);
-app.get('/marketing', validateUserPermission, routes.marketing);
-app.get('/resources', validateUserPermission, routes.resources);
-app.get('/tools', validateUserPermission, routes.tools);
+    Routing for wiki urls
 */
+app.get('/wiki/finance', validateUserPermission, routes.wikifinance);
+app.get('/wiki/news', validateUserPermission, routes.wikinews);
+app.get('/wiki/metrics', validateUserPermission, routes.wikimetrics);
+app.get('/wiki/handbook', validateUserPermission, routes.wikihandbook);
+app.get('/wiki/marketing', validateUserPermission, routes.wikimarketing);
+app.get('/wiki/resources', validateUserPermission, routes.wikiresources);
+app.get('/wiki/tools', validateUserPermission, routes.wikitools);
 
 app.get('/account', ensureAuthenticated, function (req, res) {
     res.render('account', {
@@ -713,15 +712,24 @@ function validateUserPermission(req, res, next) {
     var permission = req.session.passport.userPermission;
     var hasPermission = false;
     var requestPath = req.path;
+    /* 
+     * route permissions 
+     * keys values are = request.path
+     * value = an array of permissions imposed on the user to have access to the request.path
+     */
     var pathPermissions = {
-        // the key is the requested path and its value is an array
-        // of permission allowing the user access to the requested path
         '/releases/snt': ['Board', 'Exec', 'All'],
         '/releases/pnp': ['Board', 'Exec', 'All'],
         '/releases/jedis': ['Board', 'Exec', 'All'],
         '/releases/backlog': ['Board', 'Exec', 'All'],
         '/manual': [/*'Board',*/ 'Exec', 'All'],
-        '/resources': ['Board', 'Exec', 'All']
+        '/wiki/finance': ['Board', 'Exec'/*, 'All'*/],
+        '/wiki/news': ['Board', 'Exec', 'All'],
+        '/wiki/metrics': ['Board', 'Exec', 'All'],
+        '/wiki/handbook': [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/marketing': [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/resources': [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/tools': [/*'Board',*/ 'Exec', 'All']
     };
     var requiredPermissions, i, len;
 
@@ -730,11 +738,9 @@ function validateUserPermission(req, res, next) {
     permission = 'Board';
 */
 
-//    /*
     console.log("user's id = ", id);
     console.log("user's permission = ", permission);
     console.log("requestPath = ", requestPath);
-//    */
 
     if (!permission) {
         /// users that don't have a permission assigned to them are routed to '/'
