@@ -15,6 +15,26 @@ var rtg = require("url").parse(process.env.REDISTOGO_URL);
 var redis = require("redis").createClient(rtg.port, rtg.hostname);
 redis.auth(rtg.auth.split(":")[1]);
 
+/*
+ * wire up markdown support via marked and set reasonable options
+ */
+var marked = exports.marked = require('marked');
+marked.setOptions({
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: true,
+  smartLists: true,
+  langPrefix: 'language-',
+  highlight: function(code, lang) {
+    if (lang === 'js') {
+      return highlighter.javascript(code);
+    }
+    return code;
+  }
+});
+
 var moment = require('moment');
 
 var passport = require('passport');
