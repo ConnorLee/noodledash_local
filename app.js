@@ -705,8 +705,10 @@ function validateUserPermission(req, res, next) {
     };
     var requiredPermissions, i, len;
 
+/*
     // mock the test here so that I have permission - remove after testing
     permission = 'Board';
+*/
 
 //    /*
     console.log("user's id = ", id);
