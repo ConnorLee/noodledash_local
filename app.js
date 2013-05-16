@@ -44,7 +44,6 @@ var mongoDb = exports.mongoDb = mongoskin.db( mongohg.href + '?auto_reconnect&po
 mongoDb.collection( 'test' ).insert( {content : 'this is a test'}, function ( err, result ) {
     if ( err ) {
         throw err;
-        i
     }
     console.log( 'insert into mongo successful!' );
 } );
