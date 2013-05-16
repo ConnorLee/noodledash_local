@@ -693,11 +693,11 @@ app.get('/wiki/tools', validateUserPermission, routes.wikitools);
 /*
     API Routing for AJAX calls
 */
-app.get('/wiki/api/v1/shortlist/:contentType', getShortListOfWikiFiles )
-app.get('/wiki/api/v1/file/:id', )
-app.post('/wiki/api/v1/file', )
-app.put('/wiki/api/v1/file', )
-app.delete('/wiki/api/v1/file', )
+app.get('/wiki/api/v1/shortlist/:contentType', routes.getShortListOfWikiFiles )
+app.get('/wiki/api/v1/file/:id', routes.getWikiFileById)
+app.post('/wiki/api/v1/file', routes.insertWikiFile)
+app.put('/wiki/api/v1/file', routes.updateWikiFile)
+app.delete('/wiki/api/v1/file', routes.deleteWikiFile)
 
 app.get('/account', ensureAuthenticated, function (req, res) {
     res.render('account', {
