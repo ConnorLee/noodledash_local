@@ -12,6 +12,7 @@ var ga = require('googleanalytics');
  * connect to redis via redistogo on heroku
  */
 var rtg = require("url").parse(process.env.REDISTOGO_URL);
+console.log("rtg = ", rtg);
 var redis = exports.redis = require("redis").createClient(rtg.port, rtg.hostname);
 redis.auth(rtg.auth.split(":")[1]);
 
@@ -25,6 +26,23 @@ redis.set("6705250", "All", function(err, res){
         throw err;
     }
     console.log("Response received setting my ID", res);
+});
+
+/*
+ * connect to mongo on heroku
+ */
+var mongohg = require('url').parse(process.env.MONGOHQ_URL);
+console.log("mongohg = ", mongohg);
+var mongoauth = mongohg.auth.split(":")[1];
+var mongoskin = require( 'mongoskin' );
+var mongoDb = exports.mongoDb = mongoskin.db(mongohg.href + '?auto_reconnect&poolSize=20', {w : 1} );
+mongoDb.collection( 'test' ).insert({content: 'this is a test'}, function(err, result){
+    if(err) { throw err;i }
+    console.log('insert into mongo successful!');
+});
+mongoDb.collection('test').find().toArray(function(err, results){
+    if(err) { throw err; };
+    console.log('find successful! Returned :', results);
 });
 
 /*
