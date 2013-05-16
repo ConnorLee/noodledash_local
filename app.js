@@ -37,22 +37,22 @@ var mongoauth = mongohg.auth.split( ":" )[1];
 var mongoskin = require( 'mongoskin' );
 var mongoDb = exports.mongoDb = mongoskin.db( mongohg.href + '?auto_reconnect&poolSize=20', {w : 1} );
 
-/*
- * For testing purposed only - *** comment this out when done testing ***
- * Add some crap to the mongo test collection and read it back
- */
-mongoDb.collection( 'test' ).insert( {content : 'this is a test'}, function ( err, result ) {
-    if ( err ) {
-        throw err;
-    }
-    console.log( 'insert into mongo successful!' );
-    mongoDb.collection( 'test' ).find().toArray( function ( err, results ) {
-        if ( err ) {
-            throw err;
-        }
-        console.log( 'find successful! Returned :', results );
-    } );
-} );
+///*
+// * For testing purposed only - *** comment this out when done testing ***
+// * Add some crap to the mongo test collection and read it back
+// */
+//mongoDb.collection( 'test' ).insert( {content : 'this is a test'}, function ( err, result ) {
+//    if ( err ) {
+//        throw err;
+//    }
+//    console.log( 'insert into mongo successful!' );
+//    mongoDb.collection( 'test' ).find().toArray( function ( err, results ) {
+//        if ( err ) {
+//            throw err;
+//        }
+//        console.log( 'find successful! Returned :', results );
+//    } );
+//} );
 
 /*
  * wire up markdown support via marked and set reasonable options
