@@ -36,6 +36,11 @@ console.log("mongohg = ", mongohg);
 var mongoauth = mongohg.auth.split(":")[1];
 var mongoskin = require( 'mongoskin' );
 var mongoDb = exports.mongoDb = mongoskin.db(mongohg.href + '?auto_reconnect&poolSize=20', {w : 1} );
+
+/*
+ * For testing purposed only - *** comment this out when done testing ***
+ * Add some crap to the mongo test collection and read it back
+ */
 mongoDb.collection( 'test' ).insert({content: 'this is a test'}, function(err, result){
     if(err) { throw err;i }
     console.log('insert into mongo successful!');
@@ -684,6 +689,15 @@ app.get('/wiki/handbook', validateUserPermission, routes.wikihandbook);
 app.get('/wiki/marketing', validateUserPermission, routes.wikimarketing);
 app.get('/wiki/resources', validateUserPermission, routes.wikiresources);
 app.get('/wiki/tools', validateUserPermission, routes.wikitools);
+
+/*
+    API Routing for AJAX calls
+*/
+app.get('/wiki/api/v1/shortlist/:contentType', getShortListOfWikiFiles )
+app.get('/wiki/api/v1/file/:id', )
+app.post('/wiki/api/v1/file', )
+app.put('/wiki/api/v1/file', )
+app.delete('/wiki/api/v1/file', )
 
 app.get('/account', ensureAuthenticated, function (req, res) {
     res.render('account', {

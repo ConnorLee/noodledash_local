@@ -132,3 +132,61 @@ exports.wikitools = function(req, res){
 	user: req.user
 	});
 };
+
+/*
+ * Ajax API route handlers
+ */
+exports.getShortListOfWikiFiles = function(req, res){
+	// place holder routine until actually coded
+	var marked = require('marked');
+	console.log('route handler for getShortListOfWikiFiles(...) called');
+	res.render('main', {
+	title: 'Noodle',
+	pagename: 'home',
+	user: req.user
+	});
+};
+
+exports.getWikiFileById = function(req, res){
+	// place holder routine until actually coded
+	var marked = require('marked');
+	console.log('route handler for getWikiFileById(...) called');
+	res.render('main', {
+	title: 'Noodle',
+	pagename: 'home',
+	user: req.user
+	});
+};
+
+exports.insertWikiFile = function(req, res){
+	// place holder routine until actually coded
+	var marked = require('marked');
+	console.log('route handler for insertWikiFile(...) called');
+	res.render('main', {
+	title: 'Noodle',
+	pagename: 'home',
+	user: req.user
+	});
+};
+
+exports.updateWikiFile = function(req, res){
+	// place holder routine until actually coded
+	var marked = require('marked');
+	console.log('route handler for updateWikiFile(...) called');
+	res.render('main', {
+	title: 'Noodle',
+	pagename: 'home',
+	user: req.user
+	});
+};
+
+exports.deleteWikiFile = function(req, res){
+	// place holder routine until actually coded
+	var marked = require('marked');
+	console.log('route handler for deleteWikiFile(...) called');
+	res.render('main', {
+	title: 'Noodle',
+	pagename: 'home',
+	user: req.user
+	});
+};
