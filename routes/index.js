@@ -63,9 +63,11 @@ exports.index = function ( req, res ) {
  * Wiki url route handlers
  */
 
-exports.wikifinance = function ( req, res ) {
+exports.wiki = function ( req, res ) {
     var marked = require( 'marked' );
-    console.log( 'route handler for wiki finance(...) called' );
+    var contentName = req.params.content;
+    console.log( 'contentName = ', contentName );
+    console.log( 'route handler for wiki/' + contentName + '(...) called' );
     res.render( 'main', {
         title    : 'Noodle',
         pagename : 'home',
@@ -73,65 +75,75 @@ exports.wikifinance = function ( req, res ) {
     } );
 };
 
-exports.wikinews = function ( req, res ) {
-    var marked = require( 'marked' );
-    console.log( 'route handler for wiki news(...) called' );
-    res.render( 'main', {
-        title    : 'Noodle',
-        pagename : 'home',
-        user     : req.user
-    } );
-};
-
-exports.wikimetrics = function ( req, res ) {
-    var marked = require( 'marked' );
-    console.log( 'route handler for wiki metrics(...) called' );
-    res.render( 'main', {
-        title    : 'Noodle',
-        pagename : 'home',
-        user     : req.user
-    } );
-};
-
-exports.wikihandbook = function ( req, res ) {
-    var marked = require( 'marked' );
-    console.log( 'route handler for wiki handbook(...) called' );
-    res.render( 'main', {
-        title    : 'Noodle',
-        pagename : 'home',
-        user     : req.user
-    } );
-};
-
-exports.wikimarketing = function ( req, res ) {
-    var marked = require( 'marked' );
-    console.log( 'route handler for wiki marketing(...) called' );
-    res.render( 'main', {
-        title    : 'Noodle',
-        pagename : 'home',
-        user     : req.user
-    } );
-};
-
-exports.wikiresources = function ( req, res ) {
-    var marked = require( 'marked' );
-    console.log( 'route handler for wiki resources(...) called' );
-    res.render( 'main', {
-        title    : 'Noodle',
-        pagename : 'home',
-        user     : req.user
-    } );
-};
-
-exports.wikitools = function ( req, res ) {
-    var marked = require( 'marked' );
-    console.log( 'route handler for wiki tools(...) called' );
-    res.render( 'main', {
-        title    : 'Noodle',
-        pagename : 'home',
-        user     : req.user
-    } );
-};
+//exports.wikifinance = function ( req, res ) {
+//    var marked = require( 'marked' );
+//    console.log( 'route handler for wiki finance(...) called' );
+//    res.render( 'main', {
+//        title    : 'Noodle',
+//        pagename : 'home',
+//        user     : req.user
+//    } );
+//};
+//
+//exports.wikinews = function ( req, res ) {
+//    var marked = require( 'marked' );
+//    console.log( 'route handler for wiki news(...) called' );
+//    res.render( 'main', {
+//        title    : 'Noodle',
+//        pagename : 'home',
+//        user     : req.user
+//    } );
+//};
+//
+//exports.wikimetrics = function ( req, res ) {
+//    var marked = require( 'marked' );
+//    console.log( 'route handler for wiki metrics(...) called' );
+//    res.render( 'main', {
+//        title    : 'Noodle',
+//        pagename : 'home',
+//        user     : req.user
+//    } );
+//};
+//
+//exports.wikihandbook = function ( req, res ) {
+//    var marked = require( 'marked' );
+//    console.log( 'route handler for wiki handbook(...) called' );
+//    res.render( 'main', {
+//        title    : 'Noodle',
+//        pagename : 'home',
+//        user     : req.user
+//    } );
+//};
+//
+//exports.wikimarketing = function ( req, res ) {
+//    var marked = require( 'marked' );
+//    console.log( 'route handler for wiki marketing(...) called' );
+//    res.render( 'main', {
+//        title    : 'Noodle',
+//        pagename : 'home',
+//        user     : req.user
+//    } );
+//};
+//
+//exports.wikiresources = function ( req, res ) {
+//    var marked = require( 'marked' );
+//    console.log( 'route handler for wiki resources(...) called' );
+//    res.render( 'main', {
+//        title    : 'Noodle',
+//        pagename : 'home',
+//        user     : req.user
+//    } );
+//};
+//
+//exports.wikitools = function ( req, res ) {
+//    var marked = require( 'marked' );
+//    console.log( 'route handler for wiki tools(...) called' );
+//    res.render( 'main', {
+//        title    : 'Noodle',
+//        pagename : 'home',
+//        user     : req.user
+//    } );
+//};
 
 /*
  * Ajax API route handlers

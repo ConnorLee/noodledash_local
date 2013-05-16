@@ -681,13 +681,14 @@ app.get( '/releases/:release?', validateUserPermission, routes.index );
 /*
  Routing for wiki urls
  */
-app.get( '/wiki/finance', validateUserPermission, routes.wikifinance );
-app.get( '/wiki/news', validateUserPermission, routes.wikinews );
-app.get( '/wiki/metrics', validateUserPermission, routes.wikimetrics );
-app.get( '/wiki/handbook', validateUserPermission, routes.wikihandbook );
-app.get( '/wiki/marketing', validateUserPermission, routes.wikimarketing );
-app.get( '/wiki/resources', validateUserPermission, routes.wikiresources );
-app.get( '/wiki/tools', validateUserPermission, routes.wikitools );
+app.get( '/wiki/:content?', validateUserPermission, routes.wiki );
+//app.get( '/wiki/finance', validateUserPermission, routes.wikifinance );
+//app.get( '/wiki/news', validateUserPermission, routes.wikinews );
+//app.get( '/wiki/metrics', validateUserPermission, routes.wikimetrics );
+//app.get( '/wiki/handbook', validateUserPermission, routes.wikihandbook );
+//app.get( '/wiki/marketing', validateUserPermission, routes.wikimarketing );
+//app.get( '/wiki/resources', validateUserPermission, routes.wikiresources );
+//app.get( '/wiki/tools', validateUserPermission, routes.wikitools );
 
 /*
  API Routing for AJAX calls
