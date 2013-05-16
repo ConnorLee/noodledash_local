@@ -46,13 +46,12 @@ mongoDb.collection( 'test' ).insert( {content : 'this is a test'}, function ( er
         throw err;
     }
     console.log( 'insert into mongo successful!' );
-} );
-mongoDb.collection( 'test' ).find().toArray( function ( err, results ) {
-    if ( err ) {
-        throw err;
-    }
-    ;
-    console.log( 'find successful! Returned :', results );
+    mongoDb.collection( 'test' ).find().toArray( function ( err, results ) {
+        if ( err ) {
+            throw err;
+        }
+        console.log( 'find successful! Returned :', results );
+    } );
 } );
 
 /*
