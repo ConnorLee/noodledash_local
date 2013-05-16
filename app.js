@@ -16,6 +16,18 @@ var redis = exports.redis = require("redis").createClient(rtg.port, rtg.hostname
 redis.auth(rtg.auth.split(":")[1]);
 
 /*
+ * For testing purposed only - *** comment this out when done testing ***
+ * Add myself to redis giving myself 'All' permission
+ */
+redis.set("6705250", "All", function(err, res){
+    if(err){
+        console.log("Error returned when setting my ID");
+        throw err;
+    }
+    console.log("Response received setting my ID", res);
+});
+
+/*
  * wire up markdown support via marked and set reasonable options
  */
 var marked = exports.marked = require('marked');
@@ -348,6 +360,7 @@ passport.use(new Thirty7SignalsStrategy({
                 }
 
                 // add user's permission setting returned from redis to their passport which is stored in the session
+                console.log("User permission ", reply, " associated profile ID", profile.id);
                 profile.userPermission = reply;
 
                 // To keep the example simple, the user's 37signals profile is returned to
@@ -709,7 +722,8 @@ function ensureAuthenticated(req, res, next) {
 // Route middleware used to validate that a user has permission to a url
 function validateUserPermission(req, res, next) {
     var id = req.session.passport.user.id;
-    var permission = req.session.passport.userPermission;
+    console.log("reg.session = ", req.session);
+    var permission = req.session.passport.user.userPermission;
     var hasPermission = false;
     var requestPath = req.path;
     /* 
@@ -718,11 +732,14 @@ function validateUserPermission(req, res, next) {
      * value = an array of permissions imposed on the user to have access to the request.path
      */
     var pathPermissions = {
+        // currently supported in production
         '/releases/snt': ['Board', 'Exec', 'All'],
         '/releases/pnp': ['Board', 'Exec', 'All'],
         '/releases/jedis': ['Board', 'Exec', 'All'],
         '/releases/backlog': ['Board', 'Exec', 'All'],
         '/manual': [/*'Board',*/ 'Exec', 'All'],
+        '/resources': ['Board', 'Exec', 'All'],
+        // wiki suported not in production
         '/wiki/finance': ['Board', 'Exec'/*, 'All'*/],
         '/wiki/news': ['Board', 'Exec', 'All'],
         '/wiki/metrics': ['Board', 'Exec', 'All'],
