@@ -11,11 +11,10 @@ module.exports = {
     getShortListOfWikiFiles : function ( contentType ) {
         var mongoDb = require( '../app' ).mongoDb,
             wiki = mongoDb.collection( 'wiki' ),
-            Q = require( 'q' );
+            Q = require( 'q' ),
+            deferred = Q.defer();
 
         console.log( 'contentType = ', contentType );
-        // get a deferred
-        var deferred = Q.defer();
         // query for the short list of wiki files
         wiki.find( {contentType : contentType} ).toArray( function ( err, shortList ) {
             if ( err ) {
@@ -23,7 +22,7 @@ module.exports = {
                 deferred.reject( new Error( 'mongoDbService::getShortListOfWikiFiles()' ) );
             } else {
                 console.log( 'deferred resolved!' );
-                console.log( 'shortList = ', shortList );
+                //console.log( 'shortList = ', shortList );
                 deferred.resolve( shortList );
             }
         } );
@@ -34,7 +33,11 @@ module.exports = {
      * Find and return a file document by its id
      */
     getWikiFileById         : function ( _id ) {
-        var deferred = Q.defer();
+        var mongoDb = require( '../app' ).mongoDb,
+            wiki = mongoDb.collection( 'wiki' ),
+            Q = require( 'q' ),
+            deferred = Q.defer();
+
         wiki.findById( _id, function ( err, file ) {
             if ( err ) {
                 deferred.reject( new Error( 'mongoDbService::getWikiFileById()' ) );
@@ -49,7 +52,11 @@ module.exports = {
      * Insert and return a new file document
      */
     insertWikiFile          : function ( file ) {
-        var deferred = Q.defer();
+        var mongoDb = require( '../app' ).mongoDb,
+            wiki = mongoDb.collection( 'wiki' ),
+            Q = require( 'q' ),
+            deferred = Q.defer();
+
         wiki.insert( file, function ( err, result ) {
             if ( err ) {
                 deferred.reject( new Error( 'mongoDbService::insertWikiFile()' ) );
@@ -64,7 +71,11 @@ module.exports = {
      * Update and return a file document
      */
     updateWikiFile          : function ( file ) {
-        var deferred = Q.defer();
+        var mongoDb = require( '../app' ).mongoDb,
+            wiki = mongoDb.collection( 'wiki' ),
+            Q = require( 'q' ),
+            deferred = Q.defer();
+
         wiki.save( file, function ( err, result ) {
             if ( err ) {
                 deferred.reject( new Error( 'mongoDbService::updateWikiFile()' ) );
@@ -79,7 +90,11 @@ module.exports = {
      * Delete a file document
      */
     deleteWikiFile          : function ( id ) {
-        var deferred = Q.defer();
+        var mongoDb = require( '../app' ).mongoDb,
+            wiki = mongoDb.collection( 'wiki' ),
+            Q = require( 'q' ),
+            deferred = Q.defer();
+
         wiki.removeById( id, function ( err ) {
             if ( err ) {
                 deferred.reject( new Error( 'mongoDbService::removeWikiFile()' ) );

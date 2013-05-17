@@ -32,7 +32,7 @@ marked.setOptions( {
  * connect to redis via redistogo on heroku
  */
 var rtg = require( "url" ).parse( process.env.REDISTOGO_URL );
-console.log( "rtg = ", rtg );
+//console.log( "rtg = ", rtg );
 var redis = exports.redis = require( "redis" ).createClient( rtg.port, rtg.hostname );
 redis.auth( rtg.auth.split( ":" )[1] );
 
@@ -40,6 +40,7 @@ redis.auth( rtg.auth.split( ":" )[1] );
  * For testing purposed only - *** comment this out when done testing ***
  * Add myself to redis giving myself 'All' permission
  */
+/*
 redis.set( "6705250", "All", function ( err, res ) {
     if ( err ) {
         console.log( "Error returned when setting my ID" );
@@ -47,12 +48,13 @@ redis.set( "6705250", "All", function ( err, res ) {
     }
     console.log( "Response received setting my ID", res );
 } );
+*/
 
 /*
  * connect to mongo on heroku
  */
 var mongohg = require( 'url' ).parse( process.env.MONGOHQ_URL );
-console.log( "mongohg = ", mongohg );
+//console.log( "mongohg = ", mongohg );
 var mongoauth = mongohg.auth.split( ":" )[1];
 var mongoskin = require( 'mongoskin' );
 var mongoDb = exports.mongoDb = mongoskin.db( mongohg.href + '?auto_reconnect&poolSize=20', {w : 1} );
@@ -390,7 +392,7 @@ passport.use( new Thirty7SignalsStrategy( {
     function ( accessToken, refreshToken, profile, done ) {
         // asynchronous verification, for effect...
         process.nextTick( function () {
-            console.log( "profile = ", profile );
+            //console.log( "profile = ", profile );
             redis.get( profile.id.toString(), function ( err, reply ) {
                 if ( err ) {
                     console.log( "redis.get returned err", err );
@@ -398,7 +400,7 @@ passport.use( new Thirty7SignalsStrategy( {
                 }
 
                 // add user's permission setting returned from redis to their passport which is stored in the session
-                console.log( "User permission ", reply, " associated profile ID", profile.id );
+                //console.log( "User permission ", reply, " associated profile ID", profile.id );
                 profile.userPermission = reply;
 
                 // To keep the example simple, the user's 37signals profile is returned to
@@ -695,7 +697,9 @@ app.get( '/releases/:release?', validateUserPermission, routes.index );
 /*
  Routing for wiki urls
  */
-app.get( '/wiki/:content?', validateUserPermission, routes.wiki );
+app.get( '/wiki/:content', validateUserPermission, routes.wiki );
+app.get( '/wiki/newcontent/:content', validateUserPermission, routes.wikinewcontent );
+app.post( '/wiki/newcontent/:content', validateUserPermission, routes.insertWikiFile );
 //app.get( '/wiki/finance', validateUserPermission, routes.wikifinance );
 //app.get( '/wiki/news', validateUserPermission, routes.wikinews );
 //app.get( '/wiki/metrics', validateUserPermission, routes.wikimetrics );
@@ -768,7 +772,7 @@ function ensureAuthenticated( req, res, next ) {
 // Route middleware used to validate that a user has permission to a url
 function validateUserPermission( req, res, next ) {
     var id = req.session.passport.user.id;
-    console.log( "reg.session = ", req.session );
+    //console.log( "reg.session = ", req.session );
     var permission = req.session.passport.user.userPermission;
     var hasPermission = false;
     var requestPath = req.path;
@@ -792,7 +796,15 @@ function validateUserPermission( req, res, next ) {
         '/wiki/handbook'    : [/*'Board',*/ 'Exec', 'All'],
         '/wiki/marketing'   : [/*'Board',*/ 'Exec', 'All'],
         '/wiki/resources'   : [/*'Board',*/ 'Exec', 'All'],
-        '/wiki/tools'       : [/*'Board',*/ 'Exec', 'All']
+        '/wiki/tools'       : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/newcontent/finance'  : ['Board', 'Exec', 'All'],
+        '/wiki/newcontent/news'  : ['Board', 'Exec', 'All'],
+        '/wiki/newcontent/metrics'  : ['Board', 'Exec', 'All'],
+        '/wiki/newcontent/handbook'  : ['Board', 'Exec', 'All'],
+        '/wiki/newcontent/marketing'  : ['Board', 'Exec', 'All'],
+        '/wiki/newcontent/resources'  : ['Board', 'Exec', 'All'],
+        '/wiki/newcontent/tools'  : ['Board', 'Exec', 'All'],
+        '/wiki/newcontent'  : ['Board', 'Exec', 'All']
     };
     var requiredPermissions, i, len;
 
@@ -801,32 +813,34 @@ function validateUserPermission( req, res, next ) {
      permission = 'Board';
      */
 
+    /*
     console.log( "user's id = ", id );
     console.log( "user's permission = ", permission );
     console.log( "requestPath = ", requestPath );
+    */
 
     if ( !permission ) {
         /// users that don't have a permission assigned to them are routed to '/'
-        console.log( "User with 37signals id = ", id, " is not in redis and is being routed to '/'" );
+        //console.log( "User with 37signals id = ", id, " is not in redis and is being routed to '/'" );
         res.redirect( '/' )
     } else {
         /// users that have a permission assigned to them must have a valid assigned permission to the requested path
-        console.log( "User with 37signals id =  ", id, " and permissions = ", permission, " requested to be routed to '", requestPath, "'" );
+        //console.log( "User with 37signals id =  ", id, " and permissions = ", permission, " requested to be routed to '", requestPath, "'" );
 
         // get the required permissions for the requested path
         requiredPermissions = pathPermissions[requestPath];
-        console.log( "requiredPermissions = ", requiredPermissions );
+        //console.log( "requiredPermissions = ", requiredPermissions );
         for ( i = 0, len = requiredPermissions.length; i < len; i += 1 ) {
             if ( requiredPermissions[i] === permission ) {
                 hasPermission = true;
-                console.log( "User with 37signals id has permission to be routed to path '", requestPath, "'" );
+                //console.log( "User with 37signals id has permission to be routed to path '", requestPath, "'" );
                 break;
             }
         }
 
         // the user has permission to the url
         if ( hasPermission ) {
-            console.log( "returning next" );
+            //console.log( "returning next" );
             return next();
         } else {
             res.redirect( '/' );

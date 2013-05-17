@@ -29,6 +29,7 @@
 <div class="container">
     <div class="row">
         <h1>Whoops...</h1>
+
         <h2>Gotta <a href="/auth/37signals">Login with 37signals</a> first.</h2>
     </div>
 </div>
@@ -36,20 +37,31 @@
 
 <% include header.ejs %>
 
-
 <div class="container">
     <div class="row">
         <div class="span12">
-            <section id="logos">
-                <h1><%= pagename %><a class="btn btn-success wikiaddcontentbtn" href="/wiki/newcontent/<%= contentType %>">add some new news</a></h1>
-                <% for(var i=0, l=shortList.length; i < l; i += 1){%>
+            <section id="wikiarticles">
+                <h1><%= pagename %>
+                    <button class="btn btn-success wikiaddcontentbtn" id="savebtn">save</button>&nbsp;
+                    <a class="btn btn-success wikiaddcontentbtn" id="cancelbtn" href="<%= cancelbtnhref %>">cancel</a>
+                </h1>
+
                 <div class="alert alert-block">
-                    <span class="strong"><%= shortList[i].title%>,</span>
-                    <span class="strong">&nbsp;published On&nbsp;<%= new Date(shortList[i].dateCreated).toLocaleDateString() %></span>
-                    <span class="strong">&nbsp;by&nbsp;<%= shortList[i].author %></span>&nbsp;
-                    <div><%- shortList[i].html %></div>
+                    <form id="wikinewcontentform" method="post" action="/wiki/newcontent/<%= contentType %>">
+                        <div class="control-group warning">
+                            <label class="control-label" for="title">Title</label>
+                            <div class="controls">
+                                <input class="input-block-level" type="text" id="title" name="title" placeholder="Title">
+                            </div>
+                        </div>
+                        <div class="control-group warning">
+                            <label class="control-label" for="article">Article</label>
+                            <div class="controls">
+                                <textarea class="input-block-level" id="article" name="article" placeholder="Enter markdown here. You can even use Github markdown extensions. Sweet!" rows=20"></textarea>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <% } %>
             </section>
         </div>
     </div>
@@ -64,5 +76,3 @@
 
 <% include scripts.ejs %>
 <% include end.ejs %>
-
-

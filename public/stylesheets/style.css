@@ -348,3 +348,8 @@ a {
   height: 100px;
   overflow: hidden;
 }
+/* Wiki Section
+-------------------------------------------------- */
+.wikiaddcontentbtn {
+  margin-left: 10px;
+}

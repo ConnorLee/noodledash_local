@@ -68,17 +68,19 @@ exports.index = function ( req, res ) {
 
 exports.wiki = function ( req, res ) {
     var contentType = req.params.content;
-    console.log( 'contentType = ', contentType );
     console.log( 'route handler for wiki/' + contentType + '(...) called' );
+    console.log( 'contentType = ', contentType );
+    console.log( "wiki reg.params = ", req.params );
 
     mongoDbService.getShortListOfWikiFiles( contentType ).
         then( function ( shortList ) {
 //            console.show( 'shortList = ', shortList );
             res.render( 'wikimain', {
-                title    : 'Noodle Wiki',
-                pagename : contentType,
-                user     : req.user,
-                shortList: shortList
+                title       : 'Noodle Wiki',
+                pagename    : contentType,
+                user        : req.user,
+                shortList   : shortList,
+                contentType : contentType
             } );
         }, function ( err ) {
             console.log( err );
@@ -86,6 +88,49 @@ exports.wiki = function ( req, res ) {
         }
     );
 
+};
+
+exports.wikinewcontent = function ( req, res ) {
+    var contentType = req.params.content;
+    console.log( 'contentType = ', contentType );
+    //console.log( req.header( 'Referer' ) );
+    res.render( 'wikinewcontent', {
+        title         : 'Noodle Wiki blah blah blah',
+        pagename      : 'add new news',
+        user          : req.user,
+        cancelbtnhref : req.header( 'Referer' ),
+        contentType   : contentType
+    } );
+};
+
+exports.insertWikiFile = function ( req, res ) {
+    var contentType = req.params.content,
+        marked = require('marked' ),
+        data = {};
+
+    console.log( 'route handler for wiki/newcontent/' + contentType + '(...) called' );
+    console.log( 'contentType = ', contentType );
+    console.log( "wiki reg.params = ", req.params );
+    console.log( 'title = ', req.body.title );
+    console.log( 'article = ', req.body.article );
+
+    console.log( req.session );
+    data.contentType = contentType;
+    data.dateCreated = Date.now();
+    data.author = req.session.passport.user.displayName;
+    data.title = req.body.title;
+    data.mrkdown = req.body.article;
+    data.html = marked( req.body.article );
+    console.log( data );
+
+    mongoDbService.insertWikiFile( data ).
+        then( function ( shortList ) {
+            res.redirect( 'wiki/' + contentType );
+        }, function ( err ) {
+            console.log( err );
+            res.send( 500, {error : 'Unable to save article.'} );
+        }
+    );
 };
 
 //exports.wikifinance = function ( req, res ) {
@@ -176,17 +221,6 @@ exports.getWikiFileById = function ( req, res ) {
     // place holder routine until actually coded
     var marked = require( 'marked' );
     console.log( 'route handler for getWikiFileById(...) called' );
-    res.render( 'main', {
-        title    : 'Noodle',
-        pagename : 'home',
-        user     : req.user
-    } );
-};
-
-exports.insertWikiFile = function ( req, res ) {
-    // place holder routine until actually coded
-    var marked = require( 'marked' );
-    console.log( 'route handler for insertWikiFile(...) called' );
     res.render( 'main', {
         title    : 'Noodle',
         pagename : 'home',
