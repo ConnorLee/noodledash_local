@@ -46,6 +46,7 @@
                 <div class="alert alert-block">
                     <span class="strong"><%= shortList[i].title%>,</span>
                     <span class="strong">&nbsp;published on&nbsp;<%= new Date(shortList[i].dateCreated).toLocaleDateString() %></span>
+                    <span class="strong">&nbsp;at&nbsp;<%= new Date(shortList[i].dateCreated).toLocaleTimeString() %></span>
                     <span class="strong">&nbsp;by&nbsp;<%= shortList[i].author %></span>&nbsp;
                     <div><%- shortList[i].html %></div>
                 </div>

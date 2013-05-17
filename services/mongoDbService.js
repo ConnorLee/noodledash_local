@@ -16,7 +16,7 @@ module.exports = {
 
         console.log( 'contentType = ', contentType );
         // query for the short list of wiki files
-        wiki.find( {contentType : contentType} ).toArray( function ( err, shortList ) {
+        wiki.find( {contentType : contentType} ).sort({dateCreated: -1}).toArray( function ( err, shortList ) {
             if ( err ) {
                 console.log( 'deferred rejected!' );
                 deferred.reject( new Error( 'mongoDbService::getShortListOfWikiFiles()' ) );
