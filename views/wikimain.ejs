@@ -45,7 +45,7 @@
                 <% for(var i=0, l=shortList.length; i < l; i += 1){%>
                 <div class="alert alert-block">
                     <span class="strong"><%= shortList[i].title%>,</span>
-                    <span class="strong">&nbsp;published On&nbsp;<%= new Date(shortList[i].dateCreated).toLocaleDateString() %></span>
+                    <span class="strong">&nbsp;published on&nbsp;<%= new Date(shortList[i].dateCreated).toLocaleDateString() %></span>
                     <span class="strong">&nbsp;by&nbsp;<%= shortList[i].author %></span>&nbsp;
                     <div><%- shortList[i].html %></div>
                 </div>
