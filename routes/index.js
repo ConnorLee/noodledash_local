@@ -1,5 +1,8 @@
 'use strict';
 
+var mongoDbService = require( '../services/mongoDbService' ),
+    marked = require( 'marked' );
+
 /*
  * GET home page.
  */
@@ -64,13 +67,20 @@ exports.index = function ( req, res ) {
  */
 
 exports.wiki = function ( req, res ) {
-    var marked = require( 'marked' );
-    var contentName = req.params.content;
-    console.log( 'contentName = ', contentName );
-    console.log( 'route handler for wiki/' + contentName + '(...) called' );
-    res.render( 'main', {
-        title    : 'Noodle',
-        pagename : 'home',
+    var contentType = req.params.content;
+    console.log( 'contentType = ', contentType );
+    console.log( 'route handler for wiki/' + contentType + '(...) called' );
+
+    mongoDbService.getShortListOfWikiFiles( contentType ).then( function ( shorList ) {
+        console.show( 'shortList = ', shorList );
+    }, function ( err ) {
+        console.log( err );
+        res.send( 500, {error : 'Unable to get shortList'} );
+    } );
+
+    res.render( 'wikimain', {
+        title    : 'Noodle Wiki',
+        pagename : contentType,
         user     : req.user
     } );
 };

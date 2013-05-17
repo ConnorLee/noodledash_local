@@ -9,6 +9,26 @@ var path = require( 'path' );
 var ga = require( 'googleanalytics' );
 
 /*
+ * wire up markdown support via marked and set reasonable options
+ */
+var marked = exports.marked = require( 'marked' );
+marked.setOptions( {
+    gfm        : true,
+    tables     : true,
+    breaks     : false,
+    pedantic   : false,
+    sanitize   : true,
+    smartLists : true,
+    langPrefix : 'language-',
+    highlight  : function ( code, lang ) {
+        if ( lang === 'js' ) {
+            return highlighter.javascript( code );
+        }
+        return code;
+    }
+} );
+
+/*
  * connect to redis via redistogo on heroku
  */
 var rtg = require( "url" ).parse( process.env.REDISTOGO_URL );
@@ -54,24 +74,17 @@ var mongoDb = exports.mongoDb = mongoskin.db( mongohg.href + '?auto_reconnect&po
 //    } );
 //} );
 
-/*
- * wire up markdown support via marked and set reasonable options
- */
-var marked = exports.marked = require( 'marked' );
-marked.setOptions( {
-    gfm        : true,
-    tables     : true,
-    breaks     : false,
-    pedantic   : false,
-    sanitize   : true,
-    smartLists : true,
-    langPrefix : 'language-',
-    highlight  : function ( code, lang ) {
-        if ( lang === 'js' ) {
-            return highlighter.javascript( code );
-        }
-        return code;
+mongoDb.collection( 'wiki' ).insert( {
+    contentType: 'news',
+    dateCreated: Date.now(),
+    author: 'Jeff Schwartz',
+    mrkdown: '# Yea!',
+    html: marked('# Yea!')
+}, function ( err, result ) {
+    if(err){
+        throw err;
     }
+    console.log( 'insert into mongo successful!' );
 } );
 
 var moment = require( 'moment' );
