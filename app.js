@@ -74,18 +74,19 @@ var mongoDb = exports.mongoDb = mongoskin.db( mongohg.href + '?auto_reconnect&po
 //    } );
 //} );
 
-mongoDb.collection( 'wiki' ).insert( {
-    contentType: 'news',
-    dateCreated: Date.now(),
-    author: 'Jeff Schwartz',
-    mrkdown: '# Yea!',
-    html: marked('# Yea!')
-}, function ( err, result ) {
-    if(err){
-        throw err;
-    }
-    console.log( 'insert into mongo successful!' );
-} );
+//mongoDb.collection( 'wiki' ).insert( {
+//    contentType: 'news',
+//    dateCreated: Date.now(),
+//    author: 'Jeff Schwartz',
+//    mrkdown: '# Yea!',
+//    html: marked('# Yea!'),
+//    title: 'Noodle Wiki Is Coming Soon!'
+//}, function ( err, result ) {
+//    if(err){
+//        throw err;
+//    }
+//    console.log( 'insert into mongo successful!' );
+//} );
 
 var moment = require( 'moment' );
 

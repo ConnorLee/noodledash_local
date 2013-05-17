@@ -71,18 +71,21 @@ exports.wiki = function ( req, res ) {
     console.log( 'contentType = ', contentType );
     console.log( 'route handler for wiki/' + contentType + '(...) called' );
 
-    mongoDbService.getShortListOfWikiFiles( contentType ).then( function ( shorList ) {
-        console.show( 'shortList = ', shorList );
-    }, function ( err ) {
-        console.log( err );
-        res.send( 500, {error : 'Unable to get shortList'} );
-    } );
+    mongoDbService.getShortListOfWikiFiles( contentType ).
+        then( function ( shortList ) {
+//            console.show( 'shortList = ', shortList );
+            res.render( 'wikimain', {
+                title    : 'Noodle Wiki',
+                pagename : contentType,
+                user     : req.user,
+                shortList: shortList
+            } );
+        }, function ( err ) {
+            console.log( err );
+            res.send( 500, {error : 'Unable to get shortList'} );
+        }
+    );
 
-    res.render( 'wikimain', {
-        title    : 'Noodle Wiki',
-        pagename : contentType,
-        user     : req.user
-    } );
 };
 
 //exports.wikifinance = function ( req, res ) {
