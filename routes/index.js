@@ -105,7 +105,7 @@ exports.wikinewcontent = function ( req, res ) {
 
 exports.insertWikiFile = function ( req, res ) {
     var contentType = req.params.content,
-        marked = require('marked' ),
+        marked = require( 'marked' ),
         data = {};
 
     console.log( 'route handler for wiki/newcontent/' + contentType + '(...) called' );
@@ -241,11 +241,37 @@ exports.updateWikiFile = function ( req, res ) {
 
 exports.deleteWikiFile = function ( req, res ) {
     // place holder routine until actually coded
-    var marked = require( 'marked' );
+    var _id = req.params.articleid;
+
     console.log( 'route handler for deleteWikiFile(...) called' );
-    res.render( 'main', {
-        title    : 'Noodle',
-        pagename : 'home',
-        user     : req.user
-    } );
+    console.log( 'article id for deletetion = ', _id );
+
+    // first try to read the article to make sure it is still there
+    mongoDbService.getWikiFileById( _id ).then(
+        // resolved
+        function ( response ) {
+            console.log( 'response from getWikiFileById = ', response );
+            // if it is there then delete it
+            if ( response ) {
+                mongoDbService.deleteWikiFile( _id ).then(
+                    // resolved
+                    function () {
+                        console.log('Article with id of ', _id, ' has been deleted from the database.' );
+                        res.json( {response : 'deleted'} )
+                    },
+                    // rejected - http response code = 500 + error reported by db service routine
+                    function ( err ) {
+                        console.log( "Error deleting article: " + err );
+                    }
+                );
+            } else {
+                console.log('Article with id of ', _id, ' doesn\'t exist and can\'t be deleted' );
+                res.json( {response : 'already deleted'} )
+            }
+        },
+        // rejected
+        function () {
+            console.log( "Error reading article with id of ", _id, " before deleting it.");
+        }
+    );
 };

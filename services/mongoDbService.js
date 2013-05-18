@@ -97,7 +97,8 @@ module.exports = {
 
         wiki.removeById( id, function ( err ) {
             if ( err ) {
-                deferred.reject( new Error( 'mongoDbService::removeWikiFile()' ) );
+                deferred.reject( new Error( 'mongoDbService::removeWikiFile() ' +
+                    'unable to delete article with _id = ' + id ) );
             } else {
                 deferred.resolve();
             }

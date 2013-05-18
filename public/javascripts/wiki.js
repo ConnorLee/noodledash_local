@@ -6,16 +6,51 @@ if ( $( '#wiki' ).length ) {
             $wikiArticleDeleteBtn = $( '.wiki-article-delete-btn' );
 
         $wikiArticleEditBtn.click( function ( event ) {
-            alert( 'here' );
+
+            var $article = $( this ).parents( '.article' );
+
+            alert( $article.attr( 'data-id' ) );
         } );
 
         $wikiArticleDeleteBtn.click( function ( event ) {
-            var response = confirm("Deletetion are permanent and cannot be undone. " +
-                "Are you sure you want to delete this article?");
+            var response = confirm( "Deletetion are permanent and cannot be undone. " +
+                "Are you sure you want to delete this article?" );
+            var $article = $( this ).parents( '.article' );
+            var articleId = $( this ).parents( '.article' ).attr( 'data-id' );
+            var promise;
 
-            var $article = $(this).parents('.article');
+            // testing deletion of a non existant article
+            //articleId = '5197be49c5cd1c470d000005';
 
-            alert($article.attr('data-id'));
+            if ( response ) {
+                ///wiki/api/v1/article/:articleid - end point url for ajax call
+                promise = $.ajax( {
+                    url  : '/wiki/api/v1/article/' + articleId,
+                    type : 'DELETE'
+                } );
+                promise.then(
+                    // resolved
+                    function ( json ) {
+                        console.log( 'json = ', json );
+                        if ( json.response === 'deleted' ) {
+                            alert( 'The article has been deleted.' );
+                            $article.hide( 'slow', function () {
+                                $article.remove();
+                            } );
+                        } else {
+                            // already deleted and doesn't exist in the db so remove it from the dom
+                            alert( "This article no longer exists!" );
+                            $article.hide( 'slow', function () {
+                                $article.remove();
+                            } );
+                        }
+                    },
+                    // rejected
+                    function () {
+                        alert( "There was a problem on the server and it was unable to delete this article!" )
+                    }
+                );
+            }
         } );
     } );
 }
