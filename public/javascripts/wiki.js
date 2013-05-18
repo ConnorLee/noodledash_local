@@ -18,6 +18,8 @@ if ( $( '#wiki' ).length ) {
             var $article = $( this ).parents( '.article' );
             var articleId = $( this ).parents( '.article' ).attr( 'data-id' );
             var promise;
+            var $modalArticleDeleted = $( '#modalDeletedArticle' );
+            var $modalArticleDoesNotExist = $( '#modalArticleDoesNotExist' );
 
             // testing deletion of a non existant article
             //articleId = '5197be49c5cd1c470d000005';
@@ -33,16 +35,22 @@ if ( $( '#wiki' ).length ) {
                     function ( json ) {
                         console.log( 'json = ', json );
                         if ( json.response === 'deleted' ) {
-                            alert( 'The article has been deleted.' );
-                            $article.hide( 'slow', function () {
-                                $article.remove();
-                            } );
+                            //alert( 'The article has been deleted.' );
+                            $modalArticleDeleted.modal();
+                            $modalArticleDeleted.on('hidden', function(){
+                                $article.hide( 'slow', function () {
+                                    $article.remove();
+                                } );
+                            });
                         } else {
                             // already deleted and doesn't exist in the db so remove it from the dom
-                            alert( "This article no longer exists!" );
-                            $article.hide( 'slow', function () {
-                                $article.remove();
-                            } );
+                            //alert( "This article no longer exists!" );
+                            $modalArticleDoesNotExist.modal();
+                            $modalArticleDoesNotExist.on('hidden', function(){
+                                $article.hide( 'slow', function () {
+                                    $article.remove();
+                                } );
+                            });
                         }
                     },
                     // rejected
