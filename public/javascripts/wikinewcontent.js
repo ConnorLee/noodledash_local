@@ -1,5 +1,5 @@
 'use strict';
-if ( $('#wikinewcontentform' ).length ) {
+if ( $( '#wikinewcontentform' ).length ) {
 
     $( function () {
         var $form = $( '#wikinewcontentform' ),
