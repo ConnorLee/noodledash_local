@@ -40,7 +40,7 @@ hr.soften {
 }
 .bs-docs-sidenav > li > a {
   display: block;
-  width: 190px \9;
+  width: 190px     \9;
   margin: 0 0 -1px;
   padding: 8px 14px;
   border: 1px solid #555;
@@ -103,7 +103,7 @@ hr.soften {
     width: 258px;
   }
   .bs-docs-sidenav > li > a {
-    width: 230px \9;
+    width: 230px     \9;
     /* Override the previous IE8-9 hack */
   
   }
@@ -348,8 +348,27 @@ a {
   height: 100px;
   overflow: hidden;
 }
-/* Wiki Section
+/* Wiki Display Content Section
 -------------------------------------------------- */
 .wikiaddcontentbtn {
   margin-left: 10px;
 }
+.wiki-article-header {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: solid 1px #e36b23;
+}
+.wiki-article-header-buttons-container {
+  margin-bottom: 15px;
+}
+.wiki-article-header-wtitle-container {
+  font-size: 1.5em;
+  margin-bottom: 3px;
+  font-style: normal;
+  line-height: 1.5em;
+}
+.wiki-article-header-infocontainer {
+  font-size: .9em;
+}
+/* Wiki Add New Content Section
+-------------------------------------------------- */

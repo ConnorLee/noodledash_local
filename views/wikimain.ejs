@@ -29,6 +29,7 @@
 <div class="container">
     <div class="row">
         <h1>Whoops...</h1>
+
         <h2>Gotta <a href="/auth/37signals">Login with 37signals</a> first.</h2>
     </div>
 </div>
@@ -40,15 +41,33 @@
 <div class="container">
     <div class="row">
         <div class="span12">
-            <section id="logos">
-                <h1><%= pagename %><a class="btn btn-success wikiaddcontentbtn" href="/wiki/newcontent/<%= contentType %>">add some new news</a></h1>
+            <section id="wiki">
+                <h1><%= pagename %>
+                    <a class="btn btn-success wikiaddcontentbtn" href="/wiki/newcontent/<%= contentType %>">add some new
+                        news</a>
+                </h1>
                 <% for(var i=0, l=shortList.length; i < l; i += 1){%>
-                <div class="alert alert-block">
-                    <span class="strong"><%= shortList[i].title%>,</span>
-                    <span class="strong">&nbsp;published on&nbsp;<%= new Date(shortList[i].dateCreated).toLocaleDateString() %></span>
-                    <span class="strong">&nbsp;at&nbsp;<%= new Date(shortList[i].dateCreated).toLocaleTimeString() %></span>
-                    <span class="strong">&nbsp;by&nbsp;<%= shortList[i].author %></span>&nbsp;
-                    <div><%- shortList[i].html %></div>
+                <div class="well well-large">
+                    <div class="wiki-article-header">
+                        <div class="clearfix">
+                            <div class="pull-right wiki-article-header-buttons-container">
+                                <button class="btn btn-success btn-small">edit</button>
+                                &nbsp;
+                                <button class="btn btn-danger btn-small">delete</button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="strong wiki-article-header-wtitle-container">
+                                <%= shortList[i].title%>
+                            </div>
+                            <div class="strong wiki-article-header-infocontainer">
+                                &nbsp;By&nbsp;<%= shortList[i].author.toUpperCase() %><br>
+                                &nbsp;<%= new Date(shortList[i].dateCreated).toLocaleDateString() %>
+                                ,&nbsp;<%= new Date(shortList[i].dateCreated).toLocaleTimeString() %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wiki-article-body"><%- shortList[i].html %></div>
                 </div>
                 <% } %>
             </section>
