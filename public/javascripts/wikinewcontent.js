@@ -1,29 +1,33 @@
 'use strict';
-$( function () {
-    var $form = $( '#wikinewcontentform' ),
-        $title = $( '#title' ),
-        $article = $( '#article' ),
-        $savebtn = $( '#savebtn' ),
-        //$cancelbtn = $( '#cancelbtn' ),
-        $inputs = $( ':input' ).not( ':button,:hidden' );
+if ( $('#wikinewcontentform' ).length ) {
 
-    // disable the save button until all fields have been entered
-    $savebtn.attr( 'disabled', 'disabled' );
+    $( function () {
+        var $form = $( '#wikinewcontentform' ),
+            $title = $( '#title' ),
+            $article = $( '#article' ),
+            $savebtn = $( '#savebtn' ),
+            $inputs = $( ':input' ).not( ':button,:hidden' );
 
-    // set the focus on the title input field
-    $title.focus();
+        // Disable the save button.
+        $savebtn.attr( 'disabled', 'disabled' );
 
-    // Toggle the disabled state of the save button. Only when both
-    // title and article have value will the save button be enabled.
-    $inputs.keyup( function ( event ) {
-        if ( $title.val().trim() && $article.val().trim() ) {
-            $savebtn.removeAttr( 'disabled' );
-        } else {
-            $savebtn.attr( 'disabled', 'disabled' );
-        }
+        // Set the focus on the title input field.
+        $title.focus();
+
+        // Toggle the disabled state of the save button. Only when both
+        // title and article have values will the save button be enabled.
+        $inputs.keyup( function ( event ) {
+            if ( $title.val().trim() && $article.val().trim() ) {
+                $savebtn.removeAttr( 'disabled' );
+            } else {
+                $savebtn.attr( 'disabled', 'disabled' );
+            }
+        } );
+
+        // Submit the form when the user clicks the submit button.
+        // Better than dealing with a real submit button.
+        $savebtn.click( function ( event ) {
+            $form.submit();
+        } );
     } );
-
-    $savebtn.click(function(event){
-        $form.submit();
-    });
-} );
+}
