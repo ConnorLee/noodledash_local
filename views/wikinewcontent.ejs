@@ -42,25 +42,40 @@
         <div class="span12">
             <section id="wikiarticles">
                 <h1><%= pagename %>
-                    <button class="btn btn-success wikiaddcontentbtn" id="savebtn">save</button>&nbsp;
+                    <button class="btn btn-success wikiaddcontentbtn" id="savebtn">save</button>
+                    &nbsp;
                     <a class="btn btn-success wikiaddcontentbtn" id="cancelbtn" href="<%= cancelbtnhref %>">cancel</a>
                 </h1>
-
                 <div class="well well-large">
-                    <form id="wikinewcontentform" method="post" action="/wiki/newcontent/<%= contentType %>">
-                        <div class="control-group warning">
-                            <label class="control-label" for="title">Title</label>
-                            <div class="controls">
-                                <input class="input-block-level" type="text" id="title" name="title" placeholder="Title">
-                            </div>
+                    <div class="btn-group markdown-code-preview-btn-group" data-toggle="buttons-radio">
+                        <button id="viewcodebtn" type="button" class="btn btn-primary">Code</button>
+                        <button id="viewpreviewbtn" type="button" class="btn btn-primary">Preview</button>
+                    </div>
+                    <div>
+                        <div id="edit-container">
+                            <form id="wikinewcontentform" method="post" action="/wiki/newcontent/<%= contentType %>">
+                                <div class="control-group warning">
+                                    <label class="control-label" for="title">Title</label>
+
+                                    <div class="controls">
+                                        <input class="input-block-level" type="text" id="title" name="title"
+                                               placeholder="Title">
+                                    </div>
+                                </div>
+                                <div class="control-group warning">
+                                    <label class="control-label" for="article">Article - Github Markdown Extensions
+                                        Supported</label>
+
+                                    <div class="controls">
+                                        <textarea class="input-block-level" id="article" name="article"
+                                                  placeholder="Enter markdown here. You can even use Github markdown extensions. Sweet!"
+                                                  rows="20"></textarea>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="control-group warning">
-                            <label class="control-label" for="article">Article - Github Markdown Extensions Supported</label>
-                            <div class="controls">
-                                <textarea class="input-block-level" id="article" name="article" placeholder="Enter markdown here. You can even use Github markdown extensions. Sweet!" rows="20"></textarea>
-                            </div>
-                        </div>
-                    </form>
+                        <div id="preview-container"></div>
+                    </div>
                 </div>
             </section>
         </div>

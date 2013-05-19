@@ -716,6 +716,7 @@ app.get( '/wiki/api/v1/file/:id', routes.getWikiFileById );
 app.post( '/wiki/api/v1/file', routes.insertWikiFile );
 app.put( '/wiki/api/v1/file', routes.updateWikiFile );
 app.delete( '/wiki/api/v1/article/:articleid', routes.deleteWikiFile );
+app.post( '/wiki/api/vi/htmlfrommarkdown', routes.htmlFromMarkdown );
 
 app.get( '/account', ensureAuthenticated, function ( req, res ) {
     res.render( 'account', {

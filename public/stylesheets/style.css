@@ -372,3 +372,6 @@ a {
 }
 /* Wiki Add New Content Section
 -------------------------------------------------- */
+.markdown-code-preview-btn-group {
+  margin-bottom: 24px;
+}

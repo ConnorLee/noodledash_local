@@ -275,3 +275,9 @@ exports.deleteWikiFile = function ( req, res ) {
         }
     );
 };
+
+exports.htmlFromMarkdown = function(req, res){
+    var markdown = req.body.markdown;
+    var html = marked(markdown);
+    res.json({html: html});
+};
