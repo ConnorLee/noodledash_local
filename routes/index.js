@@ -63,7 +63,7 @@ exports.index = function ( req, res ) {
 };
 
 /*
- * Wiki url route handlers
+ * Traditional Wiki url route handlers
  */
 
 exports.wiki = function ( req, res ) {
@@ -72,19 +72,19 @@ exports.wiki = function ( req, res ) {
     console.log( 'contentType = ', contentType );
     console.log( "wiki reg.params = ", req.params );
 
-    mongoDbService.getShortListOfWikiFiles( contentType ).
-        then( function ( shortList ) {
-//            console.show( 'shortList = ', shortList );
+    mongoDbService.getListOfWikiFilesByContentType( contentType ).
+        then( function ( list ) {
+//            console.show( 'list = ', list );
             res.render( 'wikimain', {
                 title       : 'Noodle Wiki',
                 pagename    : contentType,
                 user        : req.user,
-                shortList   : shortList,
+                list   : list,
                 contentType : contentType
             } );
         }, function ( err ) {
             console.log( err );
-            res.send( 500, {error : 'Unable to get shortList'} );
+            res.send( 500, {error : 'Unable to get list'} );
         }
     );
 
@@ -124,7 +124,7 @@ exports.insertWikiFile = function ( req, res ) {
     console.log( data );
 
     mongoDbService.insertWikiFile( data ).
-        then( function ( shortList ) {
+        then( function ( list ) {
             res.redirect( 'wiki/' + contentType + '/articles' );
         }, function ( err ) {
             console.log( err );
@@ -179,7 +179,7 @@ exports.updateWikiFile = function ( req, res ) {
     console.log( data );
 
     mongoDbService.updateWikiFile( id, data ).
-        then( function ( shortList ) {
+        then( function ( list ) {
             res.redirect( 'wiki/' + contentType + '/articles' );
         }, function ( err ) {
             console.log( err );
@@ -188,100 +188,9 @@ exports.updateWikiFile = function ( req, res ) {
     );
 };
 
-//exports.wikifinance = function ( req, res ) {
-//    var marked = require( 'marked' );
-//    console.log( 'route handler for wiki finance(...) called' );
-//    res.render( 'main', {
-//        title    : 'Noodle',
-//        pagename : 'home',
-//        user     : req.user
-//    } );
-//};
-//
-//exports.wikinews = function ( req, res ) {
-//    var marked = require( 'marked' );
-//    console.log( 'route handler for wiki news(...) called' );
-//    res.render( 'main', {
-//        title    : 'Noodle',
-//        pagename : 'home',
-//        user     : req.user
-//    } );
-//};
-//
-//exports.wikimetrics = function ( req, res ) {
-//    var marked = require( 'marked' );
-//    console.log( 'route handler for wiki metrics(...) called' );
-//    res.render( 'main', {
-//        title    : 'Noodle',
-//        pagename : 'home',
-//        user     : req.user
-//    } );
-//};
-//
-//exports.wikihandbook = function ( req, res ) {
-//    var marked = require( 'marked' );
-//    console.log( 'route handler for wiki handbook(...) called' );
-//    res.render( 'main', {
-//        title    : 'Noodle',
-//        pagename : 'home',
-//        user     : req.user
-//    } );
-//};
-//
-//exports.wikimarketing = function ( req, res ) {
-//    var marked = require( 'marked' );
-//    console.log( 'route handler for wiki marketing(...) called' );
-//    res.render( 'main', {
-//        title    : 'Noodle',
-//        pagename : 'home',
-//        user     : req.user
-//    } );
-//};
-//
-//exports.wikiresources = function ( req, res ) {
-//    var marked = require( 'marked' );
-//    console.log( 'route handler for wiki resources(...) called' );
-//    res.render( 'main', {
-//        title    : 'Noodle',
-//        pagename : 'home',
-//        user     : req.user
-//    } );
-//};
-//
-//exports.wikitools = function ( req, res ) {
-//    var marked = require( 'marked' );
-//    console.log( 'route handler for wiki tools(...) called' );
-//    res.render( 'main', {
-//        title    : 'Noodle',
-//        pagename : 'home',
-//        user     : req.user
-//    } );
-//};
-
 /*
  * Ajax API route handlers
  */
-//exports.getShortListOfWikiFiles = function ( req, res ) {
-//    // place holder routine until actually coded
-//    var marked = require( 'marked' );
-//    console.log( 'route handler for getShortListOfWikiFiles(...) called' );
-//    res.render( 'main', {
-//        title    : 'Noodle',
-//        pagename : 'home',
-//        user     : req.user
-//    } );
-//};
-//
-//exports.updateWikiFile = function ( req, res ) {
-//    // place holder routine until actually coded
-//    var marked = require( 'marked' );
-//    console.log( 'route handler for updateWikiFile(...) called' );
-//    res.render( 'main', {
-//        title    : 'Noodle',
-//        pagename : 'home',
-//        user     : req.user
-//    } );
-//};
 
 exports.deleteWikiFile = function ( req, res ) {
     // place holder routine until actually coded

@@ -714,7 +714,7 @@ app.post( '/wiki/:content/article/id?', validateUserPermission, routes.updateWik
 /*
  API Routing for AJAX calls
  */
-//app.get( '/wiki/api/v1/shortlist/:contentType', routes.getShortListOfWikiFiles );
+//app.get( '/wiki/api/v1/list/:contentType', routes.getListOfWikiFilesByContentType );
 //app.get( '/wiki/api/v1/file/:id', routes.getWikiFileById );
 //app.post( '/wiki/api/v1/file', routes.insertWikiFile );
 //app.put( '/wiki/api/v1/file', routes.updateWikiFile );

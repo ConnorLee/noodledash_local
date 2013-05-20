@@ -12,10 +12,10 @@ module.exports = {
 //
 //    },
     /*
-     * Return a short list (_id, name, date created) of wiki files in the db by
-     * content key (ie. finance, news, metrics, handbook, marketing, resources, tools, etc.).
+     * Return a list of wiki files in the db by content key
+     * (ie. finance, news, metrics, handbook, marketing, resources, tools, etc.).
      */
-    getShortListOfWikiFiles : function ( contentType ) {
+    getListOfWikiFilesByContentType : function ( contentType ) {
         var mongoDb = require( '../app' ).mongoDb,
             wiki = mongoDb.collection( 'wiki' ),
             Q = require( 'q' ),
@@ -23,14 +23,14 @@ module.exports = {
 
         console.log( 'contentType = ', contentType );
         // query for the short list of wiki files
-        wiki.find( {contentType : contentType} ).sort({dateCreated: -1}).toArray( function ( err, shortList ) {
+        wiki.find( {contentType : contentType} ).sort({dateCreated: -1}).toArray( function ( err, list ) {
             if ( err ) {
                 console.log( 'deferred rejected!' );
-                deferred.reject( new Error( 'mongoDbService::getShortListOfWikiFiles()' ) );
+                deferred.reject( new Error( 'mongoDbService::getListOfWikiFilesByContentType()' ) );
             } else {
                 console.log( 'deferred resolved!' );
-                //console.log( 'shortList = ', shortList );
-                deferred.resolve( shortList );
+                //console.log( 'list = ', list );
+                deferred.resolve( list );
             }
         } );
         // return a promise
