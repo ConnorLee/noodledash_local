@@ -703,21 +703,11 @@ app.get( '/wiki/:content/article', validateUserPermission, routes.wikinewcontent
 app.post( '/wiki/:content/article', validateUserPermission, routes.insertWikiFile );
 app.get( '/wiki/:content/article/id?', validateUserPermission, routes.getWikiFileById );
 app.post( '/wiki/:content/article/id?', validateUserPermission, routes.updateWikiFile );
-//app.get( '/wiki/finance', validateUserPermission, routes.wikifinance );
-//app.get( '/wiki/news', validateUserPermission, routes.wikinews );
-//app.get( '/wiki/metrics', validateUserPermission, routes.wikimetrics );
-//app.get( '/wiki/handbook', validateUserPermission, routes.wikihandbook );
-//app.get( '/wiki/marketing', validateUserPermission, routes.wikimarketing );
-//app.get( '/wiki/resources', validateUserPermission, routes.wikiresources );
-//app.get( '/wiki/tools', validateUserPermission, routes.wikitools );
 
 /*
  API Routing for AJAX calls
  */
-//app.get( '/wiki/api/v1/list/:contentType', routes.getListOfWikiFilesByContentType );
-//app.get( '/wiki/api/v1/file/:id', routes.getWikiFileById );
-//app.post( '/wiki/api/v1/file', routes.insertWikiFile );
-//app.put( '/wiki/api/v1/file', routes.updateWikiFile );
+app.get( '/wiki/api/v1/article?', routes.checkIfWikiFileExists );
 app.delete( '/wiki/api/v1/article/:articleid', routes.deleteWikiFile );
 app.post( '/wiki/api/vi/htmlfrommarkdown', routes.htmlFromMarkdown );
 

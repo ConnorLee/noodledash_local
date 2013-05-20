@@ -8,7 +8,38 @@ if ( $( '#wiki' ).length ) {
         $wikiArticleEditBtn.on( 'click', function ( event ) {
 
             var $article = $( this ).parents( '.article' );
-            //alert( $article.attr( 'data-id' ) );
+            var articleId = $( this ).parents( '.article' ).attr( 'data-id' );
+            var contentType = $( this ).parents( '.article' ).attr( 'data-contenttype' );
+            var promise;
+            var $modalArticleCanNotBeEdited = $( '#modalArticleCanNotBeEdited' );
+            /// ajax call to verify that the article hasn't already been deleted by another user
+            console.log('request to edit article ', articleId);
+            promise = $.ajax( {
+                url  : '/wiki/api/v1/article?id=' + articleId,
+                type : 'GET',
+                dataType: 'json'
+            } );
+            promise.then(
+                // resolved
+                function ( json ) {
+                    console.log( 'json = ', json );
+                    if ( json.response === 'deleted' ) {
+                        $modalArticleCanNotBeEdited.modal();
+                        $modalArticleCanNotBeEdited.on( 'hidden', function () {
+                            $article.hide( 'slow', function () {
+                                $article.remove();
+                            } );
+                        } );
+                    } else if(json.response === 'exists'){
+                        // already deleted and doesn't exist in the db so remove it from the dom
+                        window.location = '/wiki/' + contentType + '/article/id?id=' + articleId;
+                    }
+                },
+                // rejected
+                function () {
+                    alert( "There was a problem on the server and it was unable to delete this article!" )
+                }
+            );
         } );
 
         $wikiArticleDeleteBtn.off('click').on( 'click', function ( event ) {
@@ -31,14 +62,14 @@ if ( $( '#wiki' ).length ) {
                 ///wiki/api/v1/article/:articleid - end point url for ajax call
                 promise = $.ajax( {
                     url  : '/wiki/api/v1/article/' + articleId,
-                    type : 'DELETE'
+                    type : 'DELETE',
+                    dataType: 'json'
                 } );
                 promise.then(
                     // resolved
                     function ( json ) {
                         console.log( 'json = ', json );
                         if ( json.response === 'deleted' ) {
-                            //alert( 'The article has been deleted.' );
                             $modalArticleDeleted.modal();
                             $modalArticleDeleted.on( 'hidden', function () {
                                 $article.hide( 'slow', function () {
@@ -47,7 +78,6 @@ if ( $( '#wiki' ).length ) {
                             } );
                         } else {
                             // already deleted and doesn't exist in the db so remove it from the dom
-                            //alert( "This article no longer exists!" );
                             $modalArticleDoesNotExist.modal();
                             $modalArticleDoesNotExist.on( 'hidden', function () {
                                 $article.hide( 'slow', function () {

@@ -75,7 +75,7 @@ module.exports = {
         return deferred.promise;
     },
     /*
-     * Update and return a file document
+     * Update a document
      */
     updateWikiFile          : function ( id, file ) {
         var mongoDb = require( '../app' ).mongoDb,
