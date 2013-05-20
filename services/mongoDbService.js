@@ -4,6 +4,13 @@
 'use strict';
 
 module.exports = {
+//    /*
+//     * Ensure Indexes
+//     */
+//    ensureIndexes : function () {
+//        require( '.../app' ).mongoDb.collection( 'wiki' ).ensureIndex( {dateCreated : -1} );
+//
+//    },
     /*
      * Return a short list (_id, name, date created) of wiki files in the db by
      * content key (ie. finance, news, metrics, handbook, marketing, resources, tools, etc.).
@@ -70,16 +77,20 @@ module.exports = {
     /*
      * Update and return a file document
      */
-    updateWikiFile          : function ( file ) {
+    updateWikiFile          : function ( id, file ) {
         var mongoDb = require( '../app' ).mongoDb,
             wiki = mongoDb.collection( 'wiki' ),
             Q = require( 'q' ),
             deferred = Q.defer();
 
-        wiki.save( file, function ( err, result ) {
+        console.log( '_id = ', id );
+
+        //noinspection JSValidateTypes
+        wiki.updateById( id, {$set: {title: file.title, mrkdown: file.mrkdown, html: file.html, lastModifiedDate: file.lastModifiedDate}}, function ( err, result ) {
             if ( err ) {
                 deferred.reject( new Error( 'mongoDbService::updateWikiFile()' ) );
             } else {
+                console.log( 'result =', result );
                 deferred.resolve( result[0] );
             }
         } );

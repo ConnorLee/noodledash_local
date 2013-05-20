@@ -95,7 +95,7 @@ exports.wikinewcontent = function ( req, res ) {
     console.log( 'contentType = ', contentType );
     //console.log( req.header( 'Referer' ) );
     res.render( 'wikinewcontent', {
-        title         : 'Noodle Wiki blah blah blah',
+        title         : 'Noodle Wiki',
         pagename      : 'add new news',
         user          : req.user,
         cancelbtnhref : req.header( 'Referer' ),
@@ -125,7 +125,62 @@ exports.insertWikiFile = function ( req, res ) {
 
     mongoDbService.insertWikiFile( data ).
         then( function ( shortList ) {
-            res.redirect( 'wiki/' + contentType );
+            res.redirect( 'wiki/' + contentType + '/articles' );
+        }, function ( err ) {
+            console.log( err );
+            res.send( 500, {error : 'Unable to save article.'} );
+        }
+    );
+};
+
+exports.getWikiFileById = function ( req, res ) {
+    var contentType = req.params.content,
+        id = req.query.id;
+
+    console.log( 'getWikiFileById called!' );
+    console.log( 'contentType = ', contentType );
+    console.log( 'req.query', req.query );
+    console.log( 'id = ', id );
+    mongoDbService.getWikiFileById( id ).
+        then( function ( result ) {
+            console.log( 'result = ', result );
+            res.render( 'wikieditcontent', {
+                title         : 'Noodle Wiki',
+                pagename      : 'add new news',
+                user          : req.user,
+                cancelbtnhref : req.header( 'Referer' ),
+                contentType   : contentType,
+                article       : result
+            } );
+        }, function ( err ) {
+            console.log( err );
+            res.send( 500, {error : 'Unable to save article.'} );
+        }
+    );
+};
+
+exports.updateWikiFile = function ( req, res ) {
+    var contentType = req.params.content,
+        marked = require( 'marked' ),
+        data = {},
+        id = req.query.id;
+
+    console.log( 'route handler for wiki/newcontent/' + contentType + '(...) called' );
+    console.log( 'contentType = ', contentType );
+    console.log( "wiki reg.params = ", req.params );
+    console.log( 'title = ', req.body.title );
+    console.log( 'article = ', req.body.article );
+
+    console.log( req.session );
+    data.title = req.body.title;
+    data.mrkdown = req.body.article;
+    data.html = marked( req.body.article );
+    data.lastModifiedDate = Date.now();
+    console.log( data );
+
+    mongoDbService.updateWikiFile( id, data ).
+        then( function ( shortList ) {
+            res.redirect( 'wiki/' + contentType + '/articles' );
         }, function ( err ) {
             console.log( err );
             res.send( 500, {error : 'Unable to save article.'} );
@@ -206,38 +261,27 @@ exports.insertWikiFile = function ( req, res ) {
 /*
  * Ajax API route handlers
  */
-exports.getShortListOfWikiFiles = function ( req, res ) {
-    // place holder routine until actually coded
-    var marked = require( 'marked' );
-    console.log( 'route handler for getShortListOfWikiFiles(...) called' );
-    res.render( 'main', {
-        title    : 'Noodle',
-        pagename : 'home',
-        user     : req.user
-    } );
-};
-
-exports.getWikiFileById = function ( req, res ) {
-    // place holder routine until actually coded
-    var marked = require( 'marked' );
-    console.log( 'route handler for getWikiFileById(...) called' );
-    res.render( 'main', {
-        title    : 'Noodle',
-        pagename : 'home',
-        user     : req.user
-    } );
-};
-
-exports.updateWikiFile = function ( req, res ) {
-    // place holder routine until actually coded
-    var marked = require( 'marked' );
-    console.log( 'route handler for updateWikiFile(...) called' );
-    res.render( 'main', {
-        title    : 'Noodle',
-        pagename : 'home',
-        user     : req.user
-    } );
-};
+//exports.getShortListOfWikiFiles = function ( req, res ) {
+//    // place holder routine until actually coded
+//    var marked = require( 'marked' );
+//    console.log( 'route handler for getShortListOfWikiFiles(...) called' );
+//    res.render( 'main', {
+//        title    : 'Noodle',
+//        pagename : 'home',
+//        user     : req.user
+//    } );
+//};
+//
+//exports.updateWikiFile = function ( req, res ) {
+//    // place holder routine until actually coded
+//    var marked = require( 'marked' );
+//    console.log( 'route handler for updateWikiFile(...) called' );
+//    res.render( 'main', {
+//        title    : 'Noodle',
+//        pagename : 'home',
+//        user     : req.user
+//    } );
+//};
 
 exports.deleteWikiFile = function ( req, res ) {
     // place holder routine until actually coded
@@ -256,7 +300,7 @@ exports.deleteWikiFile = function ( req, res ) {
                 mongoDbService.deleteWikiFile( _id ).then(
                     // resolved
                     function () {
-                        console.log('Article with id of ', _id, ' has been deleted from the database.' );
+                        console.log( 'Article with id of ', _id, ' has been deleted from the database.' );
                         res.json( {response : 'deleted'} )
                     },
                     // rejected - http response code = 500 + error reported by db service routine
@@ -265,19 +309,19 @@ exports.deleteWikiFile = function ( req, res ) {
                     }
                 );
             } else {
-                console.log('Article with id of ', _id, ' doesn\'t exist and can\'t be deleted' );
+                console.log( 'Article with id of ', _id, ' doesn\'t exist and can\'t be deleted' );
                 res.json( {response : 'already deleted'} )
             }
         },
         // rejected
         function () {
-            console.log( "Error reading article with id of ", _id, " before deleting it.");
+            console.log( "Error reading article with id of ", _id, " before deleting it." );
         }
     );
 };
 
-exports.htmlFromMarkdown = function(req, res){
+exports.htmlFromMarkdown = function ( req, res ) {
     var markdown = req.body.markdown;
-    var html = marked(markdown);
-    res.json({html: html});
+    var html = marked( markdown );
+    res.json( {html : html} );
 };

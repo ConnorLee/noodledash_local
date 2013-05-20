@@ -41,23 +41,24 @@ redis.auth( rtg.auth.split( ":" )[1] );
  * Add myself to redis giving myself 'All' permission
  */
 /*
-redis.set( "6705250", "All", function ( err, res ) {
-    if ( err ) {
-        console.log( "Error returned when setting my ID" );
-        throw err;
-    }
-    console.log( "Response received setting my ID", res );
-} );
-*/
+ redis.set( "6705250", "All", function ( err, res ) {
+ if ( err ) {
+ console.log( "Error returned when setting my ID" );
+ throw err;
+ }
+ console.log( "Response received setting my ID", res );
+ } );
+ */
 
 /*
- * connect to mongo on heroku
+ * connect to mongo on heroku and ensure indexes
  */
 var mongohg = require( 'url' ).parse( process.env.MONGOHQ_URL );
 //console.log( "mongohg = ", mongohg );
 var mongoauth = mongohg.auth.split( ":" )[1];
 var mongoskin = require( 'mongoskin' );
 var mongoDb = exports.mongoDb = mongoskin.db( mongohg.href + '?auto_reconnect&poolSize=20', {w : 1} );
+mongoDb.collection( 'wiki' ).ensureIndex( {dateCreated : -1}, function(err, reply){});
 
 ///*
 // * For testing purposed only - *** comment this out when done testing ***
@@ -697,9 +698,11 @@ app.get( '/releases/:release?', validateUserPermission, routes.index );
 /*
  Routing for wiki urls
  */
-app.get( '/wiki/:content', validateUserPermission, routes.wiki );
-app.get( '/wiki/newcontent/:content', validateUserPermission, routes.wikinewcontent );
-app.post( '/wiki/newcontent/:content', validateUserPermission, routes.insertWikiFile );
+app.get( '/wiki/:content/articles', validateUserPermission, routes.wiki );
+app.get( '/wiki/:content/article', validateUserPermission, routes.wikinewcontent );
+app.post( '/wiki/:content/article', validateUserPermission, routes.insertWikiFile );
+app.get( '/wiki/:content/article/id?', validateUserPermission, routes.getWikiFileById );
+app.post( '/wiki/:content/article/id?', validateUserPermission, routes.updateWikiFile );
 //app.get( '/wiki/finance', validateUserPermission, routes.wikifinance );
 //app.get( '/wiki/news', validateUserPermission, routes.wikinews );
 //app.get( '/wiki/metrics', validateUserPermission, routes.wikimetrics );
@@ -711,10 +714,10 @@ app.post( '/wiki/newcontent/:content', validateUserPermission, routes.insertWiki
 /*
  API Routing for AJAX calls
  */
-app.get( '/wiki/api/v1/shortlist/:contentType', routes.getShortListOfWikiFiles );
-app.get( '/wiki/api/v1/file/:id', routes.getWikiFileById );
-app.post( '/wiki/api/v1/file', routes.insertWikiFile );
-app.put( '/wiki/api/v1/file', routes.updateWikiFile );
+//app.get( '/wiki/api/v1/shortlist/:contentType', routes.getShortListOfWikiFiles );
+//app.get( '/wiki/api/v1/file/:id', routes.getWikiFileById );
+//app.post( '/wiki/api/v1/file', routes.insertWikiFile );
+//app.put( '/wiki/api/v1/file', routes.updateWikiFile );
 app.delete( '/wiki/api/v1/article/:articleid', routes.deleteWikiFile );
 app.post( '/wiki/api/vi/htmlfrommarkdown', routes.htmlFromMarkdown );
 
@@ -784,28 +787,35 @@ function validateUserPermission( req, res, next ) {
      */
     var pathPermissions = {
         // currently supported in production
-        '/releases/snt'     : ['Board', 'Exec', 'All'],
-        '/releases/pnp'     : ['Board', 'Exec', 'All'],
-        '/releases/jedis'   : ['Board', 'Exec', 'All'],
-        '/releases/backlog' : ['Board', 'Exec', 'All'],
-        '/manual'           : [/*'Board',*/ 'Exec', 'All'],
-        '/resources'        : ['Board', 'Exec', 'All'],
+        '/releases/snt'              : ['Board', 'Exec', 'All'],
+        '/releases/pnp'              : ['Board', 'Exec', 'All'],
+        '/releases/jedis'            : ['Board', 'Exec', 'All'],
+        '/releases/backlog'          : ['Board', 'Exec', 'All'],
+        '/manual'                    : [/*'Board',*/ 'Exec', 'All'],
+        '/resources'                 : ['Board', 'Exec', 'All'],
         // wiki suported not in production
-        '/wiki/finance'     : ['Board', 'Exec'/*, 'All'*/],
-        '/wiki/news'        : ['Board', 'Exec', 'All'],
-        '/wiki/metrics'     : ['Board', 'Exec', 'All'],
-        '/wiki/handbook'    : [/*'Board',*/ 'Exec', 'All'],
-        '/wiki/marketing'   : [/*'Board',*/ 'Exec', 'All'],
-        '/wiki/resources'   : [/*'Board',*/ 'Exec', 'All'],
-        '/wiki/tools'       : [/*'Board',*/ 'Exec', 'All'],
-        '/wiki/newcontent/finance'  : ['Board', 'Exec', 'All'],
-        '/wiki/newcontent/news'  : ['Board', 'Exec', 'All'],
-        '/wiki/newcontent/metrics'  : ['Board', 'Exec', 'All'],
-        '/wiki/newcontent/handbook'  : ['Board', 'Exec', 'All'],
-        '/wiki/newcontent/marketing'  : ['Board', 'Exec', 'All'],
-        '/wiki/newcontent/resources'  : ['Board', 'Exec', 'All'],
-        '/wiki/newcontent/tools'  : ['Board', 'Exec', 'All'],
-        '/wiki/newcontent'  : ['Board', 'Exec', 'All']
+        '/wiki/finance/articles'     : ['Board', 'Exec'/*, 'All'*/],
+        '/wiki/news/articles'        : ['Board', 'Exec', 'All'],
+        '/wiki/metrics/articles'     : ['Board', 'Exec', 'All'],
+        '/wiki/handbook/articles'    : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/marketing/articles'   : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/resources/articles'   : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/tools/articles'       : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/finance/article'      : ['Board', 'Exec'/*, 'All'*/],
+        '/wiki/news/article'         : ['Board', 'Exec', 'All'],
+        '/wiki/metrics/article'      : ['Board', 'Exec', 'All'],
+        '/wiki/handbook/article'     : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/marketing/article'    : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/resources/article'    : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/tools/article'        : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/finance/article/id'   : ['Board', 'Exec'/*, 'All'*/],
+        '/wiki/news/article/id'      : ['Board', 'Exec', 'All'],
+        '/wiki/metrics/article/id'   : ['Board', 'Exec', 'All'],
+        '/wiki/handbook/article/id'  : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/marketing/article/id' : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/resources/article/id' : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/tools/article/id'     : [/*'Board',*/ 'Exec', 'All'],
+        '/wiki/newcontent'           : ['Board', 'Exec', 'All']
     };
     var requiredPermissions, i, len;
 
@@ -814,11 +824,9 @@ function validateUserPermission( req, res, next ) {
      permission = 'Board';
      */
 
-    /*
     console.log( "user's id = ", id );
     console.log( "user's permission = ", permission );
     console.log( "requestPath = ", requestPath );
-    */
 
     if ( !permission ) {
         /// users that don't have a permission assigned to them are routed to '/'

@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title><%= title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +13,7 @@
     <link href="/stylesheets/flot.css" rel="stylesheet">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- Fav and touch icons -->
@@ -23,80 +22,83 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-  </head>
+</head>
 
-  <body class="<%= pagename %>" data-spy="scroll">
+<body class="<%= pagename %>" data-spy="scroll">
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">Noodle Dashboard</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Releases <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="/releases/snt">Schools & Tools</a></li>
-                  <li><a href="/releases/pnp">Providers & People</a></li>
-                  <li><a href="/releases/jedis">The Jedis</a></li>
-                  <li><a href="/releases/backlog">Backlog</a></li>
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">Noodle Dashboard</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Releases <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/releases/snt">Schools & Tools</a></li>
+                            <li><a href="/releases/pnp">Providers & People</a></li>
+                            <li><a href="/releases/jedis">The Jedis</a></li>
+                            <li><a href="/releases/backlog">Backlog</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://noodleeducation.campfirenow.com" target="_new">Campfire</a></li>
+                            <li><a href="https://basecamp.com/1772111" target="_new">Basecamp</a></li>
+                            <li><a href="http://noodleeducation.highrisehq.com" target="_new">Highrise</a></li>
+                            <li><a href="http://thevault.noodle.org" target="_new">The Vault</a></li>
+                            <li><a href="http://www.pivotaltracker.com" target="_new">Pivotal Tracker</a></li>
+                            <li><a href="https://github.com/NoodleEducation/" target="_new">Github</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Info <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/manual" target="_new">Employee Manual</a></li>
+                            <li><a href="/resources" target="_new">Company Resources and Collateral</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/" target="_new">Dashboard</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wiki <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/wiki/finance/articles">Finance</a></li>
+                            <li><a href="/wiki/news/articles">News</a></li>
+                            <li><a href="/wiki/metrics/articles">Metrics</a></li>
+                            <li><a href="/wiki/handbook/articles">Handbook</a></li>
+                            <li><a href="/wiki/marketing/articles">Marketing</a></li>
+                            <li><a href="/wiki/resources/articles">Resources</a></li>
+                            <li><a href="/wiki/tools/articles">Tools</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/">Dashboard</a></li>
+                        </ul>
+                    </li>
                 </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="https://noodleeducation.campfirenow.com" target="_new">Campfire</a></li>
-                  <li><a href="https://basecamp.com/1772111" target="_new">Basecamp</a></li>
-                  <li><a href="http://noodleeducation.highrisehq.com" target="_new">Highrise</a></li>
-                  <li><a href="http://thevault.noodle.org" target="_new">The Vault</a></li>
-                  <li><a href="http://www.pivotaltracker.com" target="_new">Pivotal Tracker</a></li>
-                  <li><a href="https://github.com/NoodleEducation/" target="_new">Github</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Info <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="/manual" target="_new">Employee Manual</a></li>
-                  <li><a href="/resources" target="_new">Company Resources and Collateral</a></li>
-                  <li class="divider"></li>
-                  <li><a href="/" target="_new">Dashboard</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wiki <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="/wiki/finance">Finance</a></li>
-                  <li><a href="/wiki/news">News</a></li>
-                  <li><a href="/wiki/metrics">Metrics</a></li>
-                  <li><a href="/wiki/handbook">Handbook</a></li>
-                  <li><a href="/wiki/marketing">Marketing</a></li>
-                  <li><a href="/wiki/resources">Resources</a></li>
-                  <li><a href="/wiki/tools">Tools</a></li>
-                  <li class="divider"></li>
-                  <li><a href="/">Dashboard</a></li>
-                </ul>
-              </li>
-            </ul>
-            <div class="nav-collapse collapse pull-right">
-            <ul class="nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="display-name"><%= user.displayName %></span> <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="/account" target="_new">Account Info</a></li>
-                  <li><a href="/logout" target="_new">Logout</a></li>
-                </ul>
-              </li>
-            </ul>
+                <div class="nav-collapse collapse pull-right">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="display-name"><%= user.displayName %></span>
+                                <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/account" target="_new">Account Info</a></li>
+                                <li><a href="/logout" target="_new">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <p class="navbar-text pull-right">
+                    <%= visitorsLast30Days %> visitors in the last 30 days
+                </p>
             </div>
-                        <p class="navbar-text pull-right">
-              <%= visitorsLast30Days %> visitors in the last 30 days
-            </p>
-          </div><!--/.nav-collapse -->
+            <!--/.nav-collapse -->
         </div>
-      </div>
     </div>
+</div>

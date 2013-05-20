@@ -2,17 +2,14 @@
 if ( $( '#wiki' ).length ) {
 
     $( function () {
-        var /*$wikiArticleEditBtn = $( '.wiki-article-edit-btn' ),*/
+        var $wikiArticleEditBtn = $( '.wiki-article-edit-btn' ),
             $wikiArticleDeleteBtn = $( '.wiki-article-delete-btn' );
 
-        /*
         $wikiArticleEditBtn.on( 'click', function ( event ) {
 
             var $article = $( this ).parents( '.article' );
-
-            alert( $article.attr( 'data-id' ) );
+            //alert( $article.attr( 'data-id' ) );
         } );
-        */
 
         $wikiArticleDeleteBtn.off('click').on( 'click', function ( event ) {
             var $article = $( this ).parents( '.article' );
