@@ -10,14 +10,16 @@ if ( $( '#wikieditcontentform' ).length ) {
             $viewcodebtn = $( '#viewcodebtn' ),
             $viewpreviewbtn = $( '#viewpreviewbtn' ),
             $editcontainer = $( '#edit-container' ),
-            $previewcontainer = $( '#preview-container' );
+            articleId = $editcontainer.attr( 'data-articleid' ),
+            $previewcontainer = $( '#preview-container' ),
+            $modalArticleCanNotBeSaved = $('#modalArticleCanNotBeSaved');
 
         console.log( $editcontainer.length );
 
         // Disable the save button.
         //$savebtn.attr( 'disabled', 'disabled' );
 
-        // begin with code as active radion button in the code/preview radio group
+        // begin with code as active radio button in the code/preview radio group
         $viewcodebtn.addClass( 'active' );
         $previewcontainer.hide();
 
@@ -61,7 +63,32 @@ if ( $( '#wikieditcontentform' ).length ) {
         // Submit the form when the user clicks the submit button.
         // Better than dealing with a real submit button.
         $savebtn.click( function ( event ) {
-            $form.submit();
+            var promise;
+
+            /// check that the article still exists. If it does submit the form. If it doesn't display a message.
+            promise = $.ajax( {
+                url      : '/wiki/api/v1/article?id=' + articleId,
+                type     : 'GET',
+                dataType : 'json'
+            } );
+            promise.then(
+                // resolved
+                function ( json ) {
+                    console.log( 'json = ', json );
+                    if ( json.response === 'deleted' ) {
+                        $modalArticleCanNotBeSaved.modal();
+                        $modalArticleCanNotBeSaved.on('hidden', function(){
+                            window.location = '/wiki/news/articles';
+                        });
+                    } else if ( json.response === 'exists' ) {
+                        $form.submit();
+                    }
+                },
+                // rejected
+                function () {
+                    alert( "There was a problem on the server and it was unable to delete this article!" )
+                }
+            );
         } );
     } );
 }

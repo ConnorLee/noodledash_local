@@ -52,7 +52,7 @@
                         <button id="viewpreviewbtn" type="button" class="btn btn-primary">Preview</button>
                     </div>
                     <div>
-                        <div id="edit-container">
+                        <div id="edit-container" data-articleid="<%= article._id %>">
                             <form id="wikieditcontentform" method="post" action="/wiki/<%= contentType %>/article/id?id=<%= article._id %>">
                                 <div class="control-group warning">
                                     <label class="control-label" for="title">Title</label>
@@ -81,7 +81,19 @@
         </div>
     </div>
 </div>
-
+<!-- Modal -->
+<div id="modalArticleCanNotBeSaved" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Article Can't Be Saved</h3>
+    </div>
+    <div class="modal-body">
+        <p>The article you requested to save no longer exists in the database.</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>
 <hr>
 <footer>
     <p>&copy; Noodle Education 2012</p>

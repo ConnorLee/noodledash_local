@@ -4,15 +4,8 @@
 'use strict';
 
 module.exports = {
-//    /*
-//     * Ensure Indexes
-//     */
-//    ensureIndexes : function () {
-//        require( '.../app' ).mongoDb.collection( 'wiki' ).ensureIndex( {dateCreated : -1} );
-//
-//    },
     /*
-     * Return a list of wiki files in the db by content key
+     * Find all article by content type and return them.
      * (ie. finance, news, metrics, handbook, marketing, resources, tools, etc.).
      */
     getListOfWikiFilesByContentType : function ( contentType ) {
@@ -22,7 +15,7 @@ module.exports = {
             deferred = Q.defer();
 
         console.log( 'contentType = ', contentType );
-        // query for the short list of wiki files
+
         wiki.find( {contentType : contentType} ).sort({dateCreated: -1}).toArray( function ( err, list ) {
             if ( err ) {
                 console.log( 'deferred rejected!' );
@@ -37,7 +30,7 @@ module.exports = {
         return deferred.promise;
     },
     /*
-     * Find and return a file document by its id
+     * Find and return an article
      */
     getWikiFileById         : function ( _id ) {
         var mongoDb = require( '../app' ).mongoDb,
@@ -56,7 +49,7 @@ module.exports = {
         return deferred.promise;
     },
     /*
-     * Insert and return a new file document
+     * Insert and return a new article
      */
     insertWikiFile          : function ( file ) {
         var mongoDb = require( '../app' ).mongoDb,
@@ -75,7 +68,7 @@ module.exports = {
         return deferred.promise;
     },
     /*
-     * Update a document
+     * Update an article
      */
     updateWikiFile          : function ( id, file ) {
         var mongoDb = require( '../app' ).mongoDb,
@@ -85,8 +78,8 @@ module.exports = {
 
         console.log( '_id = ', id );
 
-        //noinspection JSValidateTypes
-        wiki.updateById( id, {$set: {title: file.title, mrkdown: file.mrkdown, html: file.html, lastModifiedDate: file.lastModifiedDate}}, function ( err, result ) {
+        wiki.updateById( id, {$set: {title: file.title, mrkdown: file.mrkdown, html: file.html,
+            lastModifiedDate: file.lastModifiedDate}}, function ( err, result ) {
             if ( err ) {
                 deferred.reject( new Error( 'mongoDbService::updateWikiFile()' ) );
             } else {
@@ -98,7 +91,7 @@ module.exports = {
         return deferred.promise;
     },
     /*
-     * Delete a file document
+     * Delete an article
      */
     deleteWikiFile          : function ( id ) {
         var mongoDb = require( '../app' ).mongoDb,

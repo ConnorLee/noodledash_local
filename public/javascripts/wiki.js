@@ -48,8 +48,6 @@ if ( $( '#wiki' ).length ) {
             var promise;
             var $modalArticleDeleted = $( '#modalDeletedArticle' );
             var $modalArticleDoesNotExist = $( '#modalArticleDoesNotExist' );
-            //var response = confirm( "Deletetion are permanent and cannot be undone. " +
-            //    "Are you sure you want to delete this article?" );
 
             console.log('request to delete article ', articleId);
 

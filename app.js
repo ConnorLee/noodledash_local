@@ -41,7 +41,7 @@ redis.auth( rtg.auth.split( ":" )[1] );
  * Add myself to redis giving myself 'All' permission
  */
 /*
- redis.set( "6705250", "All", function ( err, res ) {
+ redis.set( "jschwartz@noodle.org", "All", function ( err, res ) {
  if ( err ) {
  console.log( "Error returned when setting my ID" );
  throw err;
@@ -59,6 +59,7 @@ var mongoauth = mongohg.auth.split( ":" )[1];
 var mongoskin = require( 'mongoskin' );
 var mongoDb = exports.mongoDb = mongoskin.db( mongohg.href + '?auto_reconnect&poolSize=20', {w : 1} );
 mongoDb.collection( 'wiki' ).ensureIndex( {dateCreated : -1}, function(err, reply){});
+mongoDb.collection( 'wiki' ).ensureIndex( {contentType: 1}, function(err, reply){});
 
 ///*
 // * For testing purposed only - *** comment this out when done testing ***
@@ -393,8 +394,8 @@ passport.use( new Thirty7SignalsStrategy( {
     function ( accessToken, refreshToken, profile, done ) {
         // asynchronous verification, for effect...
         process.nextTick( function () {
-            //console.log( "profile = ", profile );
-            redis.get( profile.id.toString(), function ( err, reply ) {
+            console.log( "profile = ", profile );
+            redis.get( profile._json.identity.email_address, function ( err, reply ) {
                 if ( err ) {
                     console.log( "redis.get returned err", err );
                     throw err;
@@ -776,14 +777,14 @@ function validateUserPermission( req, res, next ) {
      * value = an array of permissions imposed on the user to have access to the request.path
      */
     var pathPermissions = {
-        // currently supported in production
+        // non wiki urls
         '/releases/snt'              : ['Board', 'Exec', 'All'],
         '/releases/pnp'              : ['Board', 'Exec', 'All'],
         '/releases/jedis'            : ['Board', 'Exec', 'All'],
         '/releases/backlog'          : ['Board', 'Exec', 'All'],
         '/manual'                    : [/*'Board',*/ 'Exec', 'All'],
         '/resources'                 : ['Board', 'Exec', 'All'],
-        // wiki suported not in production
+        // wiki urls
         '/wiki/finance/articles'     : ['Board', 'Exec'/*, 'All'*/],
         '/wiki/news/articles'        : ['Board', 'Exec', 'All'],
         '/wiki/metrics/articles'     : ['Board', 'Exec', 'All'],
@@ -804,8 +805,7 @@ function validateUserPermission( req, res, next ) {
         '/wiki/handbook/article/id'  : [/*'Board',*/ 'Exec', 'All'],
         '/wiki/marketing/article/id' : [/*'Board',*/ 'Exec', 'All'],
         '/wiki/resources/article/id' : [/*'Board',*/ 'Exec', 'All'],
-        '/wiki/tools/article/id'     : [/*'Board',*/ 'Exec', 'All'],
-        '/wiki/newcontent'           : ['Board', 'Exec', 'All']
+        '/wiki/tools/article/id'     : [/*'Board',*/ 'Exec', 'All']
     };
     var requiredPermissions, i, len;
 
