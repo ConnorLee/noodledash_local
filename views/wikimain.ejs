@@ -43,8 +43,10 @@
         <div class="span12">
             <section id="wiki">
                 <h1><%= pagename %>
+                    <% if(contentType === 'news' || (contentType !== 'news' && list.length === 0)){ %>
                     <a class="btn btn-success wiki-add-content-btn" href="/wiki/<%= contentType %>/article"><i class="icon-file icon-white"></i>add some new
                         news</a>
+                    <% } %>
                 </h1>
                 <% for(var i=0, l=list.length; i < l; i += 1){%>
                 <article class="well well-large article" data-id="<%= list[i]._id %>" data-contenttype="<%= list[i].contentType %>">
@@ -52,8 +54,10 @@
                         <div class="clearfix">
                             <div class="pull-right wiki-article-header-buttons-container">
                                 <button class="btn btn-success btn-small wiki-article-edit-btn"><i class="icon-edit icon-white"></i> edit</button>
+                                <% if(contentType === 'news' || (contentType !== 'news' && list.length === 0)){ %>
                                 &nbsp;
                                 <button class="btn btn-danger btn-small wiki-article-delete-btn"><i class="icon-remove icon-white"></i> delete</button>
+                                <% } %>
                             </div>
                         </div>
                         <div>
