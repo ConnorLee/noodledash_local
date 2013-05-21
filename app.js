@@ -706,7 +706,7 @@ app.get( '/wiki/:content/article/id?', validateUserPermission, routes.getWikiFil
 app.post( '/wiki/:content/article/id?', validateUserPermission, routes.updateWikiFile );
 
 /*
- API Routing for AJAX calls
+ API Routing for Wiki AJAX calls
  */
 app.get( '/wiki/api/v1/article?', routes.checkIfWikiFileExists );
 app.delete( '/wiki/api/v1/article/:articleid', routes.deleteWikiFile );
