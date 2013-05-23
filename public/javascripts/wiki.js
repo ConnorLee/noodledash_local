@@ -22,7 +22,7 @@ if ( $( '#wiki' ).length ) {
             promise.then(
                 // resolved
                 function ( json ) {
-                    console.log( 'json = ', json );
+                    //console.log( 'json = ', json );
                     if ( json.response === 'deleted' ) {
                         $modalArticleCanNotBeEdited.modal();
                         $modalArticleCanNotBeEdited.on( 'hidden', function () {
@@ -49,7 +49,7 @@ if ( $( '#wiki' ).length ) {
             var $modalArticleDeleted = $( '#modalDeletedArticle' );
             var $modalArticleDoesNotExist = $( '#modalArticleDoesNotExist' );
 
-            console.log('request to delete article ', articleId);
+            //console.log('request to delete article ', articleId);
 
             $( '#modalConfirmDelete' ).modal();
 
@@ -66,7 +66,7 @@ if ( $( '#wiki' ).length ) {
                 promise.then(
                     // resolved
                     function ( json ) {
-                        console.log( 'json = ', json );
+                        //console.log( 'json = ', json );
                         if ( json.response === 'deleted' ) {
                             $modalArticleDeleted.modal();
                             $modalArticleDeleted.on( 'hidden', function () {

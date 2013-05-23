@@ -394,10 +394,10 @@ passport.use( new Thirty7SignalsStrategy( {
     function ( accessToken, refreshToken, profile, done ) {
         // asynchronous verification, for effect...
         process.nextTick( function () {
-            console.log( "profile = ", profile );
+            //console.log( "profile = ", profile );
             redis.get( profile._json.identity.email_address, function ( err, reply ) {
                 if ( err ) {
-                    console.log( "redis.get returned err", err );
+                    //console.log( "redis.get returned err", err );
                     throw err;
                 }
 
@@ -814,9 +814,9 @@ function validateUserPermission( req, res, next ) {
      permission = 'Board';
      */
 
-    console.log( "user's id = ", id );
-    console.log( "user's permission = ", permission );
-    console.log( "requestPath = ", requestPath );
+    //console.log( "user's id = ", id );
+    //console.log( "user's permission = ", permission );
+    //console.log( "requestPath = ", requestPath );
 
     if ( !permission ) {
         /// users that don't have a permission assigned to them are routed to '/'

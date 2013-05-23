@@ -12,7 +12,7 @@ if ( $( '#wikinewcontentform' ).length ) {
             $editcontainer = $( '#edit-container' ),
             $previewcontainer = $( '#preview-container' );
 
-        console.log( $editcontainer.length );
+        //console.log( $editcontainer.length );
 
         // Disable the save button.
         $savebtn.attr( 'disabled', 'disabled' );

@@ -14,7 +14,7 @@ if ( $( '#wikieditcontentform' ).length ) {
             $previewcontainer = $( '#preview-container' ),
             $modalArticleCanNotBeSaved = $('#modalArticleCanNotBeSaved');
 
-        console.log( $editcontainer.length );
+        //console.log( $editcontainer.length );
 
         // Disable the save button.
         //$savebtn.attr( 'disabled', 'disabled' );
@@ -74,7 +74,7 @@ if ( $( '#wikieditcontentform' ).length ) {
             promise.then(
                 // resolved
                 function ( json ) {
-                    console.log( 'json = ', json );
+                    //console.log( 'json = ', json );
                     if ( json.response === 'deleted' ) {
                         $modalArticleCanNotBeSaved.modal();
                         $modalArticleCanNotBeSaved.on('hidden', function(){

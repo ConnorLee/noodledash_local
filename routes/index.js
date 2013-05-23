@@ -68,9 +68,9 @@ exports.index = function ( req, res ) {
 
 exports.wiki = function ( req, res ) {
     var contentType = req.params.content;
-    console.log( 'route handler for wiki/' + contentType + '(...) called' );
-    console.log( 'contentType = ', contentType );
-    console.log( "wiki reg.params = ", req.params );
+    //console.log( 'route handler for wiki/' + contentType + '(...) called' );
+    //console.log( 'contentType = ', contentType );
+    //console.log( "wiki reg.params = ", req.params );
 
     mongoDbService.getListOfWikiFilesByContentType( contentType ).
         then( function ( list ) {
@@ -83,7 +83,7 @@ exports.wiki = function ( req, res ) {
                 contentType : contentType
             } );
         }, function ( err ) {
-            console.log( err );
+            //console.log( err );
             res.send( 500, {error : 'Unable to get list'} );
         }
     );
@@ -92,7 +92,7 @@ exports.wiki = function ( req, res ) {
 
 exports.wikinewcontent = function ( req, res ) {
     var contentType = req.params.content;
-    console.log( 'contentType = ', contentType );
+    //console.log( 'contentType = ', contentType );
     //console.log( req.header( 'Referer' ) );
     res.render( 'wikinewcontent', {
         title         : 'Noodle Wiki',
@@ -108,26 +108,26 @@ exports.insertWikiFile = function ( req, res ) {
         marked = require( 'marked' ),
         data = {};
 
-    console.log( 'route handler for wiki/newcontent/' + contentType + '(...) called' );
-    console.log( 'contentType = ', contentType );
-    console.log( "wiki reg.params = ", req.params );
-    console.log( 'title = ', req.body.title );
-    console.log( 'article = ', req.body.article );
+    //console.log( 'route handler for wiki/newcontent/' + contentType + '(...) called' );
+    //console.log( 'contentType = ', contentType );
+    //console.log( "wiki reg.params = ", req.params );
+    //console.log( 'title = ', req.body.title );
+    //console.log( 'article = ', req.body.article );
 
-    console.log( req.session );
+    //console.log( req.session );
     data.contentType = contentType;
     data.dateCreated = Date.now();
     data.author = req.session.passport.user.displayName;
     data.title = req.body.title;
     data.mrkdown = req.body.article;
     data.html = marked( req.body.article );
-    console.log( data );
+    //console.log( data );
 
     mongoDbService.insertWikiFile( data ).
         then( function ( list ) {
             res.redirect( 'wiki/' + contentType + '/articles' );
         }, function ( err ) {
-            console.log( err );
+            //console.log( err );
             res.send( 500, {error : 'Unable to save article.'} );
         }
     );
@@ -137,13 +137,13 @@ exports.getWikiFileById = function ( req, res ) {
     var contentType = req.params.content,
         id = req.query.id;
 
-    console.log( 'getWikiFileById called!' );
-    console.log( 'contentType = ', contentType );
-    console.log( 'req.query', req.query );
-    console.log( 'id = ', id );
+    //console.log( 'getWikiFileById called!' );
+    //console.log( 'contentType = ', contentType );
+    //console.log( 'req.query', req.query );
+    //console.log( 'id = ', id );
     mongoDbService.getWikiFileById( id ).
         then( function ( result ) {
-            console.log( 'result = ', result );
+            //console.log( 'result = ', result );
             res.render( 'wikieditcontent', {
                 title         : 'Noodle Wiki',
                 pagename      : 'edit the news',
@@ -153,7 +153,7 @@ exports.getWikiFileById = function ( req, res ) {
                 article       : result
             } );
         }, function ( err ) {
-            console.log( err );
+            //console.log( err );
             res.send( 500, {error : 'Unable to save article.'} );
         }
     );
@@ -165,42 +165,42 @@ exports.updateWikiFile = function ( req, res ) {
         data = {},
         _id = req.query.id;
 
-    console.log( 'route handler for wiki/newcontent/' + contentType + '(...) called' );
-    console.log( 'contentType = ', contentType );
-    console.log( "wiki reg.params = ", req.params );
-    console.log( 'title = ', req.body.title );
-    console.log( 'article = ', req.body.article );
+    //console.log( 'route handler for wiki/newcontent/' + contentType + '(...) called' );
+    //console.log( 'contentType = ', contentType );
+    //console.log( "wiki reg.params = ", req.params );
+    //console.log( 'title = ', req.body.title );
+    //console.log( 'article = ', req.body.article );
 
-    console.log( req.session );
+    //console.log( req.session );
     data.title = req.body.title;
     data.mrkdown = req.body.article;
     data.html = marked( req.body.article );
     data.lastModifiedDate = Date.now();
-    console.log( data );
+    //console.log( data );
 
     // first try to read the article to make sure it is still there
     mongoDbService.getWikiFileById( _id ).then(
         // resolved
         function ( response ) {
-            console.log( 'response from getWikiFileById = ', response );
+            //console.log( 'response from getWikiFileById = ', response );
             // if it is there then update it
             if ( response ) {
                 mongoDbService.updateWikiFile( _id, data ).
                     then( function ( list ) {
                         res.redirect( 'wiki/' + contentType + '/articles' );
                     }, function ( err ) {
-                        console.log( err );
+                        //console.log( err );
                         res.send( 500, {error : 'Unable to update article.'} );
                     }
                 );
             } else {
-                console.log( 'Article with _id of ', _id, ' doesn\'t exist and can\'t be updated' );
+                //console.log( 'Article with _id of ', _id, ' doesn\'t exist and can\'t be updated' );
                 res.send( 500, {error : 'Unable to update article.'} );
             }
         },
         // rejected
         function () {
-            console.log( "Error reading article with _id of ", _id, " before updating it." );
+            //console.log( "Error reading article with _id of ", _id, " before updating it." );
             res.send( 500, {error : 'Unable to update article.'} );
         }
     );
@@ -214,35 +214,35 @@ exports.deleteWikiFile = function ( req, res ) {
     // place holder routine until actually coded
     var _id = req.params.articleid;
 
-    console.log( 'route handler for deleteWikiFile(...) called' );
-    console.log( 'article id for deletetion = ', _id );
+    //console.log( 'route handler for deleteWikiFile(...) called' );
+    //console.log( 'article id for deletetion = ', _id );
 
     // first try to read the article to make sure it is still there
     mongoDbService.getWikiFileById( _id ).then(
         // resolved
         function ( response ) {
-            console.log( 'response from getWikiFileById = ', response );
+            //console.log( 'response from getWikiFileById = ', response );
             // if it is there then delete it
             if ( response ) {
                 mongoDbService.deleteWikiFile( _id ).then(
                     // resolved
                     function () {
-                        console.log( 'Article with id of ', _id, ' has been deleted from the database.' );
+                        //console.log( 'Article with id of ', _id, ' has been deleted from the database.' );
                         res.json( {response : 'deleted'} )
                     },
                     // rejected - http response code = 500 + error reported by db service routine
                     function ( err ) {
-                        console.log( "Error deleting article: " + err );
+                        //console.log( "Error deleting article: " + err );
                     }
                 );
             } else {
-                console.log( 'Article with id of ', _id, ' doesn\'t exist and can\'t be deleted' );
+                //console.log( 'Article with id of ', _id, ' doesn\'t exist and can\'t be deleted' );
                 res.json( {response : 'already deleted'} )
             }
         },
         // rejected
         function () {
-            console.log( "Error reading article with id of ", _id, " before deleting it." );
+            //console.log( "Error reading article with id of ", _id, " before deleting it." );
         }
     );
 };
@@ -260,7 +260,7 @@ exports.checkIfWikiFileExists = function ( req, res ) {
     mongoDbService.getWikiFileById( _id ).then(
         // resolved
         function ( response ) {
-            console.log( 'response from wikiFileById = ', response );
+            //console.log( 'response from wikiFileById = ', response );
             // if it is there then update it
             if ( response ) {
                 res.json( {response : 'exists'} )
@@ -270,7 +270,7 @@ exports.checkIfWikiFileExists = function ( req, res ) {
         },
         // rejected
         function () {
-            console.log( "Error reading article with _id of ", _id, " before updating it." );
+            //console.log( "Error reading article with _id of ", _id, " before updating it." );
             res.send( 500, {error : 'Errodd'} );
         }
     );

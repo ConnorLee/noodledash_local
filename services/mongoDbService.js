@@ -14,14 +14,14 @@ module.exports = {
             Q = require( 'q' ),
             deferred = Q.defer();
 
-        console.log( 'contentType = ', contentType );
+        //console.log( 'contentType = ', contentType );
 
         wiki.find( {contentType : contentType} ).sort({dateCreated: -1}).toArray( function ( err, list ) {
             if ( err ) {
-                console.log( 'deferred rejected!' );
+                //console.log( 'deferred rejected!' );
                 deferred.reject( new Error( 'mongoDbService::getListOfWikiFilesByContentType()' ) );
             } else {
-                console.log( 'deferred resolved!' );
+                //console.log( 'deferred resolved!' );
                 //console.log( 'list = ', list );
                 deferred.resolve( list );
             }
@@ -76,14 +76,14 @@ module.exports = {
             Q = require( 'q' ),
             deferred = Q.defer();
 
-        console.log( '_id = ', id );
+        //console.log( '_id = ', id );
 
         wiki.updateById( id, {$set: {title: file.title, mrkdown: file.mrkdown, html: file.html,
             lastModifiedDate: file.lastModifiedDate}}, function ( err, result ) {
             if ( err ) {
                 deferred.reject( new Error( 'mongoDbService::updateWikiFile()' ) );
             } else {
-                console.log( 'result =', result );
+                //console.log( 'result =', result );
                 deferred.resolve( result[0] );
             }
         } );
