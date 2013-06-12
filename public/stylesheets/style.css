@@ -33,6 +33,10 @@ hr.soften {
   padding-top: 0px;
 }
 
+.releases {
+  padding-top: 10px;
+}
+
 .releases a {
   color: #00B7FF;
 }
