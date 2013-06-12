@@ -3,6 +3,7 @@
 
 
     <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/releases.js"></script>
     <script src="/javascripts/jquery.flot.js"></script>
     <script src="/javascripts/jquery.flot.time.js"></script>
     <script src="/javascripts/jquery.flot.selection.js"></script>
@@ -11,7 +12,7 @@
     <script src="/javascripts/sparklines.min.js"></script>
     <script>
     $(document).ready(function(){
-        
+
     	plotDailies('dailyVisitors', 'dailyVisitorsSelector', <%= dailyVisitors %>);
         plotDailies('dailyPageViews', 'dailyPageViewsSelector', <%= dailyPageViews %>);
         plotDailies('dailyVisitorsNew', 'dailyVisitorsNewSelector', <%= dailyVisitorsNew %>);
@@ -22,7 +23,7 @@
         plot2Dailies('dailyHeK12Visitors', 'dailyHeK12VisitorsSelector', {label:'K12',data:<%= dailyK12Visitors %>}, {label:'Higher Ed',data:<%= dailyHigherEducationVisitors %>});
         plotDailies('dailyUniqueLoginEvents', 'dailyUniqueLoginEventsSelector', <%= dailyUniqueLoginEvents %>);
         plot2HighriseCases('monthlyHighriseCases', {label:'Created',data:<%= kasesCreated %>}, {label:'Closed',data:<%= kasesClosed %>});
-        plot3HighriseDeals('monthlyHighriseDeals', {label:'Pending',data:<%= dealsPendingData %>},{label:'Lost',data:<%= dealsLostData %>},{label:'Won',data:<%= dealsWonData %>});      
+        plot3HighriseDeals('monthlyHighriseDeals', {label:'Pending',data:<%= dealsPendingData %>},{label:'Lost',data:<%= dealsLostData %>},{label:'Won',data:<%= dealsWonData %>});
     });
 	</script>
 
