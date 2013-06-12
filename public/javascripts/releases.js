@@ -35,7 +35,7 @@ var Version = {
 				var pullrequest = self.escapeHtml(entry.gsx$pullrequest.$t);
 
 
-				item += '<td class="narrow">' + '<a href="pullrequest">' + pullrequest + '</a>' + '</td>';
+				item += '<td class="narrow">' + "<a href='" + pullrequest + "'" + "target='_blank'>" + pullrequest + '</a>' + '</td>';
 				item += '<td class="date">' + self.simpleDate(entry.gsx$date.$t) + '</td>';
 				item += '<td class="wide">' + self.formatHTML(entry.gsx$changes.$t) + '</td>';
 				table.append('<tr class="entry' + '">' + item + '</tr>');
