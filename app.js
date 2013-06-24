@@ -50,6 +50,9 @@ dailySupplementalLearningVisitors = '';
 dailyLearningMaterialVisitors = '';
 dailyRegistrationPercentage = '';
 dailyUniqueLoginEvents = '';
+dailyCPC = '';
+dailyAdCost = '';
+dailyAdClicks = '';
 
 //Get the necessary dates for this stuff.  
 
@@ -198,7 +201,21 @@ GA.login(function(err, token) {
   GA.get(supplementalLearningVisitorsQuery, function(err, entries) {
     dailySupplementalLearningVisitors += ''+gaGetDailies(entries, 'ga:visitors');
   });
-  
+
+  var cpcQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:adCost,ga:adClicks'
+  };
+  GA.get(cpcQuery, function(err, entries) {
+    dailyAdCost += ''+gaGetDailies(entries, 'ga:adCost');
+    dailyAdClicks += ''+gaGetDailies(entries, 'ga:adClicks');
+    dailyCPC = gaDivideDailiesInteger(dailyAdCost, dailyAdClicks);
+    console.log(dailyCPC);
+  });
+
   var learningMaterialVisitorsQuery = {
     'ids': 'ga:'+profile,
     'start-date': monthAgoString,
@@ -249,6 +266,27 @@ function gaDivideDailies(dailiesNumerator, dailiesDenominator) {
     result = '';
     for (var i=0;i<numerator.length;i++){
       resultValue = (dailyGetValue(numerator[i])/dailyGetValue(denominator[i]))*100;
+      resultDate = dailyGetDate(numerator[i]);
+      result += '['+resultDate+', '+resultValue+'], ';
+
+    }
+    result = '['+result.slice(0,result.length-2)+']';
+    return result;
+
+  } else {
+    console.log("Error! Numerator/Denominator mismatch");
+  }
+}
+
+function gaDivideDailiesInteger(dailiesNumerator, dailiesDenominator) {
+
+  numerator = dailiesToArray(dailiesNumerator);
+  denominator = dailiesToArray(dailiesDenominator);
+
+  if (numerator.length == denominator.length) {
+    result = '';
+    for (var i=0;i<numerator.length;i++){
+      resultValue = (dailyGetValue(numerator[i])/dailyGetValue(denominator[i]));
       resultDate = dailyGetDate(numerator[i]);
       result += '['+resultDate+', '+resultValue+'], ';
 

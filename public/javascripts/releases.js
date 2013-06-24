@@ -29,7 +29,7 @@ var Version = {
 
             $.each(data.feed.entry, function(i, entry) {
 
-				console.log(i, entry);
+//				console.log(i, entry);
 
 				var item = "";
 				var pullrequest = self.escapeHtml(entry.gsx$pullrequest.$t);
