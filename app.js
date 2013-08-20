@@ -600,13 +600,13 @@ var reqGet = http.request(emailsSentRequest, function(res) {
 
 
   res.on('data', function(d) {
-    var siteStatusJSON = JSON.parse(d+'');
-    if (siteStatusJSON.emails.emailsJobStatus == 'EmailsAreBeingSent') {
-      emailJobsWorking = true;
-    }
-    else {
-      emailJobsWorking = false;
-    }
+  //  var siteStatusJSON = JSON.parse(d+'');
+  //  if (siteStatusJSON.emails.emailsJobStatus == 'EmailsAreBeingSent') {
+  //    emailJobsWorking = true;
+  //  }
+  //  else {
+  //    emailJobsWorking = false;
+  //  }
   });
 
 });
