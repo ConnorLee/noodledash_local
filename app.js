@@ -19,7 +19,6 @@ var THIRTY7SIGNALS_CALLBACK_URL = process.env.THIRTY7SIGNALS_CALLBACK_URL;
 
 var HIGHRISE_TOKEN = process.env.HIGHRISE_TOKEN;
 
-
 var profile='36017589';
 var username=process.env.GA_USERNAME;
 var password=process.env.GA_PASSWORD;
