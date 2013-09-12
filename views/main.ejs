@@ -1,4 +1,4 @@
-  <% if (!user) { %>
+<% if (!user) { %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,177 +39,42 @@
   <% include header.ejs %>
 
   <div class="container">
-    <div class="row">
-      <div class="span3 sidebar-nav bs-docs-sidebar">
-        <ul class="nav nav-list well bs-docs-sidenav affix">
-          <li class="active">
-            <a href="#releases">Releases</a>
-          </li>
-          <li>
-            <a href="#tools">Tools</a>
-          </li>
-          <li>
-            <a href="#executive-summary">Executive Summary</a>
-          </li>
-          <li>
-            <a href="#marketing">Marketing</a>
-          </li>
-          <li>
-            <a href="#product">Product</a>
-          </li>
-          <li>
-            <a href="#education">Education</a>
-          <li> 
-            <a href="#tech">Tech</a>
-          </li>
-          <li>
-            <a href="#pros">Pros</a>
-          </li>
-          <li>
-            <a href="#labs">Labs</a>
-          </li>
-        </ul>
-      </div>
-      <!--/span-->
-      <div class="span9">
-
-        <div class="alert alert-block">
-          <a class="close" data-dismiss="alert">×</a>
-          <h4 class="alert-heading">
-            <script language="JavaScript">
-var Quotation=new Array() // do not change this!
-
-Quotation[0] = "Boy, you're something!";
-Quotation[1] = "Fortune and glory, kid.";
-Quotation[2] = "Why did it have to be snakes?";
-Quotation[3] = "You call *this* archaeology?";
-Quotation[4] = "I like Indiana.";
-Quotation[5] = "I'm gonna blow up the Ark, Rene. ";
-Quotation[6] = "This should be in a museum!";
-Quotation[7] = "Dad, are we hit?";
-Quotation[8] = "Wave it at anything that slithers.";
-Quotation[9] = "Give me the whip.";
-Quotation[10] = "It's not the years, honey, it's the mileage.";
-Quotation[11] = " I don't know, I'm makin' this up as I go.";
-Quotation[12] = "Do we need the monkey?";
-var Q = Quotation.length;
-var whichQuotation=Math.round(Math.random()*(Q-1));
-function showQuotation(){document.write(Quotation[whichQuotation]);}
-showQuotation();
-</script>
-          </h4>
+    <div class="row main">
+      <div class="col-md-3">
+        <div class="bs-sidebar hidden-print affix">
+          <ul class="nav well bs-sidenav">
+            <li>
+              <a href="#marketing">Marketing</a>
+            </li>
+            <li>
+              <a href="#product">Product</a>
+            </li>
+            <li>
+              <a href="#tech">Tech</a>
+            </li>
+          </ul>
         </div>
+      </div>
 
-        <section id="releases">
-          <h2>Recent Releases</h2>
-          <div class="row-fluid">
-            <div class="span12">
-              <div id="version-history" class="releases">
-                <table class="bordered">
-                  <thead>
-                    <tr>
-                    <th class="date">Date</th>
-                    <th class="wide">Changes</th>
-                    <th class="narrow">Work Involved</th>
-                  </tr>
-                </thead>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        <section id="tools">
-          <hr>
-          <div class="row-fluid">
-            <div class="span6">
-              <div class="media">
-                <a class="pull-left" href="https://noodleeducation.campfirenow.com" target="_new">
-                  <img class="img-rounded service-logo" src="/images/campfire.png"></a>
-                <div class="media-body">
-                  <h4 class="media-heading">Campfire</h4>
-                  <p class="description">
-                    Our internal chat client, where people can get work done, do standups, and ask NoodleBot for help (type /help).
-                  </p>
-                  <p>
-                    <a href="https://noodleeducation.campfirenow.com" target="_new" class="btn btn-primary">Chat</a>
-                  </p>
-                </div>
-              </div>
-              <div class="media">
-                <a class="pull-left" href="https://basecamp.com/1772111" target="_new">
-                  <img class="img-rounded service-logo" src="/images/basecamp.png"></a>
-                <div class="media-body">
-                  <h4 class="media-heading">Basecamp</h4>
-                  <p class="description">
-                    Where the Product team prepares and discusses features before they are ready for primetime.
-                  </p>
-                  <p>
-                    <a href="https://basecamp.com/1772111" target="_new" class="btn btn-primary">Projects</a>
-                  </p>
-                </div>
-              </div>
-              <div class="media">
-                <a class="pull-left" href="https://noodleeducation.highrisehq.com/" target="_new">
-                  <img class="img-rounded service-logo" src="/images/highrise.png"></a>
-                <div class="media-body">
-                  <h4 class="media-heading">Highrise</h4>
-                  <p class="description">
-                    The Education team's CRM and case management system.
-                  </p>
-                  <p>
-                    <a href="https://noodleeducation.highrisehq.com/" target="_new" class="btn btn-primary">Business</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="span6">
-              <div class="media">
-                <a class="pull-left" href="http://thevault.noodle.org" target="_new">
-                  <img class="img-rounded service-logo" src="/images/thevault.png"></a>
-                <div class="media-body">
-                  <h4 class="media-heading">TheVault</h4>
-                  <p class="description">
-                    Where the Data team stores information that's not yet ready for the site.
-                  </p>
-                  <p>
-                    <a href="http://thevault.noodle.org" target="_new" class="btn btn-primary">Data</a>
-                  </p>
-                </div>
-              </div>
-              <div class="media">
-                <a class="pull-left" href="https://github.com/NoodleEducation/" target="_new">
-                  <img class="img-rounded service-logo" src="/images/github.png"></a>
-                <div class="media-body">
-                  <h4 class="media-heading">Github</h4>
-                  <p class="description">
-                    Where the Product, Tech &amp; Data teams manage all of the code for our sites and projects.
-                  </p>
-                  <p>
-                    <a href="https://github.com/NoodleEducation/" target="_new" class="btn btn-primary">Code</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--/row--> </section>
+      <div class="col-md-9">
         <section id="executive-summary">
           <hr>
-          <div class="row-fluid">
-            <div class="span4">
+          <div class="row">
+            <div class="col-md-4">
               <div class="executiveSummaryHeader">
                 <h3>Uniques</h3>
               </div>
               <div id="dailyVisitors" style="height:150px;"></div>
               <div id="dailyVisitorsSelector" style="height:30px;"></div>
             </div>
-            <div class="span4">
+            <div class="col-md-4">
               <div class="executiveSummaryHeader">
                 <h3>Page Views</h3>
               </div>
               <div id="dailyPageViews" style="height:150px;"></div>
               <div id="dailyPageViewsSelector" style="height:30px;"></div>
             </div>
-            <div class="span4">
+            <div class="col-md-4">
               <div class="executiveSummaryHeader">
                 <h3>Average Time on Site</h3>
               </div>
@@ -221,187 +86,61 @@ showQuotation();
         <section id="marketing">
           <hr>
           <h2>Marketing</h2>
-          <div class="row-fluid" style="text-align:center;">
-            <div class="span4">
+          <div class="row" style="text-align:center;">
+            <div class="col-md-6">
               <h4>New Visitors</h4>
-              <div id="dailyVisitorsNew" style="height:150px;"></div>
+              <div id="dailyVisitorsNew" style="height:250px;"></div>
               <div id="dailyVisitorsNewSelector" style="height:30px;"></div>
             </div>
-              <div class="span4">
-                <h4>Visitors that Register</h4>
-                <div id="dailyRegistrationEvents" style="height:150px;"></div>
-                <div id="dailyRegistrationEventsSelector" style="height:30px;"></div>
-              </div>
-              <div class="span4">
-                <h4>Daily Cost per Clicks</h4>
-                <div id="dailyCPC" style="height:150px;"></div>
-                <div id="dailyCPCSelector" style="height:30px;"></div>
-              </div>
-          </div>
-          <div class="row-fluid" style="text-align:center;">
-            <div class="span12">
-              <h4>Public Relations Impressions and Traffic</h4>
-              <div id="pressTrafficSources">
-                <iframe width='722' height='350' frameborder='none' src='https://docs.google.com/spreadsheet/pub?key=0AlSYdTPOhBEadHFpcUVTZDZNaVhRUy1CcFU2NVcyRFE&single=true&gid=0&range=A1%3AF15&output=html&widget=false'></iframe>
-              </div>
+            <div class="col-md-6">
+              <h4>Daily Cost per Clicks</h4>
+              <div id="dailyCPC" style="height:250px;"></div>
+              <div id="dailyCPCSelector" style="height:30px;"></div>
             </div>
           </div>
         </section>
         <section id="product">
           <hr>
           <h2>Product</h2>
-          <div class="row-fluid">
-            <div class="span6" style="text-align:center">
-              <h4>Visitors to Supplemental Learning </br> and Learning Materials</h4>
-              <div id="dailySlLmVisitors" style="height:250px;"></div>
-              <div id="dailySlLmVisitorsSelector" style="height:45px;"></div>
-            </div>
-            <div class="span6" style="text-align:center">
-              <h4>Visitors to K12 Education </br> and Higher Education</h4>
-              <div id="dailyHeK12Visitors" style="height:250px;"></div>
-              <div id="dailyHeK12VisitorsSelector" style="height:45px;"></div>
+          <div class="row">
+            <div class="col-md-6" style="text-align:center">
+              <h4>Visitors to Supplemental Learning</br>
+              and Learning Materials
+            </h4>
+            <div id="dailySlLmVisitors" style="height:250px;"></div>
+            <div id="dailySlLmVisitorsSelector" style="height:45px;"></div>
+          </div>
+          <div class="col-md-6" style="text-align:center">
+            <h4>Visitors to K12 Education</br>
+            and Higher Education
+          </h4>
+          <div id="dailyHeK12Visitors" style="height:250px;"></div>
+          <div id="dailyHeK12VisitorsSelector" style="height:45px;"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-6" style="text-align:center;">
+            <h4>% of New Users that Register</h4>
+            <div id="dailyRegistrationPercentage" style="height:150px;"></div>
+            <div id="dailyRegistrationPercentageSelector" style="height:30px;"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-12" style="text-align:center;">
+              <h4>Net Promoter Score</h4>
+              <div id="netPromoterScoreDataTable">
+                <iframe width='375' height='345' frameborder='none' src='https://docs.google.com/spreadsheet/pub?key=0AlSYdTPOhBEadHFWRHQ3cGdiRzA0WXpsM0prblM0M3c&single=true&gid=0&range=A1%3AC20&output=html&widget=false'></iframe>
+              </div>
             </div>
           </div>
-          <div class="row-fluid">
-            <div class="span6" style="text-align:center;">
-              <h4>% of New Users that Register</h4>
-              <div id="dailyRegistrationPercentage" style="height:150px;"></div>
-              <div id="dailyRegistrationPercentageSelector" style="height:30px;"></div>
-            </div>
-            <div class="span6" style="text-align:center;">
-              <h4>Unique Logins, Daily</h4>
-              <div id="dailyUniqueLoginEvents" style="height:150px;"></div>
-              <div id="dailyUniqueLoginEventsSelector" style="height:30px;"></div>
-            </div>
-            <div class="row-fluid">
-              <div class="span6" style="text-align:center;">
-                <h4>Viral Factor</h4>
-                <div>
-                  <p style="text-align:left">Viral Factor, v, is the percentage of users that recruit a new user in a month.</p>
-                  <p style="text-align:left">We'll take the number of invitations sent and multiply it by the number of invitees that register to find our viral factor.</p>
-                </div>
-                <div style="height:30px;"></div>
-              </div>
-              <div class="span6" style="text-align:center;">
-                <h4>Net Promoter Score</h4>
-                <div id="netPromoterScoreDataTable">
-                  <iframe width='375' height='345' frameborder='none' src='https://docs.google.com/spreadsheet/pub?key=0AlSYdTPOhBEadHFWRHQ3cGdiRzA0WXpsM0prblM0M3c&single=true&gid=0&range=A1%3AC20&output=html&widget=false'></iframe>
-                </div>
-              </div>
-            <div class="row-fluid">
-              <div class="span6" style="text-align:center;">
-                <h4>Number of Categories Launched</h4>
-                <div style="height:180px; margin-top:30px">
-                  Category, Date Launched
-                </div>
-              </div>
-              <div class="span6" style="text-align:center;">
-                <h4>Feedback</h4>
-                <div style="height:180px; margin-top:30px;">
-                  For user feedback and other insights, see the <a href="https://basecamp.com/1772111/projects/881048-user-research" target="_new">user reserach project</a> in Basecamp.
-                </div>
-              </div>
-            </div>
-            <div class="row-fluid">
-              <div class="span6" style="text-align:center;">
-                <h4>Customer Satisfaction - Internal Users</h4>
-                <div style="height:150px;"></div>
-                <div style="height:30px;"></div>
-              </div>
-              <div class="span6" style="text-align:center;">
-                <h4>Customer Satisfaction - Survey</h4>
-                <div style="height:150px;"></div>
-                <div style="height:30px;"></div>
-              </div>
-            </div>
-            </div>
-          </section>
-          <section id="education">
-            <hr>
-            <h2>Education</h2>
-            <div class="row-fluid" style="text-align:center;">
-              <div class="span12">
-                <h4>Data Progress</h4>
-                <div id="dataProgressSheet">
-                  <iframe width='627' height='525' frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=0AiavzMHvsDqndGlSYlFjRk5UX2d6Q1NVbjduZ05TRnc&single=true&gid=1&range=A1%3AF25&output=html'></iframe>
-                </div>
-              </div>
-            </div>
-            <div class="row-fluid">
-              <div class="span6" style="text-align:center">
-                <h4>Cases</h4>
-                <div id="monthlyHighriseCases" style="height:250px;"></div>
-                <div id="monthlyHighriseCasesSelector" style="height:45px;"></div>
-              </div>
-              <div class="span6" style="text-align:center">
-                <h4>Deals</h4>
-                <div id="monthlyHighriseDeals" style="height:250px;"></div>
-                <div id="monthlyHighriseDeals" style="height:45px;"></div>
-              </div>
-            </div>
-          </section>
-          <section id="tech">
-            <hr>
-            <h2>Tech</h2>
-            <div class="row-fluid">
-              <div class="span10">
-                Will contain:
-                <ul>
-                  <li>Uniques</li>
-                  <li>Uptime (from AWS monitoring)</li>
-                  <li>Page Load for Key Pages</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-          <section id="pros">
-            <hr>
-            <h2>Pros</h2>
-            <div class="row-fluid">
-              <div class="span10">
-                Will contain:
-        Data v Last Year
-                <br />
-                - Total Tutors
-                <br />
-                - Active Tutors
-                <br />
-                - # Students
-                <br />
-                - New Students
-                <br />
-                - # Hours
-                <br />
-                - Gross Revenue
-                <br />
-                - Noodle Gross Revenue
-                <br />
-                - Cities Served
-                <br />
-                - Customer Satisfaction
-              </div>
-            </div>
-          </section>
-          <section id="labs">
-            <hr>
-            <h2>Labs</h2>
-            <div class="row-fluid">
-              <div class="span10">
-                Will contain:
-        P&L + Balance Sheet
-              </div>
-            </div>
-          </section>
+        </section>
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; Noodle Education 2012</p>
+      </footer>
 
-          <hr>
-          <footer>
-            <p>&copy; Noodle Education 2012</p>
-          </footer>
+      <!--/.fluid-container-->
 
-        </div>
-        <!--/.fluid-container-->
+      <% } %>
 
-        <% } %>
-
-        <% include scripts.ejs %>
-        <% include end.ejs %>
+      <% include scripts.ejs %>
+      <% include end.ejs %>

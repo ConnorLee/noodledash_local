@@ -9,7 +9,6 @@
     <meta name="author" content="">
 
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
     <link href="/stylesheets/flot.css" rel="stylesheet">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -26,53 +25,51 @@
   </head>
 
   <body class="<%= pagename %>" data-spy="scroll">
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav top-nav">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">Noodle Dashboard</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="https://noodleeducation.campfirenow.com" target="_new">Campfire</a></li>
-                  <li><a href="https://basecamp.com/1772111" target="_new">Basecamp</a></li>
-                  <li><a href="http://noodleeducation.highrisehq.com" target="_new">Highrise</a></li>
-                  <li><a href="http://thevault.noodle.org" target="_new">The Vault</a></li>
-                  <li><a href="https://github.com/NoodleEducation/" target="_new">Github</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Info <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="/manual" target="_new">Employee Manual</a></li>
-                  <li><a href="/resources" target="_new">Company Resources and Collateral</a></li>
-                  <li class="divider"></li>
-                  <li><a href="/" target="_new">Dashboard</a></li>
-                </ul>
-              </li>
-            </ul>
-            <div class="nav-collapse collapse pull-right">
-            <ul class="nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="display-name"><%= user.displayName %></span> <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="/account" target="_new">Account Info</a></li>
-                  <li><a href="/logout" target="_new">Logout</a></li>
-                </ul>
-              </li>
-            </ul>
-            </div>
-                        <p class="navbar-text pull-right">
-              We've had <%= visitorsLast30Days %> visitors in the last 30 days
-            </p>
-          </div><!--/.nav-collapse -->
+          </button>
+          <a class="navbar-brand" href="/">Noodle Dashboard</a>
         </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="https://noodleeducation.campfirenow.com" target="_new">Campfire</a></li>
+                <li><a href="https://basecamp.com/1772111" target="_new">Basecamp</a></li>
+                <li><a href="http://noodleeducation.highrisehq.com" target="_new">Highrise</a></li>
+                <li><a href="https://github.com/NoodleEducation/" target="_new">Github</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Info <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/manual" target="_new">Employee Manual</a></li>
+                <li><a href="/resources" target="_new">Company Resources and Collateral</a></li>
+                <li class="divider"></li>
+                <li><a href="/" target="_new">Dashboard</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="display-name"><%= user.displayName %></span> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/account" target="_new">Account Info</a></li>
+                <li><a href="/logout" target="_new">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+          <p class="navbar-text navbar-right">
+            We've had <%= visitorsLast30Days %> visitors in the last 30 days
+          </p>
+        </nav> 
       </div>
-    </div>
+    </header>
+    
