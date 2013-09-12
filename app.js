@@ -19,9 +19,12 @@ var THIRTY7SIGNALS_CALLBACK_URL = process.env.THIRTY7SIGNALS_CALLBACK_URL;
 
 var HIGHRISE_TOKEN = process.env.HIGHRISE_TOKEN;
 
-var profile='36017589';
+var profileAllDomains='36017589';
+var profile ='75363233';
 var username=process.env.GA_USERNAME;
 var password=process.env.GA_PASSWORD;
+
+// data variables to pass to flot
 
 visitorsLast30Days = 0;
 visitorsSparkline = '';
@@ -37,17 +40,17 @@ dailyVisitorsReturning = '';
 dailyVisitorsNew = '';
 dailyVisitorsPaid = '';
 dailyRegistrationEvents = '';
-dailyK12Visitors = '';
-dailyHigherEducationVisitors = '';
-dailySupplementalLearningVisitors = '';
-dailyLearningMaterialVisitors = '';
 dailyRegistrationPercentage = '';
 dailyUniqueLoginEvents = '';
 dailyCPC = '';
 dailyAdCost = '';
 dailyAdClicks = '';
+dailyVisitorsWithSearchPercentage = '';
+dailySearchRefinementsPercentage = '';
+dailyAvgSearchDuration = '';
+dailyVisitorsWithSearchAndEngagementPercentage = '';
 
-//Get the necessary dates for this stuff.  
+//Get the necessary dates for this stuff.
 
 var yesterday = new Date();
 var yesterdayString = '';
@@ -69,11 +72,12 @@ var threeMonthAgoString = '';
 threeMonthAgo.setDate(yesterday.getDate() - 90);
 threeMonthAgoString += threeMonthAgo.toJSON().substr(0,10);
 
+// Get GA data
+
 var GA = new ga.GA({
   user: username,
   password: password
 });
-
 
 GA.login(function(err, token) {
 
@@ -89,17 +93,6 @@ GA.login(function(err, token) {
     visitorsLast30Days = gaGetTotals(entries, 'ga:visitors');
   });
 
-  var timeOnSiteQuery = {
-  'ids': 'ga:'+profile,
-  'start-date': monthAgoString,
-  'end-date': yesterdayString,
-  'dimensions':'ga:date',
-  'metrics': 'ga:avgTimeOnSite'
-  };
-  GA.get(timeOnSiteQuery, function(err, entries) {
-    dailyTimeOnSite = gaGetDailies(entries, 'ga:avgTimeOnSite');
-  });
-
   var pageViewsQuery = {
   'ids': 'ga:'+profile,
   'start-date': monthAgoString,
@@ -110,7 +103,7 @@ GA.login(function(err, token) {
   GA.get(pageViewsQuery, function(err, entries) {
     dailyPageViews += ''+gaGetDailies(entries, 'ga:pageviews');
   });
-    
+
   var newVisitorsQuery = {
     'ids': 'ga:'+profile,
     'start-date': monthAgoString,
@@ -121,7 +114,7 @@ GA.login(function(err, token) {
   GA.get(newVisitorsQuery, function(err, entries) {
     dailyVisitorsNew += ''+gaGetDailies(entries, 'ga:newVisits');
   });
- 
+
   var visitsPaidQuery = {
     'ids': 'ga:'+profile,
     'start-date': monthAgoString,
@@ -206,7 +199,6 @@ GA.login(function(err, token) {
     dailyAdCost += ''+gaGetDailies(entries, 'ga:adCost');
     dailyAdClicks += ''+gaGetDailies(entries, 'ga:adClicks');
     dailyCPC = gaDivideDailiesInteger(dailyAdCost, dailyAdClicks);
-    console.log(dailyCPC);
   });
 
   var learningMaterialVisitorsQuery = {
@@ -214,14 +206,58 @@ GA.login(function(err, token) {
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
-    'metrics': 'ga:visitors',
-    'filters': 'ga:pagePath=~learn'
+    'metrics': 'ga:percentVisitsWithSearch',
   };
   GA.get(learningMaterialVisitorsQuery, function(err, entries) {
     dailyLearningMaterialVisitors += ''+gaGetDailies(entries, 'ga:visitors');
   });
-});
 
+  var visitorsWithSearch = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:percentVisitsWithSearch',
+  };
+  GA.get(visitorsWithSearch, function(err, entries) {
+    dailyVisitorsWithSearchPercentage += ''+gaGetDailies(entries, 'ga:percentVisitsWithSearch');
+  });
+
+  var searchRefinementsPercentage = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:percentSearchRefinements',
+  };
+  GA.get(searchRefinementsPercentage, function(err, entries) {
+    dailySearchRefinementsPercentage += ''+gaGetDailies(entries, 'ga:percentSearchRefinements');
+  });
+
+  var avgSearchDuration = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:avgSearchDuration',
+  };
+  GA.get(avgSearchDuration, function(err, entries) {
+    dailyAvgSearchDuration += ''+gaGetDailies(entries, 'ga:avgSearchDuration');
+  });
+
+  var visitorsWithSearchAndEngagementPercentage = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:percentVisitsWithSearch',
+    'filters': 'ga:eventCategory==Registration'
+  };
+  GA.get(visitorsWithSearchAndEngagementPercentage, function(err, entries) {
+    dailyVisitorsWithSearchAndEngagementPercentage += ''+gaGetDailies(entries, 'ga:percentVisitsWithSearch');
+  });
+
+});
 
 function gaGetDailies(entries,metric) {
   var dailies = '';
@@ -346,7 +382,7 @@ passport.use(new Thirty7SignalsStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
-    process.nextTick(function () {     
+    process.nextTick(function () {
       // To keep the example simple, the user's 37signals profile is returned to
       // represent the logged-in user.  In a typical application, you would want
       // to associate the 37signals account with a user record in your database,
@@ -420,10 +456,10 @@ app.get('/releases/:release?', routes.index);
 
 
 app.get('/account', ensureAuthenticated, function(req, res){
-  res.render('account', { 
+  res.render('account', {
     title: 'Account Information',
     pagename: 'account',
-    user: req.user 
+    user: req.user
   });
 });
 
@@ -444,7 +480,7 @@ app.get('/auth/37signals',
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get('/auth/37signals/callback', 
+app.get('/auth/37signals/callback',
   passport.authenticate('37signals', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
@@ -466,6 +502,6 @@ http.createServer(app).listen(app.get('port'), function(){
 //   login page.
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
+  res.redirect('/login');
 }
 

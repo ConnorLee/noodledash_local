@@ -13,7 +13,7 @@ function weekendAreas(axes) {
     do {
         // when we don't set yaxis, the rectangle automatically
         // extends to infinity upwards and downwards
-        markings.push({ xaxis: { from: i, to: i + 2 * 24 * 60 * 60 * 1000 }, color: '#45515F' });
+        markings.push({ xaxis: { from: i, to: i + 2 * 24 * 60 * 60 * 1000 }, color: '#FFF' });
         i += 7 * 24 * 60 * 60 * 1000;
     } while (i < axes.xaxis.max);
 

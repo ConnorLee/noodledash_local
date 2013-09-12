@@ -25,7 +25,7 @@
   <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png"></head>
 
 <body class="<%= pagename %>
-  " data-spy="scroll">
+  " data-spy="scroll" data-target="#nav-metrics">
   <div class="container">
     <div class="row">
       <h1>Noodle Dashboard</h1>
@@ -41,8 +41,11 @@
   <div class="container">
     <div class="row main">
       <div class="col-md-3">
-        <div class="bs-sidebar hidden-print affix">
-          <ul class="nav well bs-sidenav">
+        <div class="bs-sidebar hidden-print affix" role="complementary">
+          <ul class="nav bs-sidenav" id="nav-metrics">
+            <li>
+              <a href="#noodle">Noodle</a>
+            </li>
             <li>
               <a href="#marketing">Marketing</a>
             </li>
@@ -50,37 +53,35 @@
               <a href="#product">Product</a>
             </li>
             <li>
-              <a href="#tech">Tech</a>
+              <a href="#tech">Technology</a>
             </li>
           </ul>
         </div>
       </div>
 
       <div class="col-md-9">
-        <section id="executive-summary">
-          <hr>
+        <section id="noodle">
           <div class="row">
-            <div class="col-md-4">
-              <div class="executiveSummaryHeader">
-                <h3>Uniques</h3>
-              </div>
-              <div id="dailyVisitors" style="height:150px;"></div>
-              <div id="dailyVisitorsSelector" style="height:30px;"></div>
+            <h2>Noodle</h2>
+            <div class="well">
+              <h4>Uniques, trailing 30: <%= visitorsLast30Days %></h4>
+              <h4>Registrations today: [put here]</h4>
             </div>
-            <div class="col-md-4">
-              <div class="executiveSummaryHeader">
-                <h3>Page Views</h3>
-              </div>
-              <div id="dailyPageViews" style="height:150px;"></div>
-              <div id="dailyPageViewsSelector" style="height:30px;"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h3>Unique Visitors</h3>
+              <div id="dailyVisitors" style="height:250px;"></div>
             </div>
-            <div class="col-md-4">
-              <div class="executiveSummaryHeader">
-                <h3>Average Time on Site</h3>
-              </div>
-              <div id="dailyTimeOnSite" style="height:150px;"></div>
-              <div id="dailyTimeOnSiteSelector" style="height:30px;"></div>
+            <div class="col-md-6">
+              <h3>% of New Users that Register</h3>
+              <div id="dailyRegistrationPercentage" style="height:250px;"></div>
             </div>
+            <div class="col-md-6">
+
+            </div>
+          </div>
+          <div class="row">
           </div>
         </section>
         <section id="marketing">
@@ -90,12 +91,10 @@
             <div class="col-md-6">
               <h4>New Visitors</h4>
               <div id="dailyVisitorsNew" style="height:250px;"></div>
-              <div id="dailyVisitorsNewSelector" style="height:30px;"></div>
             </div>
             <div class="col-md-6">
               <h4>Daily Cost per Clicks</h4>
               <div id="dailyCPC" style="height:250px;"></div>
-              <div id="dailyCPCSelector" style="height:30px;"></div>
             </div>
           </div>
         </section>
@@ -108,21 +107,15 @@
               and Learning Materials
             </h4>
             <div id="dailySlLmVisitors" style="height:250px;"></div>
-            <div id="dailySlLmVisitorsSelector" style="height:45px;"></div>
           </div>
           <div class="col-md-6" style="text-align:center">
             <h4>Visitors to K12 Education</br>
             and Higher Education
           </h4>
           <div id="dailyHeK12Visitors" style="height:250px;"></div>
-          <div id="dailyHeK12VisitorsSelector" style="height:45px;"></div>
         </div>
         <div class="row">
-          <div class="col-md-6" style="text-align:center;">
-            <h4>% of New Users that Register</h4>
-            <div id="dailyRegistrationPercentage" style="height:150px;"></div>
-            <div id="dailyRegistrationPercentageSelector" style="height:30px;"></div>
-          </div>
+
           <div class="row">
             <div class="col-md-12" style="text-align:center;">
               <h4>Net Promoter Score</h4>
