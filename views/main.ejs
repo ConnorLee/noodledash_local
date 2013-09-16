@@ -59,14 +59,37 @@
       </div>
 
       <div class="col-md-9">
-        <section id="noodle">
+        <section id="yesterday">
           <div class="row">
-            <h2>Noodle</h2>
-            <div class="well">
-              <h4>Uniques, trailing 30: <%= visitorsLast30Days %></h4>
-              <h4>Registrations today: [put here]</h4>
+            <h2 class="section-header">Yesterday Recap</h2>
+            <div class="col-md-3">
+              <div class="panel panel-info">
+                <div class="panel-heading"><h4>Unique Visitors</h4></div>
+                <div class="panel-body"><%= uniquesYesterday %></div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="panel panel-info">
+                <div class="panel-heading"><h4>Registrations</h4></div>
+                <div class="panel-body"><%= registrationsYesterday %></div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="panel panel-info">
+                <div class="panel-heading"><h4>Questions</h4></div>
+                <div class="panel-body"><%= questionsAskedYesterday %></div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="panel panel-info">
+                <div class="panel-heading"><h4>Answers</h4></div>
+                <div class="panel-body"><%= answersWrittenYesterday %></div>
+              </div>
             </div>
           </div>
+        </section>
+        <section>
+          <h2>Executive Summary</h2>
           <div class="row">
             <div class="col-md-6">
               <h3>Unique Visitors</h3>
@@ -74,11 +97,9 @@
               <div id="dailyVisitorsSelector" style="height:50px;"></div>
             </div>
             <div class="col-md-6">
-              <h3>% of New Users that Register</h3>
+              <h3>Registration Rate</h3>
                 <div id="dailyRegistrationPercentage" style="height:250px;"></div>
                 <div id="dailyRegistrationPercentageSelector" style="height:50px;"></div>
-            </div>
-            <div class="col-md-6">
             </div>
           </div>
           <div class="row">

@@ -27,20 +27,15 @@ var password=process.env.GA_PASSWORD;
 // data variables to pass to flot
 
 visitorsLast30Days = 0;
-// visitorsSparkline = '';
-// timeOnSiteLast30Days = 0;
-// timeOnSiteSparkline = '';
-// pageViewsLast30Days = 0;
-// pageViewsSparkline = '';
-// dailyTimeOnSite = '';
+registrationsYesterday = '';
+uniquesYesterday = '';
+questionsAskedYesterday = '';
+answersWrittenYesterday = '';
 dailyVisitors = '';
-// dailyPageViews = '';
-// dailyVisitorsReturning = '';
 dailyVisitorsNew = '';
 dailyVisitorsPaid = '';
 dailyRegistrationEvents = '';
 dailyRegistrationPercentage = '';
-// dailyUniqueLoginEvents = '';
 dailyCPC = '';
 dailyAdCost = '';
 dailyAdClicks = '';
@@ -92,6 +87,50 @@ GA.login(function(err, token) {
     visitorsLast30Days = gaGetTotals(entries, 'ga:visitors');
   });
 
+  var uniqueVisitorsQueryYesterday = {
+  'ids': 'ga:'+profileAllDomains,
+  'start-date': yesterdayString,
+  'end-date': yesterdayString,
+  'dimensions':'ga:date',
+  'metrics': 'ga:visitors'
+  };
+  GA.get(uniqueVisitorsQueryYesterday, function(err, entries) {
+    uniquesYesterday = gaGetTotals(entries, 'ga:visitors');
+  });
+
+  var registrationsYesterdayQuery = {
+  'ids': 'ga:'+profileAllDomains,
+  'start-date': yesterdayString,
+  'end-date': yesterdayString,
+  'metrics': 'ga:totalEvents',
+  'filters': 'ga:eventCategory==Registration'
+  };
+  GA.get(registrationsYesterdayQuery, function(err, entries) {
+    registrationsYesterday = gaGetTotals(entries, 'ga:totalEvents');
+  });
+
+  var questionsAskedYesterdayQuery = {
+  'ids': 'ga:'+profileAllDomains,
+  'start-date': yesterdayString,
+  'end-date': yesterdayString,
+  'metrics': 'ga:totalEvents',
+  'filters': 'ga:eventAction==Asked a Question'
+  };
+  GA.get(questionsAskedYesterdayQuery, function(err, entries) {
+    questionsAskedYesterday = gaGetTotals(entries, 'ga:totalEvents');
+  });
+
+  var answersWrittenYesterdayQuery = {
+  'ids': 'ga:'+profileAllDomains,
+  'start-date': yesterdayString,
+  'end-date': yesterdayString,
+  'metrics': 'ga:totalEvents',
+  'filters': 'ga:eventAction==Added an Answer'
+  };
+  GA.get(answersWrittenYesterdayQuery, function(err, entries) {
+    answersWrittenYesterday = gaGetTotals(entries, 'ga:totalEvents');
+  });
+
   var newVisitorsQuery = {
     'ids': 'ga:'+profileAllDomains,
     'start-date': monthAgoString,
@@ -101,7 +140,6 @@ GA.login(function(err, token) {
   };
   GA.get(newVisitorsQuery, function(err, entries) {
     dailyVisitorsNew += ''+gaGetDailies(entries, 'ga:newVisits');
-    console.log(dailyVisitorsNew);
   });
 
   var visitsPaidQuery = {
@@ -127,7 +165,6 @@ GA.login(function(err, token) {
   GA.get(registrationsQuery, function(err, entries) {
     dailyRegistrationEvents += ''+gaGetDailies(entries, 'ga:uniqueEvents');
     dailyRegistrationPercentage = gaDivideDailies(dailyRegistrationEvents, dailyVisitorsNew);
-    console.log(dailyRegistrationPercentage);
   });
 
   // var dailyUniqueLoginEventsQuery = {
