@@ -44,6 +44,7 @@ dailyVisitorsWithSearchPercentage = '';
 dailySearchRefinementsPercentage = '';
 dailyAvgSearchDuration = '';
 dailyVisitorsWithSearchAndEngagementPercentage = '';
+dailyVisitorsWithEngagement = '';
 searchKeyword = '';
 
 //Get the necessary dates for this stuff.
@@ -101,7 +102,7 @@ GA.login(function(err, token) {
   });
 
   var registrationsYesterdayQuery = {
-  'ids': 'ga:'+profileAllDomains,
+  'ids': 'ga:'+profile,
   'start-date': yesterdayString,
   'end-date': yesterdayString,
   'metrics': 'ga:totalEvents',
@@ -112,7 +113,7 @@ GA.login(function(err, token) {
   });
 
   var questionsAskedYesterdayQuery = {
-  'ids': 'ga:'+profileAllDomains,
+  'ids': 'ga:'+profile,
   'start-date': yesterdayString,
   'end-date': yesterdayString,
   'metrics': 'ga:totalEvents',
@@ -123,7 +124,7 @@ GA.login(function(err, token) {
   });
 
   var answersWrittenYesterdayQuery = {
-  'ids': 'ga:'+profileAllDomains,
+  'ids': 'ga:'+profile,
   'start-date': yesterdayString,
   'end-date': yesterdayString,
   'metrics': 'ga:totalEvents',
@@ -134,7 +135,7 @@ GA.login(function(err, token) {
   });
 
   var newVisitorsQuery = {
-    'ids': 'ga:'+profileAllDomains,
+    'ids': 'ga:'+profile,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -145,7 +146,7 @@ GA.login(function(err, token) {
   });
 
   var registrationsQuery = {
-    'ids': 'ga:'+profileAllDomains,
+    'ids': 'ga:'+profile,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -168,7 +169,7 @@ GA.login(function(err, token) {
   });
 
   var cpcQuery = {
-    'ids': 'ga:'+profileAllDomains,
+    'ids': 'ga:'+profile,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -181,7 +182,7 @@ GA.login(function(err, token) {
   });
 
   var visitorsWithSearchQuery = {
-    'ids': 'ga:'+profileAllDomains,
+    'ids': 'ga:'+profile,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -192,7 +193,7 @@ GA.login(function(err, token) {
   });
 
   var searchRefinementsPercentageQuery = {
-    'ids': 'ga:'+profileAllDomains,
+    'ids': 'ga:'+profile,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -203,7 +204,7 @@ GA.login(function(err, token) {
   });
 
   var avgSearchDurationQuery = {
-    'ids': 'ga:'+profileAllDomains,
+    'ids': 'ga:'+profile,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -213,20 +214,22 @@ GA.login(function(err, token) {
     dailyAvgSearchDuration += ''+gaGetDailies(entries, 'ga:avgSearchDuration');
   });
 
+  var dailyVisitorsWithEngagementQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:visitors',
+    'filters': 'ga:eventCategory==Engagement,ga:eventCategory==Questions,ga:eventCategory==Boards,ga:eventCategory==Favorites'
+  };
+  GA.get(dailyVisitorsWithEngagementQuery, function(err, entries) {
+    dailyVisitorsWithEngagement += ''+gaGetDailies(entries, 'ga:visitors');
+    console.log(dailyVisitorsWithEngagement);
+  });
+
 });
 
-  // var visitorsWithSearchAndEngagementPercentageQuery = {
-  //   'ids': 'ga:'+profileAllDomains,
-  //   'start-date': monthAgoString,
-  //   'end-date': yesterdayString,
-  //   'dimensions': 'ga:date',
-  //   'metrics': 'ga:percentVisitsWithSearch',
-  //   'filters': 'ga:eventCategory==Engagement,ga:eventCategory==Questions,ga:eventCategory==Boards,ga:eventCategory==Favorites'
-  // };
-  // GA.get(visitorsWithSearchAndEngagementPercentageQuery, function(err, entries) {
-  //   dailyVisitorsWithSearchAndEngagementPercentage += ''+gaGetDailies(entries, 'ga:percentVisitsWithSearch');
-  //   console.log(dailyVisitorsWithSearchAndEngagementPercentage);
-  // });
+
 
   // var searchKeywordQuery = {
   //   'ids': 'ga:'+profileAllDomains,
