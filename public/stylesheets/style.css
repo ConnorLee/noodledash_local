@@ -17,3 +17,11 @@
 .table-title {
 	text-align: center;
 }
+
+.graph-medium {
+	height: 250px;
+}
+
+.graph-selector {
+	height: 50px;
+}

@@ -200,8 +200,19 @@ GA.login(function(err, token) {
   };
   GA.get(searchRefinementsPercentageQuery, function(err, entries) {
     dailySearchRefinementsPercentage += ''+gaGetDailies(entries, 'ga:percentSearchRefinements');
-    console.log(dailySearchRefinementsPercentage);
   });
+
+  var avgSearchDurationQuery = {
+    'ids': 'ga:'+profileAllDomains,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:avgSearchDuration',
+  };
+  GA.get(avgSearchDurationQuery, function(err, entries) {
+    dailyAvgSearchDuration += ''+gaGetDailies(entries, 'ga:avgSearchDuration');
+  });
+
 });
 
   // var visitorsWithSearchAndEngagementPercentageQuery = {
@@ -215,17 +226,6 @@ GA.login(function(err, token) {
   // GA.get(visitorsWithSearchAndEngagementPercentageQuery, function(err, entries) {
   //   dailyVisitorsWithSearchAndEngagementPercentage += ''+gaGetDailies(entries, 'ga:percentVisitsWithSearch');
   //   console.log(dailyVisitorsWithSearchAndEngagementPercentage);
-  // });
-
-  // var avgSearchDurationQuery = {
-  //   'ids': 'ga:'+profileAllDomains,
-  //   'start-date': monthAgoString,
-  //   'end-date': yesterdayString,
-  //   'dimensions': 'ga:date',
-  //   'metrics': 'ga:avgSearchDuration',
-  // };
-  // GA.get(avgSearchDurationQuery, function(err, entries) {
-  //   dailyAvgSearchDuration += ''+gaGetDailies(entries, 'ga:avgSearchDuration');
   // });
 
   // var searchKeywordQuery = {
