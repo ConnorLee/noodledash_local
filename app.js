@@ -32,6 +32,7 @@ uniquesYesterday = '';
 questionsAskedYesterday = '';
 answersWrittenYesterday = '';
 avgPageLoadTime = '';
+organicVisits = '';
 dailyVisitors = '';
 dailyVisitorsNew = '';
 dailyVisitorsPaid = '';
@@ -143,6 +144,18 @@ GA.login(function(err, token) {
   };
   GA.get(newVisitorsQuery, function(err, entries) {
     dailyVisitorsNew += ''+gaGetDailies(entries, 'ga:newVisits');
+  });
+
+  var organicVisitsQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:visitors',
+    'filters': 'ga:landingPagePath!@noodlings;ga:medium==organic'
+  };
+  GA.get(organicVisitsQuery, function(err, entries) {
+    organicVisits += ''+gaGetDailies(entries, 'ga:visitors');
   });
 
   var registrationsQuery = {
