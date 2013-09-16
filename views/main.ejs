@@ -43,7 +43,10 @@
         <div class="bs-sidebar hidden-print affix" role="complementary">
           <ul class="nav bs-sidenav" id="nav-metrics">
             <li>
-              <a href="#noodle">Noodle</a>
+              <a href="#yesterday">Yesterday's Activity</a>
+            </li>
+            <li>
+              <a href="#executive-summary">Executive Summary</a>
             </li>
             <li>
               <a href="#marketing">Marketing</a>
@@ -61,7 +64,7 @@
       <div class="col-md-9">
         <section id="yesterday">
           <div class="row">
-            <h2 class="section-header">Yesterday Recap</h2>
+            <h2 class="section-header">Yesterday <small> <%= yesterdayString %></small></h2>
             <div class="col-md-3">
               <div class="panel panel-info">
                 <div class="panel-heading"><h4>Unique Visitors</h4></div>
@@ -77,27 +80,31 @@
             <div class="col-md-3">
               <div class="panel panel-info">
                 <div class="panel-heading"><h4>Questions</h4></div>
-                <div class="panel-body"><%= questionsAskedYesterday %></div>
+                <div class="panel-body">
+                  <%= questionsAskedYesterday %> <a class="btn btn-primary btn-xs pull-right" href="">Answer Questions</a>
+                </div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="panel panel-info">
                 <div class="panel-heading"><h4>Answers</h4></div>
-                <div class="panel-body"><%= answersWrittenYesterday %></div>
+                <div class="panel-body">
+                  <%= answersWrittenYesterday %> <a class="btn btn-primary btn-xs pull-right" href="">Read Answers</a>
+                </div>
               </div>
             </div>
           </div>
         </section>
-        <section>
+        <section id="executive-summary">
           <h2>Executive Summary</h2>
           <div class="row">
             <div class="col-md-6">
-              <h3>Unique Visitors</h3>
+              <h3 class="table-title">Unique Visitors</h3>
               <div id="dailyVisitors" style="height:250px;"></div>
               <div id="dailyVisitorsSelector" style="height:50px;"></div>
             </div>
             <div class="col-md-6">
-              <h3>Registration Rate</h3>
+              <h3 class="table-title">Registration Rate</h3>
                 <div id="dailyRegistrationPercentage" style="height:250px;"></div>
                 <div id="dailyRegistrationPercentageSelector" style="height:50px;"></div>
             </div>
@@ -108,14 +115,14 @@
         <section id="marketing">
           <hr>
           <h2>Marketing</h2>
-          <div class="row" style="text-align:center;">
+          <div class="row">
             <div class="col-md-6">
-              <h4>New Visitors</h4>
+              <h4 class="table-title">New Visitors</h4>
                 <div id="dailyVisitorsNew" style="height:250px;"></div>
                 <div id="dailyVisitorsNewSelector" style="height:50px;"></div>
             </div>
             <div class="col-md-6">
-              <h4>Daily Cost per Clicks</h4>
+              <h4 class="table-title">Daily Cost per Clicks</h4>
               <div id="dailyCPC" style="height:250px;"></div>
               <div id="dailyCPCSelector" style="height:50px;"></div>
             </div>
@@ -127,8 +134,8 @@
           <div class="row">
           </div>
           <div class="row">
-            <div class="col-md-12" style="text-align:center;">
-              <h4>Net Promoter Score</h4>
+            <div class="col-md-12">
+              <h4 class="table-title">Net Promoter Score</h4>
               <div id="netPromoterScoreDataTable">
                 <iframe width='375' height='345' frameborder='none' src='https://docs.google.com/spreadsheet/pub?key=0AlSYdTPOhBEadHFWRHQ3cGdiRzA0WXpsM0prblM0M3c&single=true&gid=0&range=A1%3AC20&output=html&widget=false'></iframe>
               </div>

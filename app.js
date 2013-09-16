@@ -47,7 +47,7 @@ dailyVisitorsWithSearchAndEngagementPercentage = '';
 //Get the necessary dates for this stuff.
 
 var yesterday = new Date();
-var yesterdayString = '';
+yesterdayString = '';
 yesterday.setDate(yesterday.getDate() - 1);
 yesterdayString += yesterday.toJSON().substr(0,10);
 
