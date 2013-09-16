@@ -81,7 +81,7 @@ var GA = new ga.GA({
 GA.login(function(err, token) {
 
   var uniqueVisitorsQuery = {
-  'ids': 'ga:'+profile,
+  'ids': 'ga:'+profileAllDomains,
   'start-date': monthAgoString,
   'end-date': yesterdayString,
   'dimensions':'ga:date',
@@ -93,7 +93,7 @@ GA.login(function(err, token) {
   });
 
   var newVisitorsQuery = {
-    'ids': 'ga:'+profile,
+    'ids': 'ga:'+profileAllDomains,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -101,10 +101,11 @@ GA.login(function(err, token) {
   };
   GA.get(newVisitorsQuery, function(err, entries) {
     dailyVisitorsNew += ''+gaGetDailies(entries, 'ga:newVisits');
+    console.log(dailyVisitorsNew);
   });
 
   var visitsPaidQuery = {
-    'ids': 'ga:'+profile,
+    'ids': 'ga:'+profileAllDomains,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -116,7 +117,7 @@ GA.login(function(err, token) {
   });
 
   var registrationsQuery = {
-    'ids': 'ga:'+profile,
+    'ids': 'ga:'+profileAllDomains,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -126,10 +127,11 @@ GA.login(function(err, token) {
   GA.get(registrationsQuery, function(err, entries) {
     dailyRegistrationEvents += ''+gaGetDailies(entries, 'ga:uniqueEvents');
     dailyRegistrationPercentage = gaDivideDailies(dailyRegistrationEvents, dailyVisitorsNew);
+    console.log(dailyRegistrationPercentage);
   });
 
   // var dailyUniqueLoginEventsQuery = {
-  //   'ids': 'ga:'+profile,
+  //   'ids': 'ga:'+profileAllDomains,
   //   'start-date': monthAgoString,
   //   'end-date': yesterdayString,
   //   'dimensions': 'ga:date',
@@ -141,7 +143,7 @@ GA.login(function(err, token) {
   // });
 
   var cpcQuery = {
-    'ids': 'ga:'+profile,
+    'ids': 'ga:'+profileAllDomains,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -154,7 +156,7 @@ GA.login(function(err, token) {
   });
 
   var visitorsWithSearch = {
-    'ids': 'ga:'+profile,
+    'ids': 'ga:'+profileAllDomains,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -165,7 +167,7 @@ GA.login(function(err, token) {
   });
 
   var searchRefinementsPercentage = {
-    'ids': 'ga:'+profile,
+    'ids': 'ga:'+profileAllDomains,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -176,7 +178,7 @@ GA.login(function(err, token) {
   });
 
   var avgSearchDuration = {
-    'ids': 'ga:'+profile,
+    'ids': 'ga:'+profileAllDomains,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -187,7 +189,7 @@ GA.login(function(err, token) {
   });
 
   var visitorsWithSearchAndEngagementPercentage = {
-    'ids': 'ga:'+profile,
+    'ids': 'ga:'+profileAllDomains,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
@@ -198,17 +200,17 @@ GA.login(function(err, token) {
     dailyVisitorsWithSearchAndEngagementPercentage += ''+gaGetDailies(entries, 'ga:percentVisitsWithSearch');
   });
 
-  var visitorsWithSearchAndEngagementPercentage = {
-    'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
-    'end-date': yesterdayString,
-    'dimensions': 'ga:date',
-    'metrics': 'ga:percentVisitsWithSearch',
-    'filters': 'ga:eventCategory==Registration'
-  };
-  GA.get(visitorsWithSearchAndEngagementPercentage, function(err, entries) {
-    dailyVisitorsWithSearchAndEngagementPercentage += ''+gaGetDailies(entries, 'ga:percentVisitsWithSearch');
-  });
+  // var visitorsWithSearchAndEngagementPercentage = {
+  //   'ids': 'ga:'+profileAllDomains,
+  //   'start-date': monthAgoString,
+  //   'end-date': yesterdayString,
+  //   'dimensions': 'ga:date',
+  //   'metrics': 'ga:percentVisitsWithSearch',
+  //   'filters': 'ga:eventCategory==Registration'
+  // };
+  // GA.get(visitorsWithSearchAndEngagementPercentage, function(err, entries) {
+  //   dailyVisitorsWithSearchAndEngagementPercentage += ''+gaGetDailies(entries, 'ga:percentVisitsWithSearch');
+  // });
 
 });
 
