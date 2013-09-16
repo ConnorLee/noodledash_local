@@ -80,7 +80,7 @@ GA.login(function(err, token) {
 
   var uniqueVisitorsQuery = {
   'ids': 'ga:'+profileAllDomains,
-  'start-date': monthAgoString,
+  'start-date': twoMonthAgoString,
   'end-date': yesterdayString,
   'dimensions':'ga:date',
   'metrics': 'ga:visitors'
@@ -136,7 +136,7 @@ GA.login(function(err, token) {
 
   var newVisitorsQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:newVisits'
@@ -147,7 +147,7 @@ GA.login(function(err, token) {
 
   var registrationsQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:uniqueEvents',
@@ -160,7 +160,7 @@ GA.login(function(err, token) {
 
   var avgPageLoadTimeQuery = {
     'ids': 'ga:'+75363233,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'metrics': 'ga:avgPageLoadTime',
   };
@@ -170,7 +170,7 @@ GA.login(function(err, token) {
 
   var cpcQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:adCost,ga:adClicks'
@@ -183,7 +183,7 @@ GA.login(function(err, token) {
 
   var visitorsWithSearchQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:percentVisitsWithSearch',
@@ -194,7 +194,7 @@ GA.login(function(err, token) {
 
   var searchRefinementsPercentageQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:percentSearchRefinements',
@@ -205,7 +205,7 @@ GA.login(function(err, token) {
 
   var avgSearchDurationQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:avgSearchDuration',
@@ -216,7 +216,7 @@ GA.login(function(err, token) {
 
   var dailyVisitorsWithEngagementQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:visitors',
@@ -233,7 +233,7 @@ GA.login(function(err, token) {
 
   // var searchKeywordQuery = {
   //   'ids': 'ga:'+profileAllDomains,
-  //   'start-date': monthAgoString,
+  //   'start-date': twoMonthAgoString,
   //   'end-date': yesterdayString,
   //   'dimensions': 'ga:searchKeyword',
   //   'metrics': 'ga:searchUniques',
