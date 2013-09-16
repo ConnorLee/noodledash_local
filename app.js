@@ -27,21 +27,20 @@ var password=process.env.GA_PASSWORD;
 // data variables to pass to flot
 
 visitorsLast30Days = 0;
-visitorsSparkline = '';
-timeOnSiteLast30Days = 0;
-timeOnSiteSparkline = '';
-pageViewsLast30Days = 0;
-pageViewsSparkline = '';
-
-dailyTimeOnSite = '';
+// visitorsSparkline = '';
+// timeOnSiteLast30Days = 0;
+// timeOnSiteSparkline = '';
+// pageViewsLast30Days = 0;
+// pageViewsSparkline = '';
+// dailyTimeOnSite = '';
 dailyVisitors = '';
-dailyPageViews = '';
-dailyVisitorsReturning = '';
+// dailyPageViews = '';
+// dailyVisitorsReturning = '';
 dailyVisitorsNew = '';
 dailyVisitorsPaid = '';
 dailyRegistrationEvents = '';
 dailyRegistrationPercentage = '';
-dailyUniqueLoginEvents = '';
+// dailyUniqueLoginEvents = '';
 dailyCPC = '';
 dailyAdCost = '';
 dailyAdClicks = '';
@@ -93,17 +92,6 @@ GA.login(function(err, token) {
     visitorsLast30Days = gaGetTotals(entries, 'ga:visitors');
   });
 
-  var pageViewsQuery = {
-  'ids': 'ga:'+profile,
-  'start-date': monthAgoString,
-  'end-date': yesterdayString,
-  'dimensions':'ga:date',
-  'metrics': 'ga:pageviews'
-  };
-  GA.get(pageViewsQuery, function(err, entries) {
-    dailyPageViews += ''+gaGetDailies(entries, 'ga:pageviews');
-  });
-
   var newVisitorsQuery = {
     'ids': 'ga:'+profile,
     'start-date': monthAgoString,
@@ -140,53 +128,17 @@ GA.login(function(err, token) {
     dailyRegistrationPercentage = gaDivideDailies(dailyRegistrationEvents, dailyVisitorsNew);
   });
 
-  var dailyUniqueLoginEventsQuery = {
-    'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
-    'end-date': yesterdayString,
-    'dimensions': 'ga:date',
-    'metrics': 'ga:uniqueEvents',
-    'filters': 'ga:eventCategory==Login'
-  };
-  GA.get(dailyUniqueLoginEventsQuery, function(err, entries) {
-    dailyUniqueLoginEvents = gaGetDailies(entries, 'ga:uniqueEvents');
-  });
-
-  var k12VisitorsQuery = {
-    'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
-    'end-date': yesterdayString,
-    'dimensions': 'ga:date',
-    'metrics': 'ga:visitors',
-    'filters': 'ga:pagePath=~k-12'
-  };
-  GA.get(k12VisitorsQuery, function(err, entries) {
-    dailyK12Visitors += ''+gaGetDailies(entries, 'ga:visitors');
-  });
-
-  var higherEducationVisitorsQuery = {
-    'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
-    'end-date': yesterdayString,
-    'dimensions': 'ga:date',
-    'metrics': 'ga:visitors',
-    'filters': 'ga:pagePath=~graduate,ga:pagePath=~law,ga:pagePath=~mba,ga:pagePath=~medical,ga:pagePath=~college'
-  };
-  GA.get(higherEducationVisitorsQuery, function(err, entries) {
-    dailyHigherEducationVisitors += ''+gaGetDailies(entries, 'ga:visitors');
-  });
-
-  var supplementalLearningVisitorsQuery = {
-    'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
-    'end-date': yesterdayString,
-    'dimensions': 'ga:date',
-    'metrics': 'ga:visitors',
-    'filters': 'ga:pagePath=~tutoring,ga:pagePath=~test-prep,ga:pagePath=~study-abroad,ga:pagePath=~guidance-counseling'
-  };
-  GA.get(supplementalLearningVisitorsQuery, function(err, entries) {
-    dailySupplementalLearningVisitors += ''+gaGetDailies(entries, 'ga:visitors');
-  });
+  // var dailyUniqueLoginEventsQuery = {
+  //   'ids': 'ga:'+profile,
+  //   'start-date': monthAgoString,
+  //   'end-date': yesterdayString,
+  //   'dimensions': 'ga:date',
+  //   'metrics': 'ga:uniqueEvents',
+  //   'filters': 'ga:eventCategory==Login'
+  // };
+  // GA.get(dailyUniqueLoginEventsQuery, function(err, entries) {
+  //   dailyUniqueLoginEvents = gaGetDailies(entries, 'ga:uniqueEvents');
+  // });
 
   var cpcQuery = {
     'ids': 'ga:'+profile,
@@ -199,17 +151,6 @@ GA.login(function(err, token) {
     dailyAdCost += ''+gaGetDailies(entries, 'ga:adCost');
     dailyAdClicks += ''+gaGetDailies(entries, 'ga:adClicks');
     dailyCPC = gaDivideDailiesInteger(dailyAdCost, dailyAdClicks);
-  });
-
-  var learningMaterialVisitorsQuery = {
-    'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
-    'end-date': yesterdayString,
-    'dimensions': 'ga:date',
-    'metrics': 'ga:percentVisitsWithSearch',
-  };
-  GA.get(learningMaterialVisitorsQuery, function(err, entries) {
-    dailyLearningMaterialVisitors += ''+gaGetDailies(entries, 'ga:visitors');
   });
 
   var visitorsWithSearch = {
@@ -243,6 +184,18 @@ GA.login(function(err, token) {
   };
   GA.get(avgSearchDuration, function(err, entries) {
     dailyAvgSearchDuration += ''+gaGetDailies(entries, 'ga:avgSearchDuration');
+  });
+
+  var visitorsWithSearchAndEngagementPercentage = {
+    'ids': 'ga:'+profile,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:percentVisitsWithSearch',
+    'filters': 'ga:eventCategory==Registration'
+  };
+  GA.get(visitorsWithSearchAndEngagementPercentage, function(err, entries) {
+    dailyVisitorsWithSearchAndEngagementPercentage += ''+gaGetDailies(entries, 'ga:percentVisitsWithSearch');
   });
 
   var visitorsWithSearchAndEngagementPercentage = {
