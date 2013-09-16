@@ -1,46 +1,52 @@
-<section id="tools">
-          <hr>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="media">
-                <a class="pull-left" href="https://noodleeducation.campfirenow.com" target="_new">
-                  <img class="img-rounded service-logo" src="/images/campfire.png"></a>
-                <div class="media-body">
-                  <h4 class="media-heading">Campfire</h4>
-                  <p class="description">
-                    Our internal chat client, where people can get work done, do standups, and ask NoodleBot for help (type /help).  Use Flint.
-                  </p>
-                  <p>
-                    <a href="https://noodleeducation.campfirenow.com" target="_new" class="btn btn-primary">Chat</a>
-                  </p>
-                </div>
-              </div>
-              <div class="media">
-                <a class="pull-left" href="https://github.com/NoodleEducation/" target="_new">
-                  <img class="img-rounded service-logo" src="/images/github.png"></a>
-                <div class="media-body">
-                  <h4 class="media-heading">Github</h4>
-                  <p class="description">
-                    Where the product, tech, and data teams work - all of our code and collaboration happens here.
-                  </p>
-                  <p>
-                    <a href="https://github.com/NoodleEducation/" target="_new" class="btn btn-primary">Code</a>
-                  </p>
-                </div>
-              </div>
-              <div class="media">
-                <a class="pull-left" href="https://basecamp.com/1772111" target="_new">
-                  <img class="img-rounded service-logo" src="/images/basecamp.png"></a>
-                <div class="media-body">
-                  <h4 class="media-heading">Basecamp</h4>
-                  <p class="description">
-                    Where teams discuss projects and ideas before github.
-                  </p>
-                  <p>
-                    <a href="https://basecamp.com/1772111" target="_new" class="btn btn-primary">Projects</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--/row--> </section>
+<% if (!user) { %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body class="<%= pagename %>" data-spy="scroll">
+    <div class="container">
+      <div class="row">
+    <h1>Whoops...</h1>
+    <h2>Gotta <a href="/auth/37signals">Login with 37signals</a> first.</h2>
+</div>
+</div>
+<% } else { %>
+
+<% include header.ejs %>
+
+<div class="container">
+  <div class="row main">
+  </div>
+</div>
+
+<footer>
+  <p>&copy; Noodle Education 2012</p>
+</footer>
+
+<% } %>
+
+<% include scripts.ejs %>
+<% include end.ejs %>
+

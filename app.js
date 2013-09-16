@@ -448,6 +448,7 @@ app.get('/', routes.main);
 app.get('/manual', routes.manual);
 app.get('/resources', routes.resources);
 app.get('/releases/:release?', routes.index);
+app.get('/tools', routes.tools);
 
 
 app.get('/account', ensureAuthenticated, function(req, res){
