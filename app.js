@@ -31,6 +31,7 @@ registrationsYesterday = '';
 uniquesYesterday = '';
 questionsAskedYesterday = '';
 answersWrittenYesterday = '';
+avgPageLoadTime = '';
 dailyVisitors = '';
 dailyVisitorsNew = '';
 dailyVisitorsPaid = '';
@@ -167,17 +168,15 @@ GA.login(function(err, token) {
     dailyRegistrationPercentage = gaDivideDailies(dailyRegistrationEvents, dailyVisitorsNew);
   });
 
-  // var dailyUniqueLoginEventsQuery = {
-  //   'ids': 'ga:'+profileAllDomains,
-  //   'start-date': monthAgoString,
-  //   'end-date': yesterdayString,
-  //   'dimensions': 'ga:date',
-  //   'metrics': 'ga:uniqueEvents',
-  //   'filters': 'ga:eventCategory==Login'
-  // };
-  // GA.get(dailyUniqueLoginEventsQuery, function(err, entries) {
-  //   dailyUniqueLoginEvents = gaGetDailies(entries, 'ga:uniqueEvents');
-  // });
+  var avgPageLoadTimeQuery = {
+    'ids': 'ga:'+75363233,
+    'start-date': monthAgoString,
+    'end-date': yesterdayString,
+    'metrics': 'ga:avgPageLoadTime',
+  };
+  GA.get(avgPageLoadTimeQuery, function(err, entries) {
+    avgPageLoadTime = gaGetTotals(entries, 'ga:avgPageLoadTime');
+  });
 
   var cpcQuery = {
     'ids': 'ga:'+profileAllDomains,
