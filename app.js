@@ -44,6 +44,7 @@ dailyVisitorsWithSearchPercentage = '';
 dailySearchRefinementsPercentage = '';
 dailyAvgSearchDuration = '';
 dailyVisitorsWithSearchAndEngagementPercentage = '';
+searchKeyword = '';
 
 //Get the necessary dates for this stuff.
 
@@ -143,18 +144,6 @@ GA.login(function(err, token) {
     dailyVisitorsNew += ''+gaGetDailies(entries, 'ga:newVisits');
   });
 
-  var visitsPaidQuery = {
-    'ids': 'ga:'+profileAllDomains,
-    'start-date': monthAgoString,
-    'end-date': yesterdayString,
-    'dimensions': 'ga:date',
-    'metrics': 'ga:visits',
-    'filters': 'ga:medium==cpa,ga:medium==cpc,ga:medium==cpm,ga:medium==cpp,ga:medium==cpv,ga:medium==organic,ga:medium==ppc'
-  };
-  GA.get(visitsPaidQuery, function(err, entries) {
-    dailyVisitorsPaid += ''+gaGetDailies(entries, 'ga:visits');
-  });
-
   var registrationsQuery = {
     'ids': 'ga:'+profileAllDomains,
     'start-date': monthAgoString,
@@ -191,64 +180,77 @@ GA.login(function(err, token) {
     dailyCPC = gaDivideDailiesInteger(dailyAdCost, dailyAdClicks);
   });
 
-  var visitorsWithSearch = {
+  var visitorsWithSearchQuery = {
     'ids': 'ga:'+profileAllDomains,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:percentVisitsWithSearch',
   };
-  GA.get(visitorsWithSearch, function(err, entries) {
+  GA.get(visitorsWithSearchQuery, function(err, entries) {
     dailyVisitorsWithSearchPercentage += ''+gaGetDailies(entries, 'ga:percentVisitsWithSearch');
   });
 
-  var searchRefinementsPercentage = {
+  var searchRefinementsPercentageQuery = {
     'ids': 'ga:'+profileAllDomains,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:percentSearchRefinements',
   };
-  GA.get(searchRefinementsPercentage, function(err, entries) {
+  GA.get(searchRefinementsPercentageQuery, function(err, entries) {
     dailySearchRefinementsPercentage += ''+gaGetDailies(entries, 'ga:percentSearchRefinements');
+    console.log(dailySearchRefinementsPercentage);
   });
+});
 
-  var avgSearchDuration = {
-    'ids': 'ga:'+profileAllDomains,
-    'start-date': monthAgoString,
-    'end-date': yesterdayString,
-    'dimensions': 'ga:date',
-    'metrics': 'ga:avgSearchDuration',
-  };
-  GA.get(avgSearchDuration, function(err, entries) {
-    dailyAvgSearchDuration += ''+gaGetDailies(entries, 'ga:avgSearchDuration');
-  });
-
-  var visitorsWithSearchAndEngagementPercentage = {
-    'ids': 'ga:'+profileAllDomains,
-    'start-date': monthAgoString,
-    'end-date': yesterdayString,
-    'dimensions': 'ga:date',
-    'metrics': 'ga:percentVisitsWithSearch',
-    'filters': 'ga:eventCategory==Registration'
-  };
-  GA.get(visitorsWithSearchAndEngagementPercentage, function(err, entries) {
-    dailyVisitorsWithSearchAndEngagementPercentage += ''+gaGetDailies(entries, 'ga:percentVisitsWithSearch');
-  });
-
-  // var visitorsWithSearchAndEngagementPercentage = {
+  // var visitorsWithSearchAndEngagementPercentageQuery = {
   //   'ids': 'ga:'+profileAllDomains,
   //   'start-date': monthAgoString,
   //   'end-date': yesterdayString,
   //   'dimensions': 'ga:date',
   //   'metrics': 'ga:percentVisitsWithSearch',
-  //   'filters': 'ga:eventCategory==Registration'
+  //   'filters': 'ga:eventCategory==Engagement,ga:eventCategory==Questions,ga:eventCategory==Boards,ga:eventCategory==Favorites'
   // };
-  // GA.get(visitorsWithSearchAndEngagementPercentage, function(err, entries) {
+  // GA.get(visitorsWithSearchAndEngagementPercentageQuery, function(err, entries) {
   //   dailyVisitorsWithSearchAndEngagementPercentage += ''+gaGetDailies(entries, 'ga:percentVisitsWithSearch');
+  //   console.log(dailyVisitorsWithSearchAndEngagementPercentage);
   // });
 
-});
+  // var avgSearchDurationQuery = {
+  //   'ids': 'ga:'+profileAllDomains,
+  //   'start-date': monthAgoString,
+  //   'end-date': yesterdayString,
+  //   'dimensions': 'ga:date',
+  //   'metrics': 'ga:avgSearchDuration',
+  // };
+  // GA.get(avgSearchDurationQuery, function(err, entries) {
+  //   dailyAvgSearchDuration += ''+gaGetDailies(entries, 'ga:avgSearchDuration');
+  // });
+
+  // var searchKeywordQuery = {
+  //   'ids': 'ga:'+profileAllDomains,
+  //   'start-date': monthAgoString,
+  //   'end-date': yesterdayString,
+  //   'dimensions': 'ga:searchKeyword',
+  //   'metrics': 'ga:searchUniques',
+  // };
+  // GA.get(searchKeywordQuery, function(err, entries) {
+  //   searchKeyword += ''+gaGetDailies(entries, 'ga:searchUniques');
+  //   console.log(searchKeyword);
+  // });
+
+  // var visitsPaidQuery = {
+  //   'ids': 'ga:'+profileAllDomains,
+  //   'start-date': monthAgoString,
+  //   'end-date': yesterdayString,
+  //   'dimensions': 'ga:date',
+  //   'metrics': 'ga:visits',
+  //   'filters': 'ga:medium==cpa,ga:medium==cpc,ga:medium==cpm,ga:medium==cpp,ga:medium==cpv,ga:medium==organic,ga:medium==ppc'
+  // };
+  // GA.get(visitsPaidQuery, function(err, entries) {
+  //   dailyVisitorsPaid += ''+gaGetDailies(entries, 'ga:visits');
+  // });
 
 function gaGetDailies(entries,metric) {
   var dailies = '';
