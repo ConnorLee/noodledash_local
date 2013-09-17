@@ -19,8 +19,8 @@ var THIRTY7SIGNALS_CALLBACK_URL = process.env.THIRTY7SIGNALS_CALLBACK_URL;
 
 var HIGHRISE_TOKEN = process.env.HIGHRISE_TOKEN;
 
-var profileAllDomains='36017589';
-var profile ='75363233';
+var profileNoodleOnly='75363233';
+var profile ='36017589';
 var username=process.env.GA_USERNAME;
 var password=process.env.GA_PASSWORD;
 
@@ -80,7 +80,7 @@ var GA = new ga.GA({
 GA.login(function(err, token) {
 
   var uniqueVisitorsQuery = {
-  'ids': 'ga:'+profileAllDomains,
+  'ids': 'ga:'+profile,
   'start-date': monthAgoString,
   'end-date': yesterdayString,
   'dimensions':'ga:date',
@@ -92,7 +92,7 @@ GA.login(function(err, token) {
   });
 
   var uniqueVisitorsQueryYesterday = {
-  'ids': 'ga:'+profileAllDomains,
+  'ids': 'ga:'+profile,
   'start-date': yesterdayString,
   'end-date': yesterdayString,
   'dimensions':'ga:date',
@@ -126,7 +126,7 @@ GA.login(function(err, token) {
 
   var answersWrittenYesterdayQuery = {
   'ids': 'ga:'+profile,
-  'start-date': yesterdayString,
+  'start-date': monthAgoString,
   'end-date': yesterdayString,
   'metrics': 'ga:totalEvents',
   'filters': 'ga:eventAction==Added an Answer'
@@ -240,32 +240,6 @@ GA.login(function(err, token) {
   });
 
 });
-
-
-
-  // var searchKeywordQuery = {
-  //   'ids': 'ga:'+profileAllDomains,
-  //   'start-date': monthAgoString,
-  //   'end-date': yesterdayString,
-  //   'dimensions': 'ga:searchKeyword',
-  //   'metrics': 'ga:searchUniques',
-  // };
-  // GA.get(searchKeywordQuery, function(err, entries) {
-  //   searchKeyword += ''+gaGetDailies(entries, 'ga:searchUniques');
-  //   console.log(searchKeyword);
-  // });
-
-  // var visitsPaidQuery = {
-  //   'ids': 'ga:'+profileAllDomains,
-  //   'start-date': monthAgoString,
-  //   'end-date': yesterdayString,
-  //   'dimensions': 'ga:date',
-  //   'metrics': 'ga:visits',
-  //   'filters': 'ga:medium==cpa,ga:medium==cpc,ga:medium==cpm,ga:medium==cpp,ga:medium==cpv,ga:medium==organic,ga:medium==ppc'
-  // };
-  // GA.get(visitsPaidQuery, function(err, entries) {
-  //   dailyVisitorsPaid += ''+gaGetDailies(entries, 'ga:visits');
-  // });
 
 function gaGetDailies(entries,metric) {
   var dailies = '';
