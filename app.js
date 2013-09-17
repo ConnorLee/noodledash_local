@@ -19,8 +19,8 @@ var THIRTY7SIGNALS_CALLBACK_URL = process.env.THIRTY7SIGNALS_CALLBACK_URL;
 
 var HIGHRISE_TOKEN = process.env.HIGHRISE_TOKEN;
 
-var profileNoodleOnly='75363233';
-var profile ='36017589';
+var profileWithExplore='36017589';
+var profile ='75363233';
 var username=process.env.GA_USERNAME;
 var password=process.env.GA_PASSWORD;
 
@@ -126,7 +126,7 @@ GA.login(function(err, token) {
 
   var answersWrittenYesterdayQuery = {
   'ids': 'ga:'+profile,
-  'start-date': monthAgoString,
+  'start-date': yesterdayString,
   'end-date': yesterdayString,
   'metrics': 'ga:totalEvents',
   'filters': 'ga:eventAction==Added an Answer'
