@@ -166,6 +166,7 @@ GA.login(function(err, token) {
     'metrics': 'ga:uniqueEvents',
     'filters': 'ga:eventCategory==Registration'
   };
+    console.log('pre-ga-divide');
   GA.get(registrationsQuery, function(err, entries) {
     dailyRegistrationEvents += ''+gaGetDailies(entries, 'ga:uniqueEvents');
     dailyRegistrationPercentage = gaDivideDailies(dailyRegistrationEvents, dailyVisitorsNew);
