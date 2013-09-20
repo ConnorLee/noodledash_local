@@ -196,7 +196,7 @@ GA.login(function(err, token) {
 
   var visitorsWithSearchQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:percentVisitsWithSearch',
@@ -207,7 +207,7 @@ GA.login(function(err, token) {
 
   var searchRefinementsPercentageQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:percentSearchRefinements',
