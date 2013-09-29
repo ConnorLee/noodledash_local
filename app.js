@@ -269,7 +269,7 @@ function gaGetTotals(entries,metric) {
 }
 
 function gaDivideDailies(dailiesNumerator, dailiesDenominator) {
-
+  if (Array.isArray(dailiesNumerator) && Array.isArray(dailiesDenominator)) {
   numerator = dailiesToArray(dailiesNumerator);
   denominator = dailiesToArray(dailiesDenominator);
 
@@ -286,6 +286,7 @@ function gaDivideDailies(dailiesNumerator, dailiesDenominator) {
 
   } else {
     console.log("Error! Numerator/Denominator mismatch");
+  }
   }
 }
 
