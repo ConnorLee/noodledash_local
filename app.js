@@ -148,7 +148,7 @@ GA.login(function(err, token) {
 
   var organicVisitsQuery = {
     'ids': 'ga:'+profile,
-    'start-date': twoMonthAgoString,
+    'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:visitors',
@@ -228,7 +228,7 @@ GA.login(function(err, token) {
   });
 
   var dailyVisitorsWithEngagementQuery = {
-    'ids': 'ga:'+profile,
+    'ids': 'ga:'+profileWithExplore,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
