@@ -24,6 +24,7 @@ function weekendAreas(axes) {
 
 // plot daily data given chartDiv, selectorDiv and some formatted data
 function plotDailies(chartDivID, selectorDivID, data) {
+    if (data !== undefined) {
     var options = {
         xaxis: { mode: "time", tickLength: 5 },
         yaxes: [ { min: 0 }],
@@ -77,6 +78,9 @@ function plotDailies(chartDivID, selectorDivID, data) {
     $("#"+selectorDivID).bind("plotselected", function (event, ranges) {
         plot.setSelection(ranges);
     });
+    } else {
+        console.log("No data for "+chartDivID);
+    }
 };
 
 // plot 2 sets of dailies data given chartDiv, selectorDiv and two formatted data series 
