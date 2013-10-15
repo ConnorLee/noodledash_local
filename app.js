@@ -81,7 +81,7 @@ GA.login(function(err, token) {
 
   var uniqueVisitorsQuery = {
   'ids': 'ga:'+profile,
-  'start-date': monthAgoString,
+  'start-date': twoMonthAgoString,
   'end-date': yesterdayString,
   'dimensions':'ga:date',
   'metrics': 'ga:visitors'
@@ -137,7 +137,7 @@ GA.login(function(err, token) {
 
   var newVisitorsQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:newVisits'
@@ -148,7 +148,7 @@ GA.login(function(err, token) {
 
   var organicVisitsQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:visitors',
@@ -160,7 +160,7 @@ GA.login(function(err, token) {
 
   var registrationsQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:uniqueEvents',
@@ -173,7 +173,7 @@ GA.login(function(err, token) {
 
   var avgPageLoadTimeQuery = {
     'ids': 'ga:'+75363233,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:avgPageLoadTime'
@@ -184,7 +184,7 @@ GA.login(function(err, token) {
 
   var cpcQuery = {
     'ids': 'ga:'+profile,
-    'start-date': monthAgoString,
+    'start-date': twoMonthAgoString,
     'end-date': yesterdayString,
     'dimensions': 'ga:date',
     'metrics': 'ga:adCost,ga:adClicks'
