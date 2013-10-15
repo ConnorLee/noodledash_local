@@ -175,10 +175,11 @@ GA.login(function(err, token) {
     'ids': 'ga:'+75363233,
     'start-date': monthAgoString,
     'end-date': yesterdayString,
-    'metrics': 'ga:avgPageLoadTime',
+    'dimensions': 'ga:date',
+    'metrics': 'ga:avgPageLoadTime'
   };
   GA.get(avgPageLoadTimeQuery, function(err, entries) {
-    avgPageLoadTime = gaGetTotals(entries, 'ga:avgPageLoadTime');
+    avgPageLoadTime = gaGetDailies(entries, 'ga:avgPageLoadTime');
   });
 
   var cpcQuery = {
@@ -237,6 +238,7 @@ GA.login(function(err, token) {
   };
   GA.get(dailyVisitorsWithEngagementQuery, function(err, entries) {
     dailyVisitorsWithEngagement += ''+gaGetDailies(entries, 'ga:visitors');
+    console.log(dailyVisitorsWithEngagement);
   });
 
 });
@@ -269,11 +271,9 @@ function gaGetTotals(entries,metric) {
 }
 
 function gaDivideDailies(dailiesNumerator, dailiesDenominator) {
-  if (Array.isArray(dailiesNumerator) && Array.isArray(dailiesDenominator)) {
   numerator = dailiesToArray(dailiesNumerator);
   denominator = dailiesToArray(dailiesDenominator);
-
-  if (numerator.length == denominator.length) {
+  if (numerator.length === denominator.length) {
     result = '';
     for (var i=0;i<numerator.length;i++){
       resultValue = (dailyGetValue(numerator[i])/dailyGetValue(denominator[i]))*100;
@@ -283,12 +283,11 @@ function gaDivideDailies(dailiesNumerator, dailiesDenominator) {
     }
     result = '['+result.slice(0,result.length-2)+']';
     return result;
-
   } else {
     console.log("Error! Numerator/Denominator mismatch");
   }
-  }
 }
+
 
 function gaDivideDailiesInteger(dailiesNumerator, dailiesDenominator) {
 
