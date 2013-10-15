@@ -204,6 +204,7 @@ GA.login(function(err, token) {
   };
   GA.get(visitorsWithSearchQuery, function(err, entries) {
     dailyVisitorsWithSearchPercentage += ''+gaGetDailies(entries, 'ga:percentVisitsWithSearch');
+    console.log(dailyVisitorsWithSearchPercentage);
   });
 
   var searchRefinementsPercentageQuery = {
