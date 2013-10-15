@@ -47,6 +47,7 @@ dailyAvgSearchDuration = '';
 dailyVisitorsWithSearchAndEngagementPercentage = '';
 dailyVisitorsWithEngagement = '';
 searchKeyword = '';
+dailyPageViews = '';
 
 //Get the necessary dates for this stuff.
 
@@ -144,6 +145,17 @@ GA.login(function(err, token) {
   };
   GA.get(newVisitorsQuery, function(err, entries) {
     dailyVisitorsNew += ''+gaGetDailies(entries, 'ga:newVisits');
+  });
+
+  var pageViewsQuery = {
+    'ids': 'ga:'+profile,
+    'start-date': twoMonthAgoString,
+    'end-date': yesterdayString,
+    'dimensions': 'ga:date',
+    'metrics': 'ga:pageviews'
+  };
+  GA.get(pageViewsQuery, function(err, entries) {
+    dailyPageViews += ''+gaGetDailies(entries, 'ga:pageviews');
   });
 
   var organicVisitsQuery = {
