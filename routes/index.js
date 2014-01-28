@@ -5,20 +5,29 @@
 
 
 exports.iframe = function(req, res){
-        referenceurl = 'http://www.trackerstorymaps.com/projects/679513/releases';
 
         pagename = req.params.page;
 
         if (pagename == 'engagement') {
                 referenceurl = 'https://www.leftronic.com/app/#9ztWYx/4EhDI4sYl';
         }
-
-        if (pagename == 'snt') {
-                referenceurl = 'http://www.trackerstorymaps.com/projects/187421/releases';
+        if (pagename == 'executive') {
+                referenceurl = 'https://www.leftronic.com/app/#Ulh0hO/4EhDI4sYl';
         }
-
-        if (pagename == 'jedis') {
-                referenceurl = 'http://www.trackerstorymaps.com/projects/305603/releases';
+        if (pagename == 'performance') {
+                referenceurl = 'https://www.leftronic.com/app/#Ulh0hO/4EhDI4sYl';
+        }
+         if (pagename == 'marketing') {
+                referenceurl = 'https://www.leftronic.com/app/#GetI9h/4EhDI4sYl';
+        }
+         if (pagename == 'brand-guide') {
+                referenceurl = 'docs/BrandGuide.pdf';
+        }
+         if (pagename == 'news-room') {
+                referenceurl = 'http://www.chelseapiers.com/cpblog/';
+        }
+         if (pagename == 'class-schedule') {
+                referenceurl = 'http://www.chelseapiers.com/sc/downloads/FitnessSchedules/2014/SC_Classes201401.pdf#page=2';
         }
 
         res.render('iframe', {
