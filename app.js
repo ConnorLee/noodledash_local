@@ -448,6 +448,7 @@ app.get('/', routes.main);
 app.get('/manual', routes.manual);
 app.get('/resources', routes.resources);
 app.get('/releases/:release?', routes.index);
+app.get('/i/:page?', routes.iframe);
 app.get('/tools', routes.tools);
 
 
