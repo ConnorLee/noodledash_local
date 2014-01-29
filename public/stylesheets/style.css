@@ -27,24 +27,22 @@
 .login{
 
 }
-.basecamp{
-height: 20px;
-}
-.row{
+
+#home-row{
 vertical-align: middle;
 position: absolute;
 margin: 15% 35% 0% 35%;
 text-align: center;
 background-color: #f9f9f9;
 border-radius: 8px;
-padding:50px;
+padding:60px;
 box-shadow: 0px 0px 10px 3px rgba(119, 119, 119, 0.75);
 -moz-box-shadow: 0px 0px 10px 3px rgba(119, 119, 119, 0.75);
 -webkit-box-shadow: 0px 0px 10px 3px rgba(119, 119, 119, 0.75);
 }
 
-.main{
-background: rgb(255,197,120); /* Old browsers */
+body#main.home{
+background-color: f9a635;
 background: -moz-radial-gradient(center, ellipse cover, rgba(255,197,120,1) 0%, rgba(251,157,35,1) 100%); /* FF3.6+ */
 background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,197,120,1)), color-stop(100%,rgba(251,157,35,1))); /* Chrome,Safari4+ */
 background: -webkit-radial-gradient(center, ellipse cover, rgba(255,197,120,1) 0%,rgba(251,157,35,1) 100%); /* Chrome10+,Safari5.1+ */
