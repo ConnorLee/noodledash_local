@@ -9,7 +9,17 @@
 .table-title {
 	text-align: center;
 }
-
+#container{
+    margin-top:51px;
+}
+#menu-wrapper{
+    width: 300px;
+    float: left;
+}
+#content-wrapper{
+    margin-left: 300px;
+    height: 100%;
+}
 .graph-medium {
 	height: 250px;
 }
@@ -20,12 +30,6 @@
 
 .btn-group-modal {
 	padding-bottom: 2em;
-}
-.title{
-
-}
-.login{
-
 }
 
 #home-row{
