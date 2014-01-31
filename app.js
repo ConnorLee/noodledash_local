@@ -450,6 +450,7 @@ app.get('/resources', routes.resources);
 app.get('/releases/:release?', routes.index);
 app.get('/i/:page?', routes.iframe);
 app.get('/tools', routes.tools);
+app.get('/about', routes.about);
 
 
 app.get('/account', ensureAuthenticated, function(req, res){

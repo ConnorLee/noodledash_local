@@ -54,6 +54,35 @@ a:focus {
   outline: thin dotted;
 }
 
+.img-with-text {
+    text-align: center;
+    width: 130px;
+    display: inline-block;
+    padding: 20px;
+    margin: 5%;
+    margin-left: 10%;
+}
+
+.img-with-text.card {
+    -moz-box-shadow: 1px 1px 3px 3px #ccc;
+    -webkit-box-shadow: 1px 1px 3px 3px #ccc;
+    box-shadow: 1px 1px 3px 3px #ccc;
+    border-radius: 7px;
+    padding: 30px;
+}
+
+.img-with-text.card.home {
+    border-radius: 1000px;
+    padding-bottom: 70px;
+    padding-top: 70px;
+}
+
+.img-with-text img {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
 a:active,
 a:hover {
   outline: 0;
@@ -1110,6 +1139,7 @@ pre code {
   }
   .col-md-9 {
     width: 75%;
+    margin-top: 7%;
   }
   .col-md-10 {
     width: 83.33333333333334%;
