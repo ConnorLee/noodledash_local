@@ -9,16 +9,16 @@ exports.iframe = function(req, res){
         pagename = req.params.page;
 
         if (pagename == 'executive') {
-                referenceurl = 'https://www.leftronic.com/app/#Ulh0hO/4EhDI4sYl';
+                referenceurl = 'https://www.leftronic.com/app/#KjsGig/d2xhZkl9DoSBINA';
         }
         if (pagename == 'performance') {
-                referenceurl = 'https://www.leftronic.com/app/#Ulh0hO/4EhDI4sYl';
+                referenceurl = 'https://www.leftronic.com/share/Ulh0hO';
         }
          if (pagename == 'marketing') {
-                referenceurl = 'https://www.leftronic.com/app/#GetI9h/4EhDI4sYl';
+                referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h' ;
         }
         if (pagename == 'engagement') {
-                referenceurl = 'https://www.leftronic.com/app/#9ztWYx/4EhDI4sYl';
+                referenceurl = 'https://www.leftronic.com/share/9ztWYx/#9ztWYx';
         }
          if (pagename == 'tools') {
                 referenceurl = '../views/tools.ejs';

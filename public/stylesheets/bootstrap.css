@@ -48,6 +48,7 @@ html {
 
 body {
   margin: 0;
+  overflow: hidden;
 }
 
 a:focus {
@@ -1139,7 +1140,7 @@ pre code {
   }
   .col-md-9 {
     width: 75%;
-    margin-top: 7%;
+    margin-top: 70px;
   }
   .col-md-10 {
     width: 83.33333333333334%;
