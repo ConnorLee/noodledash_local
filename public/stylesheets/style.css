@@ -1,7 +1,10 @@
+h1,h2,h3{
+	font-family: "MuseoSans-700";
+}
+
 .main {
 	margin-top: 5em;
 }
-
 .section-header {
 	padding-bottom: 0.3em;
 }
@@ -10,8 +13,7 @@
     width: 130px;
 }
 .alert{
-	padding: 35px 35px 35px 35px;
-
+padding: 35px 35px 35px 35px;
 text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 background-color: #fcf8e3;
 border: 1px solid #fbeed5;
@@ -22,10 +24,13 @@ color: #c09853;
 margin-bottom: -20px;
 height: 20px;
 text-align: center;
-
 }
 .content-wrapper.assets{
 padding-top: 50px;
+}
+
+.about-tools{
+	padding-top: 70px;
 }
 
 .backpack-top-bar{
@@ -85,6 +90,7 @@ width: 300px;
 #container{
     margin-top:51px;
     background-image: url('../images/bg.jpg');
+    
 }
 #menu-wrapper{
     width: 300px;
@@ -102,6 +108,11 @@ width: 300px;
 #content-wrapper{
     margin-left: 300px;
     height: 100%;
+    
+}
+.content-wrapper.padding{
+	padding: 20 20%;
+	height: 100%
 }
 .graph-medium {
 	height: 250px;

@@ -447,6 +447,7 @@ app.configure('development', function(){
 app.get('/', routes.main);
 app.get('/manual', routes.manual);
 app.get('/resources', routes.resources);
+app.get('/ppt', routes.ppt);
 app.get('/releases/:release?', routes.index);
 app.get('/i/:page?', routes.iframe);
 app.get('/tools', routes.tools);

@@ -23,6 +23,9 @@ exports.iframe = function(req, res){
          if (pagename == 'tools') {
                 referenceurl = '../views/tools.ejs';
         }
+        if (pagename == 'ppt') {
+                referenceurl = '../views/ppt.ejs';
+        }
         if (pagename == 'about') {
                 referenceurl = '../views/about.ejs';
         }
@@ -30,12 +33,6 @@ exports.iframe = function(req, res){
                 referenceurl = '../assets/Noodle_BrandGuide.pdf';
         }
          if (pagename == 'handbook') {
-                referenceurl = '';
-        }
-         if (pagename == 'ppt') {
-                referenceurl = '';
-        }
-         if (pagename == 'logos') {
                 referenceurl = '';
         }
         if (pagename == 'social') {
@@ -93,6 +90,16 @@ exports.tools = function(req, res){
 	user: req.user
 	});
 };
+
+exports.ppt = function(req, res){
+
+    res.render('ppt', {
+    title: 'PowerPoint Template',
+    pagename: 'ppt',
+    user: req.user
+    });
+};
+
 
 exports.about = function(req, res){
 
