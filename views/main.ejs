@@ -33,25 +33,34 @@
   </div>
   <% } else { %>
 
-<div id="header">
-  <% include header.ejs %>
-</div>
-<div id="container">
-  <div id="menu-wrapper">
-    <% include menu.ejs %>
-  </div>
-  <div class="alert fade in">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>Welcome, <% user.displayname e %>!</strong> Here's where you can access Noodle's analytics, tools and resources (employee handbook, logo's etc.).
-  </div>
-  <div id="content-wrapper" style=" background-color:#ffffff">
-    <h3 style="padding-top:50px; margin-left: 70px;">Welcome to...</h3>
-    <img src="../images/logo.png " style="margin:70px;">
-  </div>
-  <!-- /container -->
-  <% } %>
-  <% include scripts.ejs %>
-  <% include end.ejs %>
 
-    
+<div id="header">
+<% include header.ejs %>
+</div>
+
+<div id="container">
+
+<div id="menu-wrapper">
+
+<% include menu.ejs %>
+
+</div>
+
+<div class="alert fade in">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Welcome, <%= user.displayName %>!</strong> Here's where you can access Noodle's analytics, tools and resources (employee handbook, logo's etc.).
+          </div>
+<div id="content-wrapper" style=" background-color:#ffffff">
+     
+  <h3 style="padding-top:50px; margin-left: 70px;">Welcome to...</h3>
+   <img src="../images/logo.png " style="margin:70px;" >
+   
+</div> 
+<!-- /container -->  
+
+
+<% } %>
+
+      <% include scripts.ejs %>
+      <% include end.ejs %>
 
