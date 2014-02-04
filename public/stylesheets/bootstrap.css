@@ -803,8 +803,8 @@ pre code {
 }
 
 .row {
-  margin-right: -15px;
-  margin-left: -15px;
+  width: 100%;
+  text-align: center;
 }
 
 .row:before,
@@ -1125,6 +1125,8 @@ pre code {
   }
   .col-md-4 {
     width: 33.33333333333333%;
+    margin: 1%;
+
   }
   .col-md-5 {
     width: 41.66666666666667%;
@@ -4988,12 +4990,12 @@ a.list-group-item.active > .badge,
   display: inline-block;
   display: block;
   height: auto;
-  max-width: 100%;
+  max-width: 50%;
   padding: 4px;
   line-height: 1.428571429;
   background-color: #ffffff;
   border: 1px solid #dddddd;
-  border-radius: 4px;
+  border-radius: 6px;
   -webkit-transition: all 0.2s ease-in-out;
           transition: all 0.2s ease-in-out;
 }

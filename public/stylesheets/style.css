@@ -24,6 +24,10 @@ height: 20px;
 text-align: center;
 
 }
+.content-wrapper.assets{
+padding-top: 50px;
+}
+
 .backpack-top-bar{
 background-color: rgb(67, 144, 183);
 background-image: url(http://d2jp3eq7stiz9q.cloudfront.net/media/site/build/img/toolbar-header-bg.png);
