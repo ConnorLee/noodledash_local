@@ -1,40 +1,47 @@
 <% if (!user) { %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<title><% title e %></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-<link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet">
-<link href="/stylesheets/style.css" rel="stylesheet">
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-<!-- Fav and touch icons -->
-<link rel="shortcut icon" href="../assets/ico/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-</head>
-<body class="<%= pagename %>
-" data-spy="scroll">
-<div class="container">
-  <div class="row">
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body class="<%= pagename %>" data-spy="scroll">
+    <div class="container">
+      <div class="row">
     <h1>Whoops...</h1>
     <h2>Gotta <a href="/auth/37signals">Login with 37signals</a> first.</h2>
-  </div>
+</div>
 </div>
 <% } else { %>
+
 <div id="menu-wrapper-sub">
-  <% include menu.ejs %>
+
+<% include menu.ejs %>
+
 </div>
+
 <% include header.ejs %>
-<!-- <div class="container">
+    <!-- <div class="container">
       <div class="row main">
         <div class ="col-md-3 sidebar-nav bs-docs-sidebar">
             <ul class="nav nav-list bs-docs-sidenav affix">
@@ -46,401 +53,341 @@
               <li><a href="#workers-compensation">Worker's Compensation</a></li>
               <li><a href="#other">Other</a></li>
             </ul>
-        </div><!--/span-->
- -->
-<div class="content-wrapper padding" style="overflow: scroll; padding-top: 100px;">
-  <div class="list-group" style="float:left; margin-left:-15%; position:fixed; overflow:none;">
-    <a href="#welcome" class="list-group-item active">Welcome..</a>
-    <a href="#employment-status" class="list-group-item">Employment Status</a>
-    <a href="#confidentiality" class="list-group-item">Confidentiality</a>
-    <a href="#time-off" class="list-group-item">Time Off</a>
-    <a href="#table table-bordered table-striped table-hover" class="list-group-item">Paid Time Off</a>
-    <a href="#workers-compensation" class="list-group-item">Workers Compensation</a>
-    <a href="#other" class="list-group-item">Other</a>
-  </div>
-  <section id="welcome">
-  <h1>Welcome to Noodle! </h1>
-  <p>
-    We're glad you’re part of the Noodle Team! Noodle is an exceptional place to work with exceptional people, and you're here because we're committed to keeping it that way.
-  </p>
-  <p>
-    This document contains some of the policies designed to contribute to your wellbeing and keep our operations humming.
-  </p>
-  <p>
-    Although we intend to continue the policies and practices described in this document, we have the right to modify these contents without notice.
-  </p>
-  </section>
-  <section id="employment-status">
-  <hr/>
-  <h2>EMPLOYMENT STATUS</h2>
-  <h6>Employment at Will</h6>
-  <p>
-     Employment with Noodle is on an “at will” basis, which means that the employment relationship is for no definite duration and may be ended at any time by either you or us without cause or notice. The content of this document does not constitute the terms of a contract of employment, express or implied, or the guarantee of any benefits. This document should not be construed as a guarantee of continued employment.
-  </p>
-  <p>
-    If you decide to leave us, we request that you notify your manager in writing at least two weeks in advance. If that happens, we'll determine whether you should continue working once your resignation notice has been received, but pay you through the two weeks regardless.
-  </p>
-  <h6>Pay When Leaving Noodle</h6>
-  <ul>
-    <li>We will pay you through your last day worked</li>
-    <li>You will be paid for unused paid time off in accordance with Noodle policy</li>
-    <li>For all pay and benefits purposes, you are considered to have terminated on your employment as of the last day worked. Medical, dental and vision benefits will terminate on the last day of the month in which you have terminated employment</li>
-    <li>We may make deductions from your final paycheck as compensation for Company property that you don't return at or before termination in accordance with applicable federal and state laws</li>
-    <li>You generally can't use PTO leave for the notice period</li>
-  </ul>
-  <p>
-    If you leave Noodle Education, Inc., you will be entitled to continue health and dental insurance coverage through COBRA. Employees electing continuation coverage will be responsible for paying the entire premium cost for this coverage. Employees eligible for COBRA will be provided the necessary paperwork for continuation coverage after their employment terminates.
-  </p>
-  </section>
-  <section id="confidentiality">
-  <hr/>
-  <h2>CONFIDENTIALITY</h2>
-  <h6>Work Product</h6>
-  <p>
-     All work produced by an employee for Noodle Education, Inc. is the property of Noodle Education, Inc. This includes, for example, all documents and computer files prepared in connection with Noodle Education, Inc. business, on Noodle Education, Inc. premises, or during paid working hours. Any appropriation of Noodle Education, Inc. computer files or other employee work product without proper authorization may result in immediate termination and appropriate legal action.
-  </p>
-  <h6>Confidentiality of Company Affairs</h6>
-  <p>
-     Keep all company matters confidential. Be careful or what your reveal about the company inside and outside the office. Noodle employees are exposed to a wide range of confidential and proprietary information. All employees sign a Confidential Agreement before beginning their employment with Noodle. Any outside requests for information must be approved by the appropriate manager, and all media requests should be directed to Adam Shapiro. Any inquiries from lawyers or government agencies should be directed to Rob Ryman.
-  </p>
-  <h6>Outside Employment</h6>
-  <p>
-     You’re going to be busy contributing to Noodle, and we don’t think it’s a good idea to take other jobs outside your regular work hours. If you’re considering outside work, you need your manager’s approval. Any outside work cannot in any way impact your work at Noodle, compete with Noodle, or involve use of Noodle's time, resources, facilities, or equipment.
-  </p>
-  </section>
-  <section id="workplace-environment">
-  <hr/>
-  <h2>WORKPLACE ENVIRONMENT</h2>
-  <h6>Policy Against Workplace Harassment</h6>
-  <p>
-     Noodle Education, Inc. is committed to maintaining a productive and positive work environment in which all individuals are treated with mutual respect and dignity. We all must contribute to a professional atmosphere that is free of harassment and inappropriate conduct of any form. We cannot tolerate insulting, exploitative, or discriminatory treatment behavior or attitudes.
-  </p>
-  <p>
-    If you believe you have been harassed, promptly and directly tell the offender that the behavior in question is inappropriate and request that the behavior be stopped or tell a direct supervisor. If an employee believes he or she has witnessed prohibited harassment or other inappropriate behavior, the employee must also notify a member of the Senior Team. Anyone who becomes aware of unlawful discrimination or harassment of any kind is obligated to report it promptly.
-  </p>
-  <p>
-    Noodle will investigate every complaint and resolve any instance of harassment or discrimination. Each person making a complaint, the alleged harasser/discriminator, and all knowledgeable employees have an obligation to cooperate fully with an investigation. We will maintain confidentiality throughout the investigation to the extent practical and appropriate under the circumstances, considering the sensitive interests of all concerned. Any person found to have committed prohibited discrimination, harassment or retaliation will be subjected to disciplinary action, including termination.
-  </p>
-  <p>
-    False, malicious complaints of prohibited harassment –as opposed to complaints that, even if erroneous, are made in good faith—may be the subject of appropriate corrective action.
-  </p>
-  <h6>Workplace Violence</h6>
-  <p>
-     Noodle believes that all employees should be able to work in an environment that is free of any and all forms of workplace violence. This includes threats and verbal attacks of words, gestures, or display of weapons, which are perceived by an employee as a clear and real threat to the fellow employee’s safety and which may cause anxiety or inability to perform job duties. Noodle will take all reasonable steps to prevent any and all forms of workplace violence from occurring. As an employer and in the best interests of our employees, it is our obligation to conduct objective, fact-finding investigations immediately following allegations of workplace violence and to take effective action, including termination of employment, to stop such activity and to minimize any effects of workplace violence. The ultimate objective of our investigation is to end the inappropriate activity and take preventative measures to see that it does not occur in the future. All potentially violent incidents should be immediately reported to a member of the management team. Reports of workplace violence will be handled in as confidential manner as possible. No form of retaliation by an employee following a report of workplace violence will be tolerated.
-  </p>
-  <h6>Smoke Free Workplace</h6>
-  <p>
-     Smoking is prohibited inside all Noodle facilities, both for employees and our visitors.
-  </p>
-  <h6>Substance Abuse</h6>
-  <p>
-     Noodle maintains a drug-free workplace. You may not misuse controlled substances, intoxicants, alcohol and prescription drugs, or buy, sell, manufacture, distribute, possess or work under the influence of illegal substances when conducting Noodle business. If we suspect that you are under the influence of alcohol or an illegal, non-prescribed or other controlled substance, then we may require you to submit to drug or alcohol testing or other medical evaluation.
-  </p>
-  <p>
-    That said, if you or someone in our family is struggling with a substance abuse issue, we want to help.
-  </p>
-  <ul>
-    <li>Contact your manager if you are aware of or have suspicions that a co-worker is misusing controlled substances, intoxicants, alcohol, or prescription drugs or buying, selling, manufacturing, distributing, possessing or working under the influence of illegal substances.</li>
-    <li>Cooperate fully with management if you are involved in a substance abuse investigation. </li>
-  </ul>
-  <h6>Office Hours</h6>
-  <p>
-    The Noodle workday takes place Monday through Friday with a flexible start-time at 9:00 a.m. Check with your manager regarding what schedule makes the most sense given your responsibilities and the team's goals. If you’re going to be absent or late, inform your manager as early as possible.
-  </p>
-  <h6>Dress Code</h6>
-  <p>
-    Noodle strives to provide a work environment that is both appropriate and comfortable. Our policy permits both casual and formal, but not inappropriate attire. From flip flops and t-shirts to jacket and ties, Noodlers dress for the occasion, and we expect you to use your judgment based on the circumstances. Noodle reserves the right to determine whether an employee’s dress and appearance is appropriate for the workplace.
-  </p>
-  <p>
-    Media Usage Don’t misuse or abuse the internet, email, chat, or telephone system while at work or when representing the company. The use of these systems for non-work-related matters should be kept to a minimum and never involve inappropriate or potentially offensive language and images.
-  </p>
-  <p>
-    Jerk-Free Workplace We work hard to create an open and fun culture here. Lots of companies say they don't tolerate jerks, but, in practice, they do. <br/>
-    Let's talk about the kind of people who aren't jerks.
-  </p>
-  <ul>
-    <li>People who keep their promises. If they say a project will be done by a certain date, they will do everything in their power to make that happen.</li>
-    <li>People who ask for help. If it can't get done by the promised date, they speak up about the problem and ask for help to make that goal.</li>
-    <li>People who watch each others' backs. If someone is struggling to get something done, they say, "Hey, can I do anything to help?" whether or not it fits their job description.</li>
-    <li>People who don't gossip, backstab ,or subvert each other.</li>
-  </ul>
-  <p>
-    Jerks propagate quickly in an organization. So when you're hiring someone, don't trade off competence for character—we need people with both.
-  </p>
-  </section>
-  <section id="time-off">
-  <hr/>
-  <h2>TIME AWAY FROM NOODLE</h2>
-  <p>
-    Paid Time Off To stay focused and maintain the energy to pursue our goals, it’s important to get away from the office and clear your mind once in a while. There are also times when we must balance needs outside the workplace. Full-time salaried employees earn Paid Time Off (“PTO”).
-  </p>
-  <p>
-    PTO includes sick time, vacations, holidays (other than those observed by Noodle Education, Inc.), and most other days away from the office that are not work-related. A single PTO approach to time away promotes flexibility, but requires you to manage your time for the unexpected. We all want time to unwind, be sure to leave enough time for illness, appointments, emergencies, or other needs that require time off from work.
-  </p>
-  <p>
-    Here’s the accrual schedule:
-  </p>
-  <table class="table table-bordered table-striped table-hover">
-  <thead>
-  <tr>
-    <th>
-      Years of Services
-    </th>
-    <th>
-      Accrual Rate per Pay Period
-    </th>
-    <th>
-      Annual PTO Accrual*
-    </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>
-      Fewer than One Year
-    </td>
-    <td>
-       0.50 days (4 hours)
-    </td>
-    <td>
-      12 days (96 hours)
-    </td>
-  </tr>
-  <tr>
-    <td>
-      One to Three Years
-    </td>
-    <td>
-       0.625 days (5 hours)
-    </td>
-    <td>
-      15 days (120 hours)
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Three to Five Years
-    </td>
-    <td>
-       0.75 days (6 hours)
-    </td>
-    <td>
-      18 days (144 hours)
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Five or More Years
-    </td>
-    <td>
-       0.83 days (6.66 hours)
-    </td>
-    <td>
-      20 days (160 hours)
-    </td>
-  </tr>
-  </tbody>
+        </div><!--/span--> -->
+        <div class="content-wrapper padding" style="overflow: scroll; padding-top: 100px;">
+<div class="list-group" style="float:left; margin-left:-15%; position:fixed; overflow:none;">
+  <a href="#welcome" class="list-group-item active">Welcome..</a>
+  <a href="#employment-status" class="list-group-item">Employment Status</a>
+  <a href="#confidentiality" class="list-group-item">Confidentiality</a>
+  <a href="#time-off" class="list-group-item">Time Off</a>
+  <a href="#table table-bordered table-striped table-hover" class="list-group-item">Paid Time Off</a>
+  <a href="#workers-compensation" class="list-group-item">Workers Compensation</a>
+  <a href="#other" class="list-group-item">Other</a>
+
+</div>
+
+
+<section id="welcome">
+<h1>Welcome to Noodle! </h1>
+
+<p>We're glad you’re part of the Noodle Team! Noodle is an exceptional place to work with exceptional people, and you're here because we're committed to keeping it that way.  </p>
+
+<p>This document contains some of the policies designed to contribute to your wellbeing and keep our operations humming.</p>
+
+<p>Although we intend to continue the policies and practices described in this document, we have the right to modify these contents without notice.</p>
+
+</section>
+<section id="employment-status">
+<hr />
+<h2>EMPLOYMENT STATUS</h2>
+
+<h6>Employment at Will</h6>
+<p>
+Employment with Noodle is on an “at will” basis, which means that the employment relationship is for no definite duration and may be ended at any time by either you or us without cause or notice.  The content of this document does not constitute the terms of a contract of employment, express or implied, or the guarantee of any benefits. This document should not be construed as a guarantee of continued employment.</p>
+
+<p>If you decide to leave us, we request that you notify your manager in writing at least two weeks in advance.  If that happens, we'll determine whether you should continue working once your resignation notice has been received, but pay you through the two weeks regardless. </p>
+
+<h6>Pay When Leaving Noodle</h6>
+
+<ul>
+<li>We will pay you through your last day worked</li>
+<li>You will be paid for unused paid time off in accordance with Noodle policy</li>
+<li>For all pay and benefits purposes, you are considered to have terminated on your employment as of the last day worked. Medical, dental and vision benefits will terminate on the last day of the month in which you have terminated employment</li>
+<li>We may make deductions from your final paycheck as compensation for Company property that you don't return at or before termination in accordance with applicable federal and state laws</li>
+<li>You generally can't use PTO leave for the notice period</li>
+</ul>
+
+<p>If you leave Noodle Education, Inc., you will be entitled to continue health and dental insurance coverage through COBRA.  Employees electing continuation coverage will be responsible for paying the entire premium cost for this coverage.  Employees eligible for COBRA will be provided the necessary paperwork for continuation coverage after their employment terminates.  </p>
+
+</section>
+<section id="confidentiality">
+<hr />
+<h2>CONFIDENTIALITY</h2>
+
+<h6>Work Product</h6>
+<p>
+All work produced by an employee for Noodle Education, Inc. is the property of Noodle Education, Inc.  This includes, for example, all documents and computer files prepared in connection with Noodle Education, Inc. business, on Noodle Education, Inc. premises, or during paid working hours.  Any appropriation of Noodle Education, Inc. computer files or other employee work product without proper authorization may result in immediate termination and appropriate legal action.</p>
+
+<h6>Confidentiality of Company Affairs</h6>
+<p>
+Keep all company matters confidential. Be careful or what your reveal about the company inside and outside the office. Noodle employees are exposed to a wide range of confidential and proprietary information. All employees sign a Confidential Agreement before beginning their employment with Noodle.  Any outside requests for information must be approved by the appropriate manager, and all media requests should be directed to Adam Shapiro. Any inquiries from lawyers or government agencies should be directed to Rob Ryman.</p>
+<h6>Outside Employment</h6>
+<p>
+You’re going to be busy contributing to Noodle, and we don’t think it’s a good idea to take other jobs outside your regular work hours. If you’re considering outside work, you need your manager’s approval. Any outside work cannot in any way impact your work at Noodle, compete with Noodle, or involve use of Noodle's time, resources, facilities, or equipment. </p>
+</section>
+<section id="workplace-environment">
+<hr />
+<h2>WORKPLACE ENVIRONMENT</h2>
+<h6>Policy Against Workplace Harassment</h6>
+<p>
+Noodle Education, Inc. is committed to maintaining a productive and positive work environment in which all individuals are treated with mutual respect and dignity. We all must contribute to a professional atmosphere that is free of harassment and inappropriate conduct of any form. We cannot tolerate insulting, exploitative, or discriminatory treatment behavior or attitudes. </p>
+
+<p>If you believe you have been harassed, promptly and directly tell the offender that the behavior in question is inappropriate and request that the behavior be stopped or tell a direct supervisor. If an employee believes he or she has witnessed prohibited harassment or other inappropriate behavior, the employee must also notify a member of the Senior Team. Anyone who becomes aware of unlawful discrimination or harassment of any kind is obligated to report it promptly.</p>
+
+<p>Noodle will investigate every complaint and resolve any instance of harassment or discrimination. Each person making a complaint, the alleged harasser/discriminator, and all knowledgeable employees have an obligation to cooperate fully with an investigation. We will maintain confidentiality throughout the investigation to the extent practical and appropriate under the circumstances, considering the sensitive interests of all concerned.  Any person found to have committed prohibited discrimination, harassment or retaliation will be subjected to disciplinary action, including termination.</p>
+
+<p>False, malicious complaints of prohibited harassment –as opposed to complaints that, even if erroneous, are made in good faith—may be the subject of appropriate corrective action.</p>
+<h6>Workplace Violence</h6>
+<p>
+Noodle believes that all employees should be able to work in an environment that is free of any and all forms of workplace violence.  This includes threats and verbal attacks of words, gestures, or display of weapons, which are perceived by an employee as a clear and real threat to the fellow employee’s safety and which may cause anxiety or inability to perform job duties. Noodle will take all reasonable steps to prevent any and all forms of workplace violence from occurring.  As an employer and in the best interests of our employees, it is our obligation to conduct objective, fact-finding investigations immediately following allegations of workplace violence and to take effective action, including termination of employment, to stop such activity and to minimize any effects of workplace violence.  The ultimate objective of our investigation is to end the inappropriate activity and take preventative measures to see that it does not occur in the future. All potentially violent incidents should be immediately reported to a member of the management team. Reports of workplace violence will be handled in as confidential manner as possible. No form of retaliation by an employee following a report of workplace violence will be tolerated.  </p>
+
+<h6>Smoke Free Workplace</h6>
+<p> 
+Smoking is prohibited inside all Noodle facilities, both for employees and our visitors. </p>
+
+<h6>Substance Abuse</h6>
+<p> 
+Noodle maintains a drug-free workplace. You may not misuse controlled substances, intoxicants, alcohol and prescription drugs, or buy, sell, manufacture, distribute, possess or work under the influence of illegal substances when conducting Noodle business. If we suspect that you are under the influence of alcohol or an illegal, non-prescribed or other controlled substance, then we may require you to submit to drug or alcohol testing or other medical evaluation. </p>
+
+<p>That said, if you or someone in our family is struggling with a substance abuse issue, we want to help. </p>
+
+<ul>
+<li>Contact your manager if you are aware of or have suspicions that a co-worker is misusing controlled substances, intoxicants, alcohol, or prescription drugs or buying, selling, manufacturing, distributing, possessing or working under the influence of illegal substances.</li>
+<li>Cooperate fully with management if you are involved in a substance abuse investigation. </li>
+</ul>
+
+<h6>Office Hours</h6>
+<p>The Noodle workday takes place Monday through Friday with a flexible start-time at 9:00 a.m. Check with your manager regarding what schedule makes the most sense given your responsibilities and the team's goals. If you’re going to be absent or late, inform your manager as early as possible.</p>
+
+<h6>Dress Code</h6> 
+<p>Noodle strives to provide a work environment that is both appropriate and comfortable. Our policy permits both casual and formal, but not inappropriate attire. From flip flops and t-shirts to jacket and ties, Noodlers dress for the occasion, and we expect you to use your judgment based on the circumstances. Noodle reserves the right to determine whether an employee’s dress and appearance is appropriate for the workplace.</p>
+
+<p>Media Usage
+Don’t misuse or abuse the internet, email, chat, or telephone system while at work or when representing the company. The use of these systems for non-work-related matters should be kept to a minimum and never involve inappropriate or potentially offensive language and images.</p>
+
+<p>Jerk-Free Workplace
+We work hard to create an open and fun culture here. Lots of companies say they don't tolerate jerks, but, in practice, they do. <br />
+Let's talk about the kind of people who aren't jerks.</p>
+
+<ul>
+<li>People who keep their promises. If they say a project will be done by a certain date, they will do everything in their power to make that happen.</li>
+<li>People who ask for help. If it can't get done by the promised date, they speak up about the problem and ask for help to make that goal.</li>
+<li>People who watch each others' backs. If someone is struggling to get something done, they say, "Hey, can I do anything to help?" whether or not it fits their job description.</li>
+<li>People who don't gossip, backstab ,or subvert each other.</li>
+</ul>
+
+<p>Jerks propagate quickly in an organization. So when you're hiring someone, don't trade off competence for character—we need people with both.</p>
+</section>
+<section id="time-off">
+<hr />
+<h2>TIME AWAY FROM NOODLE</h2>
+
+<p>Paid Time Off
+To stay focused and maintain the energy to pursue our goals, it’s important to get away from the office and clear your mind once in a while. There are also times when we must balance needs outside the workplace. Full-time salaried employees earn Paid Time Off (“PTO”).</p>
+
+<p>PTO includes sick time, vacations, holidays (other than those observed by Noodle Education, Inc.), and most other days away from the office that are not work-related. A single PTO approach to time away promotes flexibility, but requires you to manage your time for the unexpected. We all want time to unwind, be sure to leave enough time for illness, appointments, emergencies, or other needs that require time off from work.</p>
+
+<p>Here’s the accrual schedule:</p>
+
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Years of Services</th>
+        <th>Accrual Rate per Pay Period</th>
+        <th>Annual PTO Accrual*</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr><td>Fewer than One Year</td><td>     0.50 days (4 hours)            </td><td>12 days (96 hours)</td></tr>
+<tr><td>One to Three Years</td><td>      0.625 days (5 hours)           </td><td>15 days (120 hours)</td></tr>
+<tr><td>Three to Five Years</td><td>     0.75 days (6 hours)            </td><td>18 days (144 hours)</td></tr>
+<tr><td>Five or More Years</td><td>      0.83 days (6.66 hours)         </td><td>20 days (160 hours)</td></tr>
+    </tbody>
   </table>
-  <p>
-    Any PTO you didn’t use during the calendar year cannot be carried over to another calendar year.
-  </p>
-  <h6>Eligibility</h6>
-  <p>
-    PTO starts to accrue upon hire or transfer into a regular full-time position. Interns, temporary employees, and part-time employee are not eligible for PTO.
-  </p>
-  <h6>Availability</h6>
-  <p>
-    PTO accruals are available for use in the pay period following your completion of 30 days of employment. Once 30 days of employment have been reached PTO, you can use your PTO. With your manager's approval, you may use PTO time that will be earned later in the same calendar year. You may not use PTO time from future years. It is the responsibility of you and your manager to track availability and use of PTO.
-  </p>
-  <h6>Duration of PTO</h6>
-  <p>
-    Because we are a small company and each employee plays a unique and vital role, we recommend that you limit each PTO period to a maximum of 5 business days. If you need to take off a longer period of time, please notify your manager as early as possible.
-  </p>
-  <h6>PTO &amp; Overtime</h6>
-  <p>
-    You may take PTO in increments as low as a half day (four hours). PTO is not included in the calculation of overtime.
-  </p>
-  <p>
-    Occasional time off from work in increments less than four hours (excluding time missed because you are late to work) for reasons such as personal appointments will be paid without requiring the use of PTO. However, this time off is not included in the calculation of overtime. (Medical and dental appointments should be scheduled as to not conflict with your work schedule. Where this is not possible, arrangements should be made with a manager.)
-  </p>
-  <p>
-    As a small company, we depend greatly on each other, and unplanned absences can sometimes disrupt the progress we’re making. So, try to keep unscheduled PTO to a minimum and schedule lengthy PTO (around 5 business days or more) in advance. If you need to be out for a health-related issue, we may ask you to provide a statement from a health-care provider.
-  </p>
-  <p>
-    Payment upon Termination If you leave Noodle Education, Inc., we will pay you for accrued, unused PTO. If you leave Noodle Education, Inc. with a negative PTO balance, we will deduct the value of that PTO from your final paycheck. Holidays Every day is like a holiday at Noodle. Nevertheless, you get to stay home or do whatever you like on the holidays below:
-  </p>
-  <ul>
-    <li>New Year’s Day*</li>
-    <li>Martin Luther King Day</li>
-    <li>President’s Day</li>
-    <li>Memorial Day</li>
-    <li>Independence Day*</li>
-    <li>Labor Day</li>
-    <li>Thanksgiving Day + Friday after Thanksgiving Day</li>
-    <li>Christmas Day*</li>
-  </ul>
-  <p>
-    If a holiday falls on a Sunday, we’ll observe it on the following Monday; if it falls on a Saturday, we’ll observe it on the preceding Friday. If any holiday falls on a Tuesday or Thursday, we’ll also take off the preceding Monday or following Friday. If a holiday falls on a Wednesday, it will be at management’s discretion as to whether the preceding or following day is also taken off. Also, we’ll take off an extra day when Christmas Day or New Year’s Day falls on a weekend. Part time employees are not paid for company holidays.
-  </p>
-  <h6>Short-Term Disability</h6>
-  <p>
-    PAll employees are covered by short-term disability insurance. Let us know if you have questions about the details and limitations of this coverage.
-  </p>
-  <h6>Bereavement Leave Policy</h6>
-   Noodle wants to be supportive of employees during the difficult time following the loss of someone you care about. As a regular full-time employee, you can take up to five days of paid bereavement leave for the death of an immediate family member. For purposes of this policy, immediate family members include an employee’s spouse/domestic partner, child, parent/guardian, sibling, grandchild, or in-laws. You will receive three days for the death of an aunt, uncle or grandparent.
-</p>
+
+
+
+<p>Any PTO you didn’t use during the calendar year cannot be carried over to another calendar year. </p>
+
+<h6>Eligibility</h6>
+<p>PTO starts to accrue upon hire or transfer into a regular full-time position.  Interns, temporary employees, and part-time employee are not eligible for PTO.</p>
+
+<h6>Availability</h6>
+<p>PTO accruals are available for use in the pay period following your completion of 30 days of employment. Once 30 days of employment have been reached PTO, you can use your PTO.   With your manager's approval, you may use PTO time that will be earned later in the same calendar year. You may not use PTO time from future years. It is the responsibility of you and your manager to track availability and use of PTO.</p>
+
+<h6>Duration of PTO</h6>
+<p>Because we are a small company and each employee plays a unique and vital role, we recommend that you limit each PTO period to a maximum of 5 business days. If you need to take off a longer period of time, please notify your manager as early as possible. </p>
+
+<h6>PTO &amp; Overtime</h6>
+<p>You may take PTO in increments as low as a half day (four hours). PTO is not included in the calculation of overtime.</p>
+
+<p>Occasional time off from work in increments less than four hours (excluding time missed because you are late to work) for reasons such as personal appointments will be paid without requiring the use of PTO.  However, this time off is not included in the calculation of overtime. (Medical and dental appointments should be scheduled as to not conflict with your work schedule.  Where this is not possible, arrangements should be made with a manager.)</p>
+
+<p>As a small company, we depend greatly on each other, and unplanned absences can sometimes disrupt the progress we’re making. So, try to keep unscheduled PTO to a minimum and schedule lengthy PTO (around 5 business days or more) in advance. If you need to be out for a health-related issue, we may ask you to provide a statement from a health-care provider.</p>
+
+<p>Payment upon Termination
+If you leave Noodle Education, Inc., we will pay you for accrued, unused PTO. If you leave Noodle Education, Inc. with a negative PTO balance, we will deduct the value of that PTO from your final paycheck.
+Holidays
+Every day is like a holiday at Noodle. Nevertheless, you get to stay home or do whatever you like on the holidays below:</p>
+
+<ul>
+<li>New Year’s Day*</li>
+<li>Martin Luther King Day</li>
+<li>President’s Day</li>
+<li>Memorial Day</li>
+<li>Independence Day*</li>
+<li>Labor Day</li>
+<li>Thanksgiving Day + Friday after Thanksgiving Day</li>
+<li>Christmas Day*</li>
+</ul>
+
+<p>If a holiday falls on a Sunday, we’ll observe it on the following Monday; if it falls on a Saturday, we’ll observe it on the preceding Friday.  If any holiday falls on a Tuesday or Thursday, we’ll also take off the preceding Monday or following Friday.  If a holiday falls on a Wednesday, it will be at management’s discretion as to whether the preceding or following day is also taken off. Also, we’ll take off an extra day when Christmas Day or New Year’s Day falls on a weekend. Part time employees are not paid for company holidays.</p>
+
+<h6>Short-Term Disability</h6>
+<p>PAll employees are covered by short-term disability insurance. Let us know if you have questions about the details and limitations of this coverage.</p>
+
+<h6>Bereavement Leave Policy</h6>
+Noodle wants to be supportive of employees during the difficult time following the loss of someone you care about. As a regular full-time employee, you can take up to five days of paid bereavement leave for the death of an immediate family member. For purposes of this policy, immediate family members include an employee’s spouse/domestic partner, child, parent/guardian, sibling, grandchild, or in-laws.  You will receive three days for the death of an aunt, uncle or grandparent.</p>
+
 <h6>Jury Duty</h6>
-<p>
-  Noodle recognizes an employee’s civic responsibility to serve on a jury if requested to do so. As a regular full-time employee, you will be paid your full salary for up to five days, and as a regular part-time employee you will be paid your hourly rate for up to three days. If you are required to serve additional time on a jury, then you will be permitted to take unpaid leave for the duration of the jury service. You must submit a copy of your jury summons to Human Resources when you receive it and report to work on days when you are not on jury duty or on partial days when the court doesn't require your presence.
-</p>
+<p>Noodle recognizes an employee’s civic responsibility to serve on a jury if requested to do so. As a regular full-time employee, you will be paid your full salary for up to five days, and as a regular part-time employee you will be paid your hourly rate for up to three days. If you are required to serve additional time on a jury, then you will be permitted to take unpaid leave for the duration of the jury service.  You must submit a copy of your jury summons to Human Resources when you receive it and report to work on days when you are not on jury duty or on partial days when the court doesn't require your presence.</p>
+
 <h6>Military Leave</h6>
-<p>
-  In accordance with the Uniformed Services Employment and Reemployment Rights Act (“USERRA”) and state law where applicable, Noodle respects the right and obligations of employees to serve in the United States Armed Forces and offers leave for its employees in that capacity. Arrangements should be made with a manager when military commitments conflict with an employee's work schedule.
-</p>
+<p>In accordance with the Uniformed Services Employment and Reemployment Rights Act (“USERRA”) and state law where applicable, Noodle respects the right and obligations of employees to serve in the United States Armed Forces and offers leave for its employees in that capacity.  Arrangements should be made with a manager when military commitments conflict with an employee's work schedule.  </p>
+
 <h6>Unpaid Personal Leave of Absence</h6>
-<p>
-  If you need extended time off from work for personal or other reasons and which do not qualify as Family and Medical Leave, you may be permitted to take an unpaid leave of absence at Noodle’s sole discretion. You may not take any leave of absence in excess of six months. WE will not grant a leave of absence if you have fewer than six months (180 calendar days) of continuous service.
-</p>
-<p>
-  An approved unpaid personal leave of absence does not assure you the right to return to work at Noodle or to return to the job you held. Although we will try to place you in a job, we are not obligated to do so. If we do offer you a position at the end of the leave and you do not accept it, we will consider that your resignation without notice.
-</p>
-<p>
-  When on an unpaid personal leave of absence, you are responsible for maintaining your benefit premiums. If you are on unpaid leave for more than six weeks, your benefits coverage will be discontinued and offered through COBRA.
-</p>
-<h6>Family and Medical Leave Act</h6>
-<p>
-  Given its small size, Noodle is not obligated to follow federal Family and Medical Leave Act (FMLA) requirements, but we do anyway. FMLA provides unpaid leave and certain protections for you if you meet eligibility requirements for certain life circumstances.
-</p>
-<p>
-  What can FMLA be used for?
-</p>
+<p>If you need extended time off from work for personal or other reasons and which do not qualify as Family and Medical Leave, you may be permitted to take an unpaid leave of absence at Noodle’s sole discretion. You may not take any leave of absence in excess of six months. WE will not grant a leave of absence if you have fewer than six months (180 calendar days) of continuous service.</p>
+
+<p>An approved unpaid personal leave of absence does not assure you the right to return to work at Noodle or to return to the job you held. Although we will try to place you in a job, we are not obligated to do so. If we do offer you a position at the end of the leave and you do not accept it, we will consider that your resignation without notice.</p>
+
+<p>When on an unpaid personal leave of absence, you are responsible for maintaining your benefit premiums. If you are on unpaid leave for more than six weeks, your benefits coverage will be discontinued and offered through COBRA.</p>
+
+<h6>Family and Medical Leave Act</h6> 
+<p>Given its small size, Noodle is not obligated to follow federal Family and Medical Leave Act (FMLA) requirements, but we do anyway.  FMLA provides unpaid leave and certain protections for you if you meet eligibility requirements for certain life circumstances.</p>
+
+<p>What can FMLA be used for?</p>
+
 <ul>
-  <li>For the birth, adoption or placement for foster care of a son or daughter and to care for such child.</li>
-  <li>To care for the employee’s spouse, son, daughter or parent who has a serious health condition.</li>
-  <li>Because of a serious health condition that makes the employee unable to perform any one or more of the essential functions of his or her job.</li>
+<li>For the birth, adoption or placement for foster care of a son or daughter and to care for such child.</li>
+<li>To care for the employee’s spouse, son, daughter or parent who has a serious health condition.</li>
+<li>Because of a serious health condition that makes the employee unable to perform any one or more of the essential functions of his or her job.</li>
 </ul>
-<p>
-  Any leave taken under one or more of these circumstances will be counted against the employee’s total available FMLA leave for that leave year. You should submit FMLA requests in writing at least 30 days in advance, when the leave is foreseeable, or as soon as is practical thereafter.
-</p>
+
+<p>Any leave taken under one or more of these circumstances will be counted against the employee’s total available FMLA leave for that leave year. You should submit FMLA requests in writing at least 30 days in advance, when the leave is foreseeable, or as soon as is practical thereafter.  </p>
+
 <h6>Unpaid Leave</h6>
-<p>
-  Noodle Education, Inc. grants leave without pay to eligible employees for up to twelve weeks in any twelve-month period. The time off is not paid, unless the employee is taking PTO or disability leave concurrently with unpaid leave. Any time off taken under the PTO policy will run concurrently with this Unpaid Family and Medical Leave policy.
-</p>
-<p>
-  Eligibility for Unpaid Leave: To be eligible for unpaid leave, the employee must have been employed full-time by Noodle Education, Inc. for at least twelve months before the date the leave begins.
-</p>
-<p>
-  Reasons for Taking Unpaid Leave: Eligible employees are entitled to take unpaid leave for any of the following reasons:
-</p>
+<p>Noodle Education, Inc. grants leave without pay to eligible employees for up to twelve weeks in any twelve-month period. The time off is not paid, unless the employee is taking PTO or disability leave concurrently with unpaid leave. Any time off taken under the PTO policy will run concurrently with this Unpaid Family and Medical Leave policy.  </p>
+
+<p>Eligibility for Unpaid Leave: To be eligible for unpaid leave, the employee must have been employed full-time by Noodle Education, Inc. for at least twelve months before the date the leave begins. </p>
+
+<p>Reasons for Taking Unpaid Leave: Eligible employees are entitled to take unpaid leave for any of the following reasons:</p>
+
 <ul>
-  <li>The birth of a child and to take care of the new-born child; </li>
-  <li>The placement of a child in the employee’s home for adoption, foster care, or guardianship, and to care for the newly placed child;</li>
-  <li>The care of an employee’s immediate family member who has a serious health condition (immediate family includes the employee’s spouse or domestic partner, children and parents but not a parent “in law”); </li>
-  <li>The employee’s own serious health condition that renders the employee unable to perform his or her job with or without reasonable accommodation (the first twelve weeks will be counted toward unpaid leave although the employee may be disabled longer).</li>
+<li>The birth of a child and to take care of the new-born child;  </li>
+<li>The placement of a child in the employee’s home for adoption, foster care, or guardianship, and to care for the newly placed child;</li>
+<li>The care of an employee’s immediate family member who has a serious health condition (immediate family includes the employee’s spouse or domestic partner, children and parents but not a parent “in law”); </li>
+<li>The employee’s own serious health condition that renders the employee unable to perform his or her job with or without reasonable accommodation (the first twelve weeks will be counted toward unpaid leave although the employee may be disabled longer).</li>
 </ul>
-<p>
-  Leave to care for a newborn child or for a newly placed child must conclude within twelve months after the birth or placement.
-</p>
-<p>
-  Spouses co-employed by Noodle Education, Inc. will be limited to a combined total of twelve weeks of unpaid leave for the following reasons:
-</p>
+
+<p>Leave to care for a newborn child or for a newly placed child must conclude within twelve months after the birth or placement.</p>
+
+<p>Spouses co-employed by Noodle Education, Inc. will be limited to a combined total of twelve weeks of unpaid leave for the following reasons:</p>
+
 <ul>
-  <li>Birth and care of a child; or</li>
-  <li>Placement of a child for adoption, foster care or guardianship, and to care for the newly placed child.</li>
+<li>Birth and care of a child; or</li>
+<li>Placement of a child for adoption, foster care or guardianship, and to care for the newly placed child.</li>
 </ul>
-<p>
-  The primary caregiver is the person at home who cares for the child. Only one parent (or guardian) can be the primary caregiver at a given time, but both parents (or guardians) can serve as the primary caregiver at different times. You are the primary caregiver if:
-</p>
+
+<p>The primary caregiver is the person at home who cares for the child.  Only one parent (or guardian) can be the primary caregiver at a 
+given time, but both parents (or guardians) can serve as the primary caregiver at different times.  You are the primary caregiver if:</p>
+
 <ul>
-  <li>You are the person who cares for the child immediately following the child’s birth, adoption, foster placement, or guardian placement;</li>
-  <li>You assume the role of the primary caregiver after your spouse or partner has been the primary caregiver and returned to work; or </li>
-  <li>You are the spouse or partner of a mother who has a complicated postnatal pregnancy and is unable to care for the child.</li>
+<li>You are the person who cares for the child immediately following the child’s birth, adoption, foster placement, or guardian placement;</li>
+<li>You assume the role of the primary caregiver after your spouse or partner has been the primary caregiver and returned to work; or </li>
+<li>You are the spouse or partner of a mother who has a complicated postnatal pregnancy and is unable to care for the child.</li>
 </ul>
-<p>
-   The following medical certification rules apply to employees requesting unpaid leave:
-</p>
-<p>
-  If the leave is needed to care for a sick child, spouse or parent, the employee must provide a certification from the health care provider that states:
-</p>
+
+
+<p> The following medical certification rules apply to employees requesting unpaid leave:</p>
+
+<p>If the leave is needed to care for a sick child, spouse or parent, the employee must provide a certification from the health care provider that states:</p>
+
 <ul>
-  <li>Date of commencement of the serious health condition;</li>
-  <li>Probable duration of the condition;</li>
-  <li>Estimated amount of time the health care provider will provide care; and</li>
-  <li>Confirmation that the serious health condition warrants the participation of a family member.</li>
+<li>Date of commencement of the serious health condition;</li>
+<li>Probable duration of the condition;</li>
+<li>Estimated amount of time the health care provider will provide care; and</li>
+<li>Confirmation that the serious health condition warrants the participation of a family member.</li>
 </ul>
-<p>
-  If the leave is needed for the employee's own serious health condition, the employee must provide a certification from a health care provider that states:
-</p>
+
+<p>If the leave is needed for the employee's own serious health condition, the employee must provide a certification from a health care provider that states:</p>
+
 <ul>
-  <li>Date of commencement of the serious health condition;</li>
-  <li>Probable duration of the condition; and</li>
-  <li>A statement that the employee is unable to perform the functions of his or her position because of the serious health condition.</li>
+<li>Date of commencement of the serious health condition;</li>
+<li>Probable duration of the condition; and</li>
+<li>A statement that the employee is unable to perform the functions of his or her position because of the serious health condition.</li>
 </ul>
-<p>
-  Compensation and Benefits During Leave An employee taking unpaid leave will be allowed to continue participating in any health and welfare benefit plans in which he or she was enrolled prior to the first day of the leave.
-</p>
-<p>
-  Reinstatement Following Unpaid Leave A leave of absence, especially an extended one, does not guarantee that your position will be available to you after the end of your leave. Each case will be treated individually and upon your return, every effort will be made to give you the best available job for which you are qualified by experience, ability and seniority.
-</p>
-<p>
-  Effect of State Law Noodle Education, Inc. complies with all requirements, prohibitions, and other provisions of the state and local laws applicable in areas where it operates or does business. If a state law entitles an employee to more generous benefits than does this unpaid leave policy, the employee will receive the more generous benefits.
-</p>
+
+<p>Compensation and Benefits During Leave
+An employee taking unpaid leave will be allowed to continue participating in any health and welfare benefit plans in which he or she was enrolled prior to the first day of the leave.  </p>
+
+<p>Reinstatement Following Unpaid Leave 
+A leave of absence, especially an extended one, does not guarantee that your position will be available to you after the end of your leave.  Each case will be treated individually and upon your return, every effort will be made to give you the best available job for which you are qualified by experience, ability and seniority.  </p>
+
+<p>Effect of State Law
+Noodle Education, Inc. complies with all requirements, prohibitions, and other provisions of the state and local laws applicable in areas where it operates or does business.  If a state law entitles an employee to more generous benefits than does this unpaid leave policy, the employee will receive the more generous benefits.</p>
 </section>
 <section id="workers-compensation">
-<hr/>
+<hr />
 <h2>WORKERS COMPENSATION</h2>
+
 <ul>
-  <li>Noodle pays all costs of providing workers’ compensation insurance, which may benefit you if you become injured or ill as a result of your work. Workers’ compensation laws vary from state to state. Noodle’s insurance carrier will assist in determining eligibility for benefits and job return provisions. </li>
-  <li>In order for Noodle to pay for the cost of treatment, you must be treated by a doctor on the posted Workers’ Compensation procedure Notice. You will be provided transportation, if needed.</li>
-  <li>Noodle will work with its workers' compensation insurance carrier in the investigation of any suspected fraudulent workers' compensation claims. Noodle will prosecute any employee who has filed a fraudulent claim or has engaged in other workers' compensation fraud. Business Travel Policies</li>
+<li>Noodle pays all costs of providing workers’ compensation insurance, which may benefit you if you become injured or ill as a result of your work. Workers’ compensation laws vary from state to state. Noodle’s insurance carrier will assist in determining eligibility for benefits and job return provisions.  </li>
+<li>In order for Noodle to pay for the cost of treatment, you must be treated by a doctor on the posted Workers’ Compensation procedure Notice.  You will be provided transportation, if needed.</li>
+<li>Noodle will work with its workers' compensation insurance carrier in the investigation of any suspected fraudulent workers' compensation claims. Noodle will prosecute any employee who has filed a fraudulent claim or has engaged in other workers' compensation fraud.
+
+Business Travel Policies</li>
 </ul>
-<p>
-  When traveling for business, employees are eligible to receive meal and per diem allowances according to the schedule below.
-</p>
-<p>
-  Breakfast: $10 (Departure from home before 8 a.m.) Lunch: $15 Dinner: $25 (Arrival to home after 7 p.m.) Per Diem: $20 (Applicable for overnight trips or trips during which the employee is eligible for two or more meal allowances.)
-</p>
-<p>
-  Meal allowances will not apply if the employee takes part in a meal a paid for by Noodle.
-</p>
-<p>
-  Employees do not need to submit meal receipts, but must complete and submit a Business Travel Report.
-</p>
-<p>
-  Airfare, ground transportation fees, and other approved expenses will be reimbursed with the submission of receipts. Employees must make an effort to utilize reasonably-priced transportation options.
-</p>
+
+<p>When traveling for business, employees are eligible to receive meal and per diem allowances according to the schedule below.</p>
+
+<p>Breakfast: $10 (Departure from home before 8 a.m.)
+Lunch: $15
+Dinner: $25 (Arrival to home after 7 p.m.)
+Per Diem: $20 (Applicable for overnight trips or trips during which the employee is eligible for two or more meal allowances.)</p>
+
+<p>Meal allowances will not apply if the employee takes part in a meal a paid for by Noodle.</p>
+
+<p>Employees do not need to submit meal receipts, but must complete and submit a Business Travel Report.  </p>
+
+<p>Airfare, ground transportation fees, and other approved expenses will be reimbursed with the submission of receipts. Employees must make an effort to utilize reasonably-priced transportation options. </p>
 </section>
-<section id="other">
-<hr/>
+<section id="other"> 
+<hr />
 <h2>OTHER IMPORTANT STUFF</h2>
+
 <h6>Equal Employment Opportunity </h6>
 <p>
-   Noodle Education, Inc. is committed to ensuring equal employment opportunity for all employees for all of our employment practices. This means we don’t discriminate. Noodle is an equal opportunity employer and conducts all business activities without regard to age, ethnicity, gender, pregnancy, disability, marital status, national origin, race, religion, sexual orientation, as well as other classifications protected by applicable federal, state or local laws.
-</p>
-<p>
-  We believe strongly in this so if you have any question or concern regarding this policy, speak with a member of the Senior Team right away. If any person is found to have violated this policy will be disciplined, which could include termination. Any applicant or employee filing a complaint or assisting in the investigation of a complaint is protected from reprisal, interference, and discrimination.
-</p>
+Noodle Education, Inc. is committed to ensuring equal employment opportunity for all employees for all of our employment practices. This means we don’t discriminate. Noodle is an equal opportunity employer and conducts all business activities without regard to age, ethnicity, gender, pregnancy, disability, marital status, national origin, race, religion, sexual orientation, as well as other classifications protected by applicable federal, state or local laws.</p>
+
+<p>We believe strongly in this so if you have any question or concern regarding this policy, speak with a member of the Senior Team right away. If any person is found to have violated this policy will be disciplined, which could include termination. Any applicant or employee filing a complaint or assisting in the investigation of a complaint is protected from reprisal, interference, and discrimination.</p>
+
 <h6>Fair Labor Standards Act</h6>
 <p>
-   Employees will be classified as exempt or non-exempt under the Fair Labor Standards Act. All employees, except employees holding executive, administrative, or professional positions as well as outside salespersons and computer programmers, are covered by the minimum wage and overtime provisions of the law (covered employees are referred to as "non-exempt employees"). Non-exempt employees are entitled to overtime pay at a rate of one and a half times their regular rate for work hours in excess of 40 hours per week or at a rate consistent with applicable state law.
-</p>
-<p>
-  It is our policy to comply with the salary basis requirements of the Fair Labor Standards Act. Therefore, we prohibit all company managers from making any improper deductions from the salaries of exempt employees. We want employees to be aware of this policy and that the company does not allow deductions that violate the Fair Labor Standards Act.
-</p>
+Employees will be classified as exempt or non-exempt under the Fair Labor Standards Act.  All employees, except employees holding executive, administrative, or professional positions as well as outside salespersons and computer programmers, are covered by the minimum wage and overtime provisions of the law  (covered employees are referred to as "non-exempt employees").   Non-exempt employees are entitled to overtime pay at a rate of one and a half times their regular rate for work hours in excess of 40 hours per week or at a rate consistent with applicable state law.</p>
+
+<p>It is our policy to comply with the salary basis requirements of the Fair Labor Standards Act. Therefore, we prohibit all company managers from making any improper deductions from the salaries of exempt employees.  We want employees to be aware of this policy and that the company does not allow deductions that violate the Fair Labor Standards Act.  </p>
+
 <h6>Immigration</h6>
 <p>
-   In compliance with the Immigration Reform and Control Act, only those individuals eligible to work in the United States will be employed. All individuals will be required to submit proof of their identity and employment eligibility. Employees will also be required to complete and sign Form I-9 issued by the U.S. Immigration and Naturalization Service. If you are authorized to work in this country for a limited period of time, you will be required to submit proof of your employment authorization and sign another Form I-9 at the end of the period in order to remain employed.
-</p>
+In compliance with the Immigration Reform and Control Act, only those individuals eligible to work in the United States will be employed.  All individuals will be required to submit proof of their identity and employment eligibility.  Employees will also be required to complete and sign Form I-9 issued by the U.S. Immigration and Naturalization Service.  If you are authorized to work in this country for a limited period of time, you will be required to submit proof of your employment authorization and sign another Form I-9 at the end of the period in order to remain employed.</p>
 </section>
-</div>
-</div>
-</div>
-<hr>
-<footer>
-<p>
-&copy; Noodle Education 2012
-</p>
-</footer>
-<% } %>
+
+        </div>
+      </div>
+    </div>
+              
+    <hr>
+      <footer>
+        <p>&copy; Noodle Education 2012</p>
+      </footer>
+
+ 
+
+
+
+  <% } %> 
+
+
 <% include scripts.ejs %>
 <% include end.ejs %>

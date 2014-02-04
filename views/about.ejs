@@ -2,150 +2,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title><% title e %></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-<link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet">
-<link href="/stylesheets/style.css" rel="stylesheet">
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
+  <meta charset="utf-8">
+  <title><%= title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet">
+  <link href="/stylesheets/style.css" rel="stylesheet">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-<!-- Fav and touch icons -->
-<link rel="shortcut icon" href="../assets/ico/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-</head>
+
+  <!-- Fav and touch icons -->
+  <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png"></head>
+
 <body class="<%= pagename %>
- " data-spy="scroll">
-<div class="container">
-  <div class="row">
-    <h1>Whoops...</h1>
-    <h2>
-    Gotta <a href="/auth/37signals">Login with 37signals</a>
-    first. </h2>
+  " data-spy="scroll">
+  <div class="container">
+    <div class="row">
+      <h1>Whoops...</h1>
+      <h2>
+        Gotta
+        <a href="/auth/37signals">Login with 37signals</a>
+        first.
+      </h2>
+    </div>
   </div>
-</div>
-<% } else { %>
+  <% } else { %>
+
 <div id="header">
-  <% include header.ejs %>
+<% include header.ejs %>
 </div>
+
 <div id="menu-wrapper-sub">
-  <% include menu.ejs %>
+
+<% include menu.ejs %>
+
 </div>
-<div id="container-wrapper">
-  <div class="col-md-9">
-    <h1 class="about-tools"> About our Tools </h1>
-    <hr/>
-    <section id="communication">
-    <h2>Communication</h2>
-    <h3 id="campfire"><a href="noodleeducation.campfire.com" target="_blank">Campfire - Team Chat and so much more</a></h3>
-    <ul>
-      <li>talk to alex@noodle.org or kyle@noodle.org for access</li>
-      <li>
-      This is almost always the place to start. We use campfire for all types of basic asynchronous communication. </li>
-      <li>
-      If you're working, you should be signed into campfire. It's a virtual office. </li>
-      <li>
-      Each team has it's own room, then there are some generic rooms:
-      <ul>
-        <li><strong>TOP RAMEN:</strong>
-        all team chat. Not the most focused room. </li>
-        <li><strong>Shhhhhhhhh! We're developing:</strong>
-        For all sorts of product development chat. We run deployment through here, ping team members for help, report bugs, coordinate work, and so on. This is a very focused room. No images (especially gifs) or non-deployment related chatter. </li>
-      </ul>
-      </li>
-      <li>
-      Here are some tips for using campfire effectively:
-      <ul>
-        <li>
-        On a Mac? Download <a href="http://www.giantcomet.com/flint/">Flint</a>
-        . Then send your receipt to noodleinvoices@bill.com so you can see how our reimbursement process works. Aryeh Morris handles these - say hey!
-        <ul>
-          <li>
-          <a href="http://fieryjoy.com/smores">Smores</a>
-          is a good Windows alternative </li>
-        </ul>
-        </li>
-        <li>
-        Set up notifications. We love campfire because you can communicate asynchronously but still effectively get a hold of people to help you or get their input. Depending on how you work, you may want to:
-        <ul>
-          <li>
-          Only enable desktop notifications when someone directly pings you: Go to preferences, set all messages none, and add under keyword your Campfire name (usually Firstname Lastname). Play around with the other settings. </li>
-        </ul>
-        </li>
-        <li>
-        Don't get a response immediately or within a few minutes? That's ok - that's the point! We want to be able to both work without distractions while also working as a team. If it's urgent, it's always best to walk over to their desk - usually best to ping them on campfire first to make sure they're free. If it's not urgent, hang tight and work on something else - they'll get back to it eventually. </li>
-      </ul>
-      </li>
-      <li>
-      How github uses campfire:
-      <ul>
-        <li>
-        <a href="http://zachholman.com/posts/how-github-works-asynchronous/">How github is asynchronous</a>
-        </li>
-        <li>
-        <a href="http://zachholman.com/posts/chat/">The value of chat</a>
-        </li>
-        <li>
-        <a href="https://speakerdeck.com/holman/how-github-works-v2">How github works presentation</a>
-        </li>
-      </ul>
-      </li>
-      <li>
-      <a href="http://www.emoji-cheat-sheet.com/">Emoji cheat sheet</a>
-      </li>
-    </ul>
-    <h3 id="github"><a a href="http://github.com" target="_blank">Github:</a></h3>
-    <ul>
-      <li>talk to dabella@noodle.org for access to repos</li>
-      <li>
-      Where the Product and Data/Engineering teams work. We track bugs, features, and documentation all with Github. </li>
-      <li>
-      There are several repositories, some of them are:
-      <ul>
-        <li>NoodleEducation/noodle - main web app</li>
-        <li>NoodleEducation/noodle-api - repo for all apis</li>
-        <li>NoodleEducation/pes - where the app for editing data lives</li>
-        <li>
-        NoodleEducation/noodledash - for our internal metrics dashboard (you're looking at) </li>
-      </ul>
-      </li>
-      <li>
-      <a href="https://github.com/NoodleEducation/noodle/wiki/Workflow-Process">How we work on github</a>
-      <ul>
-        <li>
-        the too long; don't read is: one brand = one feature or bug. Always cut from master, always turn into a pull requests in order get feedback early and enable collaboration. </li>
-      </ul>
-      </li>
-    </ul>
-    <h3 id="basecamp"><a href="https://basecamp.com/1772111" target="_blank">Basecamp:</a></h3>
-    <ul>
-      <li>
-      Treat base camp as an ad hoc tool, it's simple, flexible, and used across the organization for project management and planning. </li>
-      <li>
-      Need to communicate with someone about a project but it needs a place to live that's more static than campfire, but it also is not quite ready for github? This is the place to go. </li>
-      <li>want to share some analysis or stats? This the place to go.</li>
-      <li>
-      Want to get a discussion going around an idea that's not a feature on one of our apps or you're not comfortable in github? This is the place to go. </li>
-    </ul>
-    <h3 is="highrise">Highrise:</h3>
-    <ul>
-      <li>Where our biz dev team manages and tracks deals.</li>
-    </ul>
+
+
+      <div id="container-wrapper">
+      <div class="col-md-9">
+        <h1 class="about-tools"> About our Tools </h1>
+        <hr />
+        <section id="communication">
+          <h2>Communication</h2>
+          <h3 id="campfire"><a href="noodleeducation.campfire.com" target="_blank">Campfire - Team Chat and so much more</a></h3>
+          <ul>
+            <li>talk to alex@noodle.org or kyle@noodle.org for access</li>
+            <li>
+              This is almost always the place to start.  We use campfire for all types of basic asynchronous communication.
+            </li>
+            <li>
+              If you're working, you should be signed into campfire.  It's a virtual office.
+            </li>
+            <li>
+              Each team has it's own room, then there are some generic rooms:
+              <ul>
+                <li> <strong>TOP RAMEN:</strong>
+                  all team chat.  Not the most focused room.
+                </li>
+                <li> <strong>Shhhhhhhhh! We're developing:</strong>
+                  For all sorts of product development chat.  We run deployment through here, ping team members for help, report bugs, coordinate work, and so on.  This is a very focused room. No images (especially gifs) or non-deployment related chatter.
+                </li>
+              </ul>
+            </li>
+            <li>
+              Here are some tips for using campfire effectively:
+              <ul>
+                <li>
+                  On a Mac? Download
+                  <a href="http://www.giantcomet.com/flint/">Flint</a>
+                  .  Then send your receipt to noodleinvoices@bill.com so you can see how our reimbursement process works.  Aryeh Morris handles these - say hey!
+                  <ul>
+                    <li>
+                      <a href="http://fieryjoy.com/smores">Smores</a>
+                      is a good Windows alternative
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Set up notifications.  We love campfire because you can communicate asynchronously but still effectively get a hold of people to help you or get their input.  Depending on how you work, you may want to:
+                  <ul>
+                    <li>
+                      Only enable desktop notifications when someone directly pings you: Go to preferences, set all messages none, and add under keyword your Campfire name (usually Firstname Lastname).  Play around with the other settings.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Don't get a response immediately or within a few minutes?  That's ok - that's the point!  We want to be able to both work without distractions while also working as a team.  If it's urgent, it's always best to walk over to their desk - usually best to ping them on campfire first to make sure they're free. If it's not urgent, hang tight and work on something else - they'll get back to it eventually.
+                </li>
+              </ul>
+            </li>
+            <li>
+              How github uses campfire:
+              <ul>
+                <li>
+                  <a href="http://zachholman.com/posts/how-github-works-asynchronous/">How github is asynchronous</a>
+                </li>
+                <li>
+                  <a href="http://zachholman.com/posts/chat/">The value of chat</a>
+                </li>
+                <li>
+                  <a href="https://speakerdeck.com/holman/how-github-works-v2">How github works presentation</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="http://www.emoji-cheat-sheet.com/">Emoji cheat sheet</a>
+            </li>
+          </ul>
+          <h3 id="github"><a a href="http://github.com" target="_blank">Github:</a></h3>
+          <ul>
+            <li>talk to dabella@noodle.org for access to repos</li>
+            <li>
+              Where the Product and Data/Engineering teams work.  We track bugs, features, and documentation all with Github.
+            </li>
+            <li>
+              There are several repositories, some of them are:
+              <ul>
+                <li>NoodleEducation/noodle - main web app</li>
+                <li>NoodleEducation/noodle-api - repo for all apis</li>
+                <li>NoodleEducation/pes - where the app for editing data lives</li>
+                <li>
+                  NoodleEducation/noodledash - for our internal metrics dashboard (you're looking at)
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://github.com/NoodleEducation/noodle/wiki/Workflow-Process">How we work on github</a>
+              <ul>
+                <li>
+                  the too long; don't read is: one brand = one feature or bug. Always cut from master, always turn into a pull requests in order get feedback early and enable collaboration.
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <h3 id="basecamp"><a href="https://basecamp.com/1772111" target="_blank">Basecamp:</a></h3>
+          <ul>
+            <li>
+              Treat base camp as an ad hoc tool, it's simple, flexible, and used across the organization for project management and planning.
+            </li>
+            <li>
+              Need to communicate with someone about a project but it needs a place to live that's more static than campfire, but it also is not quite ready for github?  This is the place to go.
+            </li>
+            <li>want to share some analysis or stats?  This the place to go.</li>
+            <li>
+              Want to get a discussion going around an idea that's not a  feature on one of our apps or you're not comfortable in github? This is the place to go.
+            </li>
+          </ul>
+          <h3 is="highrise">Highrise:</h3>
+          <ul>
+            <li>Where our biz dev team manages and tracks deals.</li>
+          </ul>
+      
+      </div>
+    </div>
   </div>
-</div>
-</div>
-<footer>
-<p>
-&copy; Noodle Education 2012
-</p>
-</footer>
-<% } %>
-<% include scripts.ejs %>
-<% include end.ejs %>
+
+  <footer>
+    <p>&copy; Noodle Education 2012</p>
+  </footer>
+
+  <% } %>
+
+  <% include scripts.ejs %>
+  <% include end.ejs %>
