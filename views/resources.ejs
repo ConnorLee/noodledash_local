@@ -34,76 +34,109 @@
 </div>
 <% } else { %>
 
+<div id="header">
 <% include header.ejs %>
+</div>
 
-<div id="menu-wrapper-sub">
+
+
+<div id="menu-wrapper">
 
 <% include menu.ejs %>
 
 </div>
- <!--    <div class="container">
-      <div class="row main">
-        <div class ="col-md-3 bs-sidebar hidden-print affix">
-            <ul class="nav nav-list well bs-docs-sidenav affix">
-              <li><a href="#logos">Logos</a></li>
-              <li><a href="#powerpoint">Powerpoint</a></li>
-            </ul>
-        </div><!--/span--> -->
-        <div class="col-md-9">
 
-<section id="logos">
-<h1>Logos</h1>
+<div id="container"> 
+ <div id="content-wrapper assets" style="padding-top:50px;"> 
+     
+<div class="row">
+  <div class="col-sm-6 col-md-4" style="max-width:250px">
+    <div class="thumbnail" style="max-width:250px;">
+      <img src="/assets/Noodle_logo_small.png" style="max-width:250px"/>
 
-
-
-
-<div class="alert alert-block">
-<img src="/assets/Noodle_logo.png" />
-<img src="/assets/Noodle_logo_medium.png" />
-<img src="/assets/Noodle_logo_small.png" />
-</div>
-<div class="alert alert-block">
-<img src="/assets/Noodle_logo_white_medium.png" />
-<img src="/assets/Noodle_logo_white_small.png" />
-</div>
-<p>
-<a href="/assets/Noodle_logo.ai">Vector Version of Logo</a> | 
-<a href="/assets/Noodle_logo_white.ai">Vector Version of Logo (White)</a>
-</p>
-</section>
-<hr />
-<section id="powerpoint">
-<h1>Brand Book</h1>
-
-<p><a href="/assets/Noodle_BrandGuide.pdf">Download Brand Guide</a>
-
-</section>
-
-<section id="powerpoint">
-<h1>Powerpoint</h1>
-
-<p><a href="/assets/Noodle_PPTtemplate_1.potx">Download Powerpoint Template</a>
-
-<p>Save this file to your harddrive and then open with powerpoint. Click "save as" and then select "Powerpoint Template" as the format. You should be able to create new powerpoints with this as a starting point.</p>
-
-</section>
-
-
-        </div>
+      <div class="caption">
+        <h3>Small Logo</h3>
+        <p><a href="/assets/Noodle_logo_small.png" download="Noodle_Logo_Small" class="btn btn-primary" role="button">Download</a> <a href="/assets/Noodle_logo_small.png" class="btn btn-default" role="button">View</a></p>
       </div>
     </div>
-              
-    <hr>
-   
+  </div>
 
- 
+  <div class="col-sm-6 col-md-4" style="max-width:250px">
+    <div class="thumbnail" style="max-width:250px;">
+      <img src="/assets/Noodle_logo_medium.png" />
+
+      <div class="caption">
+        <h3>Medium Logo</h3>
+        <p><a href="/assets/Noodle_logo_medium.png" download="Noodle_Logo_Medium" class="btn btn-primary" role="button">Download</a> <a href="/assets/Noodle_logo_medium.png" class="btn btn-default" role="button">View</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4" style="max-width:250px">
+    <div class="thumbnail">
+       <img src="/assets/Noodle_logo.png" style="max-width:220px"/>
+
+      <div class="caption">
+        <h3>Large Logo</h3>
+        <p><a href="/assets/Noodle_logo.png" download="Noodle_Logo_Large" class="btn btn-primary" role="button">Download</a> <a href="/assets/Noodle_logo.png" class="btn btn-default" role="button">View</a></p>
+      </div>
+    </div>
+  </div>
+
+<div class="col-sm-6 col-md-4" style="max-width:250px">
+    <div class="thumbnail">
+      <img src="/assets/Noodle_logo_white_small.png" style="background-color: #000000; border-radius: 5px; max-width:250px">
+
+      <div class="caption">
+        <h3>Small Logo (White)</h3>
+        <p><a href="/assets/Noodle_logo_white_small.png" download="Noodle_Logo_Small_White" class="btn btn-primary" role="button">Download</a> <a href="/assets/Noodle_logo_white_small.png" class="btn btn-default" role="button">View</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4" style="max-width:250px">
+    <div class="thumbnail" >
+      <img src="/assets/Noodle_logo_white_medium.png" style="background-color: #000000; border-radius: 5px; max-width:200px"/>
+
+      <div class="caption">
+        <h3>Medium Logo (White)</h3>
+        <p><a href="/assets/Noodle_logo_white_medium.png" download="Noodle_Logo_White_Medium" class="btn btn-primary" role="button">Download</a> <a href="/assets/Noodle_logo_white_medium.png" class="btn btn-default" role="button">View</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4" style="max-width:250px">
+    <div class="thumbnail" style="max-width:250px;">
+       <img src="/assets/Noodleman.png" />
+
+      <div class="caption">
+        <h3>NoodleMan</h3>
+        <p><a href="/assets/Noodleman.png" download="NoodleMan" class="btn btn-primary" role="button">Download</a> <a href="/assets/Noodleman.png" class="btn btn-default" role="button">View</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 
 
+<!-- <img src="/assets/Noodle_logo_small.png" />
+<img src="/assets/Noodle_logo_medium.png" />
+<img src="/assets/Noodle_logo_white_medium.png" />
+ <img src="/assets/Noodle_logo.png" />
+  <a href="/assets/Noodle_logo.ai">Vector Version of Logo |</a>
+  <a href="/assets/Noodle_logo_white.ai">Vector Version of Logo (White)</a> 
+ <p><a href="/assets/Noodle_BrandGuide.pdf">Download Brand Guide</a></p>
+<h1>Powerpoint</h1>
+<p><a href="/assets/Noodle_PPTtemplate_1.potx">Download Powerpoint Template</a></p>
+<p>Save this file to your harddrive and then open with powerpoint. Click "save as" and then select "Powerpoint Template" as the format. You should be able to create new powerpoints with this as a starting point.</p>
+  <!-- Controls -->
+
+</div>
+</div>
+<!-- /container -->
   <% } %> 
 
 
 <% include scripts.ejs %>
 <% include end.ejs %>
-
-    
