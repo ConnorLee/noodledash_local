@@ -8,26 +8,33 @@ h1,h2,h3{
 .main {
 	margin-top: 5em;
 }
+
 .section-header {
 	padding-bottom: 0.3em;
+}
+
+.tool-row{
+    text-align: center;
 }
 
 .tool {
     width: 130px;
 }
+
 .alert{
-padding: 35px 35px 35px 35px;
+padding: 35px 35px 40px 35px;
 text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 background-color: #fcf8e3;
 border: 1px solid #fbeed5;
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
+webkit-border-radius: 4px;
+moz-border-radius: 4px;
 border-radius: 4px;
 color: #c09853;
-margin-bottom: -20px;
-height: 20px;
+margin-bottom: -25px;
+height: 18px;
 text-align: center;
 }
+
 .content-wrapper.assets{
 padding-top: 50px;
 }
@@ -49,12 +56,11 @@ line-height: 20px;
 text-align: right;
 width: 300px;
 }
+
 .img-with-text {
     text-align: center;
     display: inline-block;
-    padding: 50px;
-    margin: 3%;
-    margin-left: 10%;
+   
 }
 
 .img-with-text.card {
@@ -63,6 +69,7 @@ width: 300px;
     box-shadow: 1px 1px 3px 3px #ccc;
     border-radius: 7px;
     padding: 30px;
+    margin: 25px;
     background-color: #ffffff;
 }
 
@@ -114,7 +121,7 @@ width: 300px;
     
 }
 .content-wrapper.padding{
-	padding: 20 20%;
+	padding:3%;
 	height: 100%
 }
 .graph-medium {

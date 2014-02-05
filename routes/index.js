@@ -4,12 +4,38 @@
  */
 
 
+exports.iframe_analytics = function(req, res){
+
+        pagename = req.params.page;
+
+      
+};
+
+
 exports.iframe = function(req, res){
 
         pagename = req.params.page;
 
-        if (pagename == 'executive') {
-                referenceurl = 'https://www.leftronic.com/app/#KjsGig/d2xhZkl9DoSBINA';
+        if (pagename == 'ppt') {
+                referenceurl = '../views/ppt.ejs';
+        }
+        if (pagename == 'about') {
+                referenceurl = '../views/about.ejs';
+        }
+         if (pagename == 'brandguide') {
+                referenceurl = '../assets/Noodle_BrandGuide.pdf';
+        }
+        if (pagename == 'social') {
+                referenceurl = '../views/social.ejs';
+        } 
+        if (pagename == 'explore') {
+                referenceurl = 'http://explore.noodle.org/';
+        }
+         if (pagename == 'class-schedule') {
+                referenceurl = 'http://www.chelseapiers.com/sc/downloads/FitnessSchedules/2014/SC_Classes201401.pdf#page=2';
+        }
+          if (pagename == 'executive') {
+                referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h';
         }
         if (pagename == 'performance') {
                 referenceurl = 'https://www.leftronic.com/share/Ulh0hO';
@@ -22,39 +48,17 @@ exports.iframe = function(req, res){
         }
          if (pagename == 'tools') {
                 referenceurl = '../views/tools.ejs';
-        }
-        if (pagename == 'ppt') {
-                referenceurl = '../views/ppt.ejs';
-        }
-        if (pagename == 'about') {
-                referenceurl = '../views/about.ejs';
-        }
-         if (pagename == 'brandguide') {
-                referenceurl = '../assets/Noodle_BrandGuide.pdf';
-        }
-         if (pagename == 'handbook') {
-                referenceurl = '';
-        }
-        if (pagename == 'social') {
-                referenceurl = '../views/social.ejs';
-        } 
-        if (pagename == 'explore') {
-                referenceurl = 'http://explore.noodle.org/';
-        }
-         if (pagename == 'chelsea-piers') {
-                referenceurl = '';
-        }
-         if (pagename == 'class-schedule') {
-                referenceurl = 'http://www.chelseapiers.com/sc/downloads/FitnessSchedules/2014/SC_Classes201401.pdf#page=2';
-        }
-    
+        }    
+
+
         res.render('iframe', {
         title: 'Noodle',
         pagename: 'manual',
         referencesite: referenceurl,
-		user: req.user
+        user: req.user
         });
 };
+
 
 
 exports.manual = function(req, res){
