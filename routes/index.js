@@ -4,17 +4,40 @@
  */
 
 
-exports.iframe_analytics = function(req, res){
 
-        pagename = req.params.page;
+// exports.iframe_analytics = function(req, res){
 
       
-};
+//         //LEFTRONIC ROUTES//
+
+//         if (pagename == 'executive') {
+//                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h';
+//         } 
+//         if (pagename == 'performance') {
+//                 referenceurl = 'https://www.leftronic.com/share/Ulh0hO';
+//         }
+//          if (pagename == 'marketing') {
+//                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h' ;
+//         }
+//         if (pagename == 'engagement') {
+//                 referenceurl = 'https://www.leftronic.com/share/9ztWYx/#9ztWYx';
+//         }
+        
+        
+//         res.render('iframe_analytics', {
+//         title: 'Noodle',
+//         pagename: 'manual',
+//         referencesite: referenceurl,
+//         user: req.user
+//         });
+// };
+
 
 
 exports.iframe = function(req, res){
 
         pagename = req.params.page;
+        conditionalclasses = " ";
 
         if (pagename == 'ppt') {
                 referenceurl = '../views/ppt.ejs';
@@ -34,27 +57,40 @@ exports.iframe = function(req, res){
          if (pagename == 'class-schedule') {
                 referenceurl = 'http://www.chelseapiers.com/sc/downloads/FitnessSchedules/2014/SC_Classes201401.pdf#page=2';
         }
-          if (pagename == 'executive') {
-                referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h';
-        }
-        if (pagename == 'performance') {
-                referenceurl = 'https://www.leftronic.com/share/Ulh0hO';
-        }
-         if (pagename == 'marketing') {
-                referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h' ;
-        }
-        if (pagename == 'engagement') {
-                referenceurl = 'https://www.leftronic.com/share/9ztWYx/#9ztWYx';
-        }
-         if (pagename == 'tools') {
+        if (pagename == 'tools') {
                 referenceurl = '../views/tools.ejs';
+        } 
+
+        //SLACK ROUTES//
+         
+          if (pagename == 'team-board') {
+                referenceurl = 'https://noodle.slack.com/messages/general/files/';
+                conditionalclasses =  "slacksite";
         }    
-
-
+          if (pagename == 'product-board') {
+                referenceurl = 'https://noodle.slack.com/messages/product/files/';
+        }    
+          if (pagename == 'engagement-board') {
+                referenceurl = 'https://noodle.slack.com/messages/engagement/files/';
+        }    
+          if (pagename == 'dev-board') {
+                referenceurl = 'https://noodle.slack.com/messages/deploy/files/';
+        }      
+          if (pagename == 'rev-bloard') {
+                referenceurl = 'https://noodle.slack.com/messages/revenue/files/';
+        }    
+          if (pagename == 'search-bloard') {
+                referenceurl = 'https://noodle.slack.com/messages/search/files/';
+        }    
+        if (pagename == 'search-random') {
+                referenceurl = 'https://noodle.slack.com/messages/random/files/';
+        }    
+        
         res.render('iframe', {
         title: 'Noodle',
         pagename: 'manual',
-        referencesite: referenceurl,
+        referencesite: referenceurl, 
+        conditionalclasses: conditionalclasses,
         user: req.user
         });
 };
