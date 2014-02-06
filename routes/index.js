@@ -4,41 +4,15 @@
  */
 
 
-
-// exports.iframe_analytics = function(req, res){
-
-      
-//         //LEFTRONIC ROUTES//
-
-//         if (pagename == 'executive') {
-//                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h';
-//         } 
-//         if (pagename == 'performance') {
-//                 referenceurl = 'https://www.leftronic.com/share/Ulh0hO';
-//         }
-//          if (pagename == 'marketing') {
-//                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h' ;
-//         }
-//         if (pagename == 'engagement') {
-//                 referenceurl = 'https://www.leftronic.com/share/9ztWYx/#9ztWYx';
-//         }
-        
-        
-//         res.render('iframe_analytics', {
-//         title: 'Noodle',
-//         pagename: 'manual',
-//         referencesite: referenceurl,
-//         user: req.user
-//         });
-// };
-
-
-
 exports.iframe = function(req, res){
 
         pagename = req.params.page;
         conditionalclasses = " ";
+        modal = " ";
 
+        if (pagename == 'main') {
+             modal = '../views/yellowModal.ejs';
+        }
         if (pagename == 'ppt') {
                 referenceurl = '../views/ppt.ejs';
         }
@@ -101,18 +75,23 @@ exports.iframe = function(req, res){
          if (pagename == 'executive') {
                  referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h';
                  conditionalclasses =  "leftronics";
+                 modal = '../views/redModal.ejs';
          } 
          if (pagename == 'performance') {
                  referenceurl = 'https://www.leftronic.com/share/Ulh0hO';
                  conditionalclasses =  "leftronics";
+                 modal = '../views/redModal.ejs';
+
          }
           if (pagename == 'marketing') {
                  referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h' ;
                  conditionalclasses =  "leftronics";
+                 modal = '../views/redModal.ejs';
          }
          if (pagename == 'engagement') {
                  referenceurl = 'https://www.leftronic.com/share/9ztWYx/#9ztWYx';
                  conditionalclasses =  "leftronics";
+                 modal = '../views/redModal.ejs';
          }
 
         res.render('iframe', {
@@ -120,6 +99,7 @@ exports.iframe = function(req, res){
         pagename: 'manual',
         referencesite: referenceurl, 
         conditionalclasses: conditionalclasses,
+        modalRoute: modal,
         user: req.user
         });
 };
