@@ -4,25 +4,41 @@
  */
 
 
+
+// exports.iframe_analytics = function(req, res){
+
+      
+//         //LEFTRONIC ROUTES//
+
+//         if (pagename == 'executive') {
+//                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h';
+//         } 
+//         if (pagename == 'performance') {
+//                 referenceurl = 'https://www.leftronic.com/share/Ulh0hO';
+//         }
+//          if (pagename == 'marketing') {
+//                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h' ;
+//         }
+//         if (pagename == 'engagement') {
+//                 referenceurl = 'https://www.leftronic.com/share/9ztWYx/#9ztWYx';
+//         }
+        
+        
+//         res.render('iframe_analytics', {
+//         title: 'Noodle',
+//         pagename: 'manual',
+//         referencesite: referenceurl,
+//         user: req.user
+//         });
+// };
+
+
+
 exports.iframe = function(req, res){
 
         pagename = req.params.page;
+        conditionalclasses = " ";
 
-        if (pagename == 'executive') {
-                referenceurl = 'https://www.leftronic.com/app/#KjsGig/d2xhZkl9DoSBINA';
-        }
-        if (pagename == 'performance') {
-                referenceurl = 'https://www.leftronic.com/share/Ulh0hO';
-        }
-         if (pagename == 'marketing') {
-                referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h' ;
-        }
-        if (pagename == 'engagement') {
-                referenceurl = 'https://www.leftronic.com/share/9ztWYx/#9ztWYx';
-        }
-         if (pagename == 'tools') {
-                referenceurl = '../views/tools.ejs';
-        }
         if (pagename == 'ppt') {
                 referenceurl = '../views/ppt.ejs';
         }
@@ -32,29 +48,82 @@ exports.iframe = function(req, res){
          if (pagename == 'brandguide') {
                 referenceurl = '../assets/Noodle_BrandGuide.pdf';
         }
-         if (pagename == 'handbook') {
-                referenceurl = '';
-        }
         if (pagename == 'social') {
                 referenceurl = '../views/social.ejs';
         } 
         if (pagename == 'explore') {
                 referenceurl = 'http://explore.noodle.org/';
         }
-         if (pagename == 'chelsea-piers') {
-                referenceurl = '';
-        }
          if (pagename == 'class-schedule') {
                 referenceurl = 'http://www.chelseapiers.com/sc/downloads/FitnessSchedules/2014/SC_Classes201401.pdf#page=2';
         }
-    
+        if (pagename == 'tools') {
+                referenceurl = '../views/tools.ejs';
+        } 
+
+        //SLACK ROUTES//
+         
+          if (pagename == 'team-board') {
+                referenceurl = 'https://noodle.slack.com/messages/general/files/';
+               conditionalclasses =  "slacksite";
+        }    
+        if (pagename == 'marketing-board') {
+                referenceurl = 'https://noodle.slack.com/messages/marketing/files/';
+               conditionalclasses =  "slacksite";
+        }    
+          if (pagename == 'product-board') {
+                referenceurl = 'https://noodle.slack.com/messages/product/files/';
+                conditionalclasses =  "slacksite";
+        }    
+          if (pagename == 'engagement-board') {
+                referenceurl = 'https://noodle.slack.com/messages/engagement/files/';
+                conditionalclasses =  "slacksite";
+        }    
+          if (pagename == 'dev-board') {
+                referenceurl = 'https://noodle.slack.com/messages/deploy/files/';
+                conditionalclasses =  "slacksite";
+        }      
+          if (pagename == 'rev-board') {
+                referenceurl = 'https://noodle.slack.com/messages/revenue/files/';
+                conditionalclasses =  "slacksite";
+        }    
+          if (pagename == 'search-board') {
+                referenceurl = 'https://noodle.slack.com/messages/search/files/';
+                conditionalclasses =  "slacksite";
+        }    
+        if (pagename == 'search-random') {
+                referenceurl = 'https://noodle.slack.com/messages/random/files/';
+                conditionalclasses =  "slacksite";
+        }    
+
+        //LEFTRONIC ROUTES//
+
+         if (pagename == 'executive') {
+                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h';
+                 conditionalclasses =  "leftronics";
+         } 
+         if (pagename == 'performance') {
+                 referenceurl = 'https://www.leftronic.com/share/Ulh0hO';
+                 conditionalclasses =  "leftronics";
+         }
+          if (pagename == 'marketing') {
+                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h' ;
+                 conditionalclasses =  "leftronics";
+         }
+         if (pagename == 'engagement') {
+                 referenceurl = 'https://www.leftronic.com/share/9ztWYx/#9ztWYx';
+                 conditionalclasses =  "leftronics";
+         }
+
         res.render('iframe', {
         title: 'Noodle',
         pagename: 'manual',
-        referencesite: referenceurl,
-		user: req.user
+        referencesite: referenceurl, 
+        conditionalclasses: conditionalclasses,
+        user: req.user
         });
 };
+
 
 
 exports.manual = function(req, res){
