@@ -65,27 +65,52 @@ exports.iframe = function(req, res){
          
           if (pagename == 'team-board') {
                 referenceurl = 'https://noodle.slack.com/messages/general/files/';
-                conditionalclasses =  "slacksite";
+               conditionalclasses =  "slacksite";
         }    
           if (pagename == 'product-board') {
                 referenceurl = 'https://noodle.slack.com/messages/product/files/';
+                conditionalclasses =  "slacksite";
         }    
           if (pagename == 'engagement-board') {
                 referenceurl = 'https://noodle.slack.com/messages/engagement/files/';
+                conditionalclasses =  "slacksite";
         }    
           if (pagename == 'dev-board') {
                 referenceurl = 'https://noodle.slack.com/messages/deploy/files/';
+                conditionalclasses =  "slacksite";
         }      
           if (pagename == 'rev-bloard') {
                 referenceurl = 'https://noodle.slack.com/messages/revenue/files/';
+                conditionalclasses =  "slacksite";
         }    
           if (pagename == 'search-bloard') {
                 referenceurl = 'https://noodle.slack.com/messages/search/files/';
+                conditionalclasses =  "slacksite";
         }    
         if (pagename == 'search-random') {
                 referenceurl = 'https://noodle.slack.com/messages/random/files/';
+                conditionalclasses =  "slacksite";
         }    
-        
+
+        //LEFTRONIC ROUTES//
+
+         if (pagename == 'executive') {
+                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h';
+                 conditionalclasses =  "leftronics";
+         } 
+         if (pagename == 'performance') {
+                 referenceurl = 'https://www.leftronic.com/share/Ulh0hO';
+                 conditionalclasses =  "leftronics";
+         }
+          if (pagename == 'marketing') {
+                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h' ;
+                 conditionalclasses =  "leftronics";
+         }
+         if (pagename == 'engagement') {
+                 referenceurl = 'https://www.leftronic.com/share/9ztWYx/#9ztWYx';
+                 conditionalclasses =  "leftronics";
+         }
+
         res.render('iframe', {
         title: 'Noodle',
         pagename: 'manual',
