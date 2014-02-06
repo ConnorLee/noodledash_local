@@ -8,6 +8,14 @@ h1,h2,h3{
 .main {
 	margin-top: 5em;
 }
+
+.list-group{
+    padding-left: 0;
+margin-bottom: 20px;
+float: left;
+margin-left: -205px;
+position: fixed;
+}
 /** Conditional Classes **/
 
 
@@ -123,8 +131,12 @@ width: 300px;
     
 }
 .content-wrapper.padding{
-	padding:3%;
-	height: 100%
+	padding:15%;
+	height: 100%;
+    overflow: scroll;
+padding-top: 100px;
+position: fixed;
+padding-left: 550px;
 }
 .graph-medium {
 	height: 250px;
