@@ -152,8 +152,18 @@ padding-left: 550px;
 
 .navbar-inverse{
 	background-image: url('http://d2jp3eq7stiz9q.cloudfront.net/media/site/build/img/header.png');
+
 	}
+
+@media (max-width: 768px){
+    .navbar-fixed-top {
+     height: 71px;
+    }
+    .display-name, .navbar-text, .caret{
+      display: none;
+    }
 }
+
 
 p.navbar-text.navbar-right{
 	color: #ffffff;
