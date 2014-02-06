@@ -5,6 +5,7 @@
 h1,h2,h3{
 	font-family: "MuseoSans-700";
 }
+
 .main {
 	margin-top: 5em;
 }
@@ -33,29 +34,11 @@ height: 100%;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /** End Conditional Classes **/
+
+#header-body{
+   background-image: url('../images/bg.jpg');
+}
 
 .section-header {
 	padding-bottom: 0.3em;
@@ -84,6 +67,9 @@ text-align: center;
 
 .content-wrapper.assets{
 padding-top: 50px;
+text-align: center;
+margin-left: 15%;
+
 }
 
 .about-tools{
@@ -146,7 +132,6 @@ width: 300px;
 }
 #container{
     margin-top:51px;
-    background-image: url('../images/bg.jpg') repea;
     
 }
 #menu-wrapper{
