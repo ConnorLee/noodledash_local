@@ -67,6 +67,10 @@ exports.iframe = function(req, res){
                 referenceurl = 'https://noodle.slack.com/messages/general/files/';
                conditionalclasses =  "slacksite";
         }    
+        if (pagename == 'marketing-board') {
+                referenceurl = 'https://noodle.slack.com/messages/marketing/files/';
+               conditionalclasses =  "slacksite";
+        }    
           if (pagename == 'product-board') {
                 referenceurl = 'https://noodle.slack.com/messages/product/files/';
                 conditionalclasses =  "slacksite";
@@ -79,11 +83,11 @@ exports.iframe = function(req, res){
                 referenceurl = 'https://noodle.slack.com/messages/deploy/files/';
                 conditionalclasses =  "slacksite";
         }      
-          if (pagename == 'rev-bloard') {
+          if (pagename == 'rev-board') {
                 referenceurl = 'https://noodle.slack.com/messages/revenue/files/';
                 conditionalclasses =  "slacksite";
         }    
-          if (pagename == 'search-bloard') {
+          if (pagename == 'search-board') {
                 referenceurl = 'https://noodle.slack.com/messages/search/files/';
                 conditionalclasses =  "slacksite";
         }    
