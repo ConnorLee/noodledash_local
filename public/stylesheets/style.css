@@ -331,7 +331,15 @@ ul, ul ul {
     cursor: auto;
 }
 
-.menu > li > a :hover, .menu > li .active {
+.menu > li > ul > li > a:hover{
+    background: #fdfdfd;
+    opacity: .9;
+    color: #000000 !important;
+    border-right: none;
+}
+
+
+.menu > li > a:hover, .menu > li > a.active {
     background: #fdfdfd;
     opacity: .9;
     color: #000000 !important;
