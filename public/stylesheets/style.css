@@ -65,15 +65,22 @@ height: 18px;
 text-align: center;
 }
 
+.conditional-alert{
+    display: none;
+}
+.show-welcome .alert-welcome{
+    display: block; 
+}
+.show-welcome .alert-password{
+    display: block; 
+}
 
 .alert-danger{
 padding: 35px 35px 40px 35px;
 text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-
 webkit-border-radius: 4px;
 moz-border-radius: 4px;
 border-radius: 4px;
-
 margin-bottom: -25px;
 height: 18px;
 text-align: center;
