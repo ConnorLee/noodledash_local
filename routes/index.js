@@ -99,7 +99,7 @@ exports.iframe = function(req, res){
         //LEFTRONIC ROUTES//
 
          if (pagename == 'executive') {
-                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h';
+                 referenceurl = 'https://www.leftronic.com/share/KjsGig/#KjsGig';
                  conditionalclasses =  "leftronics";
          } 
          if (pagename == 'performance') {
