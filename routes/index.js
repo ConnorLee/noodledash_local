@@ -94,7 +94,11 @@ exports.iframe = function(req, res){
         if (pagename == 'search-random') {
                 referenceurl = 'https://noodle.slack.com/messages/random/files/';
                 conditionalclasses =  "slacksite";
-        }    
+        }   
+        if (pagename == 'new-post') {
+                referenceurl = 'https://noodle.slack.com/files/create/post';
+                conditionalclasses =  "slacksite-page";
+        }     
 
         //LEFTRONIC ROUTES//
 
