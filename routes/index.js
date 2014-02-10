@@ -99,6 +99,10 @@ exports.iframe = function(req, res){
                 referenceurl = 'https://noodle.slack.com/files/create/post';
                 conditionalclasses =  "slacksite-page";
         }     
+        if (pagename == 'browse-posts') {
+                referenceurl = 'https://noodle.slack.com/files';
+                conditionalclasses =  "slacksite-browse";
+        }     
 
         //LEFTRONIC ROUTES//
 

@@ -41,9 +41,16 @@ height: 100%;
 z-index: 3;
 position: fixed;
 }
-
-.leftronics{
-
+.slacksite-browse{
+margin-top: -72px !important;
+margin-left: -220px;
+height: 110% !important;
+width: 115% !important;
+ border: 0;
+width: 100%;
+height: 100%;
+z-index: 3;
+position: fixed;
 }
 
 
