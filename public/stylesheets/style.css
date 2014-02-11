@@ -1,6 +1,6 @@
 @font-face {
     font-family: "MuseoSans-300", "MuseoSans-500", "MuseoSans-700";
-    src: local('../../fonts/MuseoSans_300.otf'), local('../../fonts/MuseoSans_500.otf'), local('../../fonts/MuseoSans_700.otf')
+    src: url('../fonts/MuseoSans_300.otf'), url('../fonts/MuseoSans_500.otf'), url('../fonts/MuseoSans_700.otf')
 }
 h1,h2,h3{
 	font-family: "MuseoSans-700";
@@ -11,7 +11,7 @@ h1,h2,h3{
 }
 
 .list-group{
-    padding-left: 0;
+padding-left: 0;
 margin-bottom: 20px;
 float: left;
 margin-left: -205px;
