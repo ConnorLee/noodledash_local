@@ -814,6 +814,10 @@ pre code {
   content: " ";
 }
 
+.no-alert{
+    display: none;
+}
+
 .row:after {
   clear: both;
 }

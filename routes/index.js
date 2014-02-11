@@ -3,41 +3,11 @@
  * GET home page.
  */
 
-
-
-// exports.iframe_analytics = function(req, res){
-
-      
-//         //LEFTRONIC ROUTES//
-
-//         if (pagename == 'executive') {
-//                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h';
-//         } 
-//         if (pagename == 'performance') {
-//                 referenceurl = 'https://www.leftronic.com/share/Ulh0hO';
-//         }
-//          if (pagename == 'marketing') {
-//                 referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h' ;
-//         }
-//         if (pagename == 'engagement') {
-//                 referenceurl = 'https://www.leftronic.com/share/9ztWYx/#9ztWYx';
-//         }
-        
-        
-//         res.render('iframe_analytics', {
-//         title: 'Noodle',
-//         pagename: 'manual',
-//         referencesite: referenceurl,
-//         user: req.user
-//         });
-// };
-
-
-
 exports.iframe = function(req, res){
 
         pagename = req.params.page;
         conditionalclasses = " ";
+        modal = " ";
 
         if (pagename == 'ppt') {
                 referenceurl = '../views/ppt.ejs';
@@ -45,7 +15,7 @@ exports.iframe = function(req, res){
         if (pagename == 'about') {
                 referenceurl = '../views/about.ejs';
         }
-         if (pagename == 'brandguide') {
+        if (pagename == 'brandguide') {
                 referenceurl = '../assets/Noodle_BrandGuide.pdf';
         }
         if (pagename == 'social') {
@@ -54,7 +24,7 @@ exports.iframe = function(req, res){
         if (pagename == 'explore') {
                 referenceurl = 'http://explore.noodle.org/';
         }
-         if (pagename == 'class-schedule') {
+        if (pagename == 'class-schedule') {
                 referenceurl = 'http://www.chelseapiers.com/sc/downloads/FitnessSchedules/2014/SC_Classes201401.pdf#page=2';
         }
         if (pagename == 'tools') {
@@ -63,45 +33,55 @@ exports.iframe = function(req, res){
 
         //SLACK ROUTES//
          
-          if (pagename == 'team-board') {
+        if (pagename == 'team-board') {
                 referenceurl = 'https://noodle.slack.com/messages/general/files/';
-               conditionalclasses =  "slacksite";
-        }    
+                conditionalclasses =  "slacksite";
+                modal = "no-alert";
+        }   
         if (pagename == 'marketing-board') {
                 referenceurl = 'https://noodle.slack.com/messages/marketing/files/';
-               conditionalclasses =  "slacksite";
+                conditionalclasses =  "slacksite";
+                modal = "no-alert";
         }    
-          if (pagename == 'product-board') {
+        if (pagename == 'product-board') {
                 referenceurl = 'https://noodle.slack.com/messages/product/files/';
                 conditionalclasses =  "slacksite";
+                modal = "no-alert";
         }    
-          if (pagename == 'engagement-board') {
+        if (pagename == 'engagement-board') {
                 referenceurl = 'https://noodle.slack.com/messages/engagement/files/';
                 conditionalclasses =  "slacksite";
+                modal = "no-alert";
         }    
-          if (pagename == 'dev-board') {
+        if (pagename == 'dev-board') {
                 referenceurl = 'https://noodle.slack.com/messages/deploy/files/';
                 conditionalclasses =  "slacksite";
+                modal = "no-alert";
         }      
-          if (pagename == 'rev-board') {
+        if (pagename == 'rev-board') {
                 referenceurl = 'https://noodle.slack.com/messages/revenue/files/';
                 conditionalclasses =  "slacksite";
+                modal = "no-alert";
         }    
-          if (pagename == 'search-board') {
+        if (pagename == 'search-board') {
                 referenceurl = 'https://noodle.slack.com/messages/search/files/';
                 conditionalclasses =  "slacksite";
+                modal = "no-alert";
         }    
         if (pagename == 'search-random') {
                 referenceurl = 'https://noodle.slack.com/messages/random/files/';
                 conditionalclasses =  "slacksite";
+                modal = "no-alert";
         }   
         if (pagename == 'new-post') {
                 referenceurl = 'https://noodle.slack.com/files/create/post';
                 conditionalclasses =  "slacksite-page";
+                modal = "no-alert";
         }     
         if (pagename == 'browse-posts') {
                 referenceurl = 'https://noodle.slack.com/files';
                 conditionalclasses =  "slacksite-browse";
+                modal = "no-alert";
         }     
 
         //LEFTRONIC ROUTES//
@@ -109,18 +89,22 @@ exports.iframe = function(req, res){
          if (pagename == 'executive') {
                  referenceurl = 'https://www.leftronic.com/share/KjsGig/#KjsGig';
                  conditionalclasses =  "leftronics";
+                 modal =  "alert-danger-fixed";
          } 
          if (pagename == 'performance') {
                  referenceurl = 'https://www.leftronic.com/share/Ulh0hO';
                  conditionalclasses =  "leftronics";
+                  modal = "alert-danger-fixed";
          }
-          if (pagename == 'marketing') {
+         if (pagename == 'marketing') {
                  referenceurl = 'https://www.leftronic.com/share/GetI9h/#GetI9h' ;
-                 conditionalclasses =  "leftronics";
+                 conditionalclasses =  "leftronics"; 
+                 modal =  "alert-danger-fixed";
          }
          if (pagename == 'engagement') {
                  referenceurl = 'https://www.leftronic.com/share/9ztWYx/#9ztWYx';
-                 conditionalclasses =  "leftronics";
+                 conditionalclasses =  "leftronics"; 
+                 modal =  "alert-danger-fixed";
          }
 
         res.render('iframe', {
@@ -128,6 +112,7 @@ exports.iframe = function(req, res){
         pagename: 'manual',
         referencesite: referenceurl, 
         conditionalclasses: conditionalclasses,
+        modal: modal,
         user: req.user
         });
 };
@@ -160,12 +145,12 @@ exports.main = function(req, res){
 };
 
 exports.tools = function(req, res){
-
-	res.render('tools', {
-	title: 'Our Tools',
-	pagename: 'tools',
-	user: req.user
-	});
+ 
+  	res.render('tools', {
+	  title: 'Our Tools',
+  	pagename: 'tools',
+	  user: req.user
+  	});
 };
 
 exports.ppt = function(req, res){
