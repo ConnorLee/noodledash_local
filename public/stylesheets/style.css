@@ -1,7 +1,22 @@
 @font-face {
-    font-family: "MuseoSans-300", "MuseoSans-500", "MuseoSans-700";
-    src: url('../fonts/MuseoSans_300.otf'), url('../fonts/MuseoSans_500.otf'), url('../fonts/MuseoSans_700.otf')
+    font-family: "MuseoSans-300";
+    src: url('../fonts/MuseoSans_300.otf');
+    font-weight: 300; // BULLETPROOF'D!
+    font-style: normal;
 }
+@font-face {
+    font-family: "MuseoSans-500";
+    src: url('../fonts/MuseoSans_500.otf');
+    font-weight: 500; // BULLETPROOF'D!
+    font-style: normal;
+}
+@font-face{
+    font-family: "MuseoSans-700";
+    src: url('../fonts/MuseoSans_700.otf');
+    font-weight: 700; // BULLETPROOF'D!
+    font-style: normal;
+}	
+	
 h1,h2,h3{
 	font-family: "MuseoSans-700";
 }
