@@ -1,6 +1,6 @@
 @font-face {
     font-family: "MuseoSans-300", "MuseoSans-500", "MuseoSans-700";
-    src: local('../../fonts/MuseoSans_300.otf'), local('../fonts/MuseoSans_500.otf'), local('../fonts/MuseoSans_700.otf')
+    src: local('../../fonts/MuseoSans_300.otf'), local('../../fonts/MuseoSans_500.otf'), local('../../fonts/MuseoSans_700.otf')
 }
 h1,h2,h3{
 	font-family: "MuseoSans-700";
