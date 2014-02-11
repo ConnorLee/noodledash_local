@@ -15,7 +15,8 @@
     src: url('../fonts/MuseoSans_700.otf');
     font-weight: 700; // BULLETPROOF'D!
     font-style: normal;
-}
+}	
+	
 h1,h2,h3{
 	font-family: "MuseoSans-700";
 }
@@ -25,7 +26,7 @@ h1,h2,h3{
 }
 
 .list-group{
-    padding-left: 0;
+padding-left: 0;
 margin-bottom: 20px;
 float: left;
 margin-left: -205px;
