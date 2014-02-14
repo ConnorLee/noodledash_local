@@ -82,7 +82,7 @@ GA.login(function(err, token) {
 
   var uniqueVisitorsQuery = {
   'ids': 'ga:'+profile,
-  'start-date': twoMonthAgoString,
+  'start-date': monthAgoString,
   'end-date': yesterdayString,
   'dimensions':'ga:date',
   'metrics': 'ga:visitors'
