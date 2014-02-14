@@ -31,10 +31,16 @@ h1,h2,h3{
 
 .list-group{
 padding-left: 0;
-margin-bottom: 20px;
-float: left;
-margin-left: -205px;
+margin-left: 10%;
+width: 350px;
+
 position: fixed;
+}
+
+.list-group.metrics{
+    float: center;
+    width: 60%;
+
 }
 /** Conditional Classes **/
 
@@ -358,7 +364,7 @@ ul, ul ul {
     opacity: 1;
     color: #5198cc;
     text-decoration: none;
-    font-family: 'MuseoSans-500',"Helvetica Neue",Helvetica,sans-serif;
+    font-family: 'MuseoSans-700',"Helvetica Neue",Helvetica,sans-serif;
 
     font-weight: 500;
     font-style: normal;

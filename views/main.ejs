@@ -51,9 +51,30 @@
             <button type="button" class="close" data-dismiss="alert">Got it ×</button>
             <strong>Welcome, <%= user.displayName %>!</strong> Here's where you can access Noodle's analytics, tools and resources (employee handbook, logo's etc.).
 </div>
-     
+
   <h3 style="padding-top:50px; margin-left: 70px;">Welcome to...</h3>
    <img src="../images/logo.png " style="margin:70px;" >
+
+
+   <ul class="list-group metrics" style="font-family:MuseoSans-700;">
+  <li class="list-group-item">
+    <span class="badge"><%= visitorsLast30Days %></span>
+    VISITORS LAST 30 DAYS
+  </li>
+   <li class="list-group-item">
+    <span class="badge"><%= uniquesYesterday %></span>
+    UNIQUES YESTERDAY
+  </li>
+   <li class="list-group-item">
+    <span class="badge"><%= questionsAskedYesterday %></span>
+     QUESTIONS ASKED YESTERDAY
+  </li>
+   <li class="list-group-item">
+    <span class="badge"><%= answersWrittenYesterday %></span>
+     ANSWERS WRITTEN YESTERDAY
+  </li>
+</ul>
+
    
 </div> 
 <!-- /container -->  

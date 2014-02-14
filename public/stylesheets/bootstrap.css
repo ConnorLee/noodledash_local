@@ -4926,6 +4926,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   vertical-align: baseline;
   background-color: #999999;
   border-radius: 10px;
+  font-family: 'MuseoSans-700';
 }
 
 .badge:empty {
