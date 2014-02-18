@@ -53,10 +53,10 @@
 </div>
 
   <h3 style="padding-top:50px; margin-left: 70px;">Welcome to...</h3>
-   <img src="../images/logo.png " style="margin:70px;" >
+   <img src="../images/logo.png " style="margin:70px; height:20%;" >
 
 
-   <ul class="list-group metrics" style="font-family:MuseoSans-700;">
+   <ul class="list-group metrics" style="font-family:MuseoSans-700; ">
   <li class="list-group-item">
     <span class="badge"><%= visitorsLast30Days %></span>
     VISITORS LAST 30 DAYS
@@ -64,6 +64,10 @@
    <li class="list-group-item">
     <span class="badge"><%= uniquesYesterday %></span>
     UNIQUES YESTERDAY
+  </li>
+    <li class="list-group-item">
+    <span class="badge"><%= registrationsYesterday %></span>
+     REGISTRATIONS YESTERDAY
   </li>
    <li class="list-group-item">
     <span class="badge"><%= questionsAskedYesterday %></span>
@@ -73,6 +77,8 @@
     <span class="badge"><%= answersWrittenYesterday %></span>
      ANSWERS WRITTEN YESTERDAY
   </li>
+
+  
 </ul>
 
    
