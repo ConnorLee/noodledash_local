@@ -253,7 +253,7 @@ width: 300px;
 	background-image: url('http://d2jp3eq7stiz9q.cloudfront.net/media/site/build/img/header.png');
 	}
 
-@media (max-width: 768px){
+@media (max-width: 992px){
     .navbar-fixed-top {
      height: 71px;
     }
@@ -364,7 +364,7 @@ ul, ul ul {
     opacity: 1;
     color: #5198cc;
     text-decoration: none;
-    font-family: 'MuseoSans-700',"Helvetica Neue",Helvetica,sans-serif;
+    font-family: 'MuseoSans-500',"Helvetica Neue",Helvetica,sans-serif;
 
     font-weight: 500;
     font-style: normal;
