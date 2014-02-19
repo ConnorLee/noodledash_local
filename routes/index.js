@@ -32,6 +32,7 @@ exports.iframe = function(req, res){
         } 
          if (pagename == 'overview') {
                 referenceurl = '../views/overview.ejs';
+                modal =  "alert-danger-fixed";
         } 
         
         
@@ -162,6 +163,15 @@ exports.ppt = function(req, res){
     res.render('ppt', {
     title: 'PowerPoint Template',
     pagename: 'ppt',
+    user: req.user
+    });
+};
+
+exports.overview = function(req, res){
+
+    res.render('overview', {
+    title: 'Analytics Overview',
+    pagename: 'overview',
     user: req.user
     });
 };
