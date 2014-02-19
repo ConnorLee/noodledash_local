@@ -52,10 +52,49 @@
             <strong>Welcome, <%= user.displayName %>!</strong> Here's where you can access Noodle's analytics, tools and resources (employee handbook, logos etc.).
 </div>
 
+
   <h3 style="padding-top:50px; margin-left: 70px;">Welcome to...</h3>
    <img src="../images/logo.png " style="margin:70px; height:20%;" >
 
-   <ul class="list-group metrics" style="font-family:MuseoSans-700; ">
+   
+        <section id="yesterday">
+          <div class="row">
+            <h2 class="section-header">Yesterday <small> <%= yesterdayString %></small></h2>
+            <div class="col-md-3">
+              <div class="panel panel-info">
+                <div class="panel-heading"><h4>Unique Visitors</h4></div>
+                <div class="panel-body"><%= uniquesYesterday %></div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="panel panel-info">
+                <div class="panel-heading"><h4>Registrations</h4></div>
+                <div class="panel-body"><%= registrationsYesterday %></div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="panel panel-info">
+                <div class="panel-heading"><h4>Questions</h4></div>
+                <div class="panel-body">
+                  <%= questionsAskedYesterday %> <a class="btn btn-primary btn-xs pull-right" data-toggle="modal" href="#questionsModal">Answer Questions</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="panel panel-info">
+                <div class="panel-heading"><h4>Answers</h4></div>
+                <div class="panel-body">
+                  <%= answersWrittenYesterday %> <a class="btn btn-primary btn-xs pull-right" data-toggle="modal" href="#answersModal">Read Answers</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      
+
+
+
+  <!--  <ul class="list-group metrics" style="font-family:MuseoSans-700; ">
   <li class="list-group-item">
     <span class="badge"><%= visitorsLast30Days %></span>
     VISITORS LAST 30 DAYS
@@ -76,7 +115,7 @@
     <span class="badge"><%= answersWrittenYesterday %></span>
      ANSWERS WRITTEN YESTERDAY
   </li>
-
+ -->
   
 </ul>
 
@@ -91,4 +130,3 @@
 
       <% include scripts.ejs %>
       <% include end.ejs %>
-
