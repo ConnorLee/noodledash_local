@@ -30,12 +30,12 @@ exports.iframe = function(req, res){
         if (pagename == 'tools') {
                 referenceurl = '../views/tools.ejs';
         } 
-
+        
         //SLACK ROUTES//
          
         if (pagename == 'team-board') {
                 referenceurl = 'https://noodle.slack.com/messages/general/files/';
-                conditionalclasses =  "slacksite";
+                conditionalclasses = "slacksite";
                 modal = "no-alert";
         }   
         if (pagename == 'marketing-board') {
