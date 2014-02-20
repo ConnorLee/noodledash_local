@@ -21,7 +21,6 @@ h1,h2,h3{
 	font-family: "MuseoSans-700";
 }
 
-
 .homepage-header, .learn-app-header, .dashboard-start-search, .learn-app-header, .dashboard-start-search {
 position: relative;
 background-color: #ccc;
@@ -37,16 +36,19 @@ color: rgb(51, 51, 51);
 display: block;
 font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Verdana, sans-serif;
 font-size: 14px;
-height: 550px;
+height: 55%;
 line-height: 20px;
 position: relative;
 width: 100%;
 }
+
 #deck-container{
     padding-top:30px;
 }
+.dashboard-start-search{
 
-.homepage-header:after, .learn-app-header:after, .dashboard-start-search:after {
+}
+/*.homepage-header:after, .learn-app-header:after, .dashboard-start-search:after {
 content: "";
 display: block;
 height: 5px;
@@ -54,19 +56,20 @@ width: 100%;
 background-color: #e6e6e6;
 box-shadow: inset 0 0 3px rgba(0,0,0,0.2);
 border-top: 1px solid #ccc;
-margin-top: 56px;
-}
 
-@media (max-width: 1188px){
+}*/
+
+/*@media (max-width: 1188px){
     
 .homepage-header:after, .learn-app-header:after, .dashboard-start-search:after {
       margin-top: 18px;
     }
-}
+}*/
 
 
 .home-subheader{
-    margin-top: 30%;
+    margin-top: 30px;
+    margin-left: 33%;
     font-weight: bolder;
     font-size: 20px;
     text-decoration: none;
@@ -83,16 +86,17 @@ margin-top: 56px;
     text-align: center;
 }
 .img-with-text.card.homepage img {
-height: 90%;
-margin-top: 6px;
-width: 90%;
-border-radius: 5px;
+height: 50%;
+margin-top: -10px;
+display: inline;
+float: left;
+margin-left: -50px;
 }
 
 .img-with-text.card.homepage{
 margin: 15px;
-height: 145;
-width: 200;
+height: 85;
+width: 25%;
 padding: 0;
 opacity: .8;
 border-radius:1px;
@@ -100,6 +104,26 @@ border-radius:1px;
 background-color: rgba(255, 255, 255, 0.85098);
 box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px 0px;
 }
+
+@media (max-width: 1188px){
+    
+.homepage-header:after, .learn-app-header:after, .dashboard-start-search:after {
+      margin-top: 18px;
+    }
+}
+
+
+@media (max-width: 882px){
+    
+.img-with-text.card.homepage img {
+
+}
+
+.home-subheader{
+    color: transparent;
+}
+}
+
 .img-with-text.card.homepage:hover{
     opacity: 1;
 }
