@@ -30,6 +30,9 @@ exports.iframe = function(req, res){
         if (pagename == 'tools') {
                 referenceurl = '../views/tools.ejs';
         } 
+        if (pagename == 'home') {
+                referenceurl = '../views/home.ejs';
+        } 
          if (pagename == 'overview') {
                 referenceurl = '../views/overview.ejs';
                 modal =  "alert-danger-fixed";
@@ -156,6 +159,15 @@ exports.tools = function(req, res){
   	pagename: 'tools',
 	  user: req.user
   	});
+};
+
+exports.home = function(req, res){
+ 
+    res.render('home', {
+      title: 'Home',
+    pagename: 'home',
+      user: req.user
+    });
 };
 
 exports.ppt = function(req, res){

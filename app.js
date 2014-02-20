@@ -453,6 +453,8 @@ app.get('/i/:page?', routes.iframe);
 app.get('/i/:page?', routes.iframe_analytics);
 app.get('/tools', routes.tools);
 app.get('/about', routes.about);
+app.get('/overview', routes.overview);
+app.get('/home', routes.home);
 
 
 app.get('/account', ensureAuthenticated, function(req, res){
