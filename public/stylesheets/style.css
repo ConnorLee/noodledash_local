@@ -127,6 +127,24 @@ box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px 0px;
 .img-with-text.card.homepage img {
 
 }
+}
+
+
+@media (max-width: 1262px){
+    
+p.navbar-text.navbar-right{
+   display: none;
+}
+
+
+@media (max-width: 593px){
+    
+.home-icon{
+   display: none;
+}
+}
+
+
 
 .home-subheader{
     color: transparent;
@@ -206,6 +224,7 @@ height: 100%;
 z-index: 3;
 position: fixed;
 }
+
 
 
 /** End Conditional Classes **/
