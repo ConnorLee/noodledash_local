@@ -35,21 +35,27 @@ exports.iframe = function(req, res){
         } 
         if (pagename == 'analyticsOverview') {
                 referenceurl = '../views/analyticsOverview.ejs';
-        } 
+                conditionalclasses = "overview-style";
+        }
         if (pagename == 'assetsOverview') {
                 referenceurl = '../views/assetsOverview.ejs';
+                conditionalclasses = "overview-style";
         } 
         if (pagename == 'toolsOverview') {
                 referenceurl = '../views/toolsOverview.ejs';
+                conditionalclasses = "overview-style";
         } 
         if (pagename == 'gymOverview') {
                 referenceurl = '../views/gymOverview.ejs';
+                conditionalclasses = "overview-style";
         } 
         if (pagename == 'chatOverview') {
                 referenceurl = '../views/chatOverview.ejs';
+                conditionalclasses = "overview-style";
         } 
         if (pagename == 'postsOverview') {
                 referenceurl = '../views/postsOverview.ejs';
+                conditionalclasses = "overview-style";
         } 
        
         
@@ -224,7 +230,7 @@ exports.social = function(req, res){
 
 //OVERVIEW PAGE ROUTES//
 
-exports.overview = function(req, res){
+exports.toolsOverview = function(req, res){
 
     res.render('toolsOverview', {
     title: 'Tools',
@@ -232,7 +238,7 @@ exports.overview = function(req, res){
     user: req.user
     });
 };
-exports.overview = function(req, res){
+exports.analyticsOverview = function(req, res){
 
     res.render('analyticsOverview', {
     title: 'Analytics',
@@ -240,7 +246,7 @@ exports.overview = function(req, res){
     user: req.user
     });
 };
-exports.overview = function(req, res){
+exports.assetsOverview = function(req, res){
 
     res.render('assetsOverview', {
     title: 'Assets',
@@ -248,7 +254,7 @@ exports.overview = function(req, res){
     user: req.user
     });
 };
-exports.overview = function(req, res){
+exports.postsOverview = function(req, res){
 
     res.render('postsOverview', {
     title: 'Posts',
@@ -256,7 +262,7 @@ exports.overview = function(req, res){
     user: req.user
     });
 };
-exports.overview = function(req, res){
+exports.gymOverview = function(req, res){
 
     res.render('gymOverview', {
     title: 'Gym',
@@ -264,7 +270,7 @@ exports.overview = function(req, res){
     user: req.user
     });
 };
-exports.overview = function(req, res){
+exports.chatOverview = function(req, res){
 
     res.render('chatOverview', {
     title: 'chat',

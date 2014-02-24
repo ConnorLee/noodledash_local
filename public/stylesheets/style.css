@@ -222,8 +222,30 @@ height: 100%;
 z-index: 3;
 position: fixed;
 }
+/** OVERVIEW STYLES **/
 
-
+.overview-style-tools{
+    margin: 5% 10% 0 30%;
+}
+.overview-style-analytics{
+    margin: 5% 20% 0 5%;
+    padding-top: 50px;
+}
+.overview-style-chat{
+    margin-left: -220px;
+}
+.overview-style-posts{
+    margin-left: -220px;
+}
+.overview-style-tools{
+    margin-left: -220px;
+}
+.overview-style-assets{
+    margin-left: -220px;
+}
+.overview-style-gym{
+    margin-left: -220px;
+}
 
 /** End Conditional Classes **/
 
