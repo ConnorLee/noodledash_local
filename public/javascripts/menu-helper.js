@@ -1,7 +1,7 @@
 $(function() {
-   	    var menu_ul = $('.menu > li > ul'),
+   	    var menu_ul = $('.menu > li:not("active") > ul'),
    	           menu_a  = $('.menu > li > a');
-   	    menu_ul.hide();
+   	     menu_ul.hide();
    	    menu_a.click(function(e) {
    	        e.preventDefault();
    	        if(!$(this).hasClass('active')) {
@@ -14,3 +14,4 @@ $(function() {
    	        }
    	    });
    	});
+

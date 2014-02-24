@@ -33,9 +33,23 @@ exports.iframe = function(req, res){
         if (pagename == 'home') {
                 referenceurl = '../views/home.ejs';
         } 
-         if (pagename == 'overview') {
-                referenceurl = '../views/overview.ejs';
-                modal =  "alert-danger-fixed";
+        if (pagename == 'analytics-overview') {
+                referenceurl = '../views/analytics-overview.ejs';
+        } 
+        if (pagename == 'assets-overview') {
+                referenceurl = '../views/assets-overview.ejs';
+        } 
+        if (pagename == 'tools-overview') {
+                referenceurl = '../views/tools-overview.ejs';
+        } 
+        if (pagename == 'gym-overview') {
+                referenceurl = '../views/gym-overview.ejs';
+        } 
+        if (pagename == 'chat-overview') {
+                referenceurl = '../views/chat-overview.ejs';
+        } 
+        if (pagename == 'posts-overview') {
+                referenceurl = '../views/posts-overview.ejs';
         } 
        
         
@@ -204,6 +218,57 @@ exports.social = function(req, res){
     res.render('social', {
     title: 'Social Dashboard',
     pagename: 'social',
+    user: req.user
+    });
+};
+
+//OVERVIEW PAGE ROUTES//
+
+exports.overview = function(req, res){
+
+    res.render('tools-overview', {
+    title: 'Tools',
+    pagename: 'tools-overview',
+    user: req.user
+    });
+};
+exports.overview = function(req, res){
+
+    res.render('analytics-overview', {
+    title: 'Analytics',
+    pagename: 'analytics-overview',
+    user: req.user
+    });
+};
+exports.overview = function(req, res){
+
+    res.render('assets-overview', {
+    title: 'Assets',
+    pagename: 'assets-overview',
+    user: req.user
+    });
+};
+exports.overview = function(req, res){
+
+    res.render('posts-overview', {
+    title: 'Posts',
+    pagename: 'posts-overview',
+    user: req.user
+    });
+};
+exports.overview = function(req, res){
+
+    res.render('gym-overview', {
+    title: 'Gym',
+    pagename: 'gym-overview',
+    user: req.user
+    });
+};
+exports.overview = function(req, res){
+
+    res.render('chat-overview', {
+    title: 'chat',
+    pagename: 'chat-overview',
     user: req.user
     });
 };

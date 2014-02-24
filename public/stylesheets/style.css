@@ -123,14 +123,12 @@ box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px 0px;
     }
 }
 
-
 @media (max-width: 882px){
     
 .img-with-text.card.homepage img {
 
 }
 }
-
 
 @media (max-width: 1262px){
     
@@ -145,8 +143,6 @@ p.navbar-text.navbar-right{
    display: none;
 }
 }
-
-
 
 .home-subheader{
     color: transparent;
@@ -458,7 +454,7 @@ body#main.home{
 
 .menu-shadow {
     border-right: 1px solid #cfcfcf;
-    background-image: url('../images/bg.jpg');
+    background-image: url('../images/bg.jpg'); 
     background-repeat: repeat;
     height: 100%;
 }
