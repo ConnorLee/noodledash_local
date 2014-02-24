@@ -33,23 +33,23 @@ exports.iframe = function(req, res){
         if (pagename == 'home') {
                 referenceurl = '../views/home.ejs';
         } 
-        if (pagename == 'analytics-overview') {
-                referenceurl = '../views/analytics-overview.ejs';
+        if (pagename == 'analyticsOverview') {
+                referenceurl = '../views/analyticsOverview.ejs';
         } 
-        if (pagename == 'assets-overview') {
-                referenceurl = '../views/assets-overview.ejs';
+        if (pagename == 'assetsOverview') {
+                referenceurl = '../views/assetsOverview.ejs';
         } 
-        if (pagename == 'tools-overview') {
-                referenceurl = '../views/tools-overview.ejs';
+        if (pagename == 'toolsOverview') {
+                referenceurl = '../views/toolsOverview.ejs';
         } 
-        if (pagename == 'gym-overview') {
-                referenceurl = '../views/gym-overview.ejs';
+        if (pagename == 'gymOverview') {
+                referenceurl = '../views/gymOverview.ejs';
         } 
-        if (pagename == 'chat-overview') {
-                referenceurl = '../views/chat-overview.ejs';
+        if (pagename == 'chatOverview') {
+                referenceurl = '../views/chatOverview.ejs';
         } 
-        if (pagename == 'posts-overview') {
-                referenceurl = '../views/posts-overview.ejs';
+        if (pagename == 'postsOverview') {
+                referenceurl = '../views/postsOverview.ejs';
         } 
        
         
@@ -226,49 +226,49 @@ exports.social = function(req, res){
 
 exports.overview = function(req, res){
 
-    res.render('tools-overview', {
+    res.render('toolsOverview', {
     title: 'Tools',
-    pagename: 'tools-overview',
+    pagename: 'toolsOverview',
     user: req.user
     });
 };
 exports.overview = function(req, res){
 
-    res.render('analytics-overview', {
+    res.render('analyticsOverview', {
     title: 'Analytics',
-    pagename: 'analytics-overview',
+    pagename: 'analyticsOverview',
     user: req.user
     });
 };
 exports.overview = function(req, res){
 
-    res.render('assets-overview', {
+    res.render('assetsOverview', {
     title: 'Assets',
-    pagename: 'assets-overview',
+    pagename: 'assetsOverview',
     user: req.user
     });
 };
 exports.overview = function(req, res){
 
-    res.render('posts-overview', {
+    res.render('postsOverview', {
     title: 'Posts',
-    pagename: 'posts-overview',
+    pagename: 'postsOverview',
     user: req.user
     });
 };
 exports.overview = function(req, res){
 
-    res.render('gym-overview', {
+    res.render('gymOverview', {
     title: 'Gym',
-    pagename: 'gym-overview',
+    pagename: 'gymOverview',
     user: req.user
     });
 };
 exports.overview = function(req, res){
 
-    res.render('chat-overview', {
+    res.render('chatOverview', {
     title: 'chat',
-    pagename: 'chat-overview',
+    pagename: 'chatOverview',
     user: req.user
     });
 };
