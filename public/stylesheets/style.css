@@ -521,7 +521,7 @@ ul, ul ul {
     font-family: 'MuseoSans-500', 'Lucida Sans Unicode', Arial, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: #343230;
+    color: #3399cc; 
     text-decoration: none;
     font-size: 1.5em;
 }
@@ -556,6 +556,11 @@ ul, ul ul {
     background: #fdfdfd;
     opacity: .9;
     color: #000000 !important;
+    border-right: none;
+}
+
+.menu > li > ul > li > a{
+    color: #3a3a3a !important;
     border-right: none;
 }
 
