@@ -11,12 +11,14 @@ exports.iframe = function(req, res){
 
         if (pagename == 'ppt') {
                 referenceurl = '../views/ppt.ejs';
+                 conditionalclasses = "assets";
         }
         if (pagename == 'about') {
                 referenceurl = '../views/about.ejs';
         }
         if (pagename == 'brandguide') {
                 referenceurl = '../assets/Noodle_BrandGuide.pdf';
+                conditionalclasses = "assets";
         }
         if (pagename == 'social') {
                 referenceurl = '../views/social.ejs';

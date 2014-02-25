@@ -1,37 +1,58 @@
+
 <div id="header" style="visibility:hidden;">
-    <% include header.ejs %>
+<% include header.ejs %>
 </div>
-<div id="container">
-    <div class="content-wrapper assets" style="overflow:scroll;">
-        <h1 style="text-align: center;">Tools</h1>
+
+<div id="container" class="overview-style-assets"> 
+
+ <div id="content-wrapper assets" style="padding-top:50px;"> 
+      <h1 style="text-align: center;">Assets</h1>
         <hr/>
-     <div class="tool-row">
-        <div class="img-with-text card">
-            <a href="http://www.noodle.basecamp.com" target="_blank"><img class="tool" src="images/basecamp.png">Basecamp</a>
-        </div>
-        <div class="img-with-text card">
-            <a href="https://noodle.slack.com" target="_blank"><img class="tool" src="images/slack.png" style="width:110px;">Slack</a>
-        </div>
-        <div class="img-with-text card">
-            <a href="https://noodle.highrisehq.com/login" target="_blank"><img class="tool" src="images/highrise.png">Highrise</a>
-        </div>
+<div class="row logos">
+  <div class="col-sm-6 col-md-4" style="max-width:250px">
+    <div class="thumbnail" style="max-width:250px;">
+      <img src="/images/chat-icon.png" style="background-color: #000000; border-radius: 5px; max-width:200px"/>
+      <div class="caption">
+        <h3>Brand Guide</h3>
+        <p><a onClick='document.getElementById("content-frame").src="/i/brandguide";' class="btn btn-primary" target="_top" role="button">View</a> </p>
+      </div>
     </div>
-     <div class="tool-row">
-        <br/>
-        <div class="img-with-text card">
-            <a href="https://github.com/NoodleEducation/noodle" target="_blank"><img class="tool" src="images/github.png">Github</a>
-        </div>
-        <div class="img-with-text card">
-            <a href="http://www.google.com/mail" target="_blank"><img class="tool" src="images/gmail.png">Gmail</a>
-        </div>
-        <div class="img-with-text card">
-            <a href="http://www.google.com/calendar" target="_blank"><img class="tool" src="images/gcal.png">Calendar</a>
-        </div>
-           </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4" style="max-width:250px">
+    <div class="thumbnail">
+      <img src="/images/chat-icon.png" style="background-color: #000000; border-radius: 5px; max-width:200px" />
+      <div class="caption">
+        <h3>Employee Handbook</h3>
+        <p><a onClick='document.getElementById("content-frame").src="/manual";'class="btn btn-primary" target="_top" role="button">View</a> </p>
+      </div>
     </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4" style="max-width:250px">
+    <div class="thumbnail">
+    <img src="/images/chat-icon.png" style="background-color: #000000; border-radius: 5px; max-width:200px"/>
+      <div class="caption">
+        <h3>Powerpoint Template</h3>
+        <p><a onClick='document.getElementById("content-frame").src="/ppt";' target="_top" class="btn btn-primary">View</a></p>
+      </div>
+    </div>
+  </div>
+
+<div class="col-sm-6 col-md-4" style="max-width:250px">
+    <div class="thumbnail">
+      <img src="/images/chat-icon.png" style="background-color: #000000; border-radius: 5px; max-width:250px">
+      <div class="caption">
+        <h3>Logos</h3>
+        <p><a onClick='document.getElementById("content-frame").src="/resources";' target="content-frame" class="btn btn-primary" role="button">View</a> </p>
+      </div>
+    </div>
+  </div>
+
+ 
 </div>
-
-
+</div>
 <!-- /container -->
+
 <% include scripts.ejs %>
 <% include end.ejs %>
