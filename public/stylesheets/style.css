@@ -136,7 +136,12 @@ p.navbar-text.navbar-right{
    display: none;
 }
 
-
+@media (max-width: 1316px){
+    
+.handbook-title{
+    font-size: 40px;
+}
+}
 @media (max-width: 593px){
     
 .home-icon{
@@ -172,10 +177,13 @@ padding: 15;
 .content-wrapper.main{
     overflow: scroll;
 }
-
+.handbook-title{
+    font-weight:700; 
+    font-size:80px;
+}
 .list-group{
 padding-right: 40px;
-margin-left: -20%;
+margin-left: 0%;
 width: 350px;
 float: left;
 position: relative;
@@ -234,23 +242,32 @@ margin-top: 15px;
     margin: 5% 10% 0 30%;
 }
 .overview-style-analytics{
-    margin: 5% 20% 0 5%;
+    margin: 5% 20% 0 20%;
     padding-top: 50px;
 }
 .overview-style-chat{
+    margin-left: 200px;
+     margin-right: 200px;
     padding-right: 10%;
+    margin-bottom: 7%;
 }
 .overview-style-posts{
     margin-left: -220px;
+    margin-top: 5%;
+    padding-left: 220px;
 }
 .overview-style-tools{
-    margin-left: -220px;
+    margin-left: 200px;
+    margin-right: 200px;
 }
 .overview-style-assets{
     margin-left: -220px;
 }
 .overview-style-gym{
-    margin-left: -220px;
+margin-top: 91px !important;
+margin-left: 75px;
+padding-bottom: 5%;
+margin-right: 12%;
 }
 
 /** End Conditional Classes **/
@@ -305,7 +322,7 @@ text-align: center;
 webkit-border-radius: 4px;
 moz-border-radius: 4px;
 border-radius: 4px;
-padding: 55px 20% 40px 80px;
+padding: 55px 20% 40px 35px;
 text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 width: 100%;
 }

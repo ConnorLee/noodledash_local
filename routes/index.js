@@ -46,8 +46,7 @@ exports.iframe = function(req, res){
                 conditionalclasses = "overview-style";
         } 
         if (pagename == 'gymOverview') {
-                referenceurl = '../views/gymOverview.ejs';
-                conditionalclasses = "overview-style";
+                referenceurl = 'http://www.chelseapiers.com/sc/downloads/FitnessSchedules/2014/SC_Classes201401.pdf#page=2';
         } 
         if (pagename == 'chatOverview') {
                 referenceurl = '../views/chatOverview.ejs';
@@ -63,7 +62,7 @@ exports.iframe = function(req, res){
          
         if (pagename == 'team-board') {
                 referenceurl = 'https://noodle.slack.com/messages/general/files/';
-                conditionalclasses = "slacksite";
+                conditionalclasses = "slacksite"; 
                 modal = "no-alert";
         }   
         if (pagename == 'marketing-board') {
