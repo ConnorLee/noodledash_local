@@ -262,8 +262,7 @@ margin-top: 15px;
     margin-top: -0% !important;
 }
 .overview-style-tools{
-    margin-left: 220px;
-    margin-right: 200px;
+   margin-left: 33%;
 }
 .overview-style-assets{
    margin: 5% 33%% 7% 0%;
@@ -276,6 +275,18 @@ margin-left: -220px;
 padding-bottom: 5%;
 margin-right: 25%;
 }
+
+
+/** BODY CLASSES **/
+
+body.ppt{
+    margin-left: -440px;
+}
+
+body.manual{
+    margin-left: -440px;
+}
+
 
 /** End Conditional Classes **/
 
@@ -317,6 +328,7 @@ text-align: center;
 padding-top: 50px;
 text-align: center;
 margin-left: -50%;
+margin-right: 25%;
 
 }
 
@@ -439,7 +451,8 @@ width: 300px;
     overflow: scroll;
     padding-top: 100px;
     
-    padding-left: 220px;
+    padding-left: 520px;
+    padding-right: 250px;
    
 
 }
