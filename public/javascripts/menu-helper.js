@@ -15,4 +15,16 @@ $(function() {
    	    });
    	});
 
-bever
+
+$(function() {                       
+  $(".fa.sub").click(function() {  
+    $(this).addClass("active");   
+  });
+
+ if(!$(this).hasClass('active')) {
+ menu_a.removeClass('active');
+    } else {
+//remove previous class that was toggled active
+ menu_a.removeClass('active');
+    }
+});
