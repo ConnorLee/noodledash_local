@@ -123,7 +123,6 @@ box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px 0px;
     }
 }
 
-
 @media (max-width: 882px){
     
 .img-with-text.card.homepage img {
@@ -131,22 +130,24 @@ box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px 0px;
 }
 }
 
-
 @media (max-width: 1262px){
     
 p.navbar-text.navbar-right{
    display: none;
 }
 
-
+@media (max-width: 1316px){
+    
+.handbook-title{
+    font-size: 40px;
+}
+}
 @media (max-width: 593px){
     
 .home-icon{
    display: none;
 }
 }
-
-
 
 .home-subheader{
     color: transparent;
@@ -176,10 +177,13 @@ padding: 15;
 .content-wrapper.main{
     overflow: scroll;
 }
-
+.handbook-title{
+    font-weight:700; 
+    font-size:80px;
+}
 .list-group{
 padding-right: 40px;
-margin-left: -20%;
+margin-left: 0%;
 width: 350px;
 float: left;
 position: relative;
@@ -189,17 +193,15 @@ position: relative;
     float: center;
     width: 60%;
 }
-
 /** Conditional Classes **/
 
 .slacksite{
-margin-top: 20px !important;
-margin-left: -220px;
-height: 93% !important;
-width: 115% !important;
- border: 0;
-width: 100%;
-height: 100%;
+margin-top: 40px !important;
+margin-left: 0px;
+padding-bottom: 30px;
+height: 85% !important;
+width: 76% !important;
+border: 0;
 z-index: 3;
 }
 
@@ -209,24 +211,92 @@ margin-left: -220px;
 height: 110% !important;
 width: 115% !important;
  border: 0;
-width: 100%;
-height: 100%;
+ padding-right: 40%;
 z-index: 3;
 position: fixed;
 }
 
 .slacksite-browse{
 margin-top: -72px !important;
-margin-left: -220px;
+padding-left: 80px;
+padding-right: 1px;
 height: 110% !important;
 width: 115% !important;
- border: 0;
+border: 0;
 width: 100%;
 height: 100%;
 z-index: 3;
 position: fixed;
 }
 
+slacksite-browse-inner{
+margin-left: -50%;
+}
+
+.leftronics{
+width: 84%;
+height: 100%;
+padding-left: 220px;
+padding-right: 5%;
+}
+
+/** OVERVIEW STYLES **/
+
+.overview-style-tools{
+    margin: 5% 10% 0 0%;
+    padding-left: 20px;
+}
+.overview-style-analytics{
+    margin: 5% 33% 0 220px;
+    float: left;
+    padding-top: 50px;
+}
+.overview-style-chat{
+     margin: 5% 33% 7% 0%;
+    float: left;
+    padding-top: 10px;
+  
+}
+.overview-style-posts{
+    margin-left: -220px;
+    margin-top: -0% !important;
+}
+.overview-style-tools{
+   margin-left: 33%;
+}
+.overview-style-assets{
+   margin: 5% 33%% 7% 0%;
+    float: middle;
+    padding-top: 10px;
+}
+.overview-style-gym{
+margin-top: 91px !important;
+margin-left: -220px;
+padding-bottom: 5%;
+margin-right: 25%;
+}
+
+
+/** BODY CLASSES **/
+
+body.ppt{
+    margin-left: -440px;
+}
+
+body.manual{
+    margin-left: -440px;
+}
+
+body.analyticsOverview{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 14px;
+line-height: 1.428571429;
+color: #333;
+float: middle;
+margin-left: -250px;
+text-align: center;
+background-color: #fff;
+}
 
 
 /** End Conditional Classes **/
@@ -250,7 +320,7 @@ position: fixed;
     width: 130px;
 }
 .alert{
-padding: 35px 35px 40px 35px;
+padding: 55px 35px 40px 35px;
 text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 background-color: #fcf8e3;
 border: 1px solid #fbeed5;
@@ -268,21 +338,22 @@ text-align: center;
 .content-wrapper.assets{
 padding-top: 50px;
 text-align: center;
-margin-left: 15%;
-
+margin-left: -50%;
+margin-right: 25%;
 }
 
 .alert-danger-fixed {
-  color: #b94a48;
-  background-color: #f2dede;
-  border-color: #eed3d7;
-  margin-bottom: -25px;
+color: #b94a48;
+background-color: #f2dede;
+border-color: #eed3d7;
+margin-bottom: -25px;
 text-align: center;
-webkit-border-radius: 4px;
-moz-border-radius: 4px;
 border-radius: 4px;
-padding: 35px 35px 40px 35px;
+padding: 55px 20% 40px 35px;
 text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+width: 100%;
+padding-left: 220px;
+padding-right: 25%;
 }
 
 .about-tools{
@@ -355,6 +426,8 @@ width: 300px;
     height: 100%;
     z-index: 5;
 }
+
+
 #menu-wrapper-sub{
     width: 300px;
     float: left;
@@ -366,7 +439,7 @@ width: 300px;
 }
 
 #content-wrapper{
-    margin-left: 300px;
+    margin-left: 220px;
     height: 100%;
 }
 
@@ -387,7 +460,8 @@ width: 300px;
     overflow: scroll;
     padding-top: 100px;
     
-    padding-left: 220px;
+    padding-left: 520px;
+    padding-right: 250px;
    
 
 }
@@ -458,7 +532,7 @@ body#main.home{
 
 .menu-shadow {
     border-right: 1px solid #cfcfcf;
-    background-image: url('../images/bg.jpg');
+    background-image: url('../images/bg.jpg'); 
     background-repeat: repeat;
     height: 100%;
 }
@@ -494,16 +568,16 @@ ul, ul ul {
     width: 100%;
     height: 2.5em;
     line-height: 2.5em;
-    text-indent: 1.5em;
+    text-indent: 1em;
     display: block;
     position: relative;
     color: rgb(51, 153, 204);
     cursor: pointer;
     display: block;
-    font-family: 'MuseoSans-300', 'Lucida Sans Unicode', Arial, Verdana, sans-serif;
+    font-family: 'MuseoSans-500', 'Lucida Sans Unicode', Arial, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: #343230;
+    color: #3399cc; 
     text-decoration: none;
     font-size: 1.5em;
 }
@@ -541,12 +615,34 @@ ul, ul ul {
     border-right: none;
 }
 
+.menu > li > ul > li:active{
+    background: #fdfdfd;
+    opacity: .9;
+    color: #000000 !important;
+    border-right: none;
+}
+
+.menu > li > ul > li > a{
+    color: #3a3a3a !important;
+    border-right: none;
+}
+
 
 .menu > li > a:hover, .menu > li > a.active {
     background: #fdfdfd;
     opacity: .9;
     color: #000000 !important;
     border-right: none;
+}
+
+
+.menu > li > ul > li > a.active{
+    background: #fdfdfd;
+    opacity: .9;
+    color: #000000 !important;
+    border-right: none;
+}
+
  /*
 }
 
@@ -599,7 +695,7 @@ going to start by taking two days off a week to work with you guys..
 
 .menu > li > a:hover span, .menu > li a.active span {
 /*  background: #2173a1;*/;
-}
+
 
 .menu > li > ul li:hover a,
 .menu > li > ul li:hover a span,

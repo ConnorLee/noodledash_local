@@ -11,12 +11,14 @@ exports.iframe = function(req, res){
 
         if (pagename == 'ppt') {
                 referenceurl = '../views/ppt.ejs';
+                 conditionalclasses = "assets";
         }
         if (pagename == 'about') {
                 referenceurl = '../views/about.ejs';
         }
         if (pagename == 'brandguide') {
                 referenceurl = '../assets/Noodle_BrandGuide.pdf';
+                conditionalclasses = "assets";
         }
         if (pagename == 'social') {
                 referenceurl = '../views/social.ejs';
@@ -33,9 +35,28 @@ exports.iframe = function(req, res){
         if (pagename == 'home') {
                 referenceurl = '../views/home.ejs';
         } 
-         if (pagename == 'overview') {
-                referenceurl = '../views/overview.ejs';
-                modal =  "alert-danger-fixed";
+        if (pagename == 'analyticsOverview') {
+                referenceurl = '../views/analyticsOverview.ejs';
+                conditionalclasses = "overview-style";
+        }
+        if (pagename == 'assetsOverview') {
+                referenceurl = '../views/assetsOverview.ejs';
+                conditionalclasses = "overview-style";
+        } 
+        if (pagename == 'toolsOverview') {
+                referenceurl = '../views/toolsOverview.ejs';
+                conditionalclasses = "overview-style";
+        } 
+        if (pagename == 'gymOverview') {
+                referenceurl = 'http://www.chelseapiers.com/sc/downloads/FitnessSchedules/2014/SC_Classes201401.pdf#page=2';
+        } 
+        if (pagename == 'chatOverview') {
+                referenceurl = '../views/chatOverview.ejs';
+                conditionalclasses = "overview-style";
+        } 
+        if (pagename == 'postsOverview') {
+                referenceurl = '../views/postsOverview.ejs';
+                conditionalclasses = "overview-style";
         } 
        
         
@@ -43,7 +64,7 @@ exports.iframe = function(req, res){
          
         if (pagename == 'team-board') {
                 referenceurl = 'https://noodle.slack.com/messages/general/files/';
-                conditionalclasses = "slacksite";
+                conditionalclasses = "slacksite"; 
                 modal = "no-alert";
         }   
         if (pagename == 'marketing-board') {
@@ -204,6 +225,57 @@ exports.social = function(req, res){
     res.render('social', {
     title: 'Social Dashboard',
     pagename: 'social',
+    user: req.user
+    });
+};
+
+//OVERVIEW PAGE ROUTES//
+
+exports.toolsOverview = function(req, res){
+
+    res.render('toolsOverview', {
+    title: 'Tools',
+    pagename: 'toolsOverview',
+    user: req.user
+    });
+};
+exports.analyticsOverview = function(req, res){
+
+    res.render('analyticsOverview', {
+    title: 'Analytics',
+    pagename: 'analyticsOverview',
+    user: req.user
+    });
+};
+exports.assetsOverview = function(req, res){
+
+    res.render('assetsOverview', {
+    title: 'Assets',
+    pagename: 'assetsOverview',
+    user: req.user
+    });
+};
+exports.postsOverview = function(req, res){
+
+    res.render('postsOverview', {
+    title: 'Posts',
+    pagename: 'postsOverview',
+    user: req.user
+    });
+};
+exports.gymOverview = function(req, res){
+
+    res.render('gymOverview', {
+    title: 'Gym',
+    pagename: 'gymOverview',
+    user: req.user
+    });
+};
+exports.chatOverview = function(req, res){
+
+    res.render('chatOverview', {
+    title: 'chat',
+    pagename: 'chatOverview',
     user: req.user
     });
 };

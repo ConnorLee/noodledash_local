@@ -453,8 +453,13 @@ app.get('/i/:page?', routes.iframe);
 app.get('/i/:page?', routes.iframe_analytics);
 app.get('/tools', routes.tools);
 app.get('/about', routes.about);
-app.get('/overview', routes.overview);
 app.get('/home', routes.home);
+app.get('/analyticsOverview', routes.analyticsOverview);
+app.get('/toolsOverview', routes.toolsOverview);
+app.get('/postsOverview', routes.postsOverview);
+app.get('/assetsOverview', routes.assetsOverview);
+app.get('/chatOverview', routes.chatOverview);
+app.get('/gymOverview', routes.gymOverview);
 
 
 app.get('/account', ensureAuthenticated, function(req, res){
