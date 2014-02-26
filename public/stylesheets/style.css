@@ -38,7 +38,7 @@ h1,h2,h3 {
     line-height:20px;
     position:relative;
     width:100%;
-}
+}  
 #deck-container {
     padding-top:30px;
 }
@@ -172,7 +172,7 @@ h1,h2,h3 {
 }
 .slacksite-page {
     margin-top:-72px !important;
-    margin-left:-220px;
+    margin-left:220px;
     height:110% !important;
     width:115% !important;
     border:0;
@@ -508,7 +508,7 @@ ul,ul ul {
 }
 .menu>li>ul>li>a:hover {
     background:#fdfdfd;
-    opacity:.9;
+    opacity:.6;
     color:#000000 !important;
     border-right:none;
 }
