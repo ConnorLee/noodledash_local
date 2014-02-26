@@ -15,4 +15,9 @@ $(function() {
    	    });
    	});
 
-bever
+
+$(function() {                       //run when the DOM is ready
+  $(".fa.sub").click(function() {  //use a class, since your ID gets mangled
+    $(this).addClass("active");      //add the class to the clicked element
+  });
+});

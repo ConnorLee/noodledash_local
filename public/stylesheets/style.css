@@ -91,6 +91,9 @@ h1,h2,h3 {
     background-color:rgba(255,255,255,0.85098);
     box-shadow:rgba(0,0,0,0.4) 0px 0px 10px 0px;
 }
+
+/** MEDIA QUERIES **/ 
+
 @media (max-width:1188px) {
     .homepage-header:after,.learn-app-header:after,.dashboard-start-search:after {
         margin-top:18px;
@@ -107,6 +110,14 @@ h1,h2,h3 {
 }
 @media (max-width:593px) {
     .home-icon {
+        display:none;
+    }
+}
+@media (max-width:992px) {
+    .navbar-fixed-top {
+        height:71px;
+    }
+    .display-name,.navbar-text,.caret {
         display:none;
     }
 }
@@ -389,14 +400,6 @@ body.analyticsOverview {
 }
 .navbar-inverse {
     background-image:url('http://d2jp3eq7stiz9q.cloudfront.net/media/site/build/img/header.png');
-}
-@media (max-width:992px) {
-    .navbar-fixed-top {
-        height:71px;
-    }
-    .display-name,.navbar-text,.caret {
-        display:none;
-    }
 }
 p.navbar-text.navbar-right {
     color:#ffffff;
