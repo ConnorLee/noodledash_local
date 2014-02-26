@@ -197,10 +197,11 @@ position: relative;
 
 .slacksite{
 margin-top: 40px !important;
-margin-left: -440px;
+margin-left: 0px;
+padding-bottom: 30px;
 height: 85% !important;
-width: 95% !important;
- border: 0;
+width: 76% !important;
+border: 0;
 z-index: 3;
 }
 
@@ -214,6 +215,7 @@ width: 115% !important;
 z-index: 3;
 position: fixed;
 }
+
 .slacksite-browse{
 margin-top: -72px !important;
 padding-left: 80px;
@@ -228,16 +230,14 @@ position: fixed;
 }
 
 slacksite-browse-inner{
-
-    margin-left: -50%;
+margin-left: -50%;
 }
 
 .leftronics{
-width:84%;
+width: 84%;
 height: 100%;
-margin-left: -220px;
-margin-right: 10%;
-margin-top: 15px;
+padding-left: 220px;
+padding-right: 5%;
 }
 
 /** OVERVIEW STYLES **/
@@ -247,7 +247,7 @@ margin-top: 15px;
     padding-left: 20px;
 }
 .overview-style-analytics{
-    margin: 5% 33% 0 0%;
+    margin: 5% 33% 0 220px;
     float: left;
     padding-top: 50px;
 }
@@ -285,6 +285,17 @@ body.ppt{
 
 body.manual{
     margin-left: -440px;
+}
+
+body.analyticsOverview{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 14px;
+line-height: 1.428571429;
+color: #333;
+float: middle;
+margin-left: -250px;
+text-align: center;
+background-color: #fff;
 }
 
 
@@ -329,22 +340,20 @@ padding-top: 50px;
 text-align: center;
 margin-left: -50%;
 margin-right: 25%;
-
 }
 
 .alert-danger-fixed {
-  color: #b94a48;
-  background-color: #f2dede;
-  border-color: #eed3d7;
-  margin-bottom: -25px;
+color: #b94a48;
+background-color: #f2dede;
+border-color: #eed3d7;
+margin-bottom: -25px;
 text-align: center;
-webkit-border-radius: 4px;
-moz-border-radius: 4px;
 border-radius: 4px;
 padding: 55px 20% 40px 35px;
 text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 width: 100%;
-margin-left: -220px;
+padding-left: 220px;
+padding-right: 25%;
 }
 
 .about-tools{
