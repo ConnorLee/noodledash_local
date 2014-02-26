@@ -117,7 +117,7 @@ h1,h2,h3 {
     .navbar-fixed-top {
         height:71px;
     }
-    .display-name,.navbar-text,.caret {
+    .navbar-text.navbar-right {
         display:none;
     }
 }
@@ -181,7 +181,7 @@ h1,h2,h3 {
     position:fixed;
 }
 .slacksite-browse {
-    margin-top:-72px !important;
+     margin-top:-72px !important;
     padding-left:80px;
     padding-right:1px;
     height:110% !important;
@@ -192,6 +192,7 @@ h1,h2,h3 {
     z-index:3;
     position:fixed;
 }
+
 slacksite-browse-inner {
     margin-left:-50%;
 }
@@ -251,6 +252,14 @@ body.analyticsOverview {
     text-align:center;
     background-color: #fff;
 }
+
+/*.home .slacksite-browse {
+
+    padding-right:25%;
+   
+}*/
+
+
 /** End Conditional Classes **/
 #header-body {
     background-image:url('../images/bg.jpg');
