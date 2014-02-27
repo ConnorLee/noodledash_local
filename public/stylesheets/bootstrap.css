@@ -5667,10 +5667,11 @@ body.modal-open,
 
 .modal-dialog {
   z-index: 1050;
-  width: auto;
-  padding: 10px;
-  margin-right: auto;
-  margin-left: auto;
+ width: 600px;
+padding-top: 30px;
+position: absolute;
+margin-left: 20%;
+padding-bottom: 30px;
 }
 
 .modal-content {
@@ -5713,6 +5714,14 @@ body.modal-open,
 
 .modal-header .close {
   margin-top: -2px;
+}
+
+#answersModal{
+  top: 50%;
+}
+
+#questionsModal{
+  left:-33%;
 }
 
 .modal-title {

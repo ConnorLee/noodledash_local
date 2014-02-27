@@ -8,6 +8,7 @@ exports.iframe = function(req, res){
         pagename = req.params.page;
         conditionalclasses = " ";
         modal = " ";
+        innerframe = " ";
 
         if (pagename == 'ppt') {
                 referenceurl = '../views/ppt.ejs';
@@ -33,6 +34,9 @@ exports.iframe = function(req, res){
                 referenceurl = '../views/tools.ejs';
         } 
         if (pagename == 'home') {
+                referenceurl = '../views/home.ejs';
+        } 
+        if (pagename == '/') {
                 referenceurl = '../views/home.ejs';
         } 
         if (pagename == 'analyticsOverview') {
@@ -142,6 +146,7 @@ exports.iframe = function(req, res){
         pagename: 'manual',
         referencesite: referenceurl, 
         conditionalclasses: conditionalclasses,
+        innerframe: innerframe,
         modal: modal,
         user: req.user
         });
