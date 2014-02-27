@@ -220,6 +220,7 @@ slacksite-browse-inner {
 .overview-style-posts {
     margin-left:-220px;
     margin-top:-0% !important;
+    padding-right: 25%;
 }
 .overview-style-tools {
     margin-left:33%;
