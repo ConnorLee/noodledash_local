@@ -233,8 +233,8 @@ slacksite-browse-inner {
 .overview-style-gym {
     margin-top:91px !important;
     margin-left:-220px;
-    padding-bottom:5%;
-    margin-right: 25%;
+    padding-bottom:7%;
+    margin-right: 33%;
 }
 /** BODY CLASSES **/
 body.ppt {
@@ -389,6 +389,10 @@ padding-left: 240px;
 #content-frame {
     margin-top:-1px;
 }
+#content-frame.assets {
+    padding-left: 220px;
+    margin-right: 40%;
+}
 #content-wrapper {
     margin-left:220px;
     height:100%;
@@ -399,6 +403,7 @@ padding-left: 240px;
     overflow:scroll;
     padding-top:100px;
     padding-left:550px;
+    padding-right: 30%;
 }
 .content-wrapper.manual {
     padding:15%;
@@ -406,7 +411,7 @@ padding-left: 240px;
     overflow:scroll;
     padding-top:100px;
     padding-left:520px;
-    padding-right:250px;
+    padding-right:25%;
 }
 .graph-medium {
     height:250px;
