@@ -392,6 +392,7 @@ padding-left: 240px;
 #content-frame.assets {
     padding-left: 220px;
     margin-right: 40%;
+    overflow-x:scroll;
 }
 #content-wrapper {
     margin-left:220px;

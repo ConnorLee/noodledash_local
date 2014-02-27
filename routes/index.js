@@ -62,6 +62,10 @@ exports.iframe = function(req, res){
                 referenceurl = '../views/postsOverview.ejs';
                 conditionalclasses = "overview-style";
         } 
+        if (pagename == '/') {
+                referenceurl = '../views/postsOverview.ejs';
+                conditionalclasses = "overview-style";
+        } 
        
         
         //SLACK ROUTES//
