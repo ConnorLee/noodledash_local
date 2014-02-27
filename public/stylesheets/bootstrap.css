@@ -4998,7 +4998,7 @@ a.list-group-item.active > .badge,
   max-width: 50%;
   padding: 4px;
   line-height: 1.428571429;
-  background-color: #ffffff;
+  background-image: src(../images/bg.png);
   border: 1px solid #dddddd;
   border-radius: 6px;
   -webkit-transition: all 0.2s ease-in-out;
