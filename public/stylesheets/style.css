@@ -162,7 +162,7 @@ h1,h2,h3 {
 }
 /** Conditional Classes **/
 .slacksite {
-    margin-top:40px !important;
+    margin-top:90px !important;
     margin-left:0px;
     padding-bottom:30px;
     height:85% !important;
@@ -171,7 +171,6 @@ h1,h2,h3 {
     z-index:3;
 }
 .slacksite-page {
-    margin-top:-72px !important;
     margin-left:220px;
     height:110% !important;
     width:115% !important;
@@ -393,8 +392,8 @@ padding-left: 240px;
 }
 #content-frame.assets {
     padding-left: 220px;
-    margin-right: 40%;
-    overflow-x:scroll;
+padding-right: 25%;
+overflow-x: scroll;
 }
 #content-wrapper {
     margin-left:220px;
