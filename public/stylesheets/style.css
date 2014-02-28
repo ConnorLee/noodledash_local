@@ -287,7 +287,7 @@ padding-left: 240px;
     width:130px;
 }
 .alert {
-    padding:55px 35px 40px 35px;
+    padding: 33px 5% 10px 15%;
     text-shadow:0 1px 0 rgba(255,255,255,0.5);
     background-color:#fcf8e3;
     border:1px solid #fbeed5;
@@ -297,9 +297,8 @@ padding-left: 240px;
     color:#c09853;
     margin-bottom:-25px;
     text-align:center;
-    -webkit-box-shadow:0 8px 6px -6px black;
-    -moz-box-shadow:0 8px 6px -6px black;
-    box-shadow:0 8px 6px -6px black;
+    z-index: 4;
+    position: relative;
 }
 .content-wrapper.assets {
     padding-top:50px;

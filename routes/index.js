@@ -62,8 +62,7 @@ exports.iframe = function(req, res){
                 referenceurl = '../views/postsOverview.ejs';
                 conditionalclasses = "overview-style";
         } 
-        if (pagename == '/') {
-                referenceurl = '../views/postsOverview.ejs';
+        if (pagename == 'main') {
                 conditionalclasses = "overview-style";
         } 
        
