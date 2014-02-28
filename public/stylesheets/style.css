@@ -554,8 +554,8 @@ ul,ul ul {
     border-right:none;
 }
 .menu>li>ul>li>a.active {
-    background:#fdfdfd;
-    opacity:.9;
+    
+ 
     color:#000000 !important;
     border-right:none;
 }
