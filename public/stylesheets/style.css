@@ -198,9 +198,12 @@ slacksite-browse-inner {
 }
 .leftronics {
     width:80%;
-    height:80%;
+    height:90%;
     padding-left:220px;
     padding-right: 1%;
+    overflow-x: scroll; 
+    background-color: #000;
+    padding-right: 10%;
 }
 /** OVERVIEW STYLES **/
 .overview-style-tools {
