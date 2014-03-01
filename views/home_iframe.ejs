@@ -1,23 +1,9 @@
 
-<div id="header">
+<div id="header" style="visibility:hidden;">
 <% include header.ejs %>
 </div>
 
 <div id="container">
-
-<div id="menu-wrapper">
-
-<% include menu.ejs %>
-
-</div>
-
-
-<div id="content-wrapper">
-     <div class="alert fade in">
-            <button type="button" class="close" data-dismiss="alert">Got it ×</button>
-            <strong>Welcome, <%= user.displayName %>!</strong> Here's where you can access Noodle's analytics, tools and resources (employee handbook, logos etc.).
-</div>
-
 
 <div class="dashboard-content">
   <div class="dashboard-start-search">
@@ -103,7 +89,7 @@
               <div class="panel panel-info">
                 <div class="panel-heading"><h4>Answers</h4></div>
                 <div class="panel-body">
-                  <%= answersWrittenYesterday %> <a class="btn btn-primary btn-xs pull-right" data-toggle="modal" href="#answersModal">Read Answers</a>
+                  <%= answersWrittenYesterday %> 
                 </div>
               </div>
             </div>

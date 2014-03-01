@@ -121,9 +121,6 @@ h1,h2,h3 {
         display:none;
     }
 }
-.home-subheader {
-    color:transparent;
-}
 .img-with-text.card.homepage:hover {
     opacity:1;
 }
@@ -204,6 +201,7 @@ slacksite-browse-inner {
     background-color: #000;
     padding-right: 10%;
 }
+.home_iframe{padding-right:25%; padding-top:40px;}
 /** OVERVIEW STYLES **/
 .overview-style-tools {
     margin:5% 5% 0 5%;

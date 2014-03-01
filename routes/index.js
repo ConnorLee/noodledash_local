@@ -33,6 +33,9 @@ exports.iframe = function(req, res){
         if (pagename == 'tools') {
                 referenceurl = '../views/tools.ejs';
         } 
+         if (pagename == 'home_iframe') {
+                referenceurl = '../views/home_iframe.ejs';
+        } 
         if (pagename == 'home') {
                 referenceurl = '../views/home.ejs';
         } 
@@ -188,6 +191,15 @@ exports.tools = function(req, res){
   	pagename: 'tools',
 	  user: req.user
   	});
+};
+
+exports.home_iframe = function(req, res){
+ 
+    res.render('home_iframe', {
+      title: 'Home',
+    pagename: 'home_iframe',
+      user: req.user
+    });
 };
 
 exports.home = function(req, res){
