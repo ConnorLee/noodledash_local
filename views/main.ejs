@@ -1,8 +1,39 @@
 
+<% if (!user) { %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title><%= title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href="/stylesheets/style.css" rel="stylesheet">
 
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
-<div id="header" style="visibility:none;">
+  <!-- Fav and touch icons -->
+  <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png"></head>
+
+<body class="<%= pagename %>" style="background-color:#f9a635;" data-spy="scroll" data-target="#nav-metrics">
+    <div class="row" id="home-row">
+      <h1 class= "title"><img src="../images/logo.png" style="height:80px;"></h1>
+      <h2 class="login">
+        <a href="/auth/37signals" class="btn btn-primary btn-lg btn-block">Login with Basecamp<img src="../images/37signals.png" style="height:30px; margin-left:30px;"></a>  
+      </h2>
+ 
+  </div>
+  <% } else { %>
+<div id="header">
 <% include header.ejs %>
 </div>
 
@@ -15,198 +46,25 @@
 </div>
 
 
-<div id="content-wrapper">
-     <div class="alert fade in">
+  <div id="content-wrapper">
+  <div class="alert fade in">
             <button type="button" class="close" data-dismiss="alert">Got it ×</button>
-            <strong>Welcome, <%= user.displayName %>!</strong> Here's where you can access Noodle's analytics, tools and resources (employee handbook, logos etc.).
+            <strong>Welcome, <%= user.displayName %>!</strong> Here's where you can access Noodle's analytics, tools, and resources. 
+      </div>  
+      <iframe id="content-frame" border="0" width="100%" height="100%" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0" src="home_iframe
+    " class="slacksite-browse">
+    </iframe>
+  </div>
 </div>
-
-
-<div class="dashboard-content">
-  <div class="dashboard-start-search">
-    <section id="deck-container" class="deck-container">
-
-      <div class="content-inner">
-
-
-        <!-- first slide -->
-
-        <section class="slide" id="find" data-countdown="5">
-          <header class="homepage-header--heading">
-              <div class="tool-row">
-
-        <h1 class="homepage-header--name" style="text-align:center;"><%= user.displayName %>'s Dashboard</h1>
-         <a href="/i/executive" target="_parent">
-        <div class="img-with-text card homepage">
-           <p class="home-subheader"><img src="../images/analytics-icon.png">Analytics</p>
-        </div></a>
-        <a href="/i/new-post" target="_parent">
-        <div class="img-with-text card homepage">
-            <p class="home-subheader"><img src="../images/blog-icon.png">Blog</p>
-        </div></a>
-        <a href="/i/team-chat" target="_parent">
-        <div class="img-with-text card homepage">
-            <p class="home-subheader"><img src="../images/chat-icon.png">Chat</p>
-        </div>
-    </div></a>
-     <div class="tool-row">
-        <br/>
-        <a href="/i/brandguide" target="_parent">
-        <div class="img-with-text card homepage">
-            <p class="home-subheader"><img src="../images/assets-icon.png">Assets</p>
-        </div></a>
-        <a href="/tools" target="_parent">
-        <div class="img-with-text card homepage">
-            <p class="home-subheader"><img src="../images/tools-icon.png">Tools</p>
-        </div></a>
-        <a href="/i/class-schedule" target="_parent">
-        <div class="img-with-text card homepage">
-            <p class="home-subheader"><img src="../images/gym-icon.png">Gym</p>
-        </div>
-</a>
-      
-</div>
-</section>
-
-<div>
-</div>
-</div>
-
-</div>
-</div>
-
-        <!-- end first slide -->
-
-
-
-        <section id="yesterday">
-          <div class="row-homepage">
-            <h2 class="section-header">Yesterday's Analytics <small> <%= yesterdayString %></small></h2>
-            <div class="col-md-3">
-              <div class="panel panel-info">
-                <div class="panel-heading"><h4>Unique Visitors</h4></div>
-                <div class="panel-body"><%= uniquesYesterday %></div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="panel panel-info">
-                <div class="panel-heading"><h4>Registrations</h4></div>
-                <div class="panel-body"><%= registrationsYesterday %></div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="panel panel-info">
-                <div class="panel-heading"><h4>Questions</h4></div>
-                <div class="panel-body">
-                  <%= questionsAskedYesterday %> <a class="btn btn-primary btn-xs pull-right" data-toggle="modal" href="#questionsModal">Answer Questions</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="panel panel-info">
-                <div class="panel-heading"><h4>Answers</h4></div>
-                <div class="panel-body">
-                  <%= answersWrittenYesterday %> <a class="btn btn-primary btn-xs pull-right" data-toggle="modal" href="#answersModal">Read Answers</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-          <div class="modal fade" id="questionsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title">Questions by Category</h4>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <h5>Schools</h5>
-                <div class="btn-group btn-group-justified">
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/preschools">Preschools</a>
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/schools">Schools</a>
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/colleges">Colleges</a>
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/graduate">Graduate</a>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <h5>Courses and videos</h5>
-                <div class="btn-group btn-group-justified">
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/online-courses">Online Courses</a>
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/learn">Learning Materials</a>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <h5>Supplemental Individuals</h5>
-                <div class="btn-group btn-group-justified">
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/guidance-counseling">Guidance Counseling</a>
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/tutoring">Tutoring</a>
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/test-prep">Test-Prep</a>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <h5>Supplemental Programs</h5>
-                <div class="btn-group btn-group-justified">
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/study-abroad">Study Abroad</a>
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/internships">Internships</a>
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/activities">Activities</a>
-                  <a class="btn btn-default" target="_blank" href="http://www.noodle.org/questions/summer-camps">Summer Camps</a>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
-      
-         <div class="modal fade" id="answersModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Coming Soon!</h4>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-
-
-
-  <!--  <ul class="list-group metrics" style="font-family:MuseoSans-700; ">
-  <li class="list-group-item">
-    <span class="badge"><%= visitorsLast30Days %></span>
-    VISITORS LAST 30 DAYS
-  </li>
-   <li class="list-group-item">
-    <span class="badge"><%= uniquesYesterday %></span>
-    UNIQUES YESTERDAY
-  </li>
-    <li class="list-group-item">
-    <span class="badge"><%= registrationsYesterday %></span>
-     REGISTRATIONS YESTERDAY
-  </li>
-   <li class="list-group-item">
-    <span class="badge"><%= questionsAskedYesterday %></span>
-     QUESTIONS ASKED YESTERDAY
-  </li>
-   <li class="list-group-item">
-    <span class="badge"><%= answersWrittenYesterday %></span>
-     ANSWERS WRITTEN YESTERDAY
-  </li>
- -->
-  
-</ul>
-
-   
-</div> 
-<!-- /container -->  
-
+      <% } %>
 
       <% include scripts.ejs %>
       <% include end.ejs %>
+
+
+
+
+
+
+
+

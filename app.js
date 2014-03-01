@@ -452,6 +452,7 @@ app.get('/releases/:release?', routes.index);
 app.get('/i/:page?', routes.iframe);
 app.get('/i/:page?', routes.iframe_analytics);
 app.get('/tools', routes.tools);
+app.get('/home_iframe', routes.home_iframe);
 app.get('/about', routes.about);
 app.get('/home', routes.home);
 app.get('/analyticsOverview', routes.analyticsOverview);
