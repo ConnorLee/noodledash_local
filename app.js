@@ -49,12 +49,12 @@ dailyVisitorsWithEngagement = '';
 searchKeyword = '';
 dailyPageViews = '';
 
-//Get the necessary dates for this stuff.
+//Get the necessary dates 
 
 var yesterday = new Date();
 yesterdayString = '';
 yesterday.setDate(yesterday.getDate() - 1);
-yesterdayString += yesterday.toJSON().substr(0,10);
+yesterdayString += yesterday.toJSON().substr(0,10); 
 
 var monthAgo = new Date();
 var monthAgoString = '';
@@ -108,7 +108,7 @@ GA.login(function(err, token) {
   'start-date': yesterdayString,
   'end-date': yesterdayString,
   'metrics': 'ga:totalEvents',
-  'filters': 'ga:eventCategory==Registration'
+  'filters': 'ga:eventCategory==Registration' 
   };
   GA.get(registrationsYesterdayQuery, function(err, entries) {
     registrationsYesterday = gaGetTotals(entries, 'ga:totalEvents');
@@ -512,4 +512,16 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login');
 }
+
+// Slack API instantiation 
+
+//CLIENT ID : 2167735219.2194571754
+//CLIENT SECRET : 411f3a2b2b605e2b8f15f1e57a907ce8
+//TEAM Noodle
+//NAME connorlee
+
+var slack_api = require('openuri');
+
+var SLACK_CLIENT_ID = '2167735219.2194571754';
+var SLACK_CLIENT_SECRET = '411f3a2b2b605e2b8f15f1e57a907ce8';
 
