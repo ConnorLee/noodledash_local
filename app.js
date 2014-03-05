@@ -509,7 +509,7 @@ http.createServer(app).listen(app.get('port'), function(){
 //   the request will proceed.  Otherwise, the user will be redirected to the
 //   login page.
 function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
+  if (req.isAuthenticated()) { return next(); } 
   res.redirect('/login');
 }
 
@@ -524,7 +524,6 @@ var slack_api = require('openuri');
 
 var SLACK_CLIENT_ID = '2167735219.2194571754';
 var SLACK_CLIENT_SECRET = '411f3a2b2b605e2b8f15f1e57a907ce8';
-
 
 slack_users = open('https://slack.com/api/users.list');
 slack_files = open('https://slack.com/api/files.list');
