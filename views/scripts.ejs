@@ -24,5 +24,16 @@
         plotDailies('avgPageLoadTime', 'avgPageLoadTimeSelector', <%= avgPageLoadTime %>);
         plotDailies('dailyPageViews', 'dailyPageViewsSelector', <%= dailyPageViews %>);
     });
+
+
+// ( '{ "name": "John" }' );
+
+var slack_files = $.parseJSON('{"args":{"user": { "type": "user"}}}');
+console.log(slack_files);
+
+//essentially var slack_files={"args": { "user": { "type": "user"}}}
+
+$("#placeholder").html(slack_files.args.user +" "+ slack_files.args.user.type);
+
 </script>
 

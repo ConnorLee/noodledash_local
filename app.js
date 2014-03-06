@@ -513,6 +513,7 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/login');
 }
 
+
 // Slack API instantiation 
 
 //CLIENT ID : 2167735219.2194571754
@@ -520,37 +521,37 @@ function ensureAuthenticated(req, res, next) {
 //TEAM Noodle
 //NAME connorlee
 
-var slack_api = require('openuri');
+// var slack_api = require('openuri');
 
-var SLACK_CLIENT_ID = '2167735219.2194571754';
-var SLACK_CLIENT_SECRET = '411f3a2b2b605e2b8f15f1e57a907ce8';
+// var SLACK_CLIENT_ID = '2167735219.2194571754';
+// var SLACK_CLIENT_SECRET = '411f3a2b2b605e2b8f15f1e57a907ce8';
 
-slack_users = open('https://slack.com/api/users.list');
-slack_files = open('https://slack.com/api/files.list');
+// slack_users = open('https://slack.com/api/users.list');
+// slack_files = open('https://slack.com/api/files.list');
 
-chatOverview = ('/chatOverview');
+// chatOverview = ('/chatOverview');
 
-chatOverview = slack_files.read[files, paging];
+// chatOverview = slack_files.read[files, paging];
 
-puts chatOverview;
+// puts chatOverview;
 
-token = "FtHwuH8w1RDjQpOr0y0gF3AWm8sRsRzncK3hHh9";
+// token = "FtHwuH8w1RDjQpOr0y0gF3AWm8sRsRzncK3hHh9";
 
-require 'httparty';
-require 'json';
+// require 'httparty';
+// require 'json';
 
-class GitHub
-  include HTTParty
-  headers "User-Agent" => "codecademy"
-  basic_auth "api-padawan", "GitHubPassw0rd"
+// class GitHub
+//   include HTTParty
+//   headers "User-Agent" => "codecademy"
+//   basic_auth "api-padawan", "GitHubPassw0rd"
 
-  def create_token
-    self.class.post endpoint, :chatOverview => {"https://api.github.com/authorizations"}.to_json
-  end
-end
+//   def create_token
+//     self.class.post endpoint, :chatOverview => {"https://api.github.com/authorizations"}.to_json
+//   end
+// end
 
-client = GitHub.new
-response = client.create_token
+// client = GitHub.new
+// response = client.create_token
 
-print response.parsed_response
+// print response.parsed_response
 
