@@ -36,7 +36,7 @@
         },
         complete: function (xhr, textStatus) {
             //debugger;
-            $.getJSON("//slack.com/api/files.list&callback=?",
+            $.getJSON("//slack.com/api/files.list?token=xoxp-2167735219-2168836023-2193290123-7550d4&count=1&pretty=1",
               function(response) {
                     // Insert the JSON feed into the #slackfeed
                     // div as a string
@@ -47,13 +47,6 @@
         success: function (data, textStatus, xhr) {
             debugger;
             // $("#placeholder").html(slack_api.files[0].name + " " + slack_api.files.name + " " + slack_api.files.title);
-            $.getJSON("//slack.com/api/files.list&callback=?",
-              function(response) {
-                    // Insert the JSON feed into the #twitterfeed
-                    // div as a string
-                    $('#placeholder').html(JSON.stringify(response));
-            });
-
         },
         error: function (xhr, textStatus, errorThrown) {
             //debugger;
