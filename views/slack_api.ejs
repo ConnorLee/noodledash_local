@@ -1,0 +1,67 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')
+</script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/menu-helper.js"></script>
+<script src="/javascripts/jquery.flot.js"></script>
+<script src="/javascripts/jquery.flot.time.js"></script>
+<script src="/javascripts/jquery.flot.selection.js"></script>
+<script src="/javascripts/jquery.flot.tooltip.min.js"></script>
+<script src="/javascripts/flot.helpers.js"></script>
+<script src="/javascripts/sparklines.min.js"></script>
+
+<script>
+    var slack_api = '//slack.com/api/files.list'
+    var slack_api_example = 'files-list-example.json'
+
+    $(function() {
+    $.getJSON("//slack.com/api/files.list&callback=?",
+      function(response) {
+            // Insert the JSON feed into the #twitterfeed
+            // div as a string
+            $('#palceholder').html(JSON.stringify(response));
+    });
+});
+
+
+    $.ajax({
+        url: slack_api,
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            token: 'xoxp-2167735219-2168836023-2193290123-7550d4',
+            user: 'U024Y47UQ',
+            type: 'posts'
+        },
+        complete: function (xhr, textStatus) {
+            //debugger;
+            $.getJSON("//slack.com/api/files.list&callback=?",
+              function(response) {
+                    // Insert the JSON feed into the #slackfeed
+                    // div as a string
+                    $('#slackfeed').html(JSON.stringify(response));
+            });
+
+        },
+        success: function (data, textStatus, xhr) {
+            debugger;
+            // $("#placeholder").html(slack_api.files[0].name + " " + slack_api.files.name + " " + slack_api.files.title);
+            $.getJSON("//slack.com/api/files.list&callback=?",
+              function(response) {
+                    // Insert the JSON feed into the #twitterfeed
+                    // div as a string
+                    $('#placeholder').html(JSON.stringify(response));
+            });
+
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            //debugger;
+
+        }
+    });
+
+// referencing slack_api, which is defined as a URL. Need to parse URL to .html file and reference that html file as opposed to URL? JSON parsing correctly.
+// next steps are to parse objects into HTML and style elements in that HTML page to display list of posts (loop through array with for loop and display elements)
+
+</script>

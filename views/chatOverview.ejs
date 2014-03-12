@@ -3,14 +3,14 @@
 <% include header.ejs %>
 </div>
 
-<div id="container" class="overview-style-chat"> 
+<div id="container" class="overview-style-chat">
 
- <div id="content-wrapper assets" style="padding-top:50px;"> 
-      <div id="placeholder"></div>
-    
+ <div id="content-wrapper assets" style="padding-top:50px;">
+      <div id="slackfeed"></div>
+
 </div>
 </div>
 <!-- /container -->
 
-<% include scripts.ejs %>
+<% include slack_api.ejs %>
 <% include end.ejs %>
