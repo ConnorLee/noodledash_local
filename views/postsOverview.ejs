@@ -3,14 +3,46 @@
 <% include header.ejs %>
 </div>
 
-<div id="container" class="overview-style-chat"> 
+<div id="container" class="overview-style-chat">
 
- <div id="content-wrapper assets" style="padding-top:50px;"> 
+ <div id="content-wrapper assets" style="padding-top:50px;">
       <h1 style="text-align: center;">Posts</h1>
-    
+
+https://noodle.slack.com/oauth/pick/2215449740.b262724cac
+
+//noodle.slack.com/oauth/pick/2215449740.b262724cac&redirect_uri='//noodledash.herokuapp.com/chatOverview'
+
 </div>
 </div>
 <!-- /container -->
 
 <% include scripts.ejs %>
 <% include end.ejs %>
+
+
+
+    $.ajax({
+        url: 'https://slack.com/oauth/authorize',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            token: 'xoxp-2167735219-2168836023-2193290123-7550d4',
+            user: 'U024Y47UQ',
+            type: 'posts',
+            redirect_uri: '//noodledash.herokuapp.com/chatOverview',
+            client_id: '2215449740.b262724cac',
+            state: ,//unique string to be passed back upon completion
+            team: 'Noodle'      
+        },
+        complete: function (xhr, textStatus) {
+            //debugger
+
+        },
+        success: function (data, textStatus, xhr) {
+            debugger;
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            //debugger;
+
+        }
+    });

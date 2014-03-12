@@ -15,14 +15,14 @@
     var slack_api = '//slack.com/api/files.list'
     var slack_api_example = 'files-list-example.json'
 
-    $(function() {
-    $.getJSON("//slack.com/api/files.list&callback=?",
-      function(response) {
-            // Insert the JSON feed into the #twitterfeed
-            // div as a string
-            $('#palceholder').html(JSON.stringify(response));
-    });
-});
+//     $(function() {
+//     $.getJSON("//slack.com/api/files.list&callback=?",
+//       function(response) {
+//             // Insert the JSON feed into the #twitterfeed
+//             // div as a string
+//             $('#placeholder').html(JSON.stringify(response));
+//     });
+// });
 
 
     $.ajax({
@@ -33,15 +33,29 @@
             token: 'xoxp-2167735219-2168836023-2193290123-7550d4',
             user: 'U024Y47UQ',
             type: 'posts'
+
         },
         complete: function (xhr, textStatus) {
             //debugger;
-            $.getJSON("//slack.com/api/files.list?token=xoxp-2167735219-2168836023-2193290123-7550d4&count=1&pretty=1",
+            $.getJSON("//slack.com/api/files.list?token=xoxp-2167735219-2168836023-2193290123-7550d4&types=posts&count=1&pretty=1",
               function(response) {
                     // Insert the JSON feed into the #slackfeed
                     // div as a string
                     $('#slackfeed').html(JSON.stringify(response));
             });
+
+
+
+$(function() {
+    $('#title').append("<li>Title: "+slack_api.files.title+"</li>");
+    $('#url').append("<a href=\""+slack_api.files.url+"\">URL</a>");
+    $('#preview').append("<li>"+slack_api.files.preview+"</li>");
+    $('#permalink').append("<a href=\""+slack_api.files.permalink+"\">Permalink</a>");
+    $('#id').append("<li>ID: "+slack_api.files.id+"</li>");
+    $('#timestamp').append("<li>Timestamp: "+slack_api.files.timestamp+"</li>");
+});
+
+
 
         },
         success: function (data, textStatus, xhr) {
