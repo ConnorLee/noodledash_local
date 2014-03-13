@@ -12,63 +12,21 @@
 <script src="/javascripts/sparklines.min.js"></script>
 
 <script>
-    var slack_api = '//slack.com/api/files.list'
-    var slack_api_example = 'files-list-example.json'
+  // Move this into app.js or some other node file so
+  // we are not making requests with our token and user id from the client?
 
-//     $(function() {
-//     $.getJSON("//slack.com/api/files.list&callback=?",
-//       function(response) {
-//             // Insert the JSON feed into the #twitterfeed
-//             // div as a string
-//             $('#placeholder').html(JSON.stringify(response));
-//     });
-// });
+  var slack_api = '//slack.com/api/files.list'
+  var slack_api_example = 'files-list-example.json'
 
-
-    $.ajax({
-        url: slack_api,
-        type: 'GET',
-        dataType: 'json',
-        data: {
-            token: 'xoxp-2167735219-2168836023-2193290123-7550d4',
-            user: 'U024Y47UQ',
-            type: 'posts'
-
-        },
-        complete: function (xhr, textStatus) {
-            //debugger;
-            $.getJSON("//slack.com/api/files.list?token=xoxp-2167735219-2168836023-2193290123-7550d4&types=posts&count=1&pretty=1",
-              function(response) {
-                    // Insert the JSON feed into the #slackfeed
-                    // div as a string
-                    $('#slackfeed').html(JSON.stringify(response));
-            });
-
-
-
-$(function() {
-    $('#title').append("<li>Title: "+slack_api.files.title+"</li>");
-    $('#url').append("<a href=\""+slack_api.files.url+"\">URL</a>");
-    $('#preview').append("<li>"+slack_api.files.preview+"</li>");
-    $('#permalink').append("<a href=\""+slack_api.files.permalink+"\">Permalink</a>");
-    $('#id').append("<li>ID: "+slack_api.files.id+"</li>");
-    $('#timestamp').append("<li>Timestamp: "+slack_api.files.timestamp+"</li>");
-});
-
-
-
-        },
-        success: function (data, textStatus, xhr) {
-            debugger;
-            // $("#placeholder").html(slack_api.files[0].name + " " + slack_api.files.name + " " + slack_api.files.title);
-        },
-        error: function (xhr, textStatus, errorThrown) {
-            //debugger;
-
-        }
-    });
-
-// referencing slack_api, which is defined as a URL. Need to parse URL to .html file and reference that html file as opposed to URL? JSON parsing correctly.
-// next steps are to parse objects into HTML and style elements in that HTML page to display list of posts (loop through array with for loop and display elements)
+  $.getJSON("//slack.com/api/files.list?token=xoxp-2167735219-2168836023-2193290123-7550d4&types=posts&count=1&pretty=1",
+      function  (response) {
+          var data = JSON.stringify(response);
+          console.log(data);
+          // declare variable for json data to be turned into html
+          // declare variable with how we want data to be turned into html
+          // var transform = {"how you want to transform it into html"};
+          // call function that will transform data and return html
+          // json2html.transform(data,transform);
+      });
 
 </script>
