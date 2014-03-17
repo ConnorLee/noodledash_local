@@ -12,8 +12,8 @@
 <script src="/javascripts/sparklines.min.js"></script>
 
 <script>
-  // Move this into app.js or some other node file so
-  // we are not making requests with our token and user id from the client?
+         // Move this into app.js or some other node file so
+         // we are not making requests with our token and user id from the client?
 
   var slack_api = '//slack.com/api/files.list'
   var slack_api_example = 'files-list-example.json'
@@ -27,6 +27,82 @@
           // var transform = {"how you want to transform it into html"};
           // call function that will transform data and return html
           // json2html.transform(data,transform);
-      });
+          
+});
+
+
+var Slack = require('node-slack');
+var slack = new Slack(noodle,xoxp-2167735219-2168836023-2193290123-7550d4);
+
+//send a message
+slack.send({
+  text: 'Howdy!',
+  channel: '#foo',
+  username: 'Bot'
+});
+```
+
+
+//To respond to a message, pass the information from the webhook into slack.respond, 
+//along with a callback function responsible for returnign a response.
+
+//From inside an Express.js route, this is as easy as passing in req.body:
+
+app.post('/chatOverview',function(req,res) {
+  
+  var reply = slack.respond(req.body,function(hook) {
+    
+    return {
+      text: 'Good point, ' + hook.user_name,
+      username: 'Bot'
+    };
+    
+  });
+  
+  res.json(reply);
+
+});
+
+
+$.ajax({
+  //     url: //slack.com/api/files.list?token=xoxp-2167735219-2168836023-2193290123-7550d4&types=posts&count=1&pretty=1",
+  //     type: 'GET',
+  //     dataType: 'json',
+  //     data: {
+  //         token: 'xoxp-2167735219-2168836023-2193290123-7550d4',
+  //         user: 'U024Y47UQ',
+  //         type: 'posts'
+  //
+  //     },
+  //     complete: function (xhr, textStatus) {
+  //         //debugger;
+  //         //
+  //         // $(function () {
+  //
+  //         //     $('#title').append("<li>Title: " + parse.files.title + "</li>");
+  //         //     $('#url').append("<a href=\"" + slack_api.files.url + "\">URL</a>");
+  //         //     $('#preview').append("<li>" + slack_api.files.preview + "</li>");
+  //         //     $('#permalink').append("<a href=\"" + slack_api.files.permalink + "\">Permalink</a>");
+  //         //     $('#id').append("<li>ID: " + slack_api.files.id + "</li>");
+  //         //     $('#timestamp').append("<li>Timestamp: " + slack_api.files.timestamp + "</li>");
+  //         // });
+  //
+  //
+  //
+  //
+  //     },
+  //     success: function (data, textStatus, xhr) {
+  //       var
+  //         debugger;
+  //         // $("#placeholder").html(slack_api.files[0].name + " " + slack_api.files.name + " " + slack_api.files.title);
+  //     },
+  //     error: function (xhr, textStatus, errorThrown) {
+  //         //debugger;
+  //
+  //     }
+  // });
+
 
 </script>
+
+
